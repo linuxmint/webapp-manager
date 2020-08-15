@@ -17,7 +17,7 @@ Icon=webapp-manager
 Terminal=false
 Type=Application
 Encoding=UTF-8
-Categories=Application;System;Settings;
+Categories=Application;Network;
 StartupNotify=false
 NotShowIn=KDE;
 """
@@ -31,7 +31,7 @@ Icon=webapp-manager
 Terminal=false
 Type=Application
 Encoding=UTF-8
-Categories=Qt;KDE;Settings;
+Categories=Application;Network;
 X-KDE-StartupNotify=false
 OnlyShowIn=KDE;
 """
