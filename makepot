@@ -1,0 +1,4 @@
+#!/bin/bash
+intltool-extract --type=gettext/glade usr/share/webapp-manager/webapp-manager.ui
+xgettext --language=Python --keyword=_ --keyword=N_ --output=webapp-manager.pot usr/lib/webapp-manager/*.py generate_desktop_files usr/share/webapp-manager/webapp-manager.ui.h
+rm -f usr/share/webapp-manager/webapp-manager.ui.h

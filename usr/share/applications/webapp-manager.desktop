@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Web Apps
+Comment=Run websites as if they were apps
+Exec=webapp-manager
+Icon=webapp-manager
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;System;Settings;
+StartupNotify=false
+NotShowIn=KDE;
