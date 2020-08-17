@@ -31,6 +31,8 @@ gettext.textdomain(APP)
 _ = gettext.gettext
 
 COL_ICON, COL_NAME, COL_WEBAPP = range(3)
+CATEGORY_ID, CATEGORY_NAME = range(2)
+BROWSER_ID, BROWSER_NAME = range(2)
 
 class MyApplication(Gtk.Application):
     # Main initialization routine
@@ -43,11 +45,11 @@ class MyApplication(Gtk.Application):
         if (len(windows) > 0):
             window = windows[0]
             window.present()
-            window.show_all()
+            window.show()
         else:
             window = WebAppManagerWindow(self)
             self.add_window(window.window)
-            window.window.show_all()
+            window.window.show()
 
 class WebAppManagerWindow():
 
@@ -71,6 +73,7 @@ class WebAppManagerWindow():
         self.icon_chooser = XApp.IconChooserButton()
         self.builder.get_object("icon_button_box").pack_start(self.icon_chooser, 0, True, True)
         self.icon_chooser.set_icon("webapp-manager")
+        self.icon_chooser.show()
 
         self.favicon_button = self.builder.get_object("favicon_button")
 
@@ -123,7 +126,49 @@ class WebAppManagerWindow():
         self.treeview.set_model(self.model)
         self.treeview.get_selection().connect("changed", self.on_webapp_selected)
 
+        # Combox box
+        category_model = Gtk.ListStore(str,str) # CATEGORY_ID, CATEGORY_NAME
+        category_model.append(["Network",_("Internet")])
+        category_model.append(["Utility",_("Accessories")])
+        category_model.append(["Game",_("Games")])
+        category_model.append(["Graphics",_("Graphics")])
+        category_model.append(["Office",_("Office")])
+        category_model.append(["AudioVideo",_("Sound & Video")])
+        category_model.append(["Development",_("Programming")])
+        self.category_combo = self.builder.get_object("category_combo")
+        renderer = Gtk.CellRendererText()
+        self.category_combo.pack_start(renderer, True)
+        self.category_combo.add_attribute(renderer, "text", CATEGORY_NAME)
+        self.category_combo.set_model(category_model)
+        self.category_combo.set_active(0) # Select 1st category
+
+        browsers = []
+        # path, codename, name
+        browsers.append(["/usr/bin/firefox", "firefox", "Firefox"])
+        browsers.append(["/usr/bin/brave-browser", "brave", "Brave"])
+        browsers.append(["/usr/bin/google-chrome-stable", "google-chrome", "Chrome"])
+        browsers.append(["/usr/bin/chromium-browser", "chromium-browser", "Chromium"])
+        browsers.append(["/usr/bin/epiphany-browser", "epiphany", "Epiphany"])
+        browsers.append(["/usr/bin/vivaldi-stable", "vivaldi", "Vivaldi"])
+        browser_model = Gtk.ListStore(str, str) # BROWSER_ID, BROWSER_NAME
+        num_browsers = 0
+        for path, codename, name in browsers:
+            if os.path.exists(path):
+                browser_model.append([codename, name])
+                num_browsers += 1
+        self.browser_combo = self.builder.get_object("browser_combo")
+        renderer = Gtk.CellRendererText()
+        self.browser_combo.pack_start(renderer, True)
+        self.browser_combo.add_attribute(renderer, "text", BROWSER_NAME)
+        self.browser_combo.set_model(browser_model)
+        self.browser_combo.set_active(0) # Select 1st browser
+        if (num_browsers < 2):
+            self.builder.get_object("browser_label").hide()
+            self.browser_combo.hide()
+        self.browser_combo.connect("changed", self.on_browser_changed)
+
         self.load_webapps()
+        self.show_hide_isolated_widgets()
 
     def data_func_surface(self, column, cell, model, iter_, *args):
         pixbuf = model.get_value(iter_, COL_ICON)
@@ -173,11 +218,13 @@ class WebAppManagerWindow():
             self.load_webapps()
 
     def on_ok_button(self, widget):
-        # TODO: Check errors
+        category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]
+        browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
         name = self.builder.get_object("name_entry").get_text()
         url = self.builder.get_object("url_entry").get_text()
         icon = self.icon_chooser.get_icon()
-        if (self.manager.create_webapp(name, url, icon, category="Network", browser="firefox", isolate_profile=True) == STATUS_OK):
+        isolate_profile = self.builder.get_object("isolated_switch").get_active()
+        if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile) == STATUS_OK):
             self.stack.set_visible_child_name("main_page")
             self.load_webapps()
         else:
@@ -188,6 +235,20 @@ class WebAppManagerWindow():
 
     def on_cancel_button(self, widget):
         self.stack.set_visible_child_name("main_page")
+
+    def on_browser_changed(self, widget):
+        self.show_hide_isolated_widgets()
+
+    def show_hide_isolated_widgets(self):
+        label = self.builder.get_object("isolated_label")
+        switch = self.builder.get_object("isolated_switch")
+        browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
+        if (browser == "firefox"):
+            label.hide()
+            switch.hide()
+        else:
+            label.show()
+            switch.show()
 
     def on_name_entry(self, widget):
         self.toggle_ok_sensitivity()
