@@ -11,6 +11,7 @@ Depends: python3,
          python3-gi,
          python3-configobj,
          python3-setproctitle,
+         python3-tldextract,
          xapps-common,
          ${misc:Depends},
 Description: Web Application Manager
