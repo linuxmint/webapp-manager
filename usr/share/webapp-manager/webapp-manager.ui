@@ -94,18 +94,6 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkToolButton" id="edit_button">
-                    <property name="visible">True</property>
-                    <property name="sensitive">False</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">list-edit-symbolic</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="homogeneous">True</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkToolButton" id="remove_button">
                     <property name="visible">True</property>
                     <property name="sensitive">False</property>
@@ -168,7 +156,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="add_grid">
+              <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="row_spacing">12</property>

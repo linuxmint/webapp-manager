@@ -79,7 +79,6 @@ class WebAppManagerWindow():
 
         # Widget signals
         self.builder.get_object("add_button").connect("clicked", self.on_add_button)
-        #self.builder.get_object("edit_button").connect("clicked", self.on_edit_button)
         self.builder.get_object("remove_button").connect("clicked", self.on_remove_button)
         self.builder.get_object("ok_button").connect("clicked", self.on_ok_button)
         self.builder.get_object("cancel_button").connect("clicked", self.on_cancel_button)
@@ -209,7 +208,6 @@ class WebAppManagerWindow():
         model, iter = selection.get_selected()
         if iter is not None:
             self.selected_webapp = model.get_value(iter, COL_WEBAPP)
-            self.builder.get_object("edit_button").set_sensitive(True)
             self.builder.get_object("remove_button").set_sensitive(True)
 
     def on_remove_button(self, widget):
@@ -287,7 +285,6 @@ class WebAppManagerWindow():
         # Clear treeview and selection
         self.model.clear()
         self.selected_webapp = None
-        self.builder.get_object("edit_button").set_sensitive(False)
         self.builder.get_object("remove_button").set_sensitive(False)
 
         webapps = self.manager.get_webapps()
