@@ -270,7 +270,7 @@ class WebAppManagerWindow():
                 source = Gtk.Label()
                 source.set_text(origin)
                 content_box.pack_start(image, 0, True, True)
-                content_box.pack_start(source, 0, True, True)
+                # content_box.pack_start(source, 0, True, True)
                 content_box.pack_start(dimensions, 0, True, True)
                 button.add(content_box)
                 button.connect("clicked", self.on_favicon_selected, path)
