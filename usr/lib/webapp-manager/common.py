@@ -42,6 +42,7 @@ class WebAppLauncher():
         self.is_firefox = False
         self.is_isolated = False
         self.is_valid = False
+        self.exec = None
 
         with open(path) as desktop_file:
             for line in desktop_file:
@@ -58,6 +59,10 @@ class WebAppLauncher():
 
                 if "Icon=" in line:
                     self.icon = line.replace("Icon=", "")
+                    continue
+
+                if "Exec=" in line:
+                    self.exec = line.replace("Exec=", "")
                     continue
 
                 if "IceFirefox=" in line:

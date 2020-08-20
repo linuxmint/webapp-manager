@@ -80,6 +80,7 @@ class WebAppManagerWindow():
         # Widget signals
         self.builder.get_object("add_button").connect("clicked", self.on_add_button)
         self.builder.get_object("remove_button").connect("clicked", self.on_remove_button)
+        self.builder.get_object("run_button").connect("clicked", self.on_run_button)
         self.builder.get_object("ok_button").connect("clicked", self.on_ok_button)
         self.builder.get_object("cancel_button").connect("clicked", self.on_cancel_button)
         self.builder.get_object("favicon_button").connect("clicked", self.on_favicon_button)
@@ -124,6 +125,7 @@ class WebAppManagerWindow():
         self.model.set_sort_column_id(COL_NAME, Gtk.SortType.ASCENDING)
         self.treeview.set_model(self.model)
         self.treeview.get_selection().connect("changed", self.on_webapp_selected)
+        self.treeview.connect("row-activated", self.on_webapp_activated)
 
         # Combox box
         category_model = Gtk.ListStore(str,str) # CATEGORY_ID, CATEGORY_NAME
@@ -209,11 +211,20 @@ class WebAppManagerWindow():
         if iter is not None:
             self.selected_webapp = model.get_value(iter, COL_WEBAPP)
             self.builder.get_object("remove_button").set_sensitive(True)
+            self.builder.get_object("run_button").set_sensitive(True)
+
+    def on_webapp_activated(self, treeview, path, column):
+        if self.selected_webapp != None:
+            subprocess.Popen(self.selected_webapp.exec, shell=True)
 
     def on_remove_button(self, widget):
         if self.selected_webapp != None:
             self.manager.delete_webbapp(self.selected_webapp)
             self.load_webapps()
+
+    def on_run_button(self, widget):
+        if self.selected_webapp != None:
+            subprocess.Popen(self.selected_webapp.exec, shell=True)
 
     def on_ok_button(self, widget):
         category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]
@@ -337,6 +348,7 @@ class WebAppManagerWindow():
         self.model.clear()
         self.selected_webapp = None
         self.builder.get_object("remove_button").set_sensitive(False)
+        self.builder.get_object("run_button").set_sensitive(True)
 
         webapps = self.manager.get_webapps()
         for webapp in webapps:
