@@ -84,6 +84,7 @@ class WebAppManagerWindow():
         self.builder.get_object("ok_button").connect("clicked", self.on_ok_button)
         self.builder.get_object("cancel_button").connect("clicked", self.on_cancel_button)
         self.builder.get_object("favicon_button").connect("clicked", self.on_favicon_button)
+        self.builder.get_object("cancel_favicon_button").connect("clicked", self.on_cancel_favicon_button)
         self.builder.get_object("name_entry").connect("changed", self.on_name_entry)
         self.builder.get_object("url_entry").connect("changed", self.on_url_entry)
 
@@ -250,6 +251,9 @@ class WebAppManagerWindow():
 
     def on_cancel_button(self, widget):
         self.stack.set_visible_child_name("main_page")
+
+    def on_cancel_favicon_button(self, widget):
+        self.stack.set_visible_child_name("add_page")
 
     def on_favicon_button(self, widget):
         url = self.builder.get_object("url_entry").get_text()
