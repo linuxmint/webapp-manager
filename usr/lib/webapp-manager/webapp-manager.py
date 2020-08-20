@@ -16,9 +16,9 @@ warnings.filterwarnings("ignore")
 
 gi.require_version("Gtk", "3.0")
 gi.require_version('XApp', '1.0')
-from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf
+from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf, GLib
 
-from common import _async, idle, WebAppManager, STATUS_OK
+from common import _async, idle, WebAppManager, STATUS_OK, download_favicon, ICONS_DIR
 
 setproctitle.setproctitle("webapp-manager")
 
@@ -82,7 +82,7 @@ class WebAppManagerWindow():
         self.builder.get_object("remove_button").connect("clicked", self.on_remove_button)
         self.builder.get_object("ok_button").connect("clicked", self.on_ok_button)
         self.builder.get_object("cancel_button").connect("clicked", self.on_cancel_button)
-        #self.builder.get_object("favicon_button").connect("clicked", self.on_favicon_button)
+        self.builder.get_object("favicon_button").connect("clicked", self.on_favicon_button)
         self.builder.get_object("name_entry").connect("changed", self.on_name_entry)
         self.builder.get_object("url_entry").connect("changed", self.on_url_entry)
 
@@ -220,8 +220,14 @@ class WebAppManagerWindow():
         browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
         name = self.builder.get_object("name_entry").get_text()
         url = self.builder.get_object("url_entry").get_text()
-        icon = self.icon_chooser.get_icon()
         isolate_profile = self.builder.get_object("isolated_switch").get_active()
+        icon = self.icon_chooser.get_icon()
+        if "/tmp" in icon:
+            # If the icon path is in /tmp, move it.
+            filename = "".join(filter(str.isalpha, name)) + ".png"
+            new_path = os.path.join(ICONS_DIR, filename)
+            shutil.copyfile(icon, new_path)
+            icon = new_path
         if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile) == STATUS_OK):
             self.stack.set_visible_child_name("main_page")
             self.load_webapps()
@@ -233,6 +239,47 @@ class WebAppManagerWindow():
 
     def on_cancel_button(self, widget):
         self.stack.set_visible_child_name("main_page")
+
+    def on_favicon_button(self, widget):
+        url = self.builder.get_object("url_entry").get_text()
+        self.builder.get_object("spinner").start()
+        self.builder.get_object("spinner").show()
+        self.download_icons(url)
+
+    @_async
+    def download_icons(self, url):
+        images = download_favicon(url)
+        self.show_favicons(images)
+
+    @idle
+    def show_favicons(self, images):
+        self.builder.get_object("spinner").stop()
+        self.builder.get_object("spinner").hide()
+        if len(images) > 0:
+            self.stack.set_visible_child_name("favicon_page")
+            box = self.builder.get_object("favicon_flow")
+            for child in box.get_children():
+                box.remove(child)
+            for origin, pil_image, path in images:
+                button = Gtk.Button()
+                content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+                image = Gtk.Image()
+                image.set_from_file(path)
+                dimensions = Gtk.Label()
+                dimensions.set_text("%dx%d" % (pil_image.width, pil_image.height))
+                source = Gtk.Label()
+                source.set_text(origin)
+                content_box.pack_start(image, 0, True, True)
+                content_box.pack_start(source, 0, True, True)
+                content_box.pack_start(dimensions, 0, True, True)
+                button.add(content_box)
+                button.connect("clicked", self.on_favicon_selected, path)
+                box.add(button)
+            box.show_all()
+
+    def on_favicon_selected(self, widget, path):
+        self.icon_chooser.set_icon(path)
+        self.stack.set_visible_child_name("add_page")
 
     def on_browser_changed(self, widget):
         self.show_hide_isolated_widgets()
@@ -252,7 +299,7 @@ class WebAppManagerWindow():
         self.toggle_ok_sensitivity()
 
     def on_url_entry(self, widget):
-        if widget.get_text() != "":
+        if widget.get_text() != "" and "." in widget.get_text():
             self.favicon_button.set_sensitive(True)
         else:
             self.favicon_button.set_sensitive(False)

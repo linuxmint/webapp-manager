@@ -161,3 +161,86 @@ class WebAppManager():
                 os.symlink(new_path, path)
 
         return (STATUS_OK)
+
+import bs4
+import sys
+import urllib.error
+import urllib.parse
+import urllib.request
+from PIL import Image
+from io import BytesIO
+import requests
+
+def normalize_url(url):
+    (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url, "http")
+    if not netloc and path:
+        return urllib.parse.urlunparse((scheme, path, "", "", "", ""))
+    return urllib.parse.urlunparse((scheme, netloc, path, "", "", ""))
+
+def download_image(root_url, link):
+    image = None
+    if ("://") not in link:
+        if link.startswith("/"):
+            link = root_url + link
+        else:
+            link = root_url + "/" + link
+    try:
+        response = requests.get(link, timeout=3)
+        image = Image.open(BytesIO(response.content))
+        if image.height > 256:
+            image = image.resize((256, 256), Image.BICUBIC)
+    except Exception as e:
+        print(e)
+        print(link)
+        image = None
+    return image
+
+import tempfile
+
+def download_favicon(url):
+    images = []
+    url = normalize_url(url)
+    (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url)
+    root_url = "%s://%s" % (scheme, netloc)
+
+    try:
+        response = requests.get(url, timeout=3)
+        if response != None:
+            soup = bs4.BeautifulSoup(response.content, "html.parser")
+
+            # icons defined in the HTML
+            for iconformat in ["apple-touch-icon", "shortcut icon", "icon", "msapplication-TileImage"]:
+                item = soup.find("link", {"rel": iconformat})
+                if item != None:
+                    image = download_image(root_url, item["href"])
+                    if image != None:
+                        t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+                        images.append([iconformat, image, t.name])
+                        image.save(t.name)
+                        print(image.size, t.name)
+
+            # favicon.ico
+            image = download_image(root_url, "/favicon.ico")
+            if image != None:
+                t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+                images.append(["favicon", image, t.name])
+                image.save(t.name)
+                print(image.size, t.name)
+
+            # OG:IMAGE
+            item = soup.find("meta", {"property": "og:image"})
+            if item != None:
+                image = download_image(root_url, item['content'])
+                if image != None:
+                    t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+                    images.append(["og:image", image, t.name])
+                    image.save(t.name)
+                    print(image.size, t.name)
+
+    except Exception as e:
+        print(e)
+
+    return images
+
+if __name__ == "__main__":
+    download_favicon(sys.argv[1])
