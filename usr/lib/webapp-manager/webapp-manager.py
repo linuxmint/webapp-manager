@@ -244,6 +244,8 @@ class WebAppManagerWindow():
         url = self.builder.get_object("url_entry").get_text()
         self.builder.get_object("spinner").start()
         self.builder.get_object("spinner").show()
+        self.builder.get_object("favicon_image").hide()
+        self.builder.get_object("favicon_button").set_sensitive(False)
         self.download_icons(url)
 
     @_async
@@ -255,6 +257,8 @@ class WebAppManagerWindow():
     def show_favicons(self, images):
         self.builder.get_object("spinner").stop()
         self.builder.get_object("spinner").hide()
+        self.builder.get_object("favicon_image").show()
+        self.builder.get_object("favicon_button").set_sensitive(True)
         if len(images) > 0:
             self.stack.set_visible_child_name("favicon_page")
             box = self.builder.get_object("favicon_flow")
