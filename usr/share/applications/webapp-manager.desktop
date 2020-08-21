@@ -1,6 +1,14 @@
 [Desktop Entry]
 Name=Web Apps
+Name[ca]=Aplicacions web
+Name[es]=Aplicaciones web
+Name[fr]=Applications web
+Name[tr]=Web Uygulamaları
 Comment=Run websites as if they were apps
+Comment[ca]=Executeu llocs web com si fossin aplicacions
+Comment[es]=Ejecutar los sitios web como si fueran aplicaciones
+Comment[fr]=Lancer des sites Web comme des applications
+Comment[tr]=Web sitelerini uygulama gibi çalıştırın
 Exec=webapp-manager
 Icon=webapp-manager
 Terminal=false
