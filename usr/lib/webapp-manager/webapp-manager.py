@@ -352,7 +352,7 @@ class WebAppManagerWindow():
         self.model.clear()
         self.selected_webapp = None
         self.builder.get_object("remove_button").set_sensitive(False)
-        self.builder.get_object("run_button").set_sensitive(True)
+        self.builder.get_object("run_button").set_sensitive(False)
 
         webapps = self.manager.get_webapps()
         for webapp in webapps:
