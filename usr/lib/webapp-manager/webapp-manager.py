@@ -75,18 +75,28 @@ class WebAppManagerWindow():
         self.icon_chooser.set_icon("webapp-manager")
         self.icon_chooser.show()
 
+        # Create variables to quickly access dynamic widgets
         self.favicon_button = self.builder.get_object("favicon_button")
+        self.remove_button = self.builder.get_object("remove_button")
+        self.run_button = self.builder.get_object("run_button")
+        self.ok_button = self.builder.get_object("ok_button")
+        self.name_entry = self.builder.get_object("name_entry")
+        self.url_entry = self.builder.get_object("url_entry")
+        self.isolated_switch = self.builder.get_object("isolated_switch")
+        self.isolated_label = self.builder.get_object("isolated_label")
+        self.spinner = self.builder.get_object("spinner")
+        self.favicon_image = self.builder.get_object("favicon_image")
 
         # Widget signals
         self.builder.get_object("add_button").connect("clicked", self.on_add_button)
-        self.builder.get_object("remove_button").connect("clicked", self.on_remove_button)
-        self.builder.get_object("run_button").connect("clicked", self.on_run_button)
-        self.builder.get_object("ok_button").connect("clicked", self.on_ok_button)
         self.builder.get_object("cancel_button").connect("clicked", self.on_cancel_button)
-        self.builder.get_object("favicon_button").connect("clicked", self.on_favicon_button)
         self.builder.get_object("cancel_favicon_button").connect("clicked", self.on_cancel_favicon_button)
-        self.builder.get_object("name_entry").connect("changed", self.on_name_entry)
-        self.builder.get_object("url_entry").connect("changed", self.on_url_entry)
+        self.remove_button.connect("clicked", self.on_remove_button)
+        self.run_button.connect("clicked", self.on_run_button)
+        self.ok_button.connect("clicked", self.on_ok_button)
+        self.favicon_button.connect("clicked", self.on_favicon_button)
+        self.name_entry.connect("changed", self.on_name_entry)
+        self.url_entry.connect("changed", self.on_url_entry)
 
         # Menubar
         accel_group = Gtk.AccelGroup()
@@ -211,8 +221,8 @@ class WebAppManagerWindow():
         model, iter = selection.get_selected()
         if iter is not None:
             self.selected_webapp = model.get_value(iter, COL_WEBAPP)
-            self.builder.get_object("remove_button").set_sensitive(True)
-            self.builder.get_object("run_button").set_sensitive(True)
+            self.remove_button.set_sensitive(True)
+            self.run_button.set_sensitive(True)
 
     def on_webapp_activated(self, treeview, path, column):
         if self.selected_webapp != None:
@@ -230,9 +240,9 @@ class WebAppManagerWindow():
     def on_ok_button(self, widget):
         category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]
         browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
-        name = self.builder.get_object("name_entry").get_text()
-        url = self.builder.get_object("url_entry").get_text()
-        isolate_profile = self.builder.get_object("isolated_switch").get_active()
+        name = self.name_entry.get_text()
+        url = self.url_entry.get_text()
+        isolate_profile = self.isolated_switch.get_active()
         icon = self.icon_chooser.get_icon()
         if "/tmp" in icon:
             # If the icon path is in /tmp, move it.
@@ -247,12 +257,12 @@ class WebAppManagerWindow():
             self.builder.get_object("error_label").set_text(_("An error occurred"))
 
     def on_add_button(self, widget):
-        self.builder.get_object("name_entry").set_text("")
-        self.builder.get_object("url_entry").set_text("")
+        self.name_entry.set_text("")
+        self.url_entry.set_text("")
         self.icon_chooser.set_icon("webapp-manager")
         self.category_combo.set_active(0)
         self.browser_combo.set_active(0)
-        self.builder.get_object("isolated_switch").set_active(True)
+        self.isolated_switch.set_active(True)
         self.stack.set_visible_child_name("add_page")
 
     def on_cancel_button(self, widget):
@@ -262,11 +272,11 @@ class WebAppManagerWindow():
         self.stack.set_visible_child_name("add_page")
 
     def on_favicon_button(self, widget):
-        url = self.builder.get_object("url_entry").get_text()
-        self.builder.get_object("spinner").start()
-        self.builder.get_object("spinner").show()
-        self.builder.get_object("favicon_image").hide()
-        self.builder.get_object("favicon_button").set_sensitive(False)
+        url = self.url_entry.get_text()
+        self.spinner.start()
+        self.spinner.show()
+        self.favicon_image.hide()
+        self.favicon_button.set_sensitive(False)
         self.download_icons(url)
 
     @_async
@@ -276,10 +286,10 @@ class WebAppManagerWindow():
 
     @idle
     def show_favicons(self, images):
-        self.builder.get_object("spinner").stop()
-        self.builder.get_object("spinner").hide()
-        self.builder.get_object("favicon_image").show()
-        self.builder.get_object("favicon_button").set_sensitive(True)
+        self.spinner.stop()
+        self.spinner.hide()
+        self.favicon_image.show()
+        self.favicon_button.set_sensitive(True)
         if len(images) > 0:
             self.stack.set_visible_child_name("favicon_page")
             box = self.builder.get_object("favicon_flow")
@@ -310,15 +320,13 @@ class WebAppManagerWindow():
         self.show_hide_isolated_widgets()
 
     def show_hide_isolated_widgets(self):
-        label = self.builder.get_object("isolated_label")
-        switch = self.builder.get_object("isolated_switch")
         browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
         if (browser == "firefox"):
-            label.hide()
-            switch.hide()
+            self.isolated_label.hide()
+            self.isolated_switch.hide()
         else:
-            label.show()
-            switch.show()
+            self.isolated_label.show()
+            self.isolated_switch.show()
 
     def on_name_entry(self, widget):
         self.toggle_ok_sensitivity()
@@ -332,13 +340,13 @@ class WebAppManagerWindow():
         self.guess_icon()
 
     def toggle_ok_sensitivity(self):
-        if self.builder.get_object("name_entry").get_text() == "" or self.builder.get_object("url_entry").get_text() == "":
-            self.builder.get_object("ok_button").set_sensitive(False)
+        if self.name_entry.get_text() == "" or self.url_entry.get_text() == "":
+            self.ok_button.set_sensitive(False)
         else:
-            self.builder.get_object("ok_button").set_sensitive(True)
+            self.ok_button.set_sensitive(True)
 
     def guess_icon(self):
-        url = self.builder.get_object("url_entry").get_text().lower()
+        url = self.url_entry.get_text().lower()
         if "." in url:
             info = tldextract.extract(url)
             if info.domain == "google" and info.subdomain != None and info.subdomain != "":
@@ -357,8 +365,8 @@ class WebAppManagerWindow():
         # Clear treeview and selection
         self.model.clear()
         self.selected_webapp = None
-        self.builder.get_object("remove_button").set_sensitive(False)
-        self.builder.get_object("run_button").set_sensitive(False)
+        self.remove_button.set_sensitive(False)
+        self.run_button.set_sensitive(False)
 
         webapps = self.manager.get_webapps()
         for webapp in webapps:
