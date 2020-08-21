@@ -2,8 +2,10 @@
 import gi
 import os
 import shutil
+import string
 import threading
 from gi.repository import GObject
+from random import choice
 
 # Used as a decorator to run things in the background
 def _async(func):
@@ -105,8 +107,10 @@ class WebAppManager():
             os.remove(webapp.path)
 
     def create_webapp(self, name, url, icon, category, browser, isolate_profile=True):
-        codename = "".join(filter(str.isalpha, name))
-        path = os.path.join(APPS_DIR, "%s.desktop" % codename)
+        # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
+        random_code =  ''.join(choice(string.digits) for _ in range(4))
+        codename = "".join(filter(str.isalpha, name)) + random_code
+        path = os.path.join(APPS_DIR, "webapp-%s.desktop" % codename)
 
         if os.path.exists(path):
             return (STATUS_ERROR_DUPLICATE)
