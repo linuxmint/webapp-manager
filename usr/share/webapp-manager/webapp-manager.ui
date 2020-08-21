@@ -134,7 +134,6 @@
           </object>
           <packing>
             <property name="name">main_page</property>
-            <property name="title" translatable="yes">page0</property>
           </packing>
         </child>
         <child>
@@ -228,7 +227,7 @@
                   <object class="GtkEntry" id="url_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="placeholder_text" translatable="yes">https://www.url.com</property>
+                    <property name="placeholder_text" translatable="yes">https://www.website.com</property>
                     <property name="input_purpose">url</property>
                   </object>
                   <packing>
@@ -391,6 +390,7 @@
                   <object class="GtkSwitch" id="isolated_switch">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">If this option is enabled the website will run with its own browser profile.</property>
                     <property name="active">True</property>
                   </object>
                   <packing>
@@ -403,7 +403,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
-                    <property name="label" translatable="yes">Isolated:</property>
+                    <property name="label" translatable="yes">Isolated profile:</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -471,7 +471,6 @@
           </object>
           <packing>
             <property name="name">add_page</property>
-            <property name="title" translatable="yes">page1</property>
             <property name="position">1</property>
           </packing>
         </child>
@@ -562,7 +561,6 @@
           </object>
           <packing>
             <property name="name">favicon_page</property>
-            <property name="title" translatable="yes">page0</property>
             <property name="position">2</property>
           </packing>
         </child>
