@@ -349,17 +349,20 @@ class WebAppManagerWindow():
         url = self.url_entry.get_text().lower()
         if "." in url:
             info = tldextract.extract(url)
+            icon = None
             if info.domain == "google" and info.subdomain != None and info.subdomain != "":
                 if info.subdomain == "mail":
                     icon = "web-%s-gmail" % info.domain
                 else:
                     icon = "web-%s-%s" % (info.domain, info.subdomain)
-                if self.icon_theme.has_icon(icon):
-                    self.icon_chooser.set_icon(icon)
+            elif info.domain == "gmail":
+                icon = "web-google-gmail"
+            elif info.domain == "youtube":
+                icon = "web-google-youtube"
             elif info.domain != None and info.domain != "":
                 icon = "web-%s" % info.domain
-                if self.icon_theme.has_icon(icon):
-                    self.icon_chooser.set_icon(icon)
+            if icon != None and self.icon_theme.has_icon(icon):
+                self.icon_chooser.set_icon(icon)
 
     def load_webapps(self):
         # Clear treeview and selection
