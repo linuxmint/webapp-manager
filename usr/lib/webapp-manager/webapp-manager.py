@@ -247,6 +247,12 @@ class WebAppManagerWindow():
             self.builder.get_object("error_label").set_text(_("An error occurred"))
 
     def on_add_button(self, widget):
+        self.builder.get_object("name_entry").set_text("")
+        self.builder.get_object("url_entry").set_text("")
+        self.icon_chooser.set_icon("webapp-manager")
+        self.category_combo.set_active(0)
+        self.browser_combo.set_active(0)
+        self.builder.get_object("isolated_switch").set_active(True)
         self.stack.set_visible_child_name("add_page")
 
     def on_cancel_button(self, widget):
