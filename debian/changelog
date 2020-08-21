@@ -1,3 +1,28 @@
+webapp-manager (1.0.2) ulyana; urgency=medium
+
+  * Fix menu category
+  * Implement menu items (quit, about)
+  * Implement backend
+  * Implement choice of browser, category and isolation
+  * Remove edit button
+  * Add the ability to download favicons
+  * Add support for favicongrabber
+  * Put the spinner inside the favicon button
+  * Add the ability to run web apps
+  * Add tooltips, add a button to cancel favicon selection
+  * l10n: Update POT
+  * Remove generated files
+  * Update icon
+  * Fix collision errors
+  * Fix run button sensitivity when no app is selected
+  * Reset add page when creating a new app
+  * Use variables for widgets which are accessed more than twice
+  * Fix icon guessing for Youtube and Gmail
+  * Validate URL
+  * l10n: Update translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 21 Aug 2020 15:34:48 +0100
+
 webapp-manager (1.0.1) ulyana; urgency=medium
 
   * Initial release
