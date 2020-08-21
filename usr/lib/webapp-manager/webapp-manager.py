@@ -10,6 +10,7 @@ import subprocess
 import tldextract
 import urllib.parse
 import warnings
+import urllib.parse
 
 # Suppress GTK deprecation warnings
 warnings.filterwarnings("ignore")
@@ -241,7 +242,7 @@ class WebAppManagerWindow():
         category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]
         browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
         name = self.name_entry.get_text()
-        url = self.url_entry.get_text()
+        url = self.get_url()
         isolate_profile = self.isolated_switch.get_active()
         icon = self.icon_chooser.get_icon()
         if "/tmp" in icon:
@@ -272,12 +273,27 @@ class WebAppManagerWindow():
         self.stack.set_visible_child_name("add_page")
 
     def on_favicon_button(self, widget):
-        url = self.url_entry.get_text()
+        url = self.get_url()
         self.spinner.start()
         self.spinner.show()
         self.favicon_image.hide()
         self.favicon_button.set_sensitive(False)
         self.download_icons(url)
+
+    # Reads what's in the URL entry and returns a validated version
+    def get_url(self):
+        url = self.url_entry.get_text()
+        if not "://" in url:
+            url = "http://%s" % url
+        (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url, "http")
+        if "." not in netloc:
+            return ""
+        components = netloc.split(".")
+        if len(components[-1]) < 2:
+            return ""
+        if len(components[-2]) < 3:
+            return ""
+        return url
 
     @_async
     def download_icons(self, url):
@@ -332,7 +348,7 @@ class WebAppManagerWindow():
         self.toggle_ok_sensitivity()
 
     def on_url_entry(self, widget):
-        if widget.get_text() != "" and "." in widget.get_text():
+        if self.get_url() != "":
             self.favicon_button.set_sensitive(True)
         else:
             self.favicon_button.set_sensitive(False)
@@ -340,14 +356,14 @@ class WebAppManagerWindow():
         self.guess_icon()
 
     def toggle_ok_sensitivity(self):
-        if self.name_entry.get_text() == "" or self.url_entry.get_text() == "":
+        if self.name_entry.get_text() == "" or self.get_url() == "":
             self.ok_button.set_sensitive(False)
         else:
             self.ok_button.set_sensitive(True)
 
     def guess_icon(self):
-        url = self.url_entry.get_text().lower()
-        if "." in url:
+        url = self.get_url().lower()
+        if url != "":
             info = tldextract.extract(url)
             icon = None
             if info.domain == "google" and info.subdomain != None and info.subdomain != "":
