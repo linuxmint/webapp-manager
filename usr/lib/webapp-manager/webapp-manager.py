@@ -403,6 +403,10 @@ class WebAppManagerWindow():
                 self.model.set_value(iter, COL_NAME, webapp.name)
                 self.model.set_value(iter, COL_WEBAPP, webapp)
 
+        # Select the 1st web-app
+        path = Gtk.TreePath.new_first()
+        self.treeview.get_selection().select_path(path)
+
 if __name__ == "__main__":
     application = MyApplication("org.x.webapp-manager", Gio.ApplicationFlags.FLAGS_NONE)
     application.run()
