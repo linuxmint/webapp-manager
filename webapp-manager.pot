@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-21 11:20+0100\n"
+"POT-Creation-Date: 2020-08-29 13:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,56 +17,65 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/webapp-manager/webapp-manager.py:70
-#: usr/lib/webapp-manager/webapp-manager.py:184 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:71
+#: usr/lib/webapp-manager/webapp-manager.py:208 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 msgid "Web Apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:97
-#: usr/lib/webapp-manager/webapp-manager.py:183
+#: usr/lib/webapp-manager/webapp-manager.py:119
+#: usr/lib/webapp-manager/webapp-manager.py:207
 msgid "About"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:102
+#: usr/lib/webapp-manager/webapp-manager.py:124
 msgid "Quit"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:133
+#: usr/lib/webapp-manager/webapp-manager.py:155
 msgid "Internet"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:134
+#: usr/lib/webapp-manager/webapp-manager.py:156
 msgid "Accessories"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:135
+#: usr/lib/webapp-manager/webapp-manager.py:157
 msgid "Games"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:136
+#: usr/lib/webapp-manager/webapp-manager.py:158
 msgid "Graphics"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:137
+#: usr/lib/webapp-manager/webapp-manager.py:159
 msgid "Office"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:138
+#: usr/lib/webapp-manager/webapp-manager.py:160
 msgid "Sound & Video"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:139
+#: usr/lib/webapp-manager/webapp-manager.py:161
 msgid "Programming"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:185 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:209 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Run websites as if they were apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:247
+#: usr/lib/webapp-manager/webapp-manager.py:277
 msgid "An error occurred"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:280
+#: usr/share/webapp-manager/webapp-manager.ui.h:6
+msgid "Add a New Web App"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:295
+msgid "Edit Web App"
 msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
@@ -79,10 +88,6 @@ msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 msgid "Launch"
-msgstr ""
-
-#: usr/share/webapp-manager/webapp-manager.ui.h:6
-msgid "Add a New Web App"
 msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
