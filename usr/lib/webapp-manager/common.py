@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import gi
+import configparser
 import os
 import shutil
 import string
@@ -45,6 +46,7 @@ class WebAppLauncher():
         self.is_isolated = False
         self.is_valid = False
         self.exec = None
+        self.category = None
 
         with open(path) as desktop_file:
             for line in desktop_file:
@@ -65,6 +67,10 @@ class WebAppLauncher():
 
                 if "Exec=" in line:
                     self.exec = line.replace("Exec=", "")
+                    continue
+
+                if "Categories=" in line:
+                    self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
                     continue
 
                 if "IceFirefox=" in line:
@@ -170,6 +176,16 @@ class WebAppManager():
                 os.symlink(new_path, path)
 
         return (STATUS_OK)
+
+    def edit_webapp(self, path, name, icon, category):
+        config = configparser.RawConfigParser()
+        config.optionxform = str
+        config.read(path)
+        config.set("Desktop Entry", "Name", name)
+        config.set("Desktop Entry", "Icon", icon)
+        config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
+        with open(path, 'w') as configfile:
+            config.write(configfile, space_around_delimiters=False)
 
 import bs4
 import sys

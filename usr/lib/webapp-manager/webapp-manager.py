@@ -77,22 +77,33 @@ class WebAppManagerWindow():
         self.icon_chooser.show()
 
         # Create variables to quickly access dynamic widgets
+        self.add_page_label = self.builder.get_object("add_page_label")
         self.favicon_button = self.builder.get_object("favicon_button")
         self.remove_button = self.builder.get_object("remove_button")
+        self.edit_button = self.builder.get_object("edit_button")
         self.run_button = self.builder.get_object("run_button")
         self.ok_button = self.builder.get_object("ok_button")
         self.name_entry = self.builder.get_object("name_entry")
         self.url_entry = self.builder.get_object("url_entry")
+        self.url_label = self.builder.get_object("url_label")
         self.isolated_switch = self.builder.get_object("isolated_switch")
         self.isolated_label = self.builder.get_object("isolated_label")
         self.spinner = self.builder.get_object("spinner")
         self.favicon_image = self.builder.get_object("favicon_image")
+        self.browser_combo = self.builder.get_object("browser_combo")
+        self.browser_label = self.builder.get_object("browser_label")
+
+        # Widgets which are in the add page but not the edit page
+        self.add_specific_widgets = [self.url_label, self.url_entry, self.favicon_button,
+                                     self.browser_label, self.browser_combo,
+                                     self.isolated_label, self.isolated_switch]
 
         # Widget signals
         self.builder.get_object("add_button").connect("clicked", self.on_add_button)
         self.builder.get_object("cancel_button").connect("clicked", self.on_cancel_button)
         self.builder.get_object("cancel_favicon_button").connect("clicked", self.on_cancel_favicon_button)
         self.remove_button.connect("clicked", self.on_remove_button)
+        self.edit_button.connect("clicked", self.on_edit_button)
         self.run_button.connect("clicked", self.on_run_button)
         self.ok_button.connect("clicked", self.on_ok_button)
         self.favicon_button.connect("clicked", self.on_favicon_button)
@@ -169,19 +180,21 @@ class WebAppManagerWindow():
             if os.path.exists(path):
                 browser_model.append([codename, name])
                 num_browsers += 1
-        self.browser_combo = self.builder.get_object("browser_combo")
         renderer = Gtk.CellRendererText()
         self.browser_combo.pack_start(renderer, True)
         self.browser_combo.add_attribute(renderer, "text", BROWSER_NAME)
         self.browser_combo.set_model(browser_model)
         self.browser_combo.set_active(0) # Select 1st browser
         if (num_browsers < 2):
-            self.builder.get_object("browser_label").hide()
+            self.browser_label.hide()
             self.browser_combo.hide()
         self.browser_combo.connect("changed", self.on_browser_changed)
 
         self.load_webapps()
         self.show_hide_isolated_widgets()
+
+        # Used by the OK button, indicates whether we're editing a web-app or adding a new one.
+        self.edit_mode = False
 
     def data_func_surface(self, column, cell, model, iter_, *args):
         pixbuf = model.get_value(iter_, COL_ICON)
@@ -223,6 +236,7 @@ class WebAppManagerWindow():
         if iter is not None:
             self.selected_webapp = model.get_value(iter, COL_WEBAPP)
             self.remove_button.set_sensitive(True)
+            self.edit_button.set_sensitive(True)
             self.run_button.set_sensitive(True)
 
     def on_webapp_activated(self, treeview, path, column):
@@ -251,20 +265,49 @@ class WebAppManagerWindow():
             new_path = os.path.join(ICONS_DIR, filename)
             shutil.copyfile(icon, new_path)
             icon = new_path
-        if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile) == STATUS_OK):
+        if self.edit_mode:
+            self.manager.edit_webapp(self.selected_webapp.path, name, icon, category)
             self.stack.set_visible_child_name("main_page")
             self.load_webapps()
         else:
-            self.builder.get_object("error_label").set_text(_("An error occurred"))
+            if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile) == STATUS_OK):
+                self.stack.set_visible_child_name("main_page")
+                self.load_webapps()
+            else:
+                self.builder.get_object("error_label").set_text(_("An error occurred"))
 
     def on_add_button(self, widget):
+        self.add_page_label.set_text(_("Add a New Web App"))
         self.name_entry.set_text("")
         self.url_entry.set_text("")
         self.icon_chooser.set_icon("webapp-manager")
         self.category_combo.set_active(0)
         self.browser_combo.set_active(0)
         self.isolated_switch.set_active(True)
+        for widget in self.add_specific_widgets:
+            widget.show()
         self.stack.set_visible_child_name("add_page")
+        self.edit_mode = False
+        self.ok_button.set_sensitive(False)
+
+    def on_edit_button(self, widget):
+        if self.selected_webapp != None:
+            self.add_page_label.set_text(_("Edit Web App"))
+            self.name_entry.set_text(self.selected_webapp.name)
+            self.icon_chooser.set_icon(self.selected_webapp.icon)
+            model = self.category_combo.get_model()
+            iter = model.get_iter_first()
+            while iter:
+                category = model.get_value(iter, CATEGORY_ID)
+                if self.selected_webapp.category == category:
+                    self.category_combo.set_active_iter(iter)
+                    break
+                iter = model.iter_next(iter)
+            for widget in self.add_specific_widgets:
+                widget.hide()
+            self.stack.set_visible_child_name("add_page")
+            self.edit_mode = True
+            self.ok_button.set_sensitive(True)
 
     def on_cancel_button(self, widget):
         self.stack.set_visible_child_name("main_page")
@@ -356,7 +399,9 @@ class WebAppManagerWindow():
         self.guess_icon()
 
     def toggle_ok_sensitivity(self):
-        if self.name_entry.get_text() == "" or self.get_url() == "":
+        if self.name_entry.get_text() == "":
+            self.ok_button.set_sensitive(False)
+        elif self.get_url() == "" and not self.edit_mode:
             self.ok_button.set_sensitive(False)
         else:
             self.ok_button.set_sensitive(True)
@@ -385,6 +430,7 @@ class WebAppManagerWindow():
         self.model.clear()
         self.selected_webapp = None
         self.remove_button.set_sensitive(False)
+        self.edit_button.set_sensitive(False)
         self.run_button.set_sensitive(False)
 
         webapps = self.manager.get_webapps()
