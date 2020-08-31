@@ -191,7 +191,6 @@ class WebAppManagerWindow():
         self.browser_combo.connect("changed", self.on_browser_changed)
 
         self.load_webapps()
-        self.show_hide_isolated_widgets()
 
         # Used by the OK button, indicates whether we're editing a web-app or adding a new one.
         self.edit_mode = False
@@ -286,6 +285,7 @@ class WebAppManagerWindow():
         self.isolated_switch.set_active(True)
         for widget in self.add_specific_widgets:
             widget.show()
+        self.show_hide_isolated_widgets()
         self.stack.set_visible_child_name("add_page")
         self.edit_mode = False
         self.ok_button.set_sensitive(False)
