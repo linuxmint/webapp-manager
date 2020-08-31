@@ -88,8 +88,8 @@ class WebAppManagerWindow():
         self.url_label = self.builder.get_object("url_label")
         self.isolated_switch = self.builder.get_object("isolated_switch")
         self.isolated_label = self.builder.get_object("isolated_label")
-        self.hide_tabs_switch = self.builder.get_object("hide_tabs_switch")
-        self.hide_tabs_label = self.builder.get_object("hide_tabs_label")
+        self.navbar_switch = self.builder.get_object("navbar_switch")
+        self.navbar_label = self.builder.get_object("navbar_label")
         self.spinner = self.builder.get_object("spinner")
         self.favicon_image = self.builder.get_object("favicon_image")
         self.browser_combo = self.builder.get_object("browser_combo")
@@ -99,7 +99,7 @@ class WebAppManagerWindow():
         self.add_specific_widgets = [self.url_label, self.url_entry, self.favicon_button,
                                      self.browser_label, self.browser_combo,
                                      self.isolated_label, self.isolated_switch,
-                                     self.hide_tabs_label, self.hide_tabs_switch]
+                                     self.navbar_label, self.navbar_switch]
 
         # Widget signals
         self.builder.get_object("add_button").connect("clicked", self.on_add_button)
@@ -260,7 +260,7 @@ class WebAppManagerWindow():
         name = self.name_entry.get_text()
         url = self.get_url()
         isolate_profile = self.isolated_switch.get_active()
-        hide_tabs = self.hide_tabs_switch.get_active()
+        navbar = self.navbar_switch.get_active()
         icon = self.icon_chooser.get_icon()
         if "/tmp" in icon:
             # If the icon path is in /tmp, move it.
@@ -273,7 +273,7 @@ class WebAppManagerWindow():
             self.stack.set_visible_child_name("main_page")
             self.load_webapps()
         else:
-            if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, hide_tabs) == STATUS_OK):
+            if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar) == STATUS_OK):
                 self.stack.set_visible_child_name("main_page")
                 self.load_webapps()
             else:
@@ -387,13 +387,13 @@ class WebAppManagerWindow():
         if (browser == "firefox"):
             self.isolated_label.hide()
             self.isolated_switch.hide()
-            self.hide_tabs_label.show()
-            self.hide_tabs_switch.show()
+            self.navbar_label.show()
+            self.navbar_switch.show()
         else:
             self.isolated_label.show()
             self.isolated_switch.show()
-            self.hide_tabs_label.hide()
-            self.hide_tabs_switch.hide()
+            self.navbar_label.hide()
+            self.navbar_switch.hide()
 
     def on_name_entry(self, widget):
         self.toggle_ok_sensitivity()

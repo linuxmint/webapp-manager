@@ -424,10 +424,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSwitch" id="hide_tabs_switch">
+                  <object class="GtkSwitch" id="navbar_switch">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="active">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -435,11 +434,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="hide_tabs_label">
+                  <object class="GtkLabel" id="navbar_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
-                    <property name="label" translatable="yes">Hide navigation bar:</property>
+                    <property name="label" translatable="yes">Navigation bar:</property>
+                    <property name="wrap">True</property>
+                    <property name="max_width_chars">20</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
