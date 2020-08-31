@@ -88,6 +88,8 @@ class WebAppManagerWindow():
         self.url_label = self.builder.get_object("url_label")
         self.isolated_switch = self.builder.get_object("isolated_switch")
         self.isolated_label = self.builder.get_object("isolated_label")
+        self.hide_tabs_switch = self.builder.get_object("hide_tabs_switch")
+        self.hide_tabs_label = self.builder.get_object("hide_tabs_label")
         self.spinner = self.builder.get_object("spinner")
         self.favicon_image = self.builder.get_object("favicon_image")
         self.browser_combo = self.builder.get_object("browser_combo")
@@ -96,7 +98,8 @@ class WebAppManagerWindow():
         # Widgets which are in the add page but not the edit page
         self.add_specific_widgets = [self.url_label, self.url_entry, self.favicon_button,
                                      self.browser_label, self.browser_combo,
-                                     self.isolated_label, self.isolated_switch]
+                                     self.isolated_label, self.isolated_switch,
+                                     self.hide_tabs_label, self.hide_tabs_switch]
 
         # Widget signals
         self.builder.get_object("add_button").connect("clicked", self.on_add_button)
@@ -257,6 +260,7 @@ class WebAppManagerWindow():
         name = self.name_entry.get_text()
         url = self.get_url()
         isolate_profile = self.isolated_switch.get_active()
+        hide_tabs = self.hide_tabs_switch.get_active()
         icon = self.icon_chooser.get_icon()
         if "/tmp" in icon:
             # If the icon path is in /tmp, move it.
@@ -269,7 +273,7 @@ class WebAppManagerWindow():
             self.stack.set_visible_child_name("main_page")
             self.load_webapps()
         else:
-            if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile) == STATUS_OK):
+            if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, hide_tabs) == STATUS_OK):
                 self.stack.set_visible_child_name("main_page")
                 self.load_webapps()
             else:
@@ -285,7 +289,7 @@ class WebAppManagerWindow():
         self.isolated_switch.set_active(True)
         for widget in self.add_specific_widgets:
             widget.show()
-        self.show_hide_isolated_widgets()
+        self.show_hide_browser_widgets()
         self.stack.set_visible_child_name("add_page")
         self.edit_mode = False
         self.ok_button.set_sensitive(False)
@@ -376,16 +380,20 @@ class WebAppManagerWindow():
         self.stack.set_visible_child_name("add_page")
 
     def on_browser_changed(self, widget):
-        self.show_hide_isolated_widgets()
+        self.show_hide_browser_widgets()
 
-    def show_hide_isolated_widgets(self):
+    def show_hide_browser_widgets(self):
         browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
         if (browser == "firefox"):
             self.isolated_label.hide()
             self.isolated_switch.hide()
+            self.hide_tabs_label.show()
+            self.hide_tabs_switch.show()
         else:
             self.isolated_label.show()
             self.isolated_switch.show()
+            self.hide_tabs_label.hide()
+            self.hide_tabs_switch.hide()
 
     def on_name_entry(self, widget):
         self.toggle_ok_sensitivity()

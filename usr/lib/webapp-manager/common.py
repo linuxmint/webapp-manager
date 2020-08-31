@@ -112,7 +112,7 @@ class WebAppManager():
         if os.path.exists(webapp.path):
             os.remove(webapp.path)
 
-    def create_webapp(self, name, url, icon, category, browser, isolate_profile=True):
+    def create_webapp(self, name, url, icon, category, browser, isolate_profile=True, hide_tabs=True):
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
         random_code =  ''.join(choice(string.digits) for _ in range(4))
         codename = "".join(filter(str.isalpha, name)) + random_code
@@ -139,6 +139,8 @@ class WebAppManager():
                 desktop_file.write("IceFirefox=%s\n" % codename)
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
+                if hide_tabs == False:
+                    shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css', os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
             elif browser == "epiphany":
                 epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "epiphany-" + codename)
                 desktop_file.write("Exec=" + browser +
