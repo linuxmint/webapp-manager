@@ -1,3 +1,15 @@
+webapp-manager (1.0.3) ulyana; urgency=medium
+
+  * Select the first treeview row automatically
+  * Add the ability to edit webapps
+  * Update POT
+  * Fix isolation widgets visible for Firefox
+  * Firefox: Add the ability to show the navbar
+  * Reverse logic for navigation bar
+  * Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 01 Sep 2020 14:21:46 +0100
+
 webapp-manager (1.0.2) ulyana; urgency=medium
 
   * Fix menu category
