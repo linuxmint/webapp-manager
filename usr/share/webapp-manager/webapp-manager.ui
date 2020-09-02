@@ -208,6 +208,7 @@
                   <object class="GtkEntry" id="name_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="width_chars">40</property>
                     <property name="placeholder_text" translatable="yes">Website name</property>
                   </object>
                   <packing>
