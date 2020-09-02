@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 14:07+0100\n"
+"POT-Creation-Date: 2020-09-02 13:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,131 +18,159 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: usr/lib/webapp-manager/webapp-manager.py:71
-#: usr/lib/webapp-manager/webapp-manager.py:210 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:221
+#: usr/lib/webapp-manager/webapp-manager.py:228 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
+#: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:122
-#: usr/lib/webapp-manager/webapp-manager.py:209
+#: usr/lib/webapp-manager/webapp-manager.py:124
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:131
+#: usr/lib/webapp-manager/webapp-manager.py:227
+#: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:127
+#: usr/lib/webapp-manager/webapp-manager.py:136
+#: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:158
+#: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Internet"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:159
+#: usr/lib/webapp-manager/webapp-manager.py:168
 msgid "Accessories"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:160
+#: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Games"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:161
+#: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Graphics"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:162
+#: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Office"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:163
+#: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Sound & Video"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:164
+#: usr/lib/webapp-manager/webapp-manager.py:173
 msgid "Programming"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:211 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:229 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Run websites as if they were apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:280
+#: usr/lib/webapp-manager/webapp-manager.py:310
 msgid "An error occurred"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:283
-#: usr/share/webapp-manager/webapp-manager.ui.h:6
+#: usr/lib/webapp-manager/webapp-manager.py:313
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Add a New Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:299
+#: usr/lib/webapp-manager/webapp-manager.py:329
 msgid "Edit Web App"
 msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
+#: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
 msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
+#: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
 msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
+#: usr/share/webapp-manager/shortcuts.ui.h:3
+msgid "Edit"
+msgstr ""
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:6
+#: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:7
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Name:"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:8
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Address:"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:9
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Icon:"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:10
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "Website name"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:11
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "https://www.website.com"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:12
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "Cancel"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:13
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "OK"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:14
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Find icons online"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:15
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Category:"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:16
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid "Browser:"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:17
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:18
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Isolated profile:"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:19
+#: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Navigation bar:"
 msgstr ""
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:20
+#: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Choose an icon:"
+msgstr ""
+
+#: usr/share/webapp-manager/shortcuts.ui.h:6
+msgid "Other Shortcuts"
+msgstr ""
+
+#: usr/share/webapp-manager/shortcuts.ui.h:7
+msgid "Go Back"
+msgstr ""
+
+#: usr/share/webapp-manager/shortcuts.ui.h:9
+msgid "Shortcuts"
 msgstr ""
