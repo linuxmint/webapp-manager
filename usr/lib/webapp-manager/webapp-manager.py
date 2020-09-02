@@ -183,7 +183,8 @@ class WebAppManagerWindow():
         browsers.append(["/usr/bin/firefox", "firefox", "Firefox"])
         browsers.append(["/usr/bin/brave-browser", "brave", "Brave"])
         browsers.append(["/usr/bin/google-chrome-stable", "google-chrome", "Chrome"])
-        browsers.append(["/usr/bin/chromium-browser", "chromium-browser", "Chromium"])
+        browsers.append(["/usr/bin/chromium", "chromium", "Chromium"])
+        browsers.append(["/usr/bin/chromium-browser", "chromium-browser", "Chromium (chromium-browser)"])
         browsers.append(["/usr/bin/epiphany-browser", "epiphany", "Epiphany"])
         browsers.append(["/usr/bin/vivaldi-stable", "vivaldi", "Vivaldi"])
         browser_model = Gtk.ListStore(str, str) # BROWSER_ID, BROWSER_NAME

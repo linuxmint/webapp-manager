@@ -121,7 +121,7 @@ class WebAppManager():
         if os.path.exists(path):
             return (STATUS_ERROR_DUPLICATE)
 
-        if not browser in ["google-chrome", "chromium-browser", "brave", "vivaldi", "firefox", "epiphany"]:
+        if not browser in ["google-chrome", "chromium", "chromium-browser", "brave", "vivaldi", "firefox", "epiphany"]:
             return (STATUS_ERROR_UNKNOWN_BROWSER)
 
         with open(path, 'w') as desktop_file:
