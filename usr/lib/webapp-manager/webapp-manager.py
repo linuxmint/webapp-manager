@@ -79,6 +79,7 @@ class WebAppManagerWindow():
         # Create variables to quickly access dynamic widgets
         self.add_page_label = self.builder.get_object("add_page_label")
         self.favicon_button = self.builder.get_object("favicon_button")
+        self.add_button = self.builder.get_object("add_button")
         self.remove_button = self.builder.get_object("remove_button")
         self.edit_button = self.builder.get_object("edit_button")
         self.run_button = self.builder.get_object("run_button")
@@ -102,7 +103,7 @@ class WebAppManagerWindow():
                                      self.navbar_label, self.navbar_switch]
 
         # Widget signals
-        self.builder.get_object("add_button").connect("clicked", self.on_add_button)
+        self.add_button.connect("clicked", self.on_add_button)
         self.builder.get_object("cancel_button").connect("clicked", self.on_cancel_button)
         self.builder.get_object("cancel_favicon_button").connect("clicked", self.on_cancel_favicon_button)
         self.remove_button.connect("clicked", self.on_remove_button)
@@ -112,16 +113,24 @@ class WebAppManagerWindow():
         self.favicon_button.connect("clicked", self.on_favicon_button)
         self.name_entry.connect("changed", self.on_name_entry)
         self.url_entry.connect("changed", self.on_url_entry)
+        self.window.connect("key-press-event",self.on_key_press_event)
 
         # Menubar
         accel_group = Gtk.AccelGroup()
         self.window.add_accel_group(accel_group)
         menu = self.builder.get_object("main_menu")
         item = Gtk.ImageMenuItem()
+        item.set_image(Gtk.Image.new_from_icon_name("preferences-desktop-keyboard-shortcuts-symbolic", Gtk.IconSize.MENU))
+        item.set_label(_("Keyboard Shortcuts"))
+        item.connect("activate", self.open_keyboard_shortcuts)
+        key, mod = Gtk.accelerator_parse("<Control>K")
+        item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+        menu.append(item)
+        item = Gtk.ImageMenuItem()
         item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
         item.set_label(_("About"))
         item.connect("activate", self.open_about)
-        key, mod = Gtk.accelerator_parse("<Control>H")
+        key, mod = Gtk.accelerator_parse("F1")
         item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
         menu.append(item)
         item = Gtk.ImageMenuItem(label=_("Quit"))
@@ -203,6 +212,15 @@ class WebAppManagerWindow():
         surface = Gdk.cairo_surface_create_from_pixbuf(pixbuf, self.window.get_scale_factor())
         cell.set_property("surface", surface)
 
+    def open_keyboard_shortcuts(self, widget):
+        gladefile = "/usr/share/webapp-manager/shortcuts.ui"
+        builder = Gtk.Builder()
+        builder.set_translation_domain(APP)
+        builder.add_from_file(gladefile)
+        window = builder.get_object("shortcuts-webappmanager")
+        window.set_title(_("Web Apps"))
+        window.show()
+
     def open_about(self, widget):
         dlg = Gtk.AboutDialog()
         dlg.set_transient_for(self.window)
@@ -244,6 +262,18 @@ class WebAppManagerWindow():
     def on_webapp_activated(self, treeview, path, column):
         if self.selected_webapp != None:
             subprocess.Popen(self.selected_webapp.exec, shell=True)
+
+    def on_key_press_event(self, widget, event):
+        ctrl = (event.state & Gdk.ModifierType.CONTROL_MASK)
+        if ctrl and self.stack.get_visible_child_name() == "main_page":
+            if event.keyval == Gdk.KEY_n:
+                self.on_add_button(self.add_button)
+            elif event.keyval == Gdk.KEY_e:
+                self.on_edit_button(self.edit_button)
+            elif event.keyval == Gdk.KEY_d:
+                self.on_remove_button(self.remove_button)
+        elif event.keyval == Gdk.KEY_Escape:
+            self.stack.set_visible_child_name("main_page")
 
     def on_remove_button(self, widget):
         if self.selected_webapp != None:
