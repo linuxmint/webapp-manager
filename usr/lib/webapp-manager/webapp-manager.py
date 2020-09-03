@@ -304,6 +304,7 @@ class WebAppManagerWindow():
         self.category_combo.set_active(0)
         self.browser_combo.set_active(0)
         self.isolated_switch.set_active(True)
+        self.navbar_switch.set_active(False)
         for widget in self.add_specific_widgets:
             widget.show()
         self.show_hide_browser_widgets()
@@ -311,6 +312,7 @@ class WebAppManagerWindow():
         self.headerbar.set_subtitle(_("Add a New Web App"))
         self.edit_mode = False
         self.ok_button.set_sensitive(False)
+        self.name_entry.grab_focus()
 
     def on_edit_button(self, widget):
         if self.selected_webapp != None:
@@ -330,6 +332,7 @@ class WebAppManagerWindow():
             self.headerbar.set_subtitle(_("Edit Web App"))
             self.edit_mode = True
             self.ok_button.set_sensitive(True)
+            self.name_entry.grab_focus()
 
     def on_cancel_button(self, widget):
         self.load_webapps()
