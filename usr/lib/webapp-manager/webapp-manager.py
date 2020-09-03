@@ -370,7 +370,7 @@ class WebAppManagerWindow():
         components = netloc.split(".")
         if len(components[-1]) < 2:
             return ""
-        if len(components[-2]) < 3:
+        if len(components[-2]) < 2:
             return ""
         return url
 
