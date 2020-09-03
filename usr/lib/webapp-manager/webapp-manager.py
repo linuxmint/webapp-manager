@@ -8,7 +8,6 @@ import setproctitle
 import shutil
 import subprocess
 import tldextract
-import urllib.parse
 import warnings
 
 # Suppress GTK deprecation warnings
