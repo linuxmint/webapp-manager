@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import datetime
 import gettext
 import gi
 import locale
@@ -10,7 +9,6 @@ import subprocess
 import tldextract
 import urllib.parse
 import warnings
-import urllib.parse
 
 # Suppress GTK deprecation warnings
 warnings.filterwarnings("ignore")

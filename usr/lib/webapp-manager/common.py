@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import gi
 import configparser
+import gi
 import os
 import shutil
 import string
