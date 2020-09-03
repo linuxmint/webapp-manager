@@ -90,7 +90,7 @@ class WebAppManagerWindow():
         self.navbar_switch = self.builder.get_object("navbar_switch")
         self.navbar_label = self.builder.get_object("navbar_label")
         self.spinner = self.builder.get_object("spinner")
-        self.favicon_image = self.builder.get_object("favicon_image")
+        self.favicon_stack = self.builder.get_object("favicon_stack")
         self.browser_combo = self.builder.get_object("browser_combo")
         self.browser_label = self.builder.get_object("browser_label")
 
@@ -353,7 +353,7 @@ class WebAppManagerWindow():
         url = self.get_url()
         self.spinner.start()
         self.spinner.show()
-        self.favicon_image.hide()
+        self.favicon_stack.set_visible_child_name("page_spinner")
         self.favicon_button.set_sensitive(False)
         self.download_icons(url)
 
@@ -381,7 +381,7 @@ class WebAppManagerWindow():
     def show_favicons(self, images):
         self.spinner.stop()
         self.spinner.hide()
-        self.favicon_image.show()
+        self.favicon_stack.set_visible_child_name("page_image")
         self.favicon_button.set_sensitive(True)
         if len(images) > 0:
             self.stack.set_visible_child_name("favicon_page")

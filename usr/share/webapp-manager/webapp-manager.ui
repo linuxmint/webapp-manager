@@ -323,7 +323,7 @@
                     <property name="receives_default">True</property>
                     <property name="tooltip_text" translatable="yes">Find icons online</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkStack" id="favicon_stack">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
@@ -333,9 +333,7 @@
                             <property name="icon_name">insert-image-symbolic</property>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
+                            <property name="name">page_image</property>
                           </packing>
                         </child>
                         <child>
@@ -343,8 +341,7 @@
                             <property name="can_focus">False</property>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
+                            <property name="name">page_spinner</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
