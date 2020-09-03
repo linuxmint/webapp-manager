@@ -274,8 +274,7 @@ class WebAppManagerWindow():
             elif event.keyval == Gdk.KEY_d:
                 self.on_remove_button(self.remove_button)
         elif event.keyval == Gdk.KEY_Escape:
-            self.stack.set_visible_child_name("main_page")
-            self.headerbar.set_subtitle(_("Mange Web Apps"))
+            self.load_webapps()
 
     def on_remove_button(self, widget):
         if self.selected_webapp != None:
@@ -302,13 +301,9 @@ class WebAppManagerWindow():
             icon = new_path
         if self.edit_mode:
             self.manager.edit_webapp(self.selected_webapp.path, name, icon, category)
-            self.stack.set_visible_child_name("main_page")
-            self.headerbar.set_subtitle(_("Manage Web Apps"))
             self.load_webapps()
         else:
             if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar) == STATUS_OK):
-                self.stack.set_visible_child_name("main_page")
-                self.headerbar.set_subtitle(_("Manage Web Apps"))
                 self.load_webapps()
             else:
                 self.builder.get_object("error_label").set_text(_("An error occurred"))
@@ -348,8 +343,7 @@ class WebAppManagerWindow():
             self.ok_button.set_sensitive(True)
 
     def on_cancel_button(self, widget):
-        self.stack.set_visible_child_name("main_page")
-        self.headerbar.set_subtitle(_("Manage Web Apps"))
+        self.load_webapps()
 
     def on_cancel_favicon_button(self, widget):
         self.stack.set_visible_child_name("add_page")
@@ -498,6 +492,11 @@ class WebAppManagerWindow():
         # Select the 1st web-app
         path = Gtk.TreePath.new_first()
         self.treeview.get_selection().select_path(path)
+
+        # Switch to main page
+        self.stack.set_visible_child_name("main_page")
+        self.headerbar.set_subtitle(_("Run websites as if they were apps"))
+
 
 if __name__ == "__main__":
     application = MyApplication("org.x.webapp-manager", Gio.ApplicationFlags.FLAGS_NONE)
