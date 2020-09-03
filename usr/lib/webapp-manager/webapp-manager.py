@@ -172,6 +172,7 @@ class WebAppManagerWindow():
         category_model.append(["Office",_("Office")])
         category_model.append(["AudioVideo",_("Sound & Video")])
         category_model.append(["Development",_("Programming")])
+        category_model.append(["Education",_("Education")])
         self.category_combo = self.builder.get_object("category_combo")
         renderer = Gtk.CellRendererText()
         self.category_combo.pack_start(renderer, True)
