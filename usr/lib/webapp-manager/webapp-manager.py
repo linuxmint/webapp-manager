@@ -75,7 +75,7 @@ class WebAppManagerWindow():
         self.icon_chooser.show()
 
         # Create variables to quickly access dynamic widgets
-        self.add_page_label = self.builder.get_object("add_page_label")
+        self.headerbar = self.builder.get_object("headerbar")
         self.favicon_button = self.builder.get_object("favicon_button")
         self.add_button = self.builder.get_object("add_button")
         self.remove_button = self.builder.get_object("remove_button")
@@ -275,6 +275,7 @@ class WebAppManagerWindow():
                 self.on_remove_button(self.remove_button)
         elif event.keyval == Gdk.KEY_Escape:
             self.stack.set_visible_child_name("main_page")
+            self.headerbar.set_subtitle(_("Mange Web Apps"))
 
     def on_remove_button(self, widget):
         if self.selected_webapp != None:
@@ -302,16 +303,17 @@ class WebAppManagerWindow():
         if self.edit_mode:
             self.manager.edit_webapp(self.selected_webapp.path, name, icon, category)
             self.stack.set_visible_child_name("main_page")
+            self.headerbar.set_subtitle(_("Manage Web Apps"))
             self.load_webapps()
         else:
             if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar) == STATUS_OK):
                 self.stack.set_visible_child_name("main_page")
+                self.headerbar.set_subtitle(_("Manage Web Apps"))
                 self.load_webapps()
             else:
                 self.builder.get_object("error_label").set_text(_("An error occurred"))
 
     def on_add_button(self, widget):
-        self.add_page_label.set_text(_("Add a New Web App"))
         self.name_entry.set_text("")
         self.url_entry.set_text("")
         self.icon_chooser.set_icon("webapp-manager")
@@ -322,12 +324,12 @@ class WebAppManagerWindow():
             widget.show()
         self.show_hide_browser_widgets()
         self.stack.set_visible_child_name("add_page")
+        self.headerbar.set_subtitle(_("Add a New Web App"))
         self.edit_mode = False
         self.ok_button.set_sensitive(False)
 
     def on_edit_button(self, widget):
         if self.selected_webapp != None:
-            self.add_page_label.set_text(_("Edit Web App"))
             self.name_entry.set_text(self.selected_webapp.name)
             self.icon_chooser.set_icon(self.selected_webapp.icon)
             model = self.category_combo.get_model()
@@ -341,14 +343,17 @@ class WebAppManagerWindow():
             for widget in self.add_specific_widgets:
                 widget.hide()
             self.stack.set_visible_child_name("add_page")
+            self.headerbar.set_subtitle(_("Edit Web App"))
             self.edit_mode = True
             self.ok_button.set_sensitive(True)
 
     def on_cancel_button(self, widget):
         self.stack.set_visible_child_name("main_page")
+        self.headerbar.set_subtitle(_("Manage Web Apps"))
 
     def on_cancel_favicon_button(self, widget):
         self.stack.set_visible_child_name("add_page")
+        self.headerbar.set_subtitle(_("Add a New Web App"))
 
     def on_favicon_button(self, widget):
         url = self.get_url()
@@ -386,6 +391,7 @@ class WebAppManagerWindow():
         self.favicon_button.set_sensitive(True)
         if len(images) > 0:
             self.stack.set_visible_child_name("favicon_page")
+            self.headerbar.set_subtitle(_("Choose an icon"))
             box = self.builder.get_object("favicon_flow")
             for child in box.get_children():
                 box.remove(child)
@@ -409,6 +415,7 @@ class WebAppManagerWindow():
     def on_favicon_selected(self, widget, path):
         self.icon_chooser.set_icon(path)
         self.stack.set_visible_child_name("add_page")
+        self.headerbar.set_subtitle(_("Add a New Web App"))
 
     def on_browser_changed(self, widget):
         self.show_hide_browser_widgets()
