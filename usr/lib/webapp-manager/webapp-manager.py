@@ -17,7 +17,7 @@ gi.require_version("Gtk", "3.0")
 gi.require_version('XApp', '1.0')
 from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf, GLib
 
-from common import _async, idle, WebAppManager, STATUS_OK, download_favicon, ICONS_DIR
+from common import _async, idle, WebAppManager, Browser, download_favicon, ICONS_DIR, BROWSER_TYPE_FIREFOX
 
 setproctitle.setproctitle("webapp-manager")
 
@@ -31,7 +31,7 @@ _ = gettext.gettext
 
 COL_ICON, COL_NAME, COL_WEBAPP = range(3)
 CATEGORY_ID, CATEGORY_NAME = range(2)
-BROWSER_ID, BROWSER_NAME = range(2)
+BROWSER_OBJ, BROWSER_NAME = range(2)
 
 class MyApplication(Gtk.Application):
     # Main initialization routine
@@ -178,20 +178,11 @@ class WebAppManagerWindow():
         self.category_combo.set_model(category_model)
         self.category_combo.set_active(0) # Select 1st category
 
-        browsers = []
-        # path, codename, name
-        browsers.append(["/usr/bin/firefox", "firefox", "Firefox"])
-        browsers.append(["/usr/bin/brave-browser", "brave", "Brave"])
-        browsers.append(["/usr/bin/google-chrome-stable", "google-chrome", "Chrome"])
-        browsers.append(["/usr/bin/chromium", "chromium", "Chromium"])
-        browsers.append(["/usr/bin/chromium-browser", "chromium-browser", "Chromium (chromium-browser)"])
-        browsers.append(["/usr/bin/epiphany-browser", "epiphany", "Epiphany"])
-        browsers.append(["/usr/bin/vivaldi-stable", "vivaldi", "Vivaldi"])
-        browser_model = Gtk.ListStore(str, str) # BROWSER_ID, BROWSER_NAME
+        browser_model = Gtk.ListStore(object, str) # BROWSER_OBJ, BROWSER_NAME
         num_browsers = 0
-        for path, codename, name in browsers:
-            if os.path.exists(path):
-                browser_model.append([codename, name])
+        for browser in self.manager.get_supported_browsers():
+            if os.path.exists(browser.test_path):
+                browser_model.append([browser, browser.name])
                 num_browsers += 1
         renderer = Gtk.CellRendererText()
         self.browser_combo.pack_start(renderer, True)
@@ -287,7 +278,7 @@ class WebAppManagerWindow():
 
     def on_ok_button(self, widget):
         category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]
-        browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
+        browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_OBJ]
         name = self.name_entry.get_text()
         url = self.get_url()
         isolate_profile = self.isolated_switch.get_active()
@@ -303,10 +294,8 @@ class WebAppManagerWindow():
             self.manager.edit_webapp(self.selected_webapp.path, name, icon, category)
             self.load_webapps()
         else:
-            if (self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar) == STATUS_OK):
-                self.load_webapps()
-            else:
-                self.builder.get_object("error_label").set_text(_("An error occurred"))
+            self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar)
+            self.load_webapps()
 
     def on_add_button(self, widget):
         self.name_entry.set_text("")
@@ -409,8 +398,8 @@ class WebAppManagerWindow():
         self.show_hide_browser_widgets()
 
     def show_hide_browser_widgets(self):
-        browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_ID]
-        if (browser == "firefox"):
+        browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_OBJ]
+        if (browser.browser_type == BROWSER_TYPE_FIREFOX):
             self.isolated_label.hide()
             self.isolated_switch.hide()
             self.navbar_label.show()

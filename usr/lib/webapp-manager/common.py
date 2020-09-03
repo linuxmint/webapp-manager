@@ -30,7 +30,15 @@ PROFILES_DIR = os.path.join(ICE_DIR, "profiles")
 FIREFOX_PROFILES_DIR = os.path.join(ICE_DIR, "firefox")
 EPIPHANY_PROFILES_DIR = os.path.join(ICE_DIR, "epiphany")
 ICONS_DIR = os.path.join(ICE_DIR, "icons")
-STATUS_OK, STATUS_ERROR_DUPLICATE, STATUS_ERROR_UNKNOWN_BROWSER = range(3)
+BROWSER_TYPE_FIREFOX, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY = range(3)
+
+class Browser():
+
+    def __init__(self, browser_type, name, exec_path, test_path):
+        self.browser_type = browser_type
+        self.name = name
+        self.exec_path = exec_path
+        self.test_path = test_path
 
 # This is a data structure representing
 # the app menu item (path, name, icon..etc.)
@@ -104,6 +112,18 @@ class WebAppManager():
                     webapps.append(webapp)
         return (webapps)
 
+    def get_supported_browsers(self):
+        browsers = []
+        # type, name, exec, test
+        browsers.append(Browser(BROWSER_TYPE_FIREFOX, "Firefox", "firefox", "/usr/bin/firefox"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Brave", "brave", "/usr/bin/brave-browser"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chrome", "google-chrome", "/usr/bin/google-chrome-stable"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium", "chromium", "/usr/bin/chromium"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium (chromium-browser)", "chromium-browser", "/usr/bin/chromium-browser"))
+        browsers.append(Browser(BROWSER_TYPE_EPIPHANY, "Epiphany", "epiphany", "/usr/bin/epiphany-browser"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi", "vivaldi", "/usr/bin/vivaldi-stable"))
+        return browsers
+
     def delete_webbapp(self, webapp):
         if webapp.profile != None:
             shutil.rmtree(os.path.join(FIREFOX_PROFILES_DIR, webapp.profile), ignore_errors=True)
@@ -118,21 +138,16 @@ class WebAppManager():
         codename = "".join(filter(str.isalpha, name)) + random_code
         path = os.path.join(APPS_DIR, "webapp-%s.desktop" % codename)
 
-        if os.path.exists(path):
-            return (STATUS_ERROR_DUPLICATE)
-
-        if not browser in ["google-chrome", "chromium", "chromium-browser", "brave", "vivaldi", "firefox", "epiphany"]:
-            return (STATUS_ERROR_UNKNOWN_BROWSER)
-
         with open(path, 'w') as desktop_file:
             desktop_file.write("[Desktop Entry]\n")
             desktop_file.write("Version=1.0\n")
             desktop_file.write("Name=%s\n" % name)
             desktop_file.write("Comment=%s (Web App)\n" % name)
 
-            if browser == "firefox":
+            if browser.browser_type == BROWSER_TYPE_FIREFOX:
+                # Firefox based
                 firefox_profile_path = os.path.join(FIREFOX_PROFILES_DIR, codename)
-                desktop_file.write("Exec=" + browser +
+                desktop_file.write("Exec=" + browser.exec_path +
                                     " --class ICE-SSB-" + codename +
                                     " --profile " + firefox_profile_path +
                                     " --no-remote " + url + "\n")
@@ -141,23 +156,25 @@ class WebAppManager():
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
                     shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css', os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
-            elif browser == "epiphany":
+            elif browser.browser_type == BROWSER_TYPE_EPIPHANY:
+                # Epiphany based
                 epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "epiphany-" + codename)
-                desktop_file.write("Exec=" + browser +
+                desktop_file.write("Exec=" + browser.exec_path +
                                     " --application-mode " +
                                     " --profile=\"" + epiphany_profile_path + "\"" +
                                     "" + url + "\n")
                 desktop_file.write("IceEpiphany=%s\n" %codename)
             else:
+                # Chromium based
                 if isolate_profile:
                     profile_path = os.path.join(PROFILES_DIR, codename)
-                    desktop_file.write("Exec=" + browser +
+                    desktop_file.write("Exec=" + browser.exec_path +
                                         " --app=" + url +
                                         " --class=ICE-SSB-" + codename +
                                         " --user-data-dir=" + profile_path + "\n")
                     desktop_file.write("X-ICE-SSB-Profile=%s\n" % codename)
                 else:
-                    desktop_file.write("Exec=" + browser +
+                    desktop_file.write("Exec=" + browser.exec_path +
                                         " --app=" + url +
                                         " --class=ICE-SSB-" + codename + "\n")
 
@@ -170,14 +187,12 @@ class WebAppManager():
             desktop_file.write("StartupWMClass=ICE-SSB-%s\n" % codename)
             desktop_file.write("StartupNotify=true\n")
 
-            if browser == "epiphany":
+            if browser.browser_type == BROWSER_TYPE_EPIPHANY:
                 # Move the desktop file and create a symlink
                 new_path = os.path.join(profile_path, "epiphany-%s.desktop" % codename)
                 os.makedirs(profile_path)
                 os.replace(path, new_path)
                 os.symlink(new_path, path)
-
-        return (STATUS_OK)
 
     def edit_webapp(self, path, name, icon, category):
         config = configparser.RawConfigParser()
