@@ -3,6 +3,7 @@ import gettext
 import gi
 import locale
 import os
+import re
 import setproctitle
 import shutil
 import subprocess
@@ -359,17 +360,11 @@ class WebAppManagerWindow():
 
     # Reads what's in the URL entry and returns a validated version
     def get_url(self):
-        url = self.url_entry.get_text()
+        url = self.url_entry.get_text().strip()
+        if url == "":
+            return ""
         if not "://" in url:
             url = "http://%s" % url
-        (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url, "http")
-        if "." not in netloc:
-            return ""
-        components = netloc.split(".")
-        if len(components[-1]) < 2:
-            return ""
-        if len(components[-2]) < 2:
-            return ""
         return url
 
     @_async
