@@ -1,3 +1,44 @@
+webapp-manager (1.0.4) ulyana; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Add keyboard shortcuts
+  * l10n: Update POT
+  * Add support for /usr/bin/chromium
+  * Add a dedicated menu category for Web apps
+  * Add missing file shortcuts.ui
+  * l10n: Update POT
+  * Allow domain names with only 2 letters
+
+  [ Jigish Gohil ]
+  * Add Education category (#9)
+
+  [ Clement Lefebvre ]
+  * Add missing dependency on gir1.2-xapp-1.0
+  * Clean up imports
+
+  [ JosephMcc ]
+  * UI Improvements (#6)
+
+  [ Clement Lefebvre ]
+  * Factorize main page loading code
+  * Move back burger menu to the left
+  * UI: Reposition the OK/Cancel button box
+  * UI: Place favicon image and spinner into a stack
+  * UI: Add a stack transition
+  * Relax URL checks
+  * Clean up imports
+  * Refactor: Use a browser class
+  * UI: Papercuts
+  * Add support for Firefox (Flatpak)
+
+  [ Jigish Gohil ]
+  * use document-edit-symbolic (#11)
+
+  [ Mark Wagie ]
+  * Fix binary shebang (#3)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 04 Sep 2020 16:04:38 +0100
+
 webapp-manager (1.0.3) ulyana; urgency=medium
 
   * Select the first treeview row automatically
