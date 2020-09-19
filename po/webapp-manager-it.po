@@ -1,0 +1,143 @@
+# Italian translation for linuxmint
+# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-08-21 11:20+0100\n"
+"PO-Revision-Date: 2020-09-19 10:28+0100\n"
+"Last-Translator: Roberto Bellingeri <bellingeri@netguru.it>\n"
+"Language-Team: Unknown\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=n!=1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2020-08-21 13:42+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+
+#: usr/lib/webapp-manager/webapp-manager.py:70 
+#: usr/lib/webapp-manager/webapp-manager.py:184 generate_desktop_files:25 
+#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
+msgid "Web Apps"
+msgstr "Web App"
+
+#: usr/lib/webapp-manager/webapp-manager.py:97 
+#: usr/lib/webapp-manager/webapp-manager.py:183
+msgid "About"
+msgstr "Informazioni"
+
+#: usr/lib/webapp-manager/webapp-manager.py:102
+msgid "Quit"
+msgstr "Esci"
+
+#: usr/lib/webapp-manager/webapp-manager.py:133
+msgid "Internet"
+msgstr "Internet"
+
+#: usr/lib/webapp-manager/webapp-manager.py:134
+msgid "Accessories"
+msgstr "Accessori"
+
+#: usr/lib/webapp-manager/webapp-manager.py:135
+msgid "Games"
+msgstr "Giochi"
+
+#: usr/lib/webapp-manager/webapp-manager.py:136
+msgid "Graphics"
+msgstr "Grafica"
+
+#: usr/lib/webapp-manager/webapp-manager.py:137
+msgid "Office"
+msgstr "Ufficio"
+
+#: usr/lib/webapp-manager/webapp-manager.py:138
+msgid "Sound & Video"
+msgstr "Audio e Video"
+
+#: usr/lib/webapp-manager/webapp-manager.py:139
+msgid "Programming"
+msgstr "Programmazione"
+
+#: usr/lib/webapp-manager/webapp-manager.py:185 generate_desktop_files:25 
+#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:2
+msgid "Run websites as if they were apps"
+msgstr "Esegui siti web come se fossero app"
+
+#: usr/lib/webapp-manager/webapp-manager.py:247
+msgid "An error occurred"
+msgstr "Si è verificato un errore"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:3
+msgid "Add"
+msgstr "Aggiungi"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:4
+msgid "Remove"
+msgstr "Elimina"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:5
+msgid "Launch"
+msgstr "Avvia"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:6
+msgid "Add a New Web App"
+msgstr "Aggiungi una nuova Web App"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
+msgid "Name:"
+msgstr "Nome:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
+msgid "Address:"
+msgstr "Indirizzo:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
+msgid "Icon:"
+msgstr "Icona:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
+msgid "Website name"
+msgstr "Nome del sito"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
+msgid "https://www.website.com"
+msgstr "https://www.website.com"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
+msgid "Cancel"
+msgstr "Annulla"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
+msgid "OK"
+msgstr "OK"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
+msgid "Find icons online"
+msgstr "Trova icone online"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
+msgid "Category:"
+msgstr "Categoria:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
+msgid "Browser:"
+msgstr "Browser:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
+msgid ""
+"If this option is enabled the website will run with its own browser profile."
+msgstr ""
+"Se questa opzione è abilitata, il sito web verrà eseguito con il proprio "
+"profilo del browser."
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
+msgid "Isolated profile:"
+msgstr "Profilo isolato:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
+msgid "Choose an icon:"
+msgstr "Scegli un'icona:"
