@@ -252,8 +252,7 @@ class WebAppManagerWindow():
             self.run_button.set_sensitive(True)
 
     def on_webapp_activated(self, treeview, path, column):
-        if self.selected_webapp != None:
-            subprocess.Popen(self.selected_webapp.exec, shell=True)
+        self.run_webapp(self.selected_webapp)
 
     def on_key_press_event(self, widget, event):
         ctrl = (event.state & Gdk.ModifierType.CONTROL_MASK)
@@ -272,9 +271,14 @@ class WebAppManagerWindow():
             self.manager.delete_webbapp(self.selected_webapp)
             self.load_webapps()
 
+    def run_webapp(self, webapp):
+        if webapp != None:
+            print("Running %s" % webapp.path)
+            print("Executing %s" % webapp.exec)
+            subprocess.Popen(webapp.exec, shell=True)
+
     def on_run_button(self, widget):
-        if self.selected_webapp != None:
-            subprocess.Popen(self.selected_webapp.exec, shell=True)
+        self.run_webapp(self.selected_webapp)
 
     def on_ok_button(self, widget):
         category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]

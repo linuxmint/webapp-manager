@@ -171,7 +171,7 @@ class WebAppManager():
                 desktop_file.write("Exec=" + browser.exec_path +
                                     " --application-mode " +
                                     " --profile=\"" + epiphany_profile_path + "\"" +
-                                    "" + url + "\n")
+                                    " " + url + "\n")
                 desktop_file.write("IceEpiphany=%s\n" %codename)
             else:
                 # Chromium based
@@ -198,8 +198,8 @@ class WebAppManager():
 
             if browser.browser_type == BROWSER_TYPE_EPIPHANY:
                 # Move the desktop file and create a symlink
-                new_path = os.path.join(profile_path, "epiphany-%s.desktop" % codename)
-                os.makedirs(profile_path)
+                new_path = os.path.join(epiphany_profile_path, "epiphany-%s.desktop" % codename)
+                os.makedirs(epiphany_profile_path)
                 os.replace(path, new_path)
                 os.symlink(new_path, path)
 
