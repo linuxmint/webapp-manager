@@ -28,9 +28,10 @@ ICE_DIR = os.path.expanduser("~/.local/share/ice")
 APPS_DIR = os.path.expanduser("~/.local/share/applications")
 PROFILES_DIR = os.path.join(ICE_DIR, "profiles")
 FIREFOX_PROFILES_DIR = os.path.join(ICE_DIR, "firefox")
+FIREFOX_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/org.mozilla.firefox/data/ice/firefox")
 EPIPHANY_PROFILES_DIR = os.path.join(ICE_DIR, "epiphany")
 ICONS_DIR = os.path.join(ICE_DIR, "icons")
-BROWSER_TYPE_FIREFOX, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY = range(3)
+BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY = range(4)
 
 class Browser():
 
@@ -98,7 +99,7 @@ class WebAppLauncher():
 class WebAppManager():
 
     def __init__(self):
-        for directory in [ICE_DIR, APPS_DIR, PROFILES_DIR, FIREFOX_PROFILES_DIR, ICONS_DIR, EPIPHANY_PROFILES_DIR]:
+        for directory in [ICE_DIR, APPS_DIR, PROFILES_DIR, FIREFOX_PROFILES_DIR, FIREFOX_FLATPAK_PROFILES_DIR, ICONS_DIR, EPIPHANY_PROFILES_DIR]:
             if not os.path.exists(directory):
                 os.makedirs(directory)
 
@@ -116,7 +117,7 @@ class WebAppManager():
         browsers = []
         # type, name, exec, test
         browsers.append(Browser(BROWSER_TYPE_FIREFOX, "Firefox", "firefox", "/usr/bin/firefox"))
-        browsers.append(Browser(BROWSER_TYPE_FIREFOX, "Firefox (Flatpak)", "/var/lib/flatpak/exports/bin/org.mozilla.firefox", "/var/lib/flatpak/exports/bin/org.mozilla.firefox"))
+        browsers.append(Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Firefox (Flatpak)", "/var/lib/flatpak/exports/bin/org.mozilla.firefox", "/var/lib/flatpak/exports/bin/org.mozilla.firefox"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Brave", "brave-browser", "/usr/bin/brave-browser"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chrome", "google-chrome", "/usr/bin/google-chrome-stable"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium", "chromium", "/usr/bin/chromium"))
@@ -145,9 +146,10 @@ class WebAppManager():
             desktop_file.write("Name=%s\n" % name)
             desktop_file.write("Comment=%s (Web App)\n" % name)
 
-            if browser.browser_type == BROWSER_TYPE_FIREFOX:
+            if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK]:
                 # Firefox based
-                firefox_profile_path = os.path.join(FIREFOX_PROFILES_DIR, codename)
+                firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
+                firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
                 desktop_file.write("Exec=" + browser.exec_path +
                                     " --class ICE-SSB-" + codename +
                                     " --profile " + firefox_profile_path +
