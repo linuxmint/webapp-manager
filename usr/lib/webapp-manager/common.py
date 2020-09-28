@@ -5,6 +5,7 @@ import os
 import shutil
 import string
 import threading
+import traceback
 from gi.repository import GObject
 from random import choice
 
@@ -108,9 +109,14 @@ class WebAppManager():
         for filename in os.listdir(APPS_DIR):
             path = os.path.join(APPS_DIR, filename)
             if not os.path.isdir(path):
-                webapp = WebAppLauncher(path)
-                if webapp.is_valid:
-                    webapps.append(webapp)
+                try:
+                    webapp = WebAppLauncher(path)
+                    if webapp.is_valid:
+                        webapps.append(webapp)
+                except Exception:
+                    print("Could not create webapp for path", path)
+                    traceback.print_exc()
+
         return (webapps)
 
     def get_supported_browsers(self):
