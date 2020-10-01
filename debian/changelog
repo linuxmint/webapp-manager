@@ -1,3 +1,19 @@
+webapp-manager (1.0.5) ulyana; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Fix brave executable name
+
+  [ Filip Czaplicki ]
+  * Support for Firefox Flatpak profiles (#17)
+
+  [ Clement Lefebvre ]
+  * Don't crash when failing to read a desktop file
+  * Fix Epiphany support
+  * Update README.md
+  * l10n: Update translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 01 Oct 2020 10:14:18 +0100
+
 webapp-manager (1.0.4) ulyana; urgency=medium
 
   [ Clement Lefebvre ]
