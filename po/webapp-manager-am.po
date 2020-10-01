@@ -1,4 +1,4 @@
-# Turkish translation for linuxmint
+# Amharic translation for linuxmint
 # Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
 # This file is distributed under the same license as the linuxmint package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-09-03 12:19+0100\n"
-"PO-Revision-Date: 2020-09-04 20:47+0000\n"
-"Last-Translator: Butterfly <Unknown>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"PO-Revision-Date: 2020-09-06 14:21+0000\n"
+"Last-Translator: samson <Unknown>\n"
+"Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,160 +23,158 @@ msgstr ""
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Web Uygulamaları"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:124
 msgid "Keyboard Shortcuts"
-msgstr "Klavye Kısayolları"
+msgstr "የ ፊደል ገበታ አቋራጮች"
 
 #: usr/lib/webapp-manager/webapp-manager.py:131
 #: usr/lib/webapp-manager/webapp-manager.py:229
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Hakkında"
+msgstr "ስለ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "Çıkış"
+msgstr "ማጥፊያ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Internet"
-msgstr "İnternet"
+msgstr "ኢንተርኔት"
 
 #: usr/lib/webapp-manager/webapp-manager.py:168 generate_desktop_files:48
 msgid "Web"
-msgstr "Web Uygulamaları"
+msgstr "ዌብ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Accessories"
-msgstr "Donatılar"
+msgstr "ተጨማሪዎች"
 
 #: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Games"
-msgstr "Oyunlar"
+msgstr "ጨዋታዎች"
 
 #: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Graphics"
-msgstr "Grafikler"
+msgstr "ንድፎች"
 
 #: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Office"
-msgstr "Ofis"
+msgstr "ቢሮ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:173
 msgid "Sound & Video"
-msgstr "Ses ve Video"
+msgstr "ድምጽ እና ቪዲዮ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:174
 msgid "Programming"
-msgstr "Programlama"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:231 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Run websites as if they were apps"
-msgstr "Web sitelerini uygulama gibi çalıştırın"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:312
 msgid "An error occurred"
-msgstr "Bir hata oluştu"
+msgstr "ስህተት ተፈጥሯል"
 
 #: usr/lib/webapp-manager/webapp-manager.py:315
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Add a New Web App"
-msgstr "Yeni Bir Web Uygulaması Ekleyin"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:331
 msgid "Edit Web App"
-msgstr "Web Uygulamasını Düzenle"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "Ekle"
+msgstr "መጨመሪያ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "Sil"
+msgstr "ማስወገጃ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "Düzenle"
+msgstr "ማረሚያ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "Başlat"
+msgstr "ማስጀመሪያ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Name:"
-msgstr "İsim:"
+msgstr "ስም:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Address:"
-msgstr "Adres:"
+msgstr "አድራሻ:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Icon:"
-msgstr "Simge:"
+msgstr "ምልክት:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "Website name"
-msgstr "Website adı"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "https://www.website.com"
-msgstr "https://www.website.com"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "Cancel"
-msgstr "İptal"
+msgstr "መሰረዣ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "OK"
-msgstr "Tamam"
+msgstr "እሺ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Find icons online"
-msgstr "Çevrimiçi simge bul"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Category:"
-msgstr "Kategori:"
+msgstr "ምድብ:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid "Browser:"
-msgstr "Tarayıcı:"
+msgstr "መቃኛ:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
-"Bu seçenek etkinleştirilirse, web sitesi kendi tarayıcı profiliyle "
-"çalışacaktır."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Isolated profile:"
-msgstr "İzole edilmiş profil:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Navigation bar:"
-msgstr "Gezinti çubuğu:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Choose an icon:"
-msgstr "Bir simge seçin:"
+msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "Diğer Kısayollar"
+msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "Geri Git"
+msgstr "ወደ ኋላ መሄጃ"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "Kısayollar"
+msgstr "አቋራጮች"
