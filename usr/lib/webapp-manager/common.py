@@ -130,6 +130,7 @@ class WebAppManager():
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium (chromium-browser)", "chromium-browser", "/usr/bin/chromium-browser"))
         browsers.append(Browser(BROWSER_TYPE_EPIPHANY, "Epiphany", "epiphany", "/usr/bin/epiphany-browser"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi", "vivaldi", "/usr/bin/vivaldi-stable"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Opera", "opera", "/usr/bin/opera"))
         return browsers
 
     def delete_webbapp(self, webapp):
