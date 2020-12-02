@@ -1,3 +1,9 @@
+webapp-manager (1.0.6) ulyssa; urgency=medium
+
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 02 Dec 2020 15:03:04 +0000
+
 webapp-manager (1.0.5) ulyana; urgency=medium
 
   [ Clement Lefebvre ]
