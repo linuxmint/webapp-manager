@@ -1,21 +1,23 @@
-# Kabyle translation for linuxmint
+# Icelandic translation for linuxmint
 # Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
 # This file is distributed under the same license as the linuxmint package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# Sveinn í Felli <sv1@fellsnet.is>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-12-02 15:02+0000\n"
-"PO-Revision-Date: 2020-12-04 10:29+0000\n"
-"Last-Translator: Yacine Bouklif <yacinebouklif@gmail.com>\n"
-"Language-Team: Kabyle <kab@li.org>\n"
+"PO-Revision-Date: 2020-10-21 10:15+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic <is@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2020-12-10 10:32+0000\n"
 "X-Generator: Launchpad (build 4853cb86c14c5a9e513816c8a61121c639b30835)\n"
+"Language: is\n"
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
 #: usr/lib/webapp-manager/webapp-manager.py:213
@@ -23,22 +25,22 @@ msgstr ""
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Isnaen n web"
+msgstr "Vefforrit"
 
 #: usr/lib/webapp-manager/webapp-manager.py:122
 msgid "Keyboard Shortcuts"
-msgstr "Inegzumen n unasiw"
+msgstr "Flýtileiðir á lyklaborði"
 
 #: usr/lib/webapp-manager/webapp-manager.py:129
 #: usr/lib/webapp-manager/webapp-manager.py:219
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Ɣef"
+msgstr "Um hugbúnaðinn"
 
 #: usr/lib/webapp-manager/webapp-manager.py:134
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "Ffeɣ"
+msgstr "Hætta"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Internet"
@@ -46,141 +48,141 @@ msgstr "Internet"
 
 #: usr/lib/webapp-manager/webapp-manager.py:166 generate_desktop_files:48
 msgid "Web"
-msgstr "Web"
+msgstr "Vefur"
 
 #: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Accessories"
-msgstr "Imerniyen"
+msgstr "Aukahlutir"
 
 #: usr/lib/webapp-manager/webapp-manager.py:168
 msgid "Games"
-msgstr "Uraren"
+msgstr "Leikir"
 
 #: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Graphics"
-msgstr "Udlifen"
+msgstr "Myndefni"
 
 #: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Office"
-msgstr "Tanarit"
+msgstr "Skrifstofa"
 
 #: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Sound & Video"
-msgstr "Imesli akked uvidyu"
+msgstr "Hljóð & mynd"
 
 #: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Programming"
-msgstr "Asihel"
+msgstr "Forritun"
 
 #: usr/lib/webapp-manager/webapp-manager.py:173
 msgid "Education"
-msgstr "Asegmi"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:221
 #: usr/lib/webapp-manager/webapp-manager.py:488 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Selkem ismal n web amzun d isnasen"
+msgstr "Keyrðu vefsvæði eins og um forrit væri að ræða"
 
 #: usr/lib/webapp-manager/webapp-manager.py:316
 #: usr/lib/webapp-manager/webapp-manager.py:346
 #: usr/lib/webapp-manager/webapp-manager.py:402
 msgid "Add a New Web App"
-msgstr "Rnu asnas amaynut n web"
+msgstr "Bæta við nýju vefforriti"
 
 #: usr/lib/webapp-manager/webapp-manager.py:336
 msgid "Edit Web App"
-msgstr "Ẓreg isnasen n web"
+msgstr "Breyta vefforriti"
 
 #: usr/lib/webapp-manager/webapp-manager.py:378
 msgid "Choose an icon"
-msgstr "Fren tignit"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "Sefrek isnasen web inek m"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "Rnu"
+msgstr "Bæta við"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "Kkes"
+msgstr "Fjarlægja"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "Ẓreg"
+msgstr "Breyta"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "Sekker"
+msgstr "Ræsa"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr "Isem:"
+msgstr "Nafn:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr "Tansa:"
+msgstr "Vistfang:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr "Tignit:"
+msgstr "Táknmynd:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr "Isem n usmel n web"
+msgstr "Heiti vefsvæðis"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
-msgstr "https://www.website.com"
+msgstr "https://www.vefur.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr "Sefsex"
+msgstr "Hætta við"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "Ih"
+msgstr "Í lagi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "Af-d tignitin di internet"
+msgstr "Finna táknmyndir á netinu"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr "Taggayt:"
+msgstr "Flokkur:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "Iminig:"
+msgstr "Vafri:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr "Ma termed tnefrunt-agi asmel n web ad iddu s ulegdis-ines n yiminig."
+msgstr "Sé þetta valið, mun vefsvæðið keyra með sínu eigin vafrasniði."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr "Alegdis yettwaɛezlen:"
+msgstr "Einangrað snið:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr "Afeggag n tunigin:"
+msgstr "Leiðsagnarstika:"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "Inegzumen-nniḍen:"
+msgstr "Aðrar flýtivísanir"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "Uγal γer deffir"
+msgstr "Til baka"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "Inegzumen"
+msgstr "Flýtilyklar"

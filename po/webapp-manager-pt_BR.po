@@ -7,88 +7,98 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-09-03 12:19+0100\n"
+"POT-Creation-Date: 2020-12-02 15:02+0000\n"
 "PO-Revision-Date: 2020-09-23 23:10+0000\n"
 "Last-Translator: Filipe Kaue Torres Soares <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-09-29 10:22+0000\n"
-"X-Generator: Launchpad (build d685c0a40836eb9844ed835c9700f20633c1d7af)\n"
+"X-Launchpad-Export-Date: 2020-12-10 10:32+0000\n"
+"X-Generator: Launchpad (build 4853cb86c14c5a9e513816c8a61121c639b30835)\n"
 
-#: usr/lib/webapp-manager/webapp-manager.py:71
-#: usr/lib/webapp-manager/webapp-manager.py:223
-#: usr/lib/webapp-manager/webapp-manager.py:230 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:69
+#: usr/lib/webapp-manager/webapp-manager.py:213
+#: usr/lib/webapp-manager/webapp-manager.py:220 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr "Aplicativos Web"
 
-#: usr/lib/webapp-manager/webapp-manager.py:124
+#: usr/lib/webapp-manager/webapp-manager.py:122
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos do teclado"
 
-#: usr/lib/webapp-manager/webapp-manager.py:131
-#: usr/lib/webapp-manager/webapp-manager.py:229
+#: usr/lib/webapp-manager/webapp-manager.py:129
+#: usr/lib/webapp-manager/webapp-manager.py:219
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr "Sobre"
 
-#: usr/lib/webapp-manager/webapp-manager.py:136
+#: usr/lib/webapp-manager/webapp-manager.py:134
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr "Encerrar"
 
-#: usr/lib/webapp-manager/webapp-manager.py:167
+#: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Internet"
 msgstr "Internet"
 
-#: usr/lib/webapp-manager/webapp-manager.py:168 generate_desktop_files:48
+#: usr/lib/webapp-manager/webapp-manager.py:166 generate_desktop_files:48
 msgid "Web"
 msgstr "Internet"
 
-#: usr/lib/webapp-manager/webapp-manager.py:169
+#: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Accessories"
 msgstr "Acessórios"
 
-#: usr/lib/webapp-manager/webapp-manager.py:170
+#: usr/lib/webapp-manager/webapp-manager.py:168
 msgid "Games"
 msgstr "Jogos"
 
-#: usr/lib/webapp-manager/webapp-manager.py:171
+#: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Graphics"
 msgstr "Gráficos"
 
-#: usr/lib/webapp-manager/webapp-manager.py:172
+#: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Office"
 msgstr "Escritório"
 
-#: usr/lib/webapp-manager/webapp-manager.py:173
+#: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Sound & Video"
 msgstr "Multimídia"
 
-#: usr/lib/webapp-manager/webapp-manager.py:174
+#: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Programming"
 msgstr "Desenvolvimento"
 
-#: usr/lib/webapp-manager/webapp-manager.py:231 generate_desktop_files:25
-#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:2
+#: usr/lib/webapp-manager/webapp-manager.py:173
+msgid "Education"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:221
+#: usr/lib/webapp-manager/webapp-manager.py:488 generate_desktop_files:25
+#: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr "Execute sites como se fossem aplicativos"
 
-#: usr/lib/webapp-manager/webapp-manager.py:312
-msgid "An error occurred"
-msgstr "Ocorreu um erro"
-
-#: usr/lib/webapp-manager/webapp-manager.py:315
-#: usr/share/webapp-manager/webapp-manager.ui.h:7
+#: usr/lib/webapp-manager/webapp-manager.py:316
+#: usr/lib/webapp-manager/webapp-manager.py:346
+#: usr/lib/webapp-manager/webapp-manager.py:402
 msgid "Add a New Web App"
 msgstr "Adicionar um novo aplicativo web"
 
-#: usr/lib/webapp-manager/webapp-manager.py:331
+#: usr/lib/webapp-manager/webapp-manager.py:336
 msgid "Edit Web App"
 msgstr "Editar aplicativo web"
+
+#: usr/lib/webapp-manager/webapp-manager.py:378
+msgid "Choose an icon"
+msgstr ""
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:2
+msgid "Manage your Web Apps"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
@@ -110,64 +120,60 @@ msgstr "Editar"
 msgid "Launch"
 msgstr "Executar"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:8
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
 msgstr "Nome:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:9
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
 msgstr "Endereço:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:10
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
 msgstr "Ícone:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:11
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
 msgstr "Nome do site"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:12
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
 msgstr "https://www.website.com"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:13
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:14
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
 msgstr "OK"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:15
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
 msgstr "Encontrar ícones online"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:16
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
 msgstr "Categoria:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:17
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
 msgstr "Navegador:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:18
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
 "Se esta opção for ativada, o site será executado com seu próprio perfil de "
 "navegador."
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:19
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
 msgstr "Perfil isolado:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:20
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
 msgstr "Barra de navegação:"
-
-#: usr/share/webapp-manager/webapp-manager.ui.h:21
-msgid "Choose an icon:"
-msgstr "Escolha um ícone:"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"

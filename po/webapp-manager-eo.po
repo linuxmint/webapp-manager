@@ -1,4 +1,4 @@
-# Kabyle translation for linuxmint
+# Esperanto translation for linuxmint
 # Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
 # This file is distributed under the same license as the linuxmint package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-12-02 15:02+0000\n"
-"PO-Revision-Date: 2020-12-04 10:29+0000\n"
-"Last-Translator: Yacine Bouklif <yacinebouklif@gmail.com>\n"
-"Language-Team: Kabyle <kab@li.org>\n"
+"PO-Revision-Date: 2020-10-19 18:20+0000\n"
+"Last-Translator: Piet Coppens <Unknown>\n"
+"Language-Team: Esperanto <eo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,164 +23,166 @@ msgstr ""
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Isnaen n web"
+msgstr "Retapoj"
 
 #: usr/lib/webapp-manager/webapp-manager.py:122
 msgid "Keyboard Shortcuts"
-msgstr "Inegzumen n unasiw"
+msgstr "Fulmoklavoj"
 
 #: usr/lib/webapp-manager/webapp-manager.py:129
 #: usr/lib/webapp-manager/webapp-manager.py:219
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Ɣef"
+msgstr "Pri"
 
 #: usr/lib/webapp-manager/webapp-manager.py:134
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "Ffeɣ"
+msgstr "Eliri"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Internet"
-msgstr "Internet"
+msgstr "Interreto"
 
 #: usr/lib/webapp-manager/webapp-manager.py:166 generate_desktop_files:48
 msgid "Web"
-msgstr "Web"
+msgstr "Reto"
 
 #: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Accessories"
-msgstr "Imerniyen"
+msgstr "Utilaĵoj"
 
 #: usr/lib/webapp-manager/webapp-manager.py:168
 msgid "Games"
-msgstr "Uraren"
+msgstr "Ludoj"
 
 #: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Graphics"
-msgstr "Udlifen"
+msgstr "Grafiko"
 
 #: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Office"
-msgstr "Tanarit"
+msgstr "Oficejo"
 
 #: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Sound & Video"
-msgstr "Imesli akked uvidyu"
+msgstr "Sono kaj video"
 
 #: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Programming"
-msgstr "Asihel"
+msgstr "Programado"
 
 #: usr/lib/webapp-manager/webapp-manager.py:173
 msgid "Education"
-msgstr "Asegmi"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:221
 #: usr/lib/webapp-manager/webapp-manager.py:488 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Selkem ismal n web amzun d isnasen"
+msgstr "Ruli retejojn kvazaŭ ili estus apoj"
 
 #: usr/lib/webapp-manager/webapp-manager.py:316
 #: usr/lib/webapp-manager/webapp-manager.py:346
 #: usr/lib/webapp-manager/webapp-manager.py:402
 msgid "Add a New Web App"
-msgstr "Rnu asnas amaynut n web"
+msgstr "Aldoni novan retapon"
 
 #: usr/lib/webapp-manager/webapp-manager.py:336
 msgid "Edit Web App"
-msgstr "Ẓreg isnasen n web"
+msgstr "Redakti retapon"
 
 #: usr/lib/webapp-manager/webapp-manager.py:378
 msgid "Choose an icon"
-msgstr "Fren tignit"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "Sefrek isnasen web inek m"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "Rnu"
+msgstr "Aldoni"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "Kkes"
+msgstr "Forigi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "Ẓreg"
+msgstr "Redakti"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "Sekker"
+msgstr "Lanĉi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr "Isem:"
+msgstr "Nomo:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr "Tansa:"
+msgstr "Adreso:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr "Tignit:"
+msgstr "Bildsimbolo:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr "Isem n usmel n web"
+msgstr "Nomo de retejo"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
-msgstr "https://www.website.com"
+msgstr "https://www.retejo.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr "Sefsex"
+msgstr "Nuligi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "Ih"
+msgstr "Bone"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "Af-d tignitin di internet"
+msgstr "Serĉi bildsimbolojn rete"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr "Taggayt:"
+msgstr "Kategorio:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "Iminig:"
+msgstr "Retumilo:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr "Ma termed tnefrunt-agi asmel n web ad iddu s ulegdis-ines n yiminig."
+msgstr ""
+"Se ĉi tiu opcio estas ŝaltita, la retejo ruliĝos kun sia propra retumila "
+"profilo."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr "Alegdis yettwaɛezlen:"
+msgstr "Izola profilo:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr "Afeggag n tunigin:"
+msgstr "Naviga breto:"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "Inegzumen-nniḍen:"
+msgstr "Aliaj fulmoklavoj"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "Uγal γer deffir"
+msgstr "Reiri"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "Inegzumen"
+msgstr "Fulmoklavoj"

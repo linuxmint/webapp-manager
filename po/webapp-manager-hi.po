@@ -7,88 +7,98 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-09-03 12:19+0100\n"
-"PO-Revision-Date: 2020-09-04 11:52+0000\n"
+"POT-Creation-Date: 2020-12-02 15:02+0000\n"
+"PO-Revision-Date: 2020-12-03 14:22+0000\n"
 "Last-Translator: Panwar <Unknown>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-09-29 10:22+0000\n"
-"X-Generator: Launchpad (build d685c0a40836eb9844ed835c9700f20633c1d7af)\n"
+"X-Launchpad-Export-Date: 2020-12-10 10:32+0000\n"
+"X-Generator: Launchpad (build 4853cb86c14c5a9e513816c8a61121c639b30835)\n"
 
-#: usr/lib/webapp-manager/webapp-manager.py:71
-#: usr/lib/webapp-manager/webapp-manager.py:223
-#: usr/lib/webapp-manager/webapp-manager.py:230 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:69
+#: usr/lib/webapp-manager/webapp-manager.py:213
+#: usr/lib/webapp-manager/webapp-manager.py:220 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr "वेब अनुप्रयोग"
 
-#: usr/lib/webapp-manager/webapp-manager.py:124
+#: usr/lib/webapp-manager/webapp-manager.py:122
 msgid "Keyboard Shortcuts"
 msgstr "कुंजीपटल शॉर्टकट"
 
-#: usr/lib/webapp-manager/webapp-manager.py:131
-#: usr/lib/webapp-manager/webapp-manager.py:229
+#: usr/lib/webapp-manager/webapp-manager.py:129
+#: usr/lib/webapp-manager/webapp-manager.py:219
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr "बारे में"
 
-#: usr/lib/webapp-manager/webapp-manager.py:136
+#: usr/lib/webapp-manager/webapp-manager.py:134
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr "बंद करें"
 
-#: usr/lib/webapp-manager/webapp-manager.py:167
+#: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Internet"
 msgstr "इंटरनेट"
 
-#: usr/lib/webapp-manager/webapp-manager.py:168 generate_desktop_files:48
+#: usr/lib/webapp-manager/webapp-manager.py:166 generate_desktop_files:48
 msgid "Web"
 msgstr "वेब"
 
-#: usr/lib/webapp-manager/webapp-manager.py:169
+#: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Accessories"
 msgstr "सहायक अनुप्रयोग"
 
-#: usr/lib/webapp-manager/webapp-manager.py:170
+#: usr/lib/webapp-manager/webapp-manager.py:168
 msgid "Games"
 msgstr "खेल"
 
-#: usr/lib/webapp-manager/webapp-manager.py:171
+#: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Graphics"
 msgstr "ग्राफिक्स"
 
-#: usr/lib/webapp-manager/webapp-manager.py:172
+#: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Office"
 msgstr "ऑफिस"
 
-#: usr/lib/webapp-manager/webapp-manager.py:173
+#: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Sound & Video"
 msgstr "ध्वनि व वीडियो"
 
-#: usr/lib/webapp-manager/webapp-manager.py:174
+#: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Programming"
 msgstr "प्रोग्रामिंग"
 
-#: usr/lib/webapp-manager/webapp-manager.py:231 generate_desktop_files:25
-#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:2
+#: usr/lib/webapp-manager/webapp-manager.py:173
+msgid "Education"
+msgstr "शिक्षा"
+
+#: usr/lib/webapp-manager/webapp-manager.py:221
+#: usr/lib/webapp-manager/webapp-manager.py:488 generate_desktop_files:25
+#: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr "वेबसाइट आदि अनुप्रयोगों के रूप में कार्यरत"
 
-#: usr/lib/webapp-manager/webapp-manager.py:312
-msgid "An error occurred"
-msgstr "त्रुटि हुई"
-
-#: usr/lib/webapp-manager/webapp-manager.py:315
-#: usr/share/webapp-manager/webapp-manager.ui.h:7
+#: usr/lib/webapp-manager/webapp-manager.py:316
+#: usr/lib/webapp-manager/webapp-manager.py:346
+#: usr/lib/webapp-manager/webapp-manager.py:402
 msgid "Add a New Web App"
 msgstr "नया वेब अनुप्रयोग जोड़ें"
 
-#: usr/lib/webapp-manager/webapp-manager.py:331
+#: usr/lib/webapp-manager/webapp-manager.py:336
 msgid "Edit Web App"
 msgstr "वेब अनुप्रयोग संपादन"
+
+#: usr/lib/webapp-manager/webapp-manager.py:378
+msgid "Choose an icon"
+msgstr "आइकन चुनें"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:2
+msgid "Manage your Web Apps"
+msgstr "वेब ऐप प्रबंधन"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
@@ -110,64 +120,60 @@ msgstr "संपादित करें"
 msgid "Launch"
 msgstr "आरंभ करें"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:8
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
 msgstr "नाम :"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:9
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
 msgstr "पता :"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:10
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
 msgstr "आइकन :"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:11
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
 msgstr "वेबसाइट नाम"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:12
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
 msgstr "https://www.website.com"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:13
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:14
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
 msgstr "ठीक है"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:15
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
 msgstr "आइकन हेतु ऑनलाइन खोज"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:16
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
 msgstr "श्रेणी :"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:17
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
 msgstr "ब्राउज़र :"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:18
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
 "यह विकल्प सक्रिय होने पर वेबसाइट अपने ब्राउज़र प्रोफाइल के अनुरूप कार्यरत "
 "होगी।"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:19
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
 msgstr "वियुक्त प्रोफाइल :"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:20
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
 msgstr "संचालन पट्टी :"
-
-#: usr/share/webapp-manager/webapp-manager.ui.h:21
-msgid "Choose an icon:"
-msgstr "आइकन चुनें :"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
