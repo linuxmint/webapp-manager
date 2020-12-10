@@ -1,3 +1,10 @@
+webapp-manager (1.0.7) ulyssa; urgency=medium
+
+  * l10n: Update translations
+  * l10n: Generate files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 10 Dec 2020 12:41:05 +0000
+
 webapp-manager (1.0.6) ulyssa; urgency=medium
 
   * l10n: Update POT
