@@ -56,24 +56,23 @@ class Browser():
 # the app menu item (path, name, icon..etc.)
 class WebAppLauncher():
 
-    def __init__(self, path):
+    def __init__(self, path, codename):
         self.path = path
+        self.codename = codename
         self.name = None
         self.icon = None
-        self.profile = None
-        self.is_webapp = False
-        self.is_isolated = False
         self.is_valid = False
         self.exec = None
         self.category = None
 
+        is_webapp = False
         with open(path) as desktop_file:
             for line in desktop_file:
                 line = line.strip()
 
                 # Identify if the app is a webapp (we use ICE-SSB to keep compatibility with ICE)
                 if "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
-                    self.is_webapp = True
+                    is_webapp = True
                     continue
 
                 if "Name=" in line:
@@ -92,14 +91,7 @@ class WebAppLauncher():
                     self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
                     continue
 
-                if "IceFirefox=" in line:
-                    self.profile = line.replace('IceFirefox=', '')
-
-                elif "X-ICE-SSB-Profile=" in line:
-                    self.profile = line.replace('X-ICE-SSB-Profile=', '')
-                    self.is_isolated = True
-
-        if self.is_webapp and self.name != None and self.icon != None:
+        if is_webapp and self.name != None and self.icon != None:
             self.is_valid = True
 
 # This is the backend.
@@ -115,15 +107,17 @@ class WebAppManager():
     def get_webapps(self):
         webapps = []
         for filename in os.listdir(APPS_DIR):
-            path = os.path.join(APPS_DIR, filename)
-            if not os.path.isdir(path):
-                try:
-                    webapp = WebAppLauncher(path)
-                    if webapp.is_valid:
-                        webapps.append(webapp)
-                except Exception:
-                    print("Could not create webapp for path", path)
-                    traceback.print_exc()
+            if filename.startswith("webapp-") and filename.endswith(".desktop"):
+                path = os.path.join(APPS_DIR, filename)
+                codename = filename.replace("webapp-", "").replace(".desktop", "")
+                if not os.path.isdir(path):
+                    try:
+                        webapp = WebAppLauncher(path, codename)
+                        if webapp.is_valid:
+                            webapps.append(webapp)
+                    except Exception:
+                        print("Could not create webapp for path", path)
+                        traceback.print_exc()
 
         return (webapps)
 
@@ -141,10 +135,9 @@ class WebAppManager():
         return browsers
 
     def delete_webbapp(self, webapp):
-        if webapp.profile != None:
-            shutil.rmtree(os.path.join(FIREFOX_PROFILES_DIR, webapp.profile), ignore_errors=True)
-            shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "/epiphany-%s" % webapp.profile), ignore_errors=True)
-            shutil.rmtree(os.path.join(PROFILES_DIR, webapp.profile), ignore_errors=True)
+        shutil.rmtree(os.path.join(FIREFOX_PROFILES_DIR, webapp.codename), ignore_errors=True)
+        shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "/epiphany-%s" % webapp.codename), ignore_errors=True)
+        shutil.rmtree(os.path.join(PROFILES_DIR, webapp.codename), ignore_errors=True)
         if os.path.exists(webapp.path):
             os.remove(webapp.path)
 
