@@ -131,6 +131,7 @@ class WebAppManager():
         browsers.append(Browser(BROWSER_TYPE_EPIPHANY, "Epiphany", "epiphany", "/usr/bin/epiphany-browser"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi", "vivaldi", "/usr/bin/vivaldi-stable"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Opera", "opera", "/usr/bin/opera"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Ungoogled Chromium (Flatpak)", "/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium", "/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"))
         return browsers
 
     def delete_webbapp(self, webapp):
