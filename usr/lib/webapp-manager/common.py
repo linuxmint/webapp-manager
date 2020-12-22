@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import configparser
+import gettext
 import gi
+import locale
 import os
 import shutil
 import string
@@ -23,6 +25,14 @@ def idle(func):
     def wrapper(*args):
         GObject.idle_add(func, *args)
     return wrapper
+
+# i18n
+APP = 'webapp-manager'
+LOCALE_DIR = "/usr/share/locale"
+locale.bindtextdomain(APP, LOCALE_DIR)
+gettext.bindtextdomain(APP, LOCALE_DIR)
+gettext.textdomain(APP)
+_ = gettext.gettext
 
 # Constants
 ICE_DIR = os.path.expanduser("~/.local/share/ice")
@@ -150,7 +160,7 @@ class WebAppManager():
             desktop_file.write("[Desktop Entry]\n")
             desktop_file.write("Version=1.0\n")
             desktop_file.write("Name=%s\n" % name)
-            desktop_file.write("Comment=%s (Web App)\n" % name)
+            desktop_file.write("Comment=%s\n" % _("Web App"))
 
             if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK]:
                 # Firefox based
@@ -209,6 +219,7 @@ class WebAppManager():
         config.read(path)
         config.set("Desktop Entry", "Name", name)
         config.set("Desktop Entry", "Icon", icon)
+        config.set("Desktop Entry", "Comment", _("Web App"))
         config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
