@@ -99,7 +99,8 @@ class WebAppManagerWindow():
         # Widgets which are in the add page but not the edit page
         self.add_specific_widgets = [self.browser_label, self.browser_combo,
                                      self.isolated_label, self.isolated_switch,
-                                     self.navbar_label, self.navbar_switch]
+                                     self.navbar_label, self.navbar_switch,
+                                     self.privatewindow_label, self.privatewindow_switch]
 
         # Widget signals
         self.add_button.connect("clicked", self.on_add_button)
@@ -324,7 +325,7 @@ class WebAppManagerWindow():
         self.edit_mode = False
         self.toggle_ok_sensitivity()
         self.name_entry.grab_focus()
-
+        
     def on_edit_button(self, widget):
         if self.selected_webapp != None:
             self.name_entry.set_text(self.selected_webapp.name)

@@ -70,24 +70,24 @@ class WebAppLauncher():
         with open(path) as desktop_file:
             for line in desktop_file:
                 line = line.strip()
-
+                
                 # Identify if the app is a webapp
                 if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
                     is_webapp = True
                     continue
-
+                
                 if "Name=" in line:
                     self.name = line.replace("Name=", "")
                     continue
-
+				
                 if "Icon=" in line:
                     self.icon = line.replace("Icon=", "")
                     continue
-
+				
                 if "Exec=" in line:
                     self.exec = line.replace("Exec=", "")
                     continue
-
+				
                 if "Categories=" in line:
                     self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
                     continue
@@ -123,7 +123,6 @@ class WebAppManager():
                     except Exception:
                         print("Could not create webapp for path", path)
                         traceback.print_exc()
-
         return (webapps)
 
     def get_supported_browsers(self):
@@ -164,9 +163,16 @@ class WebAppManager():
                 # Firefox based
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-                desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
-                                    " --class WebApp-" + codename +
-                                    " --profile " + firefox_profile_path +
+                if privatewindow:
+                    desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                                        " --private-window" +
+                                        " --class WebApp-" + codename +
+                                        " --profile " + firefox_profile_path +
+                                    " --no-remote " + url + "'\n")
+                else:
+                    desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                                        " --class WebApp-" + codename +
+                                        " --profile " + firefox_profile_path +
                                     " --no-remote " + url + "'\n")
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
@@ -232,7 +238,6 @@ class WebAppManager():
             config.set("Desktop Entry", "X-WebApp-URL", url)
         except:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
-
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
 
