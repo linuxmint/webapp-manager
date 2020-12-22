@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-02 15:02+0000\n"
+"POT-Creation-Date: 2020-12-22 13:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,72 +17,76 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: usr/lib/webapp-manager/common.py:161 usr/lib/webapp-manager/common.py:222
+msgid "Web App"
+msgstr ""
+
 #: usr/lib/webapp-manager/webapp-manager.py:69
-#: usr/lib/webapp-manager/webapp-manager.py:213
-#: usr/lib/webapp-manager/webapp-manager.py:220 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:212
+#: usr/lib/webapp-manager/webapp-manager.py:219 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:122
+#: usr/lib/webapp-manager/webapp-manager.py:121
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:129
-#: usr/lib/webapp-manager/webapp-manager.py:219
+#: usr/lib/webapp-manager/webapp-manager.py:128
+#: usr/lib/webapp-manager/webapp-manager.py:218
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:134
+#: usr/lib/webapp-manager/webapp-manager.py:133
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:165
+#: usr/lib/webapp-manager/webapp-manager.py:164
 msgid "Internet"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:166 generate_desktop_files:48
+#: usr/lib/webapp-manager/webapp-manager.py:165 generate_desktop_files:48
 msgid "Web"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:167
+#: usr/lib/webapp-manager/webapp-manager.py:166
 msgid "Accessories"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:168
+#: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Games"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:169
+#: usr/lib/webapp-manager/webapp-manager.py:168
 msgid "Graphics"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:170
+#: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Office"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:171
+#: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Sound & Video"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:172
+#: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Programming"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:173
+#: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Education"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:221
-#: usr/lib/webapp-manager/webapp-manager.py:488 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:220
+#: usr/lib/webapp-manager/webapp-manager.py:486 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:316
+#: usr/lib/webapp-manager/webapp-manager.py:315
 #: usr/lib/webapp-manager/webapp-manager.py:346
 #: usr/lib/webapp-manager/webapp-manager.py:402
 msgid "Add a New Web App"
