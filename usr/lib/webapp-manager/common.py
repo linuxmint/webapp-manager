@@ -64,7 +64,7 @@ class WebAppLauncher():
         self.is_valid = False
         self.exec = None
         self.category = None
-        self.url = None
+        self.url = ""
 
         is_webapp = False
         with open(path) as desktop_file:
@@ -211,7 +211,7 @@ class WebAppManager():
                 os.replace(path, new_path)
                 os.symlink(new_path, path)
 
-    def edit_webapp(self, path, name, icon, category):
+    def edit_webapp(self, path, name, url, icon, category):
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
@@ -219,6 +219,18 @@ class WebAppManager():
         config.set("Desktop Entry", "Icon", icon)
         config.set("Desktop Entry", "Comment", _("Web App"))
         config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
+
+        try:
+            # This will raise an exception on legacy apps which
+            # have no X-WebApp-URL
+            old_url = config.get("Desktop Entry", "X-WebApp-URL")
+            exec_line = config.get("Desktop Entry", "Exec")
+            exec_line = exec_line.replace(old_url, url)
+            config.set("Desktop Entry", "Exec", exec_line)
+            config.set("Desktop Entry", "X-WebApp-URL", url)
+        except:
+            print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
+
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
 
