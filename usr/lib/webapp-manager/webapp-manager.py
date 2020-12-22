@@ -95,8 +95,7 @@ class WebAppManagerWindow():
         self.browser_label = self.builder.get_object("browser_label")
 
         # Widgets which are in the add page but not the edit page
-        self.add_specific_widgets = [self.url_label, self.url_entry, self.favicon_button,
-                                     self.browser_label, self.browser_combo,
+        self.add_specific_widgets = [self.browser_label, self.browser_combo,
                                      self.isolated_label, self.isolated_switch,
                                      self.navbar_label, self.navbar_switch]
 
@@ -295,7 +294,7 @@ class WebAppManagerWindow():
             shutil.copyfile(icon, new_path)
             icon = new_path
         if self.edit_mode:
-            self.manager.edit_webapp(self.selected_webapp.path, name, icon, category)
+            self.manager.edit_webapp(self.selected_webapp.path, name, url, icon, category)
             self.load_webapps()
         else:
             self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar)
@@ -315,13 +314,14 @@ class WebAppManagerWindow():
         self.stack.set_visible_child_name("add_page")
         self.headerbar.set_subtitle(_("Add a New Web App"))
         self.edit_mode = False
-        self.ok_button.set_sensitive(False)
+        self.toggle_ok_sensitivity()
         self.name_entry.grab_focus()
 
     def on_edit_button(self, widget):
         if self.selected_webapp != None:
             self.name_entry.set_text(self.selected_webapp.name)
             self.icon_chooser.set_icon(self.selected_webapp.icon)
+            self.url_entry.set_text(self.selected_webapp.url)
             model = self.category_combo.get_model()
             iter = model.get_iter_first()
             while iter:
@@ -335,7 +335,7 @@ class WebAppManagerWindow():
             self.stack.set_visible_child_name("add_page")
             self.headerbar.set_subtitle(_("Edit Web App"))
             self.edit_mode = True
-            self.ok_button.set_sensitive(True)
+            self.toggle_ok_sensitivity()
             self.name_entry.grab_focus()
 
     def on_cancel_button(self, widget):
@@ -429,9 +429,7 @@ class WebAppManagerWindow():
         self.guess_icon()
 
     def toggle_ok_sensitivity(self):
-        if self.name_entry.get_text() == "":
-            self.ok_button.set_sensitive(False)
-        elif self.get_url() == "" and not self.edit_mode:
+        if self.name_entry.get_text() == "" or self.get_url() == "":
             self.ok_button.set_sensitive(False)
         else:
             self.ok_button.set_sensitive(True)
