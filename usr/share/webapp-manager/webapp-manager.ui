@@ -417,6 +417,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">If this option is enabled the website will run with its own browser profile.</property>
+                    <property name="halign">center</property>
                     <property name="active">True</property>
                   </object>
                   <packing>
@@ -440,6 +441,7 @@
                   <object class="GtkSwitch" id="navbar_switch">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="halign">center</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>

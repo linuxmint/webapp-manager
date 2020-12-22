@@ -1,21 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Standard Moroccan Tamazight translation for linuxmint
+# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2020-12-02 15:02+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-10-23 02:35+0000\n"
+"Last-Translator: Hakim Oubouali <Unknown>\n"
+"Language-Team: Standard Moroccan Tamazight <zgh@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2020-12-10 10:32+0000\n"
+"X-Generator: Launchpad (build 4853cb86c14c5a9e513816c8a61121c639b30835)\n"
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
 #: usr/lib/webapp-manager/webapp-manager.py:213
@@ -23,7 +23,7 @@ msgstr ""
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr ""
+msgstr "ⵜⵉⵙⵏⵙⵉⵡⵉⵏ ⵏ ⵡⵉⴱ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:122
 msgid "Keyboard Shortcuts"
@@ -33,20 +33,20 @@ msgstr ""
 #: usr/lib/webapp-manager/webapp-manager.py:219
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr ""
+msgstr "ⵖⴼ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:134
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr ""
+msgstr "ⴼⴼⵖ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Internet"
-msgstr ""
+msgstr "ⴰⵏⵜⵉⵔⵏⵉⵜ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:166 generate_desktop_files:48
 msgid "Web"
-msgstr ""
+msgstr "ⵡⵉⴱ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Accessories"
@@ -54,7 +54,7 @@ msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:168
 msgid "Games"
-msgstr ""
+msgstr "ⵜⵉⵔⴰⵔⵉⵏ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Graphics"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Sound & Video"
-msgstr ""
+msgstr "ⵉⵎⵙⵍⵉ ⴷ ⵓⴼⵉⴷⵢⵓ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Programming"
@@ -86,11 +86,11 @@ msgstr ""
 #: usr/lib/webapp-manager/webapp-manager.py:346
 #: usr/lib/webapp-manager/webapp-manager.py:402
 msgid "Add a New Web App"
-msgstr ""
+msgstr "ⵔⵏⵓ ⵢⴰⵜ ⵏ ⵜⵙⵏⵙⵉ ⵡⵉⴱ ⵜⴰⵎⴰⵢⵏⵓⵜ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:336
 msgid "Edit Web App"
-msgstr ""
+msgstr "ⵙⵏⴼⵍ ⵜⵉⵙⵏⵙⵉ ⵡⵉⴱ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:378
 msgid "Choose an icon"
@@ -103,17 +103,17 @@ msgstr ""
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr ""
+msgstr "ⵔⵏⵓ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr ""
+msgstr "ⵙⵙⵉⵜⵢ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr ""
+msgstr "ⵙⵏⴼⵍ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
@@ -122,11 +122,11 @@ msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr ""
+msgstr "ⵉⵙⵎ:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr ""
+msgstr "ⵜⴰⵏⵙⴰ:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
@@ -134,19 +134,19 @@ msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr ""
+msgstr "ⵉⵙⵎ ⵏ ⵡⴰⵙⵉⵜ ⵡⵉⴱ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
-msgstr ""
+msgstr "https://www.website.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr ""
+msgstr "ⵙⵔ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr ""
+msgstr "ⵡⴰⵅⵅⴰ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
