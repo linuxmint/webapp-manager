@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+=======
+webapp-manager (1.0.8) ulyssa; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Add missing python3-bs4 dependency
+  * Create LICENSE
+
+  [ JosephMcc ]
+  * ui: Fix stretched switches (#40)
+
+  [ Clement Lefebvre ]
+  * l10n: Fix untranslated comment in .desktop files
+  * Remove unused code
+  * Remove unused code
+  * Change the content of the .desktop file
+  * Let users edit the URL
+
+  [ Burhanuddin Udaipurwala ]
+  * Add support for Ungoogle Chromium browser (#42)
+
+  [ Ahmed Bay ]
+  * Add support for Microsoft Edge (#41)
+
+  [ Clement Lefebvre ]
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 22 Dec 2020 13:06:10 +0000
+
+>>>>>>> Added support for Private Browsing mode for firefox.
 webapp-manager (1.0.7) ulyssa; urgency=medium
 
   * l10n: Update translations

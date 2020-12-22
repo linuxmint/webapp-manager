@@ -89,14 +89,23 @@ class WebAppManagerWindow():
         self.isolated_label = self.builder.get_object("isolated_label")
         self.navbar_switch = self.builder.get_object("navbar_switch")
         self.navbar_label = self.builder.get_object("navbar_label")
+<<<<<<< HEAD
+=======
+        self.privatewindow_switch = self.builder.get_object("privatewindow_switch")
+        self.privatewindow_label = self.builder.get_object("privatewindow_label")
+>>>>>>> Added support for Private Browsing mode for firefox.
         self.spinner = self.builder.get_object("spinner")
         self.favicon_stack = self.builder.get_object("favicon_stack")
         self.browser_combo = self.builder.get_object("browser_combo")
         self.browser_label = self.builder.get_object("browser_label")
 
         # Widgets which are in the add page but not the edit page
+<<<<<<< HEAD
         self.add_specific_widgets = [self.url_label, self.url_entry, self.favicon_button,
                                      self.browser_label, self.browser_combo,
+=======
+        self.add_specific_widgets = [self.browser_label, self.browser_combo,
+>>>>>>> Added support for Private Browsing mode for firefox.
                                      self.isolated_label, self.isolated_switch,
                                      self.navbar_label, self.navbar_switch]
 
@@ -287,6 +296,10 @@ class WebAppManagerWindow():
         url = self.get_url()
         isolate_profile = self.isolated_switch.get_active()
         navbar = self.navbar_switch.get_active()
+<<<<<<< HEAD
+=======
+        privatewindow = self.privatewindow_switch.get_active()
+>>>>>>> Added support for Private Browsing mode for firefox.
         icon = self.icon_chooser.get_icon()
         if "/tmp" in icon:
             # If the icon path is in /tmp, move it.
@@ -295,10 +308,17 @@ class WebAppManagerWindow():
             shutil.copyfile(icon, new_path)
             icon = new_path
         if self.edit_mode:
+<<<<<<< HEAD
             self.manager.edit_webapp(self.selected_webapp.path, name, icon, category)
             self.load_webapps()
         else:
             self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar)
+=======
+            self.manager.edit_webapp(self.selected_webapp.path, name, url, icon, category)
+            self.load_webapps()
+        else:
+            self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar, privatewindow)
+>>>>>>> Added support for Private Browsing mode for firefox.
             self.load_webapps()
 
     def on_add_button(self, widget):
@@ -309,19 +329,31 @@ class WebAppManagerWindow():
         self.browser_combo.set_active(0)
         self.isolated_switch.set_active(True)
         self.navbar_switch.set_active(False)
+<<<<<<< HEAD
+=======
+        self.privatewindow_switch.set_active(False)
+>>>>>>> Added support for Private Browsing mode for firefox.
         for widget in self.add_specific_widgets:
             widget.show()
         self.show_hide_browser_widgets()
         self.stack.set_visible_child_name("add_page")
         self.headerbar.set_subtitle(_("Add a New Web App"))
         self.edit_mode = False
+<<<<<<< HEAD
         self.ok_button.set_sensitive(False)
+=======
+        self.toggle_ok_sensitivity()
+>>>>>>> Added support for Private Browsing mode for firefox.
         self.name_entry.grab_focus()
 
     def on_edit_button(self, widget):
         if self.selected_webapp != None:
             self.name_entry.set_text(self.selected_webapp.name)
             self.icon_chooser.set_icon(self.selected_webapp.icon)
+<<<<<<< HEAD
+=======
+            self.url_entry.set_text(self.selected_webapp.url)
+>>>>>>> Added support for Private Browsing mode for firefox.
             model = self.category_combo.get_model()
             iter = model.get_iter_first()
             while iter:
@@ -335,7 +367,11 @@ class WebAppManagerWindow():
             self.stack.set_visible_child_name("add_page")
             self.headerbar.set_subtitle(_("Edit Web App"))
             self.edit_mode = True
+<<<<<<< HEAD
             self.ok_button.set_sensitive(True)
+=======
+            self.toggle_ok_sensitivity()
+>>>>>>> Added support for Private Browsing mode for firefox.
             self.name_entry.grab_focus()
 
     def on_cancel_button(self, widget):
@@ -411,6 +447,11 @@ class WebAppManagerWindow():
             self.isolated_switch.hide()
             self.navbar_label.show()
             self.navbar_switch.show()
+<<<<<<< HEAD
+=======
+            self.privatewindow_label.show()
+            self.privatewindow_switch.show()
+>>>>>>> Added support for Private Browsing mode for firefox.
         else:
             self.isolated_label.show()
             self.isolated_switch.show()
@@ -429,9 +470,13 @@ class WebAppManagerWindow():
         self.guess_icon()
 
     def toggle_ok_sensitivity(self):
+<<<<<<< HEAD
         if self.name_entry.get_text() == "":
             self.ok_button.set_sensitive(False)
         elif self.get_url() == "" and not self.edit_mode:
+=======
+        if self.name_entry.get_text() == "" or self.get_url() == "":
+>>>>>>> Added support for Private Browsing mode for firefox.
             self.ok_button.set_sensitive(False)
         else:
             self.ok_button.set_sensitive(True)

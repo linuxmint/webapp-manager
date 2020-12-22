@@ -1,6 +1,12 @@
 #!/usr/bin/python3
 import configparser
+<<<<<<< HEAD
 import gi
+=======
+import gettext
+import gi
+import locale
+>>>>>>> Added support for Private Browsing mode for firefox.
 import os
 import shutil
 import string
@@ -24,6 +30,17 @@ def idle(func):
         GObject.idle_add(func, *args)
     return wrapper
 
+<<<<<<< HEAD
+=======
+# i18n
+APP = 'webapp-manager'
+LOCALE_DIR = "/usr/share/locale"
+locale.bindtextdomain(APP, LOCALE_DIR)
+gettext.bindtextdomain(APP, LOCALE_DIR)
+gettext.textdomain(APP)
+_ = gettext.gettext
+
+>>>>>>> Added support for Private Browsing mode for firefox.
 # Constants
 ICE_DIR = os.path.expanduser("~/.local/share/ice")
 APPS_DIR = os.path.expanduser("~/.local/share/applications")
@@ -46,6 +63,7 @@ class Browser():
 # the app menu item (path, name, icon..etc.)
 class WebAppLauncher():
 
+<<<<<<< HEAD
     def __init__(self, path):
         self.path = path
         self.name = None
@@ -58,13 +76,32 @@ class WebAppLauncher():
         self.exec = None
         self.category = None
 
+=======
+    def __init__(self, path, codename):
+        self.path = path
+        self.codename = codename
+        self.name = None
+        self.icon = None
+        self.is_valid = False
+        self.exec = None
+        self.category = None
+        self.url = ""
+
+        is_webapp = False
+>>>>>>> Added support for Private Browsing mode for firefox.
         with open(path) as desktop_file:
             for line in desktop_file:
                 line = line.strip()
 
+<<<<<<< HEAD
                 # Identify if the app is a webapp (we use ICE-SSB to keep compatibility with ICE)
                 if "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
                     self.is_webapp = True
+=======
+                # Identify if the app is a webapp
+                if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
+                    is_webapp = True
+>>>>>>> Added support for Private Browsing mode for firefox.
                     continue
 
                 if "Name=" in line:
@@ -83,6 +120,7 @@ class WebAppLauncher():
                     self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
                     continue
 
+<<<<<<< HEAD
                 if "IceFirefox=" in line:
                     self.profile = line.replace('IceFirefox=', '')
                     self.is_firefox = True
@@ -92,6 +130,13 @@ class WebAppLauncher():
                     self.is_isolated = True
 
         if self.is_webapp and self.name != None and self.icon != None:
+=======
+                if "X-WebApp-URL=" in line:
+                    self.url = line.replace("X-WebApp-URL=", "")
+                    continue
+
+        if is_webapp and self.name != None and self.icon != None:
+>>>>>>> Added support for Private Browsing mode for firefox.
             self.is_valid = True
 
 # This is the backend.
@@ -107,6 +152,7 @@ class WebAppManager():
     def get_webapps(self):
         webapps = []
         for filename in os.listdir(APPS_DIR):
+<<<<<<< HEAD
             path = os.path.join(APPS_DIR, filename)
             if not os.path.isdir(path):
                 try:
@@ -116,6 +162,19 @@ class WebAppManager():
                 except Exception:
                     print("Could not create webapp for path", path)
                     traceback.print_exc()
+=======
+            if filename.startswith("webapp-") and filename.endswith(".desktop"):
+                path = os.path.join(APPS_DIR, filename)
+                codename = filename.replace("webapp-", "").replace(".desktop", "")
+                if not os.path.isdir(path):
+                    try:
+                        webapp = WebAppLauncher(path, codename)
+                        if webapp.is_valid:
+                            webapps.append(webapp)
+                    except Exception:
+                        print("Could not create webapp for path", path)
+                        traceback.print_exc()
+>>>>>>> Added support for Private Browsing mode for firefox.
 
         return (webapps)
 
@@ -130,6 +189,7 @@ class WebAppManager():
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium (chromium-browser)", "chromium-browser", "/usr/bin/chromium-browser"))
         browsers.append(Browser(BROWSER_TYPE_EPIPHANY, "Epiphany", "epiphany", "/usr/bin/epiphany-browser"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi", "vivaldi", "/usr/bin/vivaldi-stable"))
+<<<<<<< HEAD
         return browsers
 
     def delete_webbapp(self, webapp):
@@ -141,6 +201,21 @@ class WebAppManager():
             os.remove(webapp.path)
 
     def create_webapp(self, name, url, icon, category, browser, isolate_profile=True, navbar=False):
+=======
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Microsoft Edge", "microsoft-edge", "/usr/bin/microsoft-edge"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Ungoogled Chromium (Flatpak)", "/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium", "/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"))
+        #browsers.append(Browser(BROWSER_TYPE_FIREFOX, "Opera", "opera", "/usr/bin/opera"))
+        return browsers
+
+    def delete_webbapp(self, webapp):
+        shutil.rmtree(os.path.join(FIREFOX_PROFILES_DIR, webapp.codename), ignore_errors=True)
+        shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "/epiphany-%s" % webapp.codename), ignore_errors=True)
+        shutil.rmtree(os.path.join(PROFILES_DIR, webapp.codename), ignore_errors=True)
+        if os.path.exists(webapp.path):
+            os.remove(webapp.path)
+
+    def create_webapp(self, name, url, icon, category, browser, isolate_profile=True, navbar=False, privatewindow=False):
+>>>>>>> Added support for Private Browsing mode for firefox.
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
         random_code =  ''.join(choice(string.digits) for _ in range(4))
         codename = "".join(filter(str.isalpha, name)) + random_code
@@ -150,17 +225,35 @@ class WebAppManager():
             desktop_file.write("[Desktop Entry]\n")
             desktop_file.write("Version=1.0\n")
             desktop_file.write("Name=%s\n" % name)
+<<<<<<< HEAD
             desktop_file.write("Comment=%s (Web App)\n" % name)
+=======
+            desktop_file.write("Comment=%s\n" % _("Web App"))
+>>>>>>> Added support for Private Browsing mode for firefox.
 
             if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK]:
                 # Firefox based
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
+<<<<<<< HEAD
                 desktop_file.write("Exec=" + browser.exec_path +
                                     " --class ICE-SSB-" + codename +
                                     " --profile " + firefox_profile_path +
                                     " --no-remote " + url + "\n")
                 desktop_file.write("IceFirefox=%s\n" % codename)
+=======
+                if privatewindow:
+                    desktop_file.write("Exec=" + browser.exec_path +
+                                        " --private-window" +
+                                        " --class WebApp-" + codename +
+                                        " --profile " + firefox_profile_path +
+                                        " --no-remote " + url + "\n")
+                else:
+                    desktop_file.write("Exec=" + browser.exec_path +
+                                        " --class WebApp-" + codename +
+                                        " --profile " + firefox_profile_path +
+                                        " --no-remote " + url + "\n")
+>>>>>>> Added support for Private Browsing mode for firefox.
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
@@ -172,13 +265,17 @@ class WebAppManager():
                                     " --application-mode " +
                                     " --profile=\"" + epiphany_profile_path + "\"" +
                                     " " + url + "\n")
+<<<<<<< HEAD
                 desktop_file.write("IceEpiphany=%s\n" %codename)
+=======
+>>>>>>> Added support for Private Browsing mode for firefox.
             else:
                 # Chromium based
                 if isolate_profile:
                     profile_path = os.path.join(PROFILES_DIR, codename)
                     desktop_file.write("Exec=" + browser.exec_path +
                                         " --app=" + url +
+<<<<<<< HEAD
                                         " --class=ICE-SSB-" + codename +
                                         " --user-data-dir=" + profile_path + "\n")
                     desktop_file.write("X-ICE-SSB-Profile=%s\n" % codename)
@@ -186,6 +283,14 @@ class WebAppManager():
                     desktop_file.write("Exec=" + browser.exec_path +
                                         " --app=" + url +
                                         " --class=ICE-SSB-" + codename + "\n")
+=======
+                                        " --class=WebApp-" + codename +
+                                        " --user-data-dir=" + profile_path + "\n")
+                else:
+                    desktop_file.write("Exec=" + browser.exec_path +
+                                        " --app=" + url +
+                                        " --class=WebApp-" + codename + "\n")
+>>>>>>> Added support for Private Browsing mode for firefox.
 
             desktop_file.write("Terminal=false\n")
             desktop_file.write("X-MultipleArgs=false\n")
@@ -193,8 +298,18 @@ class WebAppManager():
             desktop_file.write("Icon=%s\n" % icon)
             desktop_file.write("Categories=GTK;%s;\n" % category)
             desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
+<<<<<<< HEAD
             desktop_file.write("StartupWMClass=ICE-SSB-%s\n" % codename)
             desktop_file.write("StartupNotify=true\n")
+=======
+            desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
+            desktop_file.write("StartupNotify=true\n")
+            desktop_file.write("X-WebApp-URL=%s\n" % url)
+            if isolate_profile:
+                desktop_file.write("X-WebApp-Isolated=true\n")
+            else:
+                desktop_file.write("X-WebApp-Isolated=false\n")
+>>>>>>> Added support for Private Browsing mode for firefox.
 
             if browser.browser_type == BROWSER_TYPE_EPIPHANY:
                 # Move the desktop file and create a symlink
@@ -203,13 +318,34 @@ class WebAppManager():
                 os.replace(path, new_path)
                 os.symlink(new_path, path)
 
+<<<<<<< HEAD
     def edit_webapp(self, path, name, icon, category):
+=======
+    def edit_webapp(self, path, name, url, icon, category):
+>>>>>>> Added support for Private Browsing mode for firefox.
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
         config.set("Desktop Entry", "Name", name)
         config.set("Desktop Entry", "Icon", icon)
+<<<<<<< HEAD
         config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
+=======
+        config.set("Desktop Entry", "Comment", _("Web App"))
+        config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
+
+        try:
+            # This will raise an exception on legacy apps which
+            # have no X-WebApp-URL
+            old_url = config.get("Desktop Entry", "X-WebApp-URL")
+            exec_line = config.get("Desktop Entry", "Exec")
+            exec_line = exec_line.replace(old_url, url)
+            config.set("Desktop Entry", "Exec", exec_line)
+            config.set("Desktop Entry", "X-WebApp-URL", url)
+        except:
+            print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
+
+>>>>>>> Added support for Private Browsing mode for firefox.
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
 
@@ -311,4 +447,8 @@ def download_favicon(url):
     return images
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     download_favicon(sys.argv[1])
+=======
+    download_favicon(sys.argv[1])
+>>>>>>> Added support for Private Browsing mode for firefox.
