@@ -64,11 +64,7 @@ class WebAppLauncher():
         self.is_valid = False
         self.exec = None
         self.category = None
-<<<<<<< HEAD
         self.url = ""
-=======
-        self.url = None
->>>>>>> e0a1616... Change the content of the .desktop file
 
         is_webapp = False
         with open(path) as desktop_file:
@@ -167,24 +163,10 @@ class WebAppManager():
                 # Firefox based
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-<<<<<<< HEAD
-                if privatewindow:
-                    desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
-                                        " --private-window" +
-                                        " --class WebApp-" + codename +
-                                        " --profile " + firefox_profile_path +
-                                    " --no-remote " + url + "'\n")
-                else:
-                    desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
-                                        " --class WebApp-" + codename +
-                                        " --profile " + firefox_profile_path +
-                                    " --no-remote " + url + "'\n")
-=======
                 desktop_file.write("Exec=" + browser.exec_path +
                                     " --class WebApp-" + codename +
                                     " --profile " + firefox_profile_path +
                                     " --no-remote " + url + "\n")
->>>>>>> e0a1616... Change the content of the .desktop file
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
