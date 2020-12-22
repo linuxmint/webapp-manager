@@ -94,9 +94,12 @@ class WebAppLauncher():
                     self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
                     continue
 
-                if "X-WebApp-URL=" in line:
-                    self.url = line.replace("X-WebApp-URL=", "")
-                    continue
+                if "IceFirefox=" in line:
+                    self.profile = line.replace('IceFirefox=', '')
+
+                elif "X-ICE-SSB-Profile=" in line:
+                    self.profile = line.replace('X-ICE-SSB-Profile=', '')
+                    self.is_isolated = True
 
         if is_webapp and self.name != None and self.icon != None:
             self.is_valid = True
