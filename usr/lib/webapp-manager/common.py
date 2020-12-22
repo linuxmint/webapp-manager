@@ -61,6 +61,9 @@ class WebAppLauncher():
         self.codename = codename
         self.name = None
         self.icon = None
+        self.profile = None
+        self.is_webapp = False
+        self.is_isolated = False
         self.is_valid = False
         self.exec = None
         self.category = None
@@ -70,7 +73,6 @@ class WebAppLauncher():
         with open(path) as desktop_file:
             for line in desktop_file:
                 line = line.strip()
-
                 # Identify if the app is a webapp
                 if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
                     is_webapp = True
@@ -163,9 +165,16 @@ class WebAppManager():
                 # Firefox based
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-                desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
-                                    " --class WebApp-" + codename +
-                                    " --profile " + firefox_profile_path +
+                if privatewindow:
+                    desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                                        " --private-window" +
+                                        " --class WebApp-" + codename +
+                                        " --profile " + firefox_profile_path +
+                                    " --no-remote " + url + "'\n")
+                else:
+                    desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                                        " --class WebApp-" + codename +
+                                        " --profile " + firefox_profile_path +
                                     " --no-remote " + url + "'\n")
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)

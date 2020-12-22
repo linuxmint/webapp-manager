@@ -8,7 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-01-12 11:43+0000\n"
+=======
+<<<<<<< HEAD
+"POT-Creation-Date: 2020-12-02 15:02+0000\n"
+=======
+"POT-Creation-Date: 2020-12-22 13:05+0000\n"
+>>>>>>> Added support for Private Browsing mode for firefox.
+>>>>>>> 6367039... Added support for Private Browsing mode for firefox.
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+<<<<<<< HEAD
 #: usr/lib/webapp-manager/common.py:161 usr/lib/webapp-manager/common.py:222
 msgid "Web App"
 msgstr ""
@@ -24,26 +33,119 @@ msgstr ""
 #: usr/lib/webapp-manager/webapp-manager.py:69
 #: usr/lib/webapp-manager/webapp-manager.py:216
 #: usr/lib/webapp-manager/webapp-manager.py:223 generate_desktop_files:25
+=======
+<<<<<<< HEAD
+#: usr/lib/webapp-manager/webapp-manager.py:69
+#: usr/lib/webapp-manager/webapp-manager.py:213
+#: usr/lib/webapp-manager/webapp-manager.py:220 generate_desktop_files:25
+=======
+#: usr/lib/webapp-manager/common.py:161 usr/lib/webapp-manager/common.py:222
+msgid "Web App"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:69
+#: usr/lib/webapp-manager/webapp-manager.py:212
+#: usr/lib/webapp-manager/webapp-manager.py:219 generate_desktop_files:25
+>>>>>>> Added support for Private Browsing mode for firefox.
+>>>>>>> 6367039... Added support for Private Browsing mode for firefox.
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr ""
 
+<<<<<<< HEAD
 #: usr/lib/webapp-manager/webapp-manager.py:121
 msgid "Keyboard Shortcuts"
 msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:128
 #: usr/lib/webapp-manager/webapp-manager.py:222
+=======
+<<<<<<< HEAD
+#: usr/lib/webapp-manager/webapp-manager.py:122
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:129
+#: usr/lib/webapp-manager/webapp-manager.py:219
+=======
+#: usr/lib/webapp-manager/webapp-manager.py:121
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:128
+#: usr/lib/webapp-manager/webapp-manager.py:218
+>>>>>>> Added support for Private Browsing mode for firefox.
+>>>>>>> 6367039... Added support for Private Browsing mode for firefox.
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr ""
 
+<<<<<<< HEAD
 #: usr/lib/webapp-manager/webapp-manager.py:133
+=======
+<<<<<<< HEAD
+#: usr/lib/webapp-manager/webapp-manager.py:134
+=======
+#: usr/lib/webapp-manager/webapp-manager.py:133
+>>>>>>> Added support for Private Browsing mode for firefox.
+>>>>>>> 6367039... Added support for Private Browsing mode for firefox.
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr ""
 
+<<<<<<< HEAD
+#: usr/lib/webapp-manager/webapp-manager.py:164
+=======
+<<<<<<< HEAD
+#: usr/lib/webapp-manager/webapp-manager.py:165
+>>>>>>> 6367039... Added support for Private Browsing mode for firefox.
+msgid "Internet"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:165 generate_desktop_files:48
+msgid "Web"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:166
+msgid "Accessories"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:167
+msgid "Games"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:168
+msgid "Graphics"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:169
+msgid "Office"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:170
+msgid "Sound & Video"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:171
+msgid "Programming"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:172
+msgid "Education"
+msgstr ""
+
+<<<<<<< HEAD
+#: usr/lib/webapp-manager/webapp-manager.py:194
+msgid "No supported browsers were detected."
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:224
+#: usr/lib/webapp-manager/webapp-manager.py:494 generate_desktop_files:25
+=======
+#: usr/lib/webapp-manager/webapp-manager.py:221
+#: usr/lib/webapp-manager/webapp-manager.py:488 generate_desktop_files:25
+=======
 #: usr/lib/webapp-manager/webapp-manager.py:164
 msgid "Internet"
 msgstr ""
@@ -80,19 +182,27 @@ msgstr ""
 msgid "Education"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:194
-msgid "No supported browsers were detected."
-msgstr ""
-
-#: usr/lib/webapp-manager/webapp-manager.py:224
-#: usr/lib/webapp-manager/webapp-manager.py:494 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:220
+#: usr/lib/webapp-manager/webapp-manager.py:486 generate_desktop_files:25
+>>>>>>> Added support for Private Browsing mode for firefox.
+>>>>>>> 6367039... Added support for Private Browsing mode for firefox.
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr ""
 
+<<<<<<< HEAD
 #: usr/lib/webapp-manager/webapp-manager.py:319
 #: usr/lib/webapp-manager/webapp-manager.py:350
 #: usr/lib/webapp-manager/webapp-manager.py:406
+=======
+<<<<<<< HEAD
+#: usr/lib/webapp-manager/webapp-manager.py:316
+=======
+#: usr/lib/webapp-manager/webapp-manager.py:315
+>>>>>>> Added support for Private Browsing mode for firefox.
+#: usr/lib/webapp-manager/webapp-manager.py:346
+#: usr/lib/webapp-manager/webapp-manager.py:402
+>>>>>>> 6367039... Added support for Private Browsing mode for firefox.
 msgid "Add a New Web App"
 msgstr ""
 
