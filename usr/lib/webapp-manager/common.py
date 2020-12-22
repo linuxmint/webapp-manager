@@ -61,9 +61,6 @@ class WebAppLauncher():
         self.codename = codename
         self.name = None
         self.icon = None
-        self.profile = None
-        self.is_webapp = False
-        self.is_isolated = False
         self.is_valid = False
         self.exec = None
         self.category = None
@@ -73,9 +70,9 @@ class WebAppLauncher():
         with open(path) as desktop_file:
             for line in desktop_file:
                 line = line.strip()
-                
-                # Identify if the app is a webapp
-                if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
+
+                # Identify if the app is a webapp (we use ICE-SSB to keep compatibility with ICE)
+                if "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
                     is_webapp = True
                     continue
                 
@@ -94,13 +91,6 @@ class WebAppLauncher():
                 if "Categories=" in line:
                     self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
                     continue
-
-                if "IceFirefox=" in line:
-                    self.profile = line.replace('IceFirefox=', '')
-
-                elif "X-ICE-SSB-Profile=" in line:
-                    self.profile = line.replace('X-ICE-SSB-Profile=', '')
-                    self.is_isolated = True
 
         if is_webapp and self.name != None and self.icon != None:
             self.is_valid = True
