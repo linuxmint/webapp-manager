@@ -64,14 +64,15 @@ class WebAppLauncher():
         self.is_valid = False
         self.exec = None
         self.category = None
+        self.url = None
 
         is_webapp = False
         with open(path) as desktop_file:
             for line in desktop_file:
                 line = line.strip()
 
-                # Identify if the app is a webapp (we use ICE-SSB to keep compatibility with ICE)
-                if "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
+                # Identify if the app is a webapp
+                if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
                     is_webapp = True
                     continue
 
@@ -89,6 +90,10 @@ class WebAppLauncher():
 
                 if "Categories=" in line:
                     self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
+                    continue
+
+                if "X-WebApp-URL=" in line:
+                    self.url = line.replace("X-WebApp-URL=", "")
                     continue
 
         if is_webapp and self.name != None and self.icon != None:
@@ -158,10 +163,9 @@ class WebAppManager():
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
                 desktop_file.write("Exec=" + browser.exec_path +
-                                    " --class ICE-SSB-" + codename +
+                                    " --class WebApp-" + codename +
                                     " --profile " + firefox_profile_path +
                                     " --no-remote " + url + "\n")
-                desktop_file.write("IceFirefox=%s\n" % codename)
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
@@ -173,20 +177,18 @@ class WebAppManager():
                                     " --application-mode " +
                                     " --profile=\"" + epiphany_profile_path + "\"" +
                                     " " + url + "\n")
-                desktop_file.write("IceEpiphany=%s\n" %codename)
             else:
                 # Chromium based
                 if isolate_profile:
                     profile_path = os.path.join(PROFILES_DIR, codename)
                     desktop_file.write("Exec=" + browser.exec_path +
                                         " --app=" + url +
-                                        " --class=ICE-SSB-" + codename +
+                                        " --class=WebApp-" + codename +
                                         " --user-data-dir=" + profile_path + "\n")
-                    desktop_file.write("X-ICE-SSB-Profile=%s\n" % codename)
                 else:
                     desktop_file.write("Exec=" + browser.exec_path +
                                         " --app=" + url +
-                                        " --class=ICE-SSB-" + codename + "\n")
+                                        " --class=WebApp-" + codename + "\n")
 
             desktop_file.write("Terminal=false\n")
             desktop_file.write("X-MultipleArgs=false\n")
@@ -194,8 +196,13 @@ class WebAppManager():
             desktop_file.write("Icon=%s\n" % icon)
             desktop_file.write("Categories=GTK;%s;\n" % category)
             desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
-            desktop_file.write("StartupWMClass=ICE-SSB-%s\n" % codename)
+            desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
             desktop_file.write("StartupNotify=true\n")
+            desktop_file.write("X-WebApp-URL=%s\n" % url)
+            if isolate_profile:
+                desktop_file.write("X-WebApp-Isolated=true\n")
+            else:
+                desktop_file.write("X-WebApp-Isolated=false\n")
 
             if browser.browser_type == BROWSER_TYPE_EPIPHANY:
                 # Move the desktop file and create a symlink
