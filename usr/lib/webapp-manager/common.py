@@ -62,7 +62,6 @@ class WebAppLauncher():
         self.icon = None
         self.profile = None
         self.is_webapp = False
-        self.is_firefox = False
         self.is_isolated = False
         self.is_valid = False
         self.exec = None
@@ -95,7 +94,6 @@ class WebAppLauncher():
 
                 if "IceFirefox=" in line:
                     self.profile = line.replace('IceFirefox=', '')
-                    self.is_firefox = True
 
                 elif "X-ICE-SSB-Profile=" in line:
                     self.profile = line.replace('X-ICE-SSB-Profile=', '')
