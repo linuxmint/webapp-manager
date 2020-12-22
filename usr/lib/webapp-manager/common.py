@@ -64,7 +64,7 @@ class WebAppLauncher():
         self.is_valid = False
         self.exec = None
         self.category = None
-        self.url = None
+        self.url = ""
 
         is_webapp = False
         with open(path) as desktop_file:
