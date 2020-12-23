@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 webapp-manager (1.1.1) ulyssa; urgency=medium
 
   * Don't let user click the add button if no supported browsers are detected
@@ -24,10 +23,6 @@ webapp-manager (1.0.9) ulyssa; urgency=medium
 
  -- Clement Lefebvre <root@linuxmint.com>  Wed, 23 Dec 2020 15:35:39 +0000
 
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 6367039... Added support for Private Browsing mode for firefox.
 webapp-manager (1.0.8) ulyssa; urgency=medium
 
   [ Clement Lefebvre ]
@@ -55,10 +50,6 @@ webapp-manager (1.0.8) ulyssa; urgency=medium
 
  -- Clement Lefebvre <root@linuxmint.com>  Tue, 22 Dec 2020 13:06:10 +0000
 
-<<<<<<< HEAD
-=======
->>>>>>> Added support for Private Browsing mode for firefox.
->>>>>>> 6367039... Added support for Private Browsing mode for firefox.
 webapp-manager (1.0.7) ulyssa; urgency=medium
 
   * l10n: Update translations
@@ -171,4 +162,4 @@ webapp-manager (1.0.1) ulyana; urgency=medium
   * Initial release
 
  -- Clement Lefebvre <root@linuxmint.com>  Sat, 15 Aug 2020 10:24:00 +0100
-
+ 
