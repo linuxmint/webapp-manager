@@ -1,3 +1,9 @@
+webapp-manager (1.0.9) ulyssa; urgency=medium
+
+  * Improve icon guessing
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 23 Dec 2020 15:35:39 +0000
+
 webapp-manager (1.0.8) ulyssa; urgency=medium
 
   [ Clement Lefebvre ]
