@@ -313,11 +313,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
-<<<<<<< HEAD
-                    <property name="top_attach">7</property>
-=======
                     <property name="top_attach">8</property>
->>>>>>> Added support for Private Browsing mode for firefox.
                   </packing>
                 </child>
                 <child>
@@ -467,8 +463,6 @@
                   </packing>
                 </child>
                 <child>
-<<<<<<< HEAD
-=======
                   <object class="GtkSwitch" id="privatewindow_switch">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -494,7 +488,6 @@
                   </packing>
                 </child>
                 <child>
->>>>>>> Added support for Private Browsing mode for firefox.
                   <placeholder/>
                 </child>
                 <child>
