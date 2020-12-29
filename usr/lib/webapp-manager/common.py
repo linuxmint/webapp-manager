@@ -164,10 +164,10 @@ class WebAppManager():
                 # Firefox based
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-                desktop_file.write("Exec=" + browser.exec_path +
+                desktop_file.write("Exec=sh -c 'XAPP_WEBAPP_ICON=" + icon + " " + browser.exec_path +
                                     " --class WebApp-" + codename +
                                     " --profile " + firefox_profile_path +
-                                    " --no-remote " + url + "\n")
+                                    " --no-remote " + url + "'\n")
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
