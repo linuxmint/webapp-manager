@@ -1,3 +1,14 @@
+webapp-manager (1.1.0) ulyssa; urgency=medium
+
+  [ Clement Lefebvre ]
+  * l10n: Update translations
+  * l10n: Update files
+
+  [ Michael Webster ]
+  * Override the icon for firefox webapps (otherwise it gets them wrong (#49)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat, 02 Jan 2021 18:37:31 +0000
+
 webapp-manager (1.0.9) ulyssa; urgency=medium
 
   * Improve icon guessing
