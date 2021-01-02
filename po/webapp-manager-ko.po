@@ -7,98 +7,102 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-12-02 15:02+0000\n"
-"PO-Revision-Date: 2020-09-23 08:08+0000\n"
-"Last-Translator: Jongwon Kim <nanpa777@hanmail.net>\n"
+"POT-Creation-Date: 2020-12-22 13:05+0000\n"
+"PO-Revision-Date: 2020-12-14 22:56+0000\n"
+"Last-Translator: Changmin Jang <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2020-12-10 10:32+0000\n"
-"X-Generator: Launchpad (build 4853cb86c14c5a9e513816c8a61121c639b30835)\n"
+"X-Launchpad-Export-Date: 2021-01-02 14:19+0000\n"
+"X-Generator: Launchpad (build 34b3ffd45c9543b7f7aa5aa313925241e9e7ca3f)\n"
+
+#: usr/lib/webapp-manager/common.py:161 usr/lib/webapp-manager/common.py:222
+msgid "Web App"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
-#: usr/lib/webapp-manager/webapp-manager.py:213
-#: usr/lib/webapp-manager/webapp-manager.py:220 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:212
+#: usr/lib/webapp-manager/webapp-manager.py:219 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr ""
+msgstr "웹 앱"
 
-#: usr/lib/webapp-manager/webapp-manager.py:122
+#: usr/lib/webapp-manager/webapp-manager.py:121
 msgid "Keyboard Shortcuts"
 msgstr "키보드 단축키"
 
-#: usr/lib/webapp-manager/webapp-manager.py:129
-#: usr/lib/webapp-manager/webapp-manager.py:219
+#: usr/lib/webapp-manager/webapp-manager.py:128
+#: usr/lib/webapp-manager/webapp-manager.py:218
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr "정보"
 
-#: usr/lib/webapp-manager/webapp-manager.py:134
+#: usr/lib/webapp-manager/webapp-manager.py:133
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr ""
+msgstr "나가기"
 
-#: usr/lib/webapp-manager/webapp-manager.py:165
+#: usr/lib/webapp-manager/webapp-manager.py:164
 msgid "Internet"
 msgstr "인터넷"
 
-#: usr/lib/webapp-manager/webapp-manager.py:166 generate_desktop_files:48
+#: usr/lib/webapp-manager/webapp-manager.py:165 generate_desktop_files:48
 msgid "Web"
 msgstr "웹"
 
-#: usr/lib/webapp-manager/webapp-manager.py:167
+#: usr/lib/webapp-manager/webapp-manager.py:166
 msgid "Accessories"
 msgstr "보조 프로그램"
 
-#: usr/lib/webapp-manager/webapp-manager.py:168
+#: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Games"
 msgstr "게임"
 
-#: usr/lib/webapp-manager/webapp-manager.py:169
+#: usr/lib/webapp-manager/webapp-manager.py:168
 msgid "Graphics"
 msgstr "그래픽"
 
-#: usr/lib/webapp-manager/webapp-manager.py:170
+#: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Office"
 msgstr "오피스"
 
-#: usr/lib/webapp-manager/webapp-manager.py:171
+#: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Sound & Video"
 msgstr "음악과 비디오"
 
-#: usr/lib/webapp-manager/webapp-manager.py:172
+#: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Programming"
 msgstr "프로그래밍"
 
-#: usr/lib/webapp-manager/webapp-manager.py:173
+#: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Education"
-msgstr ""
+msgstr "교육"
 
-#: usr/lib/webapp-manager/webapp-manager.py:221
-#: usr/lib/webapp-manager/webapp-manager.py:488 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:220
+#: usr/lib/webapp-manager/webapp-manager.py:486 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr ""
+msgstr "앱처럼 웹 사이트 실행"
 
-#: usr/lib/webapp-manager/webapp-manager.py:316
+#: usr/lib/webapp-manager/webapp-manager.py:315
 #: usr/lib/webapp-manager/webapp-manager.py:346
 #: usr/lib/webapp-manager/webapp-manager.py:402
 msgid "Add a New Web App"
-msgstr ""
+msgstr "새로운 웹 앱 추가"
 
 #: usr/lib/webapp-manager/webapp-manager.py:336
 msgid "Edit Web App"
-msgstr ""
+msgstr "웹 앱 편집"
 
 #: usr/lib/webapp-manager/webapp-manager.py:378
 msgid "Choose an icon"
-msgstr ""
+msgstr "아이콘 선택"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr ""
+msgstr "웹 앱 관리"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
@@ -108,7 +112,7 @@ msgstr "추가"
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr ""
+msgstr "삭제"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
@@ -150,24 +154,24 @@ msgstr "확인"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr ""
+msgstr "온라인에서 아이콘 찾기"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr ""
+msgstr "카테고리:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr ""
+msgstr "브라우저:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr ""
+msgstr "이 옵션을 사용하면 웹 사이트가 자체 브라우저 프로파일로 실행됩니다."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr ""
+msgstr "분리된 프로파일:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
