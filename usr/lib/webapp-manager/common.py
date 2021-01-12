@@ -236,7 +236,6 @@ class WebAppManager():
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
 
-import bs4
 import sys
 import urllib.error
 import urllib.parse
@@ -299,6 +298,7 @@ def download_favicon(url):
     try:
         response = requests.get(url, timeout=3)
         if response != None:
+            import bs4
             soup = bs4.BeautifulSoup(response.content, "html.parser")
 
             # icons defined in the HTML
