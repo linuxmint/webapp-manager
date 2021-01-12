@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-22 13:05+0000\n"
+"POT-Creation-Date: 2021-01-12 11:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,8 @@ msgid "Web App"
 msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
-#: usr/lib/webapp-manager/webapp-manager.py:212
-#: usr/lib/webapp-manager/webapp-manager.py:219 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:216
+#: usr/lib/webapp-manager/webapp-manager.py:223 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
@@ -34,7 +34,7 @@ msgid "Keyboard Shortcuts"
 msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:128
-#: usr/lib/webapp-manager/webapp-manager.py:218
+#: usr/lib/webapp-manager/webapp-manager.py:222
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr ""
@@ -80,15 +80,19 @@ msgstr ""
 msgid "Education"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:220
-#: usr/lib/webapp-manager/webapp-manager.py:486 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:194
+msgid "No supported browsers were detected."
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:224
+#: usr/lib/webapp-manager/webapp-manager.py:494 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:315
-#: usr/lib/webapp-manager/webapp-manager.py:346
-#: usr/lib/webapp-manager/webapp-manager.py:402
+#: usr/lib/webapp-manager/webapp-manager.py:319
+#: usr/lib/webapp-manager/webapp-manager.py:350
+#: usr/lib/webapp-manager/webapp-manager.py:406
 msgid "Add a New Web App"
 msgstr ""
 
