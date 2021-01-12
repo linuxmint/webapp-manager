@@ -190,6 +190,10 @@ class WebAppManagerWindow():
         self.browser_combo.add_attribute(renderer, "text", BROWSER_NAME)
         self.browser_combo.set_model(browser_model)
         self.browser_combo.set_active(0) # Select 1st browser
+        if num_browsers == 0:
+        	print ("No supported browsers were detected.")
+        	self.add_button.set_sensitive(False)
+        	self.add_button.set_tooltip_text(_("No supported browsers were detected."))
         if (num_browsers < 2):
             self.browser_label.hide()
             self.browser_combo.hide()
