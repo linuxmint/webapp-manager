@@ -135,6 +135,7 @@ class WebAppManager():
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chrome", "google-chrome", "/usr/bin/google-chrome-stable"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium", "chromium", "/usr/bin/chromium"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium (chromium-browser)", "chromium-browser", "/usr/bin/chromium-browser"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium (Snap)", "chromium", "/snap/bin/chromium"))
         browsers.append(Browser(BROWSER_TYPE_EPIPHANY, "Epiphany", "epiphany", "/usr/bin/epiphany-browser"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi", "vivaldi", "/usr/bin/vivaldi-stable"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Microsoft Edge", "microsoft-edge", "/usr/bin/microsoft-edge"))
