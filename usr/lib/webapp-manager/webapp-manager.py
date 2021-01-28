@@ -190,6 +190,10 @@ class WebAppManagerWindow():
         self.browser_combo.add_attribute(renderer, "text", BROWSER_NAME)
         self.browser_combo.set_model(browser_model)
         self.browser_combo.set_active(0) # Select 1st browser
+        if num_browsers == 0:
+        	print ("No supported browsers were detected.")
+        	self.add_button.set_sensitive(False)
+        	self.add_button.set_tooltip_text(_("No supported browsers were detected."))
         if (num_browsers < 2):
             self.browser_label.hide()
             self.browser_combo.hide()
@@ -320,7 +324,7 @@ class WebAppManagerWindow():
         self.edit_mode = False
         self.toggle_ok_sensitivity()
         self.name_entry.grab_focus()
-
+        
     def on_edit_button(self, widget):
         if self.selected_webapp != None:
             self.name_entry.set_text(self.selected_webapp.name)
@@ -445,6 +449,8 @@ class WebAppManagerWindow():
         if url != "":
             info = tldextract.extract(url)
             icon = None
+            if info.domain == None or info.domain == "":
+                return
             if info.domain == "google" and info.subdomain != None and info.subdomain != "":
                 if info.subdomain == "mail":
                     icon = "web-%s-gmail" % info.domain
@@ -454,10 +460,12 @@ class WebAppManagerWindow():
                 icon = "web-google-gmail"
             elif info.domain == "youtube":
                 icon = "web-google-youtube"
-            elif info.domain != None and info.domain != "":
-                icon = "web-%s" % info.domain
             if icon != None and self.icon_theme.has_icon(icon):
                 self.icon_chooser.set_icon(icon)
+            elif self.icon_theme.has_icon("web-%s" % info.domain):
+                self.icon_chooser.set_icon("web-%s" % info.domain)
+            elif self.icon_theme.has_icon(info.domain):
+                self.icon_chooser.set_icon(info.domain)
 
     def load_webapps(self):
         # Clear treeview and selection

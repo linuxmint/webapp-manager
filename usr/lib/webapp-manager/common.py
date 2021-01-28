@@ -165,16 +165,16 @@ class WebAppManager():
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
                 if privatewindow:
-                    desktop_file.write("Exec=" + browser.exec_path +
+                    desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
                                         " --private-window" +
                                         " --class WebApp-" + codename +
                                         " --profile " + firefox_profile_path +
-                                        " --no-remote " + url + "\n")
+                                    " --no-remote " + url + "'\n")
                 else:
-                    desktop_file.write("Exec=" + browser.exec_path +
+                    desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
                                         " --class WebApp-" + codename +
                                         " --profile " + firefox_profile_path +
-                                        " --no-remote " + url + "\n")
+                                    " --no-remote " + url + "'\n")
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
@@ -243,7 +243,6 @@ class WebAppManager():
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
 
-import bs4
 import sys
 import urllib.error
 import urllib.parse
@@ -306,6 +305,7 @@ def download_favicon(url):
     try:
         response = requests.get(url, timeout=3)
         if response != None:
+            import bs4
             soup = bs4.BeautifulSoup(response.content, "html.parser")
 
             # icons defined in the HTML
