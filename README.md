@@ -34,3 +34,12 @@ How to add extensions in Firefox (AdBlock etc.)?
 Press and release the `Alt` key to show the main menubar.
 
 You can then reach the `Add-Ons` from the `Tool` menu.
+
+How to add extensions in Chromium based browsers (AdBlock etc.)?
+----------------------------------------------------------------
+
+Press `ctrl+N` to open a new window.
+
+Navigate to https://chrome.google.com/webstore/category/extensions
+
+Now add the extension.
