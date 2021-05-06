@@ -89,6 +89,8 @@ class WebAppManagerWindow():
         self.isolated_label = self.builder.get_object("isolated_label")
         self.navbar_switch = self.builder.get_object("navbar_switch")
         self.navbar_label = self.builder.get_object("navbar_label")
+        self.privatewindow_switch = self.builder.get_object("privatewindow_switch")
+        self.privatewindow_label = self.builder.get_object("privatewindow_label")
         self.spinner = self.builder.get_object("spinner")
         self.favicon_stack = self.builder.get_object("favicon_stack")
         self.browser_combo = self.builder.get_object("browser_combo")
@@ -97,7 +99,8 @@ class WebAppManagerWindow():
         # Widgets which are in the add page but not the edit page
         self.add_specific_widgets = [self.browser_label, self.browser_combo,
                                      self.isolated_label, self.isolated_switch,
-                                     self.navbar_label, self.navbar_switch]
+                                     self.navbar_label, self.navbar_switch,
+                                     self.privatewindow_label, self.privatewindow_switch]
 
         # Widget signals
         self.add_button.connect("clicked", self.on_add_button)
@@ -290,6 +293,7 @@ class WebAppManagerWindow():
         url = self.get_url()
         isolate_profile = self.isolated_switch.get_active()
         navbar = self.navbar_switch.get_active()
+        privatewindow = self.privatewindow_switch.get_active()
         icon = self.icon_chooser.get_icon()
         if "/tmp" in icon:
             # If the icon path is in /tmp, move it.
@@ -301,7 +305,7 @@ class WebAppManagerWindow():
             self.manager.edit_webapp(self.selected_webapp.path, name, url, icon, category)
             self.load_webapps()
         else:
-            self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar)
+            self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar, privatewindow)
             self.load_webapps()
 
     def on_add_button(self, widget):
@@ -312,6 +316,7 @@ class WebAppManagerWindow():
         self.browser_combo.set_active(0)
         self.isolated_switch.set_active(True)
         self.navbar_switch.set_active(False)
+        self.privatewindow_switch.set_active(False)
         for widget in self.add_specific_widgets:
             widget.show()
         self.show_hide_browser_widgets()
@@ -415,11 +420,15 @@ class WebAppManagerWindow():
             self.isolated_switch.hide()
             self.navbar_label.show()
             self.navbar_switch.show()
+            self.privatewindow_label.show()
+            self.privatewindow_switch.show()
         else:
             self.isolated_label.show()
             self.isolated_switch.show()
             self.navbar_label.hide()
             self.navbar_switch.hide()
+            self.privatewindow_label.show()
+            self.privatewindow_switch.show()
 
     def on_name_entry(self, widget):
         self.toggle_ok_sensitivity()

@@ -152,7 +152,7 @@ class WebAppManager():
         if os.path.exists(webapp.path):
             os.remove(webapp.path)
 
-    def create_webapp(self, name, url, icon, category, browser, isolate_profile=True, navbar=False):
+    def create_webapp(self, name, url, icon, category, browser, isolate_profile=True, navbar=False, privatewindow=False):
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
         random_code =  ''.join(choice(string.digits) for _ in range(4))
         codename = "".join(filter(str.isalpha, name)) + random_code
@@ -168,10 +168,13 @@ class WebAppManager():
                 # Firefox based
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-                desktop_file.write("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
                                     " --class WebApp-" + codename +
                                     " --profile " + firefox_profile_path +
-                                    " --no-remote " + url + "'\n")
+                                    " --no-remote ")
+                if privatewindow:
+                    exec_string += "--private-window "
+                desktop_file.write(exec_string + url + "'\n")
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
@@ -187,14 +190,22 @@ class WebAppManager():
                 # Chromium based
                 if isolate_profile:
                     profile_path = os.path.join(PROFILES_DIR, codename)
-                    desktop_file.write("Exec=" + browser.exec_path +
+                    exec_string = ("Exec=" + browser.exec_path +
                                         " --app=" + url +
                                         " --class=WebApp-" + codename +
-                                        " --user-data-dir=" + profile_path + "\n")
+                                        " --user-data-dir=" + profile_path)
                 else:
-                    desktop_file.write("Exec=" + browser.exec_path +
+                    exec_string = ("Exec=" + browser.exec_path +
                                         " --app=" + url +
-                                        " --class=WebApp-" + codename + "\n")
+                                        " --class=WebApp-" + codename)
+                
+                if privatewindow:
+                    if browser.name == "Microsoft Edge":
+                        exec_string += " --inprivate"
+                    else:
+                        exec_string += " --incognito"
+                
+                desktop_file.write(exec_string + "\n")
 
             desktop_file.write("Terminal=false\n")
             desktop_file.write("X-MultipleArgs=false\n")
