@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 17:34+0100\n"
+"POT-Creation-Date: 2021-06-10 19:15+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,22 +85,30 @@ msgid "No supported browsers were detected."
 msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:227
-#: usr/lib/webapp-manager/webapp-manager.py:503 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:522 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:324
-#: usr/lib/webapp-manager/webapp-manager.py:355
-#: usr/lib/webapp-manager/webapp-manager.py:411
+#: usr/lib/webapp-manager/webapp-manager.py:286
+msgid "Are you sure you want to delete webapp \""
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:288
+msgid "If you delete this webapp, it will be permanently lost."
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:343
+#: usr/lib/webapp-manager/webapp-manager.py:374
+#: usr/lib/webapp-manager/webapp-manager.py:430
 msgid "Add a New Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:345
+#: usr/lib/webapp-manager/webapp-manager.py:364
 msgid "Edit Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:387
+#: usr/lib/webapp-manager/webapp-manager.py:406
 msgid "Choose an icon"
 msgstr ""
 
