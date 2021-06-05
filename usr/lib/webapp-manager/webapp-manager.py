@@ -274,7 +274,26 @@ class WebAppManagerWindow():
 
     def on_remove_button(self, widget):
         if self.selected_webapp != None:
-            self.manager.delete_webbapp(self.selected_webapp)
+            confrmdlg = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
+            confrmdlg.set_transient_for(self.window)
+            confrmdlg.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_DELETE, Gtk.ResponseType.YES)
+            
+            icon = GdkPixbuf.Pixbuf.new_from_file(self.selected_webapp.icon)
+            confrmdlg.set_icon(icon)
+            confrmdlg.set_title(self.selected_webapp.name)
+            
+            # Warning message
+            confrmtext = "Are you sure you want to delete webapp \"" + self.selected_webapp.name + "\"?"
+            confrmdlg.set_property("text", confrmtext)
+            confrmdlg.format_secondary_text("If you delete this webapp, it will be permanently lost.")
+            
+            # run confrimation dialog
+            confrmdlg.show()
+            response = confrmdlg.run()
+            if response == Gtk.ResponseType.YES:
+                self.manager.delete_webbapp(self.selected_webapp)
+            
+            confrmdlg.destroy()
             self.load_webapps()
 
     def run_webapp(self, webapp):
