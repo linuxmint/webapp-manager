@@ -29,12 +29,12 @@ xapps-common
 ## How to Build/install
 ### Debian/Ubuntu based systems:
 1. Install dependencies:
-``` 
-sudo apt install gir1.2-xapp-1.0 python3 python3-bs4 python3-configobj \
-python3-gi python3-setproctitle python3-tldextract xapps-common
-```
+	``` 
+	sudo apt install gir1.2-xapp-1.0 python3 python3-bs4 python3-configobj \
+	python3-gi python3-setproctitle python3-tldextract xapps-common
+	```
 
-2. There are two ways this app can be installed/used:
+2. There are two methods, this app can be installed/used:
 	1. **Option 1:** Manually copy necessary files to root (`/`)
 		1. [**Optional**] To make translations/locales in languages other than **English**, run:
 			```
@@ -43,11 +43,15 @@ python3-gi python3-setproctitle python3-tldextract xapps-common
 			from the `/path/to/repo` in a terminal. It will create the translations/locales in `usr/share/locale`.
 		
 		2. Copy the contents of `etc` and `usr` to `/etc/` and `/usr/` respectively:
-		```
-		sudo cp -R usr etc /
-		```
-		3. Run `webapp-manager` from terminal or use the `webapp-manager.desktop`.
-
+			```
+			sudo cp -R usr etc /
+			```
+		3. Compile `schemas` using:
+			```
+			glib-compile-schemas /usr/share/glib-2.0/schemas
+			```
+		4. Run `webapp-manager` from terminal or use the `webapp-manager.desktop`.
+	
 	2. **Option 2:** To build a *.deb package on your own, from the `/path/to/repo` run:
 		```
 		dpkg-buildpackage --no-sign
