@@ -2,8 +2,8 @@
 Type=Directory
 Name=Web
 Name[am]=ዌብ
+Name[be]=Вэб
 Name[cy]=Gwe
-Name[da]=Internet
 Name[de]=Internet
 Name[el]=Ιστός
 Name[eo]=Reto
@@ -16,6 +16,7 @@ Name[is]=Vefur
 Name[ja]=ウェブ
 Name[kn]=ಜಾಲ
 Name[ko]=웹
+Name[la]=Interrete
 Name[lt]=Saitynas
 Name[pl]=Internet
 Name[pt_BR]=Internet
