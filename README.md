@@ -21,6 +21,7 @@ python3
 python3-bs4
 python3-configobj
 python3-gi
+python3-pil
 python3-setproctitle
 python3-tldextract
 xapps-common
@@ -31,7 +32,7 @@ xapps-common
 1. Install dependencies:
 	``` 
 	sudo apt install gir1.2-xapp-1.0 python3 python3-bs4 python3-configobj \
-	python3-gi python3-setproctitle python3-tldextract xapps-common
+	python3-gi python3-pil python3-setproctitle python3-tldextract xapps-common
 	```
 
 2. There are two methods, this app can be installed/used:
@@ -48,7 +49,7 @@ xapps-common
 			```
 		3. Compile `schemas` using:
 			```
-			glib-compile-schemas /usr/share/glib-2.0/schemas
+			sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 			```
 		4. Run `webapp-manager` from terminal or use the `webapp-manager.desktop`.
 	
