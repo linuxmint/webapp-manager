@@ -7,96 +7,100 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-12-22 13:05+0000\n"
-"PO-Revision-Date: 2020-12-22 15:34+0000\n"
+"POT-Creation-Date: 2021-06-03 17:34+0100\n"
+"PO-Revision-Date: 2021-06-04 12:51+0000\n"
 "Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2021-01-02 14:19+0000\n"
-"X-Generator: Launchpad (build 34b3ffd45c9543b7f7aa5aa313925241e9e7ca3f)\n"
+"X-Launchpad-Export-Date: 2021-06-09 14:22+0000\n"
+"X-Generator: Launchpad (build b45bdbe3a00b6b668fa7f2069bd545c35c41f7f4)\n"
 
-#: usr/lib/webapp-manager/common.py:161 usr/lib/webapp-manager/common.py:222
+#: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
 msgid "Web App"
 msgstr "Web-App"
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
-#: usr/lib/webapp-manager/webapp-manager.py:212
-#: usr/lib/webapp-manager/webapp-manager.py:219 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:219
+#: usr/lib/webapp-manager/webapp-manager.py:226 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr "Webapps"
 
-#: usr/lib/webapp-manager/webapp-manager.py:121
+#: usr/lib/webapp-manager/webapp-manager.py:124
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkombinationen"
 
-#: usr/lib/webapp-manager/webapp-manager.py:128
-#: usr/lib/webapp-manager/webapp-manager.py:218
+#: usr/lib/webapp-manager/webapp-manager.py:131
+#: usr/lib/webapp-manager/webapp-manager.py:225
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr "Über"
 
-#: usr/lib/webapp-manager/webapp-manager.py:133
+#: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr "Verlassen"
 
-#: usr/lib/webapp-manager/webapp-manager.py:164
+#: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Internet"
 msgstr "Internet"
 
-#: usr/lib/webapp-manager/webapp-manager.py:165 generate_desktop_files:48
+#: usr/lib/webapp-manager/webapp-manager.py:168 generate_desktop_files:48
 msgid "Web"
 msgstr "Internet"
 
-#: usr/lib/webapp-manager/webapp-manager.py:166
+#: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Accessories"
 msgstr "Zubehör"
 
-#: usr/lib/webapp-manager/webapp-manager.py:167
+#: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Games"
 msgstr "Spiele"
 
-#: usr/lib/webapp-manager/webapp-manager.py:168
+#: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Graphics"
 msgstr "Bildbearbeitung"
 
-#: usr/lib/webapp-manager/webapp-manager.py:169
+#: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Office"
 msgstr "Büro"
 
-#: usr/lib/webapp-manager/webapp-manager.py:170
+#: usr/lib/webapp-manager/webapp-manager.py:173
 msgid "Sound & Video"
 msgstr "Töne und Video"
 
-#: usr/lib/webapp-manager/webapp-manager.py:171
+#: usr/lib/webapp-manager/webapp-manager.py:174
 msgid "Programming"
 msgstr "Programmierung"
 
-#: usr/lib/webapp-manager/webapp-manager.py:172
+#: usr/lib/webapp-manager/webapp-manager.py:175
 msgid "Education"
 msgstr "Bildung"
 
-#: usr/lib/webapp-manager/webapp-manager.py:220
-#: usr/lib/webapp-manager/webapp-manager.py:486 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:197
+msgid "No supported browsers were detected."
+msgstr "Es wurden keine unterstützten Browser entdeckt."
+
+#: usr/lib/webapp-manager/webapp-manager.py:227
+#: usr/lib/webapp-manager/webapp-manager.py:503 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr "Webseiten wie Anwendungen ausführen"
 
-#: usr/lib/webapp-manager/webapp-manager.py:315
-#: usr/lib/webapp-manager/webapp-manager.py:346
-#: usr/lib/webapp-manager/webapp-manager.py:402
+#: usr/lib/webapp-manager/webapp-manager.py:324
+#: usr/lib/webapp-manager/webapp-manager.py:355
+#: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Add a New Web App"
 msgstr "Eine neue Webanwendung hinzufügen"
 
-#: usr/lib/webapp-manager/webapp-manager.py:336
+#: usr/lib/webapp-manager/webapp-manager.py:345
 msgid "Edit Web App"
 msgstr "Web-App bearbeiten"
 
-#: usr/lib/webapp-manager/webapp-manager.py:378
+#: usr/lib/webapp-manager/webapp-manager.py:387
 msgid "Choose an icon"
 msgstr "Bitte Symbol auswählen"
 
@@ -178,6 +182,10 @@ msgstr "Isoliertes Profil:"
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
 msgstr "Navigationsleiste:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:20
+msgid "Private/Incognito Window:"
+msgstr "Privates/Inkognito-Fenster:"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
