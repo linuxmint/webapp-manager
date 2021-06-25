@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2021-06-03 17:34+0100\n"
-"PO-Revision-Date: 2021-06-04 02:00+0000\n"
-"Last-Translator: Gilberto vagner <vagner.unix@gmail.com>\n"
+"PO-Revision-Date: 2021-06-23 18:28+0000\n"
+"Last-Translator: Wellington Oliveira dos Santos <welblade@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2021-06-09 14:22+0000\n"
-"X-Generator: Launchpad (build b45bdbe3a00b6b668fa7f2069bd545c35c41f7f4)\n"
+"X-Launchpad-Export-Date: 2021-06-25 10:43+0000\n"
+"X-Generator: Launchpad (build 40cc6dba4163ba9ca785b26ad91f43c87d70ba4d)\n"
 
 #: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
 msgid "Web App"
@@ -102,7 +102,7 @@ msgstr "Editar aplicativo web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:387
 msgid "Choose an icon"
-msgstr "Escolha um ícone"
+msgstr "Escolher um ícone"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
