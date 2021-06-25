@@ -1,3 +1,10 @@
+webapp-manager (1.1.5) uma; urgency=medium
+
+  * l10n: Update translations
+  * l10n: Generate files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 25 Jun 2021 14:52:19 +0100
+
 webapp-manager (1.1.4) uma; urgency=medium
 
   [ Himadri Sekhar Basu ]
