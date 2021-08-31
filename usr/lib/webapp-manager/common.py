@@ -60,6 +60,7 @@ class WebAppLauncher():
     def __init__(self, path, codename):
         self.path = path
         self.codename = codename
+        self.webbrowser = None
         self.name = None
         self.icon = None
         self.is_valid = False
@@ -91,6 +92,10 @@ class WebAppLauncher():
 
                 if "Categories=" in line:
                     self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
+                    continue
+                
+                if "X-WebApp-Browser=" in line:
+                    self.webbrowser = line.replace("X-WebApp-Browser=", "")
                     continue
 
                 if "X-WebApp-URL=" in line:
@@ -217,6 +222,7 @@ class WebAppManager():
             desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
             desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
             desktop_file.write("StartupNotify=true\n")
+            desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
             desktop_file.write("X-WebApp-URL=%s\n" % url)
             if isolate_profile:
                 desktop_file.write("X-WebApp-Isolated=true\n")
@@ -230,7 +236,7 @@ class WebAppManager():
                 os.replace(path, new_path)
                 os.symlink(new_path, path)
 
-    def edit_webapp(self, path, name, url, icon, category):
+    def edit_webapp(self, path, name, browser, url, icon, category):
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
@@ -241,11 +247,12 @@ class WebAppManager():
 
         try:
             # This will raise an exception on legacy apps which
-            # have no X-WebApp-URL
+            # have no X-WebApp-URL and X-WebApp-Browser
             old_url = config.get("Desktop Entry", "X-WebApp-URL")
             exec_line = config.get("Desktop Entry", "Exec")
             exec_line = exec_line.replace(old_url, url)
             config.set("Desktop Entry", "Exec", exec_line)
+            config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
             config.set("Desktop Entry", "X-WebApp-URL", url)
         except:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
