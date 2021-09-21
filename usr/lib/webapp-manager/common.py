@@ -155,10 +155,14 @@ class WebAppManager():
 
     def delete_webbapp(self, webapp):
         shutil.rmtree(os.path.join(FIREFOX_PROFILES_DIR, webapp.codename), ignore_errors=True)
-        shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "/epiphany-%s" % webapp.codename), ignore_errors=True)
         shutil.rmtree(os.path.join(PROFILES_DIR, webapp.codename), ignore_errors=True)
+        # first remove symlinks then others
         if os.path.exists(webapp.path):
             os.remove(webapp.path)
+        epiphany_orig_prof_dir=os.path.join(os.path.expanduser("~/.local/share"), "org.gnome.Epiphany.WebApp-" + webapp.codename)
+        if os.path.exists(epiphany_orig_prof_dir):
+            os.remove(epiphany_orig_prof_dir)
+        shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-%s" % webapp.codename), ignore_errors=True)
 
     def create_webapp(self, name, url, icon, category, browser, isolate_profile=True, navbar=False, privatewindow=False):
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
@@ -189,10 +193,13 @@ class WebAppManager():
                     shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css', os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
             elif browser.browser_type == BROWSER_TYPE_EPIPHANY:
                 # Epiphany based
-                epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "epiphany-" + codename)
+                epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
+                # Create symlink of profile dir at ~/.local/share
+                epiphany_orig_prof_dir=os.path.join(os.path.expanduser("~/.local/share"), "org.gnome.Epiphany.WebApp-" + codename)
+                os.symlink(epiphany_profile_path, epiphany_orig_prof_dir)
                 desktop_file.write("Exec=" + browser.exec_path +
                                     " --application-mode " +
-                                    " --profile=\"" + epiphany_profile_path + "\"" +
+                                    " --profile=\"" + epiphany_orig_prof_dir + "\"" +
                                     " " + url + "\n")
             else:
                 # Chromium based
@@ -232,10 +239,17 @@ class WebAppManager():
 
             if browser.browser_type == BROWSER_TYPE_EPIPHANY:
                 # Move the desktop file and create a symlink
-                new_path = os.path.join(epiphany_profile_path, "epiphany-%s.desktop" % codename)
+                new_path = os.path.join(epiphany_profile_path, "org.gnome.Epiphany.WebApp-%s.desktop" % codename)
                 os.makedirs(epiphany_profile_path)
                 os.replace(path, new_path)
                 os.symlink(new_path, path)
+                # copy the icon to profile directory
+                new_icon=os.path.join(epiphany_profile_path, "app-icon.png")
+                shutil.copy(icon, new_icon)
+                # required for app mode. create an empty file .app
+                app_mode_file=os.path.join(epiphany_profile_path, ".app")
+                with open(app_mode_file, 'w') as fp:
+                    pass
 
     def edit_webapp(self, path, name, browser, url, icon, category):
         config = configparser.RawConfigParser()
