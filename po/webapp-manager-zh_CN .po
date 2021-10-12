@@ -1,0 +1,199 @@
+# linuxmint 的中文 (中国大陆) 翻译
+# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2021-06-03 17:34+0100\n"
+"PO-Revision-Date: 2021-06-14 20:56+0000\n"
+"Last-Translator:  gov360 <Unknown>\n"
+"Language-Team: chinese (china) <guangchao.zhao@live.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2021-06-25 10:43+0000\n"
+"X-Generator: Launchpad (build 40cc6dba4163ba9ca785b26ad91f43c87d70ba4d)\n"
+
+#: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
+msgid "Web App"
+msgstr "网络应用p"
+
+#: usr/lib/webapp-manager/webapp-manager.py:69
+#: usr/lib/webapp-manager/webapp-manager.py:219
+#: usr/lib/webapp-manager/webapp-manager.py:226 generate_desktop_files:25
+#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
+#: usr/share/webapp-manager/shortcuts.ui.h:1
+msgid "Web Apps"
+msgstr "网页应用"
+
+#: usr/lib/webapp-manager/webapp-manager.py:124
+msgid "Keyboard Shortcuts"
+msgstr "键盘快捷键"
+
+#: usr/lib/webapp-manager/webapp-manager.py:131
+#: usr/lib/webapp-manager/webapp-manager.py:225
+#: usr/share/webapp-manager/shortcuts.ui.h:8
+msgid "About"
+msgstr "关于"
+
+#: usr/lib/webapp-manager/webapp-manager.py:136
+#: usr/share/webapp-manager/shortcuts.ui.h:10
+msgid "Quit"
+msgstr "退出"
+
+#: usr/lib/webapp-manager/webapp-manager.py:167
+msgid "Internet"
+msgstr "互联网"
+
+#: usr/lib/webapp-manager/webapp-manager.py:168 generate_desktop_files:48
+msgid "Web"
+msgstr "网络"
+
+#: usr/lib/webapp-manager/webapp-manager.py:169
+msgid "Accessories"
+msgstr "附件"
+
+#: usr/lib/webapp-manager/webapp-manager.py:170
+msgid "Games"
+msgstr "游戏"
+
+#: usr/lib/webapp-manager/webapp-manager.py:171
+msgid "Graphics"
+msgstr "图形"
+
+#: usr/lib/webapp-manager/webapp-manager.py:172
+msgid "Office"
+msgstr "办公"
+
+#: usr/lib/webapp-manager/webapp-manager.py:173
+msgid "Sound & Video"
+msgstr "影音"
+
+#: usr/lib/webapp-manager/webapp-manager.py:174
+msgid "Programming"
+msgstr "编程"
+
+#: usr/lib/webapp-manager/webapp-manager.py:175
+msgid "Education"
+msgstr "教育"
+
+#: usr/lib/webapp-manager/webapp-manager.py:197
+msgid "No supported browsers were detected."
+msgstr "未检测到支持的浏览器。"
+
+#: usr/lib/webapp-manager/webapp-manager.py:227
+#: usr/lib/webapp-manager/webapp-manager.py:503 generate_desktop_files:25
+#: generate_desktop_files:39
+msgid "Run websites as if they were apps"
+msgstr "像运行应用程序一样运行网站"
+
+#: usr/lib/webapp-manager/webapp-manager.py:324
+#: usr/lib/webapp-manager/webapp-manager.py:355
+#: usr/lib/webapp-manager/webapp-manager.py:411
+msgid "Add a New Web App"
+msgstr "添加新的Web应用程序"
+
+#: usr/lib/webapp-manager/webapp-manager.py:345
+msgid "Edit Web App"
+msgstr "编辑Web应用程序"
+
+#: usr/lib/webapp-manager/webapp-manager.py:387
+msgid "Choose an icon"
+msgstr "选择一个图标"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:2
+msgid "Manage your Web Apps"
+msgstr "管理您的Web应用程序"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:3
+#: usr/share/webapp-manager/shortcuts.ui.h:2
+msgid "Add"
+msgstr "添加"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:4
+#: usr/share/webapp-manager/shortcuts.ui.h:4
+msgid "Remove"
+msgstr "移除"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:5
+#: usr/share/webapp-manager/shortcuts.ui.h:3
+msgid "Edit"
+msgstr "编辑"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:6
+#: usr/share/webapp-manager/shortcuts.ui.h:5
+msgid "Launch"
+msgstr "启动"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
+msgid "Name:"
+msgstr "名称:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
+msgid "Address:"
+msgstr "地址:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
+msgid "Icon:"
+msgstr "图标:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
+msgid "Website name"
+msgstr "网站名称"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
+msgid "https://www.website.com"
+msgstr "https://www.website.com"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
+msgid "Cancel"
+msgstr "取消"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
+msgid "OK"
+msgstr "好的"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
+msgid "Find icons online"
+msgstr "在线查找图标"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
+msgid "Category:"
+msgstr "类别:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
+msgid "Browser:"
+msgstr "浏览器:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
+msgid ""
+"If this option is enabled the website will run with its own browser profile."
+msgstr ""
+"如果启用此选项，网站将使用自己的浏览器配置文件运行。"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
+msgid "Isolated profile:"
+msgstr "隔离配置文件:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
+msgid "Navigation bar:"
+msgstr "导航栏:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:20
+msgid "Private/Incognito Window:"
+msgstr "私人/匿名窗口:"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:6
+msgid "Other Shortcuts"
+msgstr "其他快捷方式"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:7
+msgid "Go Back"
+msgstr "返回"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:9
+msgid "Shortcuts"
+msgstr "快捷方式"
