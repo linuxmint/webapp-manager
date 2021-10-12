@@ -1,4 +1,4 @@
-# linuxmint 的中文 (中国大陆) 翻译
+# chinese (china) translation for linuxmint
 # Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
 # This file is distributed under the same license as the linuxmint package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2021-06-03 17:34+0100\n"
 "PO-Revision-Date: 2021-06-14 20:56+0000\n"
 "Last-Translator:  gov360 <Unknown>\n"
-"Language-Team: chinese (china) <guangchao.zhao@live.cn>\n"
+"Language-Team: chinese (china) <chinese@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
