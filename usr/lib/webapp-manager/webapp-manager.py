@@ -161,7 +161,7 @@ class WebAppManagerWindow():
         column.set_sort_column_id(COL_BROWSER)
         column.set_resizable(True)
         self.treeview.append_column(column)
-        
+
         self.treeview.show()
         self.model = Gtk.TreeStore(GdkPixbuf.Pixbuf, str, str, object) # icon, name, browser, webapp
         self.model.set_sort_column_id(COL_NAME, Gtk.SortType.ASCENDING)
@@ -281,36 +281,17 @@ class WebAppManagerWindow():
 
     def on_remove_button(self, widget):
         if self.selected_webapp != None:
-            confrmdlg = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
-            confrmdlg.set_transient_for(self.window)
-            confrmdlg.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_DELETE, Gtk.ResponseType.YES)
-            
-            # icon = GdkPixbuf.Pixbuf.new_from_file(self.selected_webapp.icon)
-            if "/" in self.selected_webapp.icon and os.path.exists(self.selected_webapp.icon):
-                    icon = GdkPixbuf.Pixbuf.new_from_file_at_size(self.selected_webapp.icon, -1, 32 * self.window.get_scale_factor())
-            else:
-                if self.icon_theme.has_icon(self.selected_webapp.icon):
-                    icon = self.icon_theme.load_icon(self.selected_webapp.icon, 32 * self.window.get_scale_factor(), 0)
-                else:
-                    icon = self.icon_theme.load_icon("webapp-manager", 32 * self.window.get_scale_factor(), 0)
-            confrmdlg.set_icon(icon)
-            
-            title_txt=_("Delete "+self.selected_webapp.name)
-            confrmdlg.set_title(title_txt)
-            
-            # Warning message
-            confrmtext = _("Are you sure you want to delete webapp \"" + self.selected_webapp.name + "\"?")
-            confrmdlg.set_property("text", confrmtext)
-            confrmdlg.format_secondary_text(_("If you delete this webapp, it will be permanently lost."))
-            
-            # run confrimation dialog
-            confrmdlg.show()
-            response = confrmdlg.run()
-            if response == Gtk.ResponseType.YES:
+            dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
+            dialog.set_transient_for(self.window)
+            dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_DELETE, Gtk.ResponseType.YES)
+            dialog.set_title(_("Delete '%s'") % self.selected_webapp.name)
+            dialog.set_property("text", _("Are you sure you want to delete '%s'?") % self.selected_webapp.name)
+            dialog.format_secondary_text(_("This Web app will be permanently lost."))
+            dialog.show()
+            if dialog.run() == Gtk.ResponseType.YES:
                 self.manager.delete_webbapp(self.selected_webapp)
-            
-            confrmdlg.destroy()
-            self.load_webapps()
+                self.load_webapps()
+            dialog.destroy()
 
     def run_webapp(self, webapp):
         if webapp != None:
@@ -527,7 +508,7 @@ class WebAppManagerWindow():
                 iter = self.model.insert_before(None, None)
                 self.model.set_value(iter, COL_ICON, pixbuf)
                 self.model.set_value(iter, COL_NAME, webapp.name)
-                self.model.set_value(iter, COL_BROWSER, webapp.webbrowser)
+                self.model.set_value(iter, COL_BROWSER, webapp.web_browser)
                 self.model.set_value(iter, COL_WEBAPP, webapp)
 
         # Select the 1st web-app

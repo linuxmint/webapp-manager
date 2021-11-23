@@ -60,7 +60,7 @@ class WebAppLauncher():
     def __init__(self, path, codename):
         self.path = path
         self.codename = codename
-        self.webbrowser = None
+        self.web_browser = None
         self.name = None
         self.icon = None
         self.is_valid = False
@@ -93,9 +93,9 @@ class WebAppLauncher():
                 if "Categories=" in line:
                     self.category = line.replace("Categories=", "").replace("GTK;", "").replace(";", "")
                     continue
-                
+
                 if "X-WebApp-Browser=" in line:
-                    self.webbrowser = line.replace("X-WebApp-Browser=", "")
+                    self.web_browser = line.replace("X-WebApp-Browser=", "")
                     continue
 
                 if "X-WebApp-URL=" in line:
@@ -205,13 +205,13 @@ class WebAppManager():
                     exec_string = ("Exec=" + browser.exec_path +
                                         " --app=" + url +
                                         " --class=WebApp-" + codename)
-                
+
                 if privatewindow:
                     if browser.name == "Microsoft Edge":
                         exec_string += " --inprivate"
                     else:
                         exec_string += " --incognito"
-                
+
                 desktop_file.write(exec_string + "\n")
 
             desktop_file.write("Terminal=false\n")
