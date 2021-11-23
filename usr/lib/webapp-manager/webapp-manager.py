@@ -29,7 +29,7 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
-COL_ICON, COL_NAME, COL_WEBAPP = range(3)
+COL_ICON, COL_NAME, COL_BROWSER, COL_WEBAPP = range(4)
 CATEGORY_ID, CATEGORY_NAME = range(2)
 BROWSER_OBJ, BROWSER_NAME = range(2)
 
@@ -146,17 +146,24 @@ class WebAppManagerWindow():
 
         # Treeview
         self.treeview = self.builder.get_object("webapps_treeview")
+        # Icon column
         renderer = Gtk.CellRendererPixbuf()
-        column = Gtk.TreeViewColumn("", renderer, pixbuf=COL_ICON)
+        column = Gtk.TreeViewColumn(_("Icon"), renderer, pixbuf=COL_ICON)
         column.set_cell_data_func(renderer, self.data_func_surface)
         self.treeview.append_column(column)
-
-        column = Gtk.TreeViewColumn("", Gtk.CellRendererText(), text=COL_NAME)
+        # name column
+        column = Gtk.TreeViewColumn(_("Name"), Gtk.CellRendererText(), text=COL_NAME)
         column.set_sort_column_id(COL_NAME)
         column.set_resizable(True)
         self.treeview.append_column(column)
+        # Base browser
+        column = Gtk.TreeViewColumn(_("Browser"), Gtk.CellRendererText(), text=COL_BROWSER)
+        column.set_sort_column_id(COL_BROWSER)
+        column.set_resizable(True)
+        self.treeview.append_column(column)
+        
         self.treeview.show()
-        self.model = Gtk.TreeStore(GdkPixbuf.Pixbuf, str, object) # icon, name, webapp
+        self.model = Gtk.TreeStore(GdkPixbuf.Pixbuf, str, str, object) # icon, name, browser, webapp
         self.model.set_sort_column_id(COL_NAME, Gtk.SortType.ASCENDING)
         self.treeview.set_model(self.model)
         self.treeview.get_selection().connect("changed", self.on_webapp_selected)
@@ -302,7 +309,7 @@ class WebAppManagerWindow():
             shutil.copyfile(icon, new_path)
             icon = new_path
         if self.edit_mode:
-            self.manager.edit_webapp(self.selected_webapp.path, name, url, icon, category)
+            self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category)
             self.load_webapps()
         else:
             self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar, privatewindow)
@@ -492,6 +499,7 @@ class WebAppManagerWindow():
                 iter = self.model.insert_before(None, None)
                 self.model.set_value(iter, COL_ICON, pixbuf)
                 self.model.set_value(iter, COL_NAME, webapp.name)
+                self.model.set_value(iter, COL_BROWSER, webapp.webbrowser)
                 self.model.set_value(iter, COL_WEBAPP, webapp)
 
         # Select the 1st web-app
