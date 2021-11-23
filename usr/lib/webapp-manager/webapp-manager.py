@@ -286,7 +286,7 @@ class WebAppManagerWindow():
             dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_DELETE, Gtk.ResponseType.YES)
             dialog.set_title(_("Delete '%s'") % self.selected_webapp.name)
             dialog.set_property("text", _("Are you sure you want to delete '%s'?") % self.selected_webapp.name)
-            dialog.format_secondary_text(_("This Web app will be permanently lost."))
+            dialog.format_secondary_text(_("This Web App will be permanently lost."))
             dialog.show()
             if dialog.run() == Gtk.ResponseType.YES:
                 self.manager.delete_webbapp(self.selected_webapp)
