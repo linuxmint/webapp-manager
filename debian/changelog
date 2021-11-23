@@ -1,3 +1,21 @@
+webapp-manager (1.1.6) una; urgency=medium
+
+  [ JosephMcc ]
+  * UI: Properly center the Ok and Cancel buttons
+
+  [ Butterfly ]
+  * Add missing python3-pil dependency (#139)
+
+  [ Himadri Sekhar Basu ]
+  * Show the base browser of webapp in web-apps list (#134)
+  * Add confirm dialog for webapp removal (#121)
+
+  [ Clement Lefebvre ]
+  * Small fixes
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 23 Nov 2021 16:30:19 +0000
+
 webapp-manager (1.1.5) uma; urgency=medium
 
   * l10n: Update translations
