@@ -1,16 +1,16 @@
-# Kabyle translation for linuxmint
-# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# Arabic translation for linuxmint
+# Copyright (c) 2021 Rosetta Contributors and Canonical Ltd 2021
 # This file is distributed under the same license as the linuxmint package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2021-06-03 17:34+0100\n"
-"PO-Revision-Date: 2021-02-28 18:16+0000\n"
-"Last-Translator: Yacine Bouklif <yacinebouklif@gmail.com>\n"
-"Language-Team: Kabyle <kab@li.org>\n"
+"PO-Revision-Date: 2021-10-16 17:31+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
 msgid "Web App"
-msgstr "Asnas n web"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
 #: usr/lib/webapp-manager/webapp-manager.py:219
@@ -27,159 +27,159 @@ msgstr "Asnas n web"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Isnaen n web"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:124
 msgid "Keyboard Shortcuts"
-msgstr "Inegzumen n unasiw"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:131
 #: usr/lib/webapp-manager/webapp-manager.py:225
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Ɣef"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "Ffeɣ"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Internet"
-msgstr "Internet"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:168 generate_desktop_files:48
 msgid "Web"
-msgstr "Web"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Accessories"
-msgstr "Imerniyen"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Games"
-msgstr "Uraren"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Graphics"
-msgstr "Udlifen"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Office"
-msgstr "Tanarit"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:173
 msgid "Sound & Video"
-msgstr "Imesli akked uvidyu"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:174
 msgid "Programming"
-msgstr "Asihel"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:175
 msgid "Education"
-msgstr "Asegmi"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:197
 msgid "No supported browsers were detected."
-msgstr "Ur nufi ara iminigen n web yettwadehlen"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:227
 #: usr/lib/webapp-manager/webapp-manager.py:503 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Selkem ismal n web amzun d isnasen"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:324
 #: usr/lib/webapp-manager/webapp-manager.py:355
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Add a New Web App"
-msgstr "Rnu asnas amaynut n web"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:345
 msgid "Edit Web App"
-msgstr "Ẓreg isnasen n web"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:387
 msgid "Choose an icon"
-msgstr "Fren tignit"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "Sefrek isnasen web inek m"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "Rnu"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "Kkes"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "Ẓreg"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "Sekker"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr "Isem:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr "Tansa:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr "Tignit:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr "Isem n usmel n web"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
-msgstr "https://www.website.com"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr "Sefsex"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "Ih"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "Af-d tignitin di internet"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr "Taggayt:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "Iminig:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr "Ma termed tnefrunt-agi asmel n web ad iddu s ulegdis-ines n yiminig."
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr "Alegdis yettwaɛezlen:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr "Afeggag n tunigin:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
@@ -187,12 +187,12 @@ msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "Inegzumen-nniḍen:"
+msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "Uγal γer deffir"
+msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "Inegzumen"
+msgstr ""
