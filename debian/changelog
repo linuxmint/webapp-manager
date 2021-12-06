@@ -1,3 +1,10 @@
+webapp-manager (1.1.7) una; urgency=medium
+
+  * l10n: Update translations
+  * l10n: Update files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 06 Dec 2021 15:53:07 +0000
+
 webapp-manager (1.1.6) una; urgency=medium
 
   [ JosephMcc ]
