@@ -1,3 +1,10 @@
+webapp-manager (1.1.9) una; urgency=medium
+
+  * l10n: Update translations
+  * l10n: Update files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 31 Dec 2021 13:02:04 +0000
+
 webapp-manager (1.1.8) una; urgency=medium
 
   * UI: Expand online favicon scrolledwindow
