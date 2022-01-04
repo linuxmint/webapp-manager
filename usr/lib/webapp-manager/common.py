@@ -317,6 +317,32 @@ def download_image(root_url, link):
 
 import tempfile
 
+def _find_link_favicon(soup, iconformat):
+    items = soup.find_all("link", {"rel": iconformat})
+    for item in items:
+        link = item.get("href")
+        if link:
+            yield link
+
+def _find_meta_content(soup, iconformat):
+    item = soup.find("meta", {"name": iconformat})
+    if not item:
+        return
+    link = item.get("content")
+    if link:
+        yield link
+
+def _find_property(soup, iconformat):
+    items = soup.find_all("meta", {"property": iconformat})
+    for item in items:
+        link = item.get("content")
+        if link:
+            yield link
+
+def _find_url(_soup, iconformat):
+    yield iconformat
+
+
 def download_favicon(url):
     images = []
     url = normalize_url(url)
@@ -335,43 +361,39 @@ def download_favicon(url):
                     t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
                     images.append(["Favicon Grabber", image, t.name])
                     image.save(t.name)
-        images = sorted(images, key = lambda x: (x[1].height), reverse=True)
-        return images
+            images = sorted(images, key = lambda x: (x[1].height), reverse=True)
+            if images:
+                return images
     except Exception as e:
         print(e)
 
     # Fallback: Check HTML and /favicon.ico
     try:
         response = requests.get(url, timeout=3)
-        if response != None:
+        if response.ok:
             import bs4
             soup = bs4.BeautifulSoup(response.content, "html.parser")
 
+            iconformats = [
+                ("apple-touch-icon", _find_link_favicon),
+                ("shortcut icon", _find_link_favicon),
+                ("icon", _find_link_favicon),
+                ("msapplication-TileImage", _find_meta_content),
+                ("msapplication-square310x310logo", _find_meta_content),
+                ("msapplication-square150x150logo", _find_meta_content),
+                ("msapplication-square70x70logo", _find_meta_content),
+                ("og:image", _find_property),
+                ("favicon.ico", _find_url),
+            ]
+
             # icons defined in the HTML
-            for iconformat in ["apple-touch-icon", "shortcut icon", "icon", "msapplication-TileImage"]:
-                item = soup.find("link", {"rel": iconformat})
-                if item != None:
-                    image = download_image(root_url, item["href"])
-                    if image != None:
+            for (iconformat, getter) in iconformats:
+                for link in getter(soup, iconformat):
+                    image = download_image(root_url, link)
+                    if image is not None:
                         t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
                         images.append([iconformat, image, t.name])
                         image.save(t.name)
-
-            # favicon.ico
-            image = download_image(root_url, "/favicon.ico")
-            if image != None:
-                t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
-                images.append(["favicon", image, t.name])
-                image.save(t.name)
-
-            # OG:IMAGE
-            item = soup.find("meta", {"property": "og:image"})
-            if item != None:
-                image = download_image(root_url, item['content'])
-                if image != None:
-                    t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
-                    images.append(["og:image", image, t.name])
-                    image.save(t.name)
 
     except Exception as e:
         print(e)
