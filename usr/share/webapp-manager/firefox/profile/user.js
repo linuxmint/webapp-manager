@@ -9,3 +9,4 @@ user_pref("browser.tabs.warnOnClose", false);
 user_pref("plugin.state.flash", 2);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.tabs.drawInTitlebar", false);
+user_pref("browser.tabs.inTitlebar", 0);
