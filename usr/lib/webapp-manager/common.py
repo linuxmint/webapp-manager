@@ -136,6 +136,7 @@ class WebAppManager():
         browsers = []
         # type, name, exec, test
         browsers.append(Browser(BROWSER_TYPE_FIREFOX, "Firefox", "firefox", "/usr/bin/firefox"))
+        browsers.append(Browser(BROWSER_TYPE_FIREFOX, "Firefox Extended Support Release", "firefox-esr", "/usr/bin/firefox-esr"))
         browsers.append(Browser(BROWSER_TYPE_FIREFOX, "Firefox Developer Edition", "firefox-developer-edition", "/usr/bin/firefox-developer-edition"))
         browsers.append(Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Firefox (Flatpak)", "/var/lib/flatpak/exports/bin/org.mozilla.firefox", "/var/lib/flatpak/exports/bin/org.mozilla.firefox"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Brave", "brave-browser", "/usr/bin/brave-browser"))
