@@ -8,6 +8,5 @@ user_pref("browser.ctrlTab.previews", true);
 user_pref("browser.tabs.warnOnClose", false);
 user_pref("plugin.state.flash", 2);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-user_pref("privacy.firstparty.isolate", true);
-user_pref("network.cookie.cookieBehavior", 1);
+user_pref("browser.contentblocking.category", "strict");
 user_pref("network.cookie.lifetimePolicy", 0);
