@@ -21,25 +21,25 @@ Chromium and Chrome WebApps open external links in the main browser.
 How to use tabs in Firefox?
 ---------------------------
 
-Press `Ctrl`+`Tab` to cycle between opened tabs.
+Press <kbd>Ctrl</kbd>+<kbd>Tab</kbd> to cycle between opened tabs.
 
-Press `Ctrl`+`T` to create a new tab.
+Press <kbd>Ctrl</kbd>+<kbd>T</kbd> to create a new tab.
 
-Press `Ctrl`+`W` to close the current tab.
+Press <kbd>Ctrl</kbd>+<kbd>W</kbd> to close the current tab.
 
-Press `Ctrl` when clicking a link to open it in a new tab.
+Press <kbd>Ctrl</kbd> when clicking a link to open it in a new tab.
 
 How to add extensions in Firefox (AdBlock etc.)?
 ------------------------------------------------
 
-Press and release the `Alt` key to show the main menubar.
+Press and release the <kbd>Alt</kbd> key to show the main menubar.
 
 You can then reach the `Add-Ons` from the `Tool` menu.
 
 How to add extensions in Chromium based browsers (AdBlock etc.)?
 ----------------------------------------------------------------
 
-Press `ctrl+N` to open a new window.
+Press <kbd>Ctrl</kbd>+<kbd>N</kbd> to open a new window.
 
 Navigate to https://chrome.google.com/webstore/category/extensions
 
