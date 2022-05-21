@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2021-06-03 17:34+0100\n"
-"PO-Revision-Date: 2021-03-28 08:42+0000\n"
-"Last-Translator: Florentina Mușat <Unknown>\n"
+"PO-Revision-Date: 2021-12-14 19:47+0000\n"
+"Last-Translator: Vladm <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2021-06-25 10:43+0000\n"
-"X-Generator: Launchpad (build 40cc6dba4163ba9ca785b26ad91f43c87d70ba4d)\n"
+"X-Launchpad-Export-Date: 2021-12-31 12:26+0000\n"
+"X-Generator: Launchpad (build adb364d6a74a28e7b95d51cd30446ec16160de6c)\n"
 
 #: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
 msgid "Web App"
-msgstr "Aplicatie Web"
+msgstr "Aplicație Web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
 #: usr/lib/webapp-manager/webapp-manager.py:219
@@ -27,7 +27,7 @@ msgstr "Aplicatie Web"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Aplicatii Web"
+msgstr "Aplicații Web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:124
 msgid "Keyboard Shortcuts"
@@ -185,7 +185,7 @@ msgstr "Bară de navigație:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr ""
+msgstr "Fereastră privată/incognito:"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"

@@ -1,16 +1,16 @@
-# Korean translation for linuxmint
-# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# Arabic translation for linuxmint
+# Copyright (c) 2021 Rosetta Contributors and Canonical Ltd 2021
 # This file is distributed under the same license as the linuxmint package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2021-06-03 17:34+0100\n"
-"PO-Revision-Date: 2021-07-29 17:22+0000\n"
-"Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
-"Language-Team: Korean <ko@li.org>\n"
+"PO-Revision-Date: 2021-10-16 17:31+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
 msgid "Web App"
-msgstr "Web App"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
 #: usr/lib/webapp-manager/webapp-manager.py:219
@@ -27,172 +27,172 @@ msgstr "Web App"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "웹 앱"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:124
 msgid "Keyboard Shortcuts"
-msgstr "키보드 단축키"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:131
 #: usr/lib/webapp-manager/webapp-manager.py:225
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "정보"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "나가기"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Internet"
-msgstr "인터넷"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:168 generate_desktop_files:48
 msgid "Web"
-msgstr "웹"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Accessories"
-msgstr "보조 프로그램"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Games"
-msgstr "게임"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:171
 msgid "Graphics"
-msgstr "그래픽"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:172
 msgid "Office"
-msgstr "오피스"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:173
 msgid "Sound & Video"
-msgstr "음악과 비디오"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:174
 msgid "Programming"
-msgstr "프로그래밍"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:175
 msgid "Education"
-msgstr "교육"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:197
 msgid "No supported browsers were detected."
-msgstr "지원하지 않는 브라우저를 발견했습니다."
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:227
 #: usr/lib/webapp-manager/webapp-manager.py:503 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "앱처럼 웹 사이트 실행"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:324
 #: usr/lib/webapp-manager/webapp-manager.py:355
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Add a New Web App"
-msgstr "새로운 웹 앱 추가"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:345
 msgid "Edit Web App"
-msgstr "웹 앱 편집"
+msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:387
 msgid "Choose an icon"
-msgstr "아이콘 선택"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "웹 앱 관리"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "추가"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "삭제"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "편집"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "실행"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr "이름:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr "주소:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr "아이콘:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr "웹사이트 이름"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
-msgstr "https://www.website.com"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr "취소"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "확인"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "온라인에서 아이콘 찾기"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr "카테고리:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "브라우저:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr "이 옵션을 사용하면 웹 사이트가 자체 브라우저 프로파일로 실행됩니다."
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr "분리된 프로파일:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr "네비게이션 바:"
+msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr "사생활/시크릿 창:"
+msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "기타 단축키"
+msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "뒤로 가기"
+msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "단축키"
+msgstr ""

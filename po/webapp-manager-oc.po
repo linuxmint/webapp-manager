@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2021-06-03 17:34+0100\n"
-"PO-Revision-Date: 2021-01-02 16:05+0000\n"
+"PO-Revision-Date: 2021-11-05 20:11+0000\n"
 "Last-Translator: Quentin PAGÈS <Unknown>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2021-06-25 10:43+0000\n"
-"X-Generator: Launchpad (build 40cc6dba4163ba9ca785b26ad91f43c87d70ba4d)\n"
+"X-Launchpad-Export-Date: 2021-12-31 12:26+0000\n"
+"X-Generator: Launchpad (build adb364d6a74a28e7b95d51cd30446ec16160de6c)\n"
 
 #: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
 msgid "Web App"
@@ -82,23 +82,23 @@ msgstr "Educacion"
 
 #: usr/lib/webapp-manager/webapp-manager.py:197
 msgid "No supported browsers were detected."
-msgstr ""
+msgstr "Cap de navegador pres en carga pas detectat."
 
 #: usr/lib/webapp-manager/webapp-manager.py:227
 #: usr/lib/webapp-manager/webapp-manager.py:503 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr ""
+msgstr "Lançar los sites Web coma d’aplicacions"
 
 #: usr/lib/webapp-manager/webapp-manager.py:324
 #: usr/lib/webapp-manager/webapp-manager.py:355
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Add a New Web App"
-msgstr ""
+msgstr "Apondre una aplicacion Web novèla"
 
 #: usr/lib/webapp-manager/webapp-manager.py:345
 msgid "Edit Web App"
-msgstr ""
+msgstr "Modificar l’aplicacion Web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:387
 msgid "Choose an icon"
@@ -106,7 +106,7 @@ msgstr "Causir una icòna"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr ""
+msgstr "Gerissètz vòstras aplicacions Web"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
@@ -142,7 +142,7 @@ msgstr "Icòna :"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr ""
+msgstr "Nom del site Web"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
@@ -154,11 +154,11 @@ msgstr "Anullar"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr ""
+msgstr "Validar"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr ""
+msgstr "Trobar d’icònas en linha"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
@@ -166,33 +166,35 @@ msgstr "Categoria :"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr ""
+msgstr "Navegador :"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
+"S’aquesta opcion es activada lo site Web utilizarà son pròpri perfil al "
+"navegador."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr ""
+msgstr "Perfil isolat :"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr ""
+msgstr "Barra de navegacion :"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr ""
+msgstr "Fenèstra privada :"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr ""
+msgstr "Autres acorchis"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr ""
+msgstr "Precedent"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr ""
+msgstr "Acorchis de clavièr"

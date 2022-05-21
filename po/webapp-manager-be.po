@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2021-06-03 17:34+0100\n"
-"PO-Revision-Date: 2021-01-07 23:49+0000\n"
-"Last-Translator: Alexis Borovik <Unknown>\n"
+"PO-Revision-Date: 2021-12-02 21:15+0000\n"
+"Last-Translator: Anton Hryb <Unknown>\n"
 "Language-Team: Belarusian <be@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2021-06-25 10:43+0000\n"
-"X-Generator: Launchpad (build 40cc6dba4163ba9ca785b26ad91f43c87d70ba4d)\n"
+"X-Launchpad-Export-Date: 2021-12-31 12:26+0000\n"
+"X-Generator: Launchpad (build adb364d6a74a28e7b95d51cd30446ec16160de6c)\n"
 
 #: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
 msgid "Web App"
-msgstr "Вэб-дадатак"
+msgstr "Вэб-праграмы"
 
 #: usr/lib/webapp-manager/webapp-manager.py:69
 #: usr/lib/webapp-manager/webapp-manager.py:219
@@ -27,7 +27,7 @@ msgstr "Вэб-дадатак"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Вэб-дадаткі"
+msgstr "Вэб-праграмы"
 
 #: usr/lib/webapp-manager/webapp-manager.py:124
 msgid "Keyboard Shortcuts"
@@ -37,12 +37,12 @@ msgstr "Спалучэнні клавіш"
 #: usr/lib/webapp-manager/webapp-manager.py:225
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Звесткі"
+msgstr "Аб праграме"
 
 #: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "Выхад"
+msgstr "Выйсці"
 
 #: usr/lib/webapp-manager/webapp-manager.py:167
 msgid "Internet"
@@ -54,7 +54,7 @@ msgstr "Вэб"
 
 #: usr/lib/webapp-manager/webapp-manager.py:169
 msgid "Accessories"
-msgstr "Прыстасаванні"
+msgstr "Інструменты"
 
 #: usr/lib/webapp-manager/webapp-manager.py:170
 msgid "Games"
@@ -82,31 +82,31 @@ msgstr "Адукацыя"
 
 #: usr/lib/webapp-manager/webapp-manager.py:197
 msgid "No supported browsers were detected."
-msgstr ""
+msgstr "Не выяўлена браўзераў, якія падтрымліваюцца."
 
 #: usr/lib/webapp-manager/webapp-manager.py:227
 #: usr/lib/webapp-manager/webapp-manager.py:503 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Запускаць вэб-сайты, як калі б яны былі праграмамі"
+msgstr "Запуск вэб-сайтаў ў асобных вокнах як звычайныя праграмы"
 
 #: usr/lib/webapp-manager/webapp-manager.py:324
 #: usr/lib/webapp-manager/webapp-manager.py:355
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Add a New Web App"
-msgstr "Стварыць новы вэб-дадатак"
+msgstr "Стварыць новую вэб-праграму"
 
 #: usr/lib/webapp-manager/webapp-manager.py:345
 msgid "Edit Web App"
-msgstr "Рэдактаваць вэб-дадатак"
+msgstr "Змяніць вэб-праграму"
 
 #: usr/lib/webapp-manager/webapp-manager.py:387
 msgid "Choose an icon"
-msgstr "Выберыце абразок"
+msgstr "Выберыце значок"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "Кіраванне вэб-дадаткамі"
+msgstr "Кіруйце вашымі вэб-праграмамі"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
@@ -121,16 +121,16 @@ msgstr "Выдаліць"
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "Праўка"
+msgstr "Змяніць"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "Запуск"
+msgstr "Запусціць"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr "Імя:"
+msgstr "Назва:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
@@ -138,7 +138,7 @@ msgstr "Адрас:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr "Абразок:"
+msgstr "Значок:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
@@ -150,15 +150,15 @@ msgstr "https://www.website.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr "Адмена"
+msgstr "Скасаваць"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "Так"
+msgstr "Добра"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "Знайсці абразкі ў Інтэрнэце"
+msgstr "Знайсці значкі ў Інтэрнэце"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
@@ -185,11 +185,11 @@ msgstr "Панэль навігацыі:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr ""
+msgstr "Прыватнае акно / інкогніта:"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "Іншыя цэтлікі"
+msgstr "Іншыя спалучэнні"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
@@ -197,4 +197,4 @@ msgstr "Вярнуцца"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "Цэтлікі"
+msgstr "Спалучэнні клавіш"
