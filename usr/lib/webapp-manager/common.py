@@ -102,6 +102,10 @@ class WebAppLauncher():
                     self.url = line.replace("X-WebApp-URL=", "")
                     continue
 
+                if "X-WebApp-CustomParameters" in line:
+                    self.custom_parameters = line.replace("X-WebApp-CustomParameters=", "")
+                    continue
+
         if is_webapp and self.name != None and self.icon != None:
             self.is_valid = True
 
@@ -167,7 +171,7 @@ class WebAppManager():
             os.remove(epiphany_orig_prof_dir)
         shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-%s" % webapp.codename), ignore_errors=True)
 
-    def create_webapp(self, name, url, icon, category, browser, isolate_profile=True, navbar=False, privatewindow=False):
+    def create_webapp(self, name, url, icon, category, browser, custom_parameters, isolate_profile=True, navbar=False, privatewindow=False):
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
         random_code =  ''.join(choice(string.digits) for _ in range(4))
         codename = "".join(filter(str.isalpha, name)) + random_code
@@ -189,6 +193,8 @@ class WebAppManager():
                                     " --no-remote ")
                 if privatewindow:
                     exec_string += "--private-window "
+                if custom_parameters:
+                    exec_string += " {}".format(custom_parameters)
                 desktop_file.write(exec_string + url + "'\n")
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
@@ -200,10 +206,13 @@ class WebAppManager():
                 # Create symlink of profile dir at ~/.local/share
                 epiphany_orig_prof_dir=os.path.join(os.path.expanduser("~/.local/share"), "org.gnome.Epiphany.WebApp-" + codename)
                 os.symlink(epiphany_profile_path, epiphany_orig_prof_dir)
-                desktop_file.write("Exec=" + browser.exec_path +
-                                    " --application-mode " +
-                                    " --profile=\"" + epiphany_orig_prof_dir + "\"" +
-                                    " " + url + "\n")
+                exec_string = "Exec=" + browser.exec_path
+                exec_string += " --application-mode "
+                exec_string += " --profile=\"" + epiphany_orig_prof_dir + "\""
+                exec_string += " " + url + "\n"
+                if custom_parameters:
+                    exec_string += " {}".format(custom_parameters)
+                desktop_file.write(exec_string)
             else:
                 # Chromium based
                 if isolate_profile:
@@ -227,6 +236,9 @@ class WebAppManager():
                     else:
                         exec_string += " --incognito"
 
+                if custom_parameters:
+                    exec_string += " {}".format(custom_parameters)
+
                 desktop_file.write(exec_string + "\n")
 
             desktop_file.write("Terminal=false\n")
@@ -239,6 +251,7 @@ class WebAppManager():
             desktop_file.write("StartupNotify=true\n")
             desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
             desktop_file.write("X-WebApp-URL=%s\n" % url)
+            desktop_file.write("X-WebApp-CustomParameters=%s\n" % custom_parameters)
             if isolate_profile:
                 desktop_file.write("X-WebApp-Isolated=true\n")
             else:
@@ -258,7 +271,7 @@ class WebAppManager():
                 with open(app_mode_file, 'w') as fp:
                     pass
 
-    def edit_webapp(self, path, name, browser, url, icon, category):
+    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters):
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
@@ -273,9 +286,12 @@ class WebAppManager():
             old_url = config.get("Desktop Entry", "X-WebApp-URL")
             exec_line = config.get("Desktop Entry", "Exec")
             exec_line = exec_line.replace(old_url, url)
+            old_custom_parameters = config.get("Desktop Entry", "X-WebApp-CustomParameters")
+            exec_line = exec_line.replace(old_custom_parameters, custom_parameters)
             config.set("Desktop Entry", "Exec", exec_line)
             config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
             config.set("Desktop Entry", "X-WebApp-URL", url)
+            config.set("Desktop Entry", "X-WebApp-CustomParameters", custom_parameters)
         except:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
 
