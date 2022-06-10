@@ -1,14 +1,17 @@
 #!/usr/bin/python3
+
+#   1. Standard library imports.
 import gettext
-import gi
 import locale
 import os
-import re
-import setproctitle
 import shutil
 import subprocess
-import tldextract
 import warnings
+
+#   2. Related third party imports.
+import gi
+import setproctitle
+import tldextract
 
 # Suppress GTK deprecation warnings
 warnings.filterwarnings("ignore")
@@ -17,6 +20,7 @@ gi.require_version("Gtk", "3.0")
 gi.require_version('XApp', '1.0')
 from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf, GLib
 
+#   3. Local application/library specific imports.
 from common import _async, idle, WebAppManager, Browser, download_favicon, ICONS_DIR, BROWSER_TYPE_FIREFOX
 
 setproctitle.setproctitle("webapp-manager")

@@ -1,15 +1,29 @@
 #!/usr/bin/python3
+
+#   1. Standard library imports.
 import configparser
 import gettext
-import gi
+from io import BytesIO
+import json
 import locale
 import os
+from random import choice
 import shutil
 import string
+import sys
+import tempfile
+import urllib.error
+import urllib.parse
+import urllib.request
 import threading
 import traceback
+
+#   2. Related third party imports.
 from gi.repository import GObject
-from random import choice
+from PIL import Image
+import requests
+# Note: BeautifulSoup is an optional import supporting another way of getting a website's favicons.
+
 
 # Used as a decorator to run things in the background
 def _async(func):
@@ -282,14 +296,6 @@ class WebAppManager():
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
 
-import sys
-import urllib.error
-import urllib.parse
-import urllib.request
-from PIL import Image
-from io import BytesIO
-import requests
-import json
 
 def normalize_url(url):
     (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url, "http")
@@ -314,8 +320,6 @@ def download_image(root_url, link):
         print(link)
         image = None
     return image
-
-import tempfile
 
 def _find_link_favicon(soup, iconformat):
     items = soup.find_all("link", {"rel": iconformat})
