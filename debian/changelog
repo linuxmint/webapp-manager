@@ -1,3 +1,45 @@
+webapp-manager (1.2.0) vanessa; urgency=medium
+
+  [ garret ]
+  * Add Firefox ESR support
+
+  [ Himadri Sekhar Basu ]
+  * Fix for epiphany; fixes #104
+
+  [ Krindog7337 ]
+  * Add Edge Stable, Beta, Dev support (#161)
+
+  [ Peter Dave Hello ]
+  * Enhance README.md with HTML5 <kbd> tag (#157)
+
+  [ Rokosun ]
+  * Add LibreWolf support (#149)
+  * Improve cookie management in Firefox & Librewolf (#155)
+
+  [ PizzaLovingNerd ]
+  * Fixed Firefox SSBs with missing title bars (Fixes #132, #116, #91) (#146)
+
+  [ Zahari Kassabov ]
+  * Improve icon detection
+
+  [ Micah Cochran ]
+  * move imports to top, reorganize imports to PEP8 order (#179)
+
+  [ musiclover ]
+  * Add support for Flatpak Chrome (fixes #166)
+  * Add support for Flatpak LibreWolf (fixes #175)
+  * Add support for Waterfox (fixes #160)
+  * Add support for Slimjet (fixes #68)
+
+  [ Monsterovich ]
+  * Implement custom browser parameters (#177)
+
+  [ Clement Lefebvre ]
+  * Fix editing webapps
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 21 Jun 2022 10:59:08 +0200
+
 webapp-manager (1.1.9) una; urgency=medium
 
   * l10n: Update translations
