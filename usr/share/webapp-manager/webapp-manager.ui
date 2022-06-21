@@ -311,7 +311,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">8</property>
+                    <property name="top_attach">9</property>
                     <property name="width">3</property>
                   </packing>
                 </child>
@@ -421,7 +421,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
-                    <property name="top_attach">5</property>
+                    <property name="top_attach">6</property>
                   </packing>
                 </child>
                 <child>
@@ -433,7 +433,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
+                    <property name="top_attach">6</property>
                   </packing>
                 </child>
                 <child>
@@ -444,7 +444,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
-                    <property name="top_attach">6</property>
+                    <property name="top_attach">7</property>
                   </packing>
                 </child>
                 <child>
@@ -458,7 +458,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">6</property>
+                    <property name="top_attach">7</property>
                   </packing>
                 </child>
                 <child>
@@ -469,7 +469,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
-                    <property name="top_attach">7</property>
+                    <property name="top_attach">8</property>
                   </packing>
                 </child>
                 <child>
@@ -483,8 +483,35 @@
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
-                    <property name="top_attach">7</property>
+                    <property name="top_attach">8</property>
                   </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="customparameters_label">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="label" translatable="yes">Custom parameters:</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="customparameters_entry">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="width_chars">40</property>
+                    <property name="placeholder_text" translatable="yes">Custom browser parameters</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
                 <child>
                   <placeholder/>

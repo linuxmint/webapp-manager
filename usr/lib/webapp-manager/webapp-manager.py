@@ -89,6 +89,7 @@ class WebAppManagerWindow():
         self.name_entry = self.builder.get_object("name_entry")
         self.url_entry = self.builder.get_object("url_entry")
         self.url_label = self.builder.get_object("url_label")
+        self.customparameters_entry = self.builder.get_object("customparameters_entry")
         self.isolated_switch = self.builder.get_object("isolated_switch")
         self.isolated_label = self.builder.get_object("isolated_label")
         self.navbar_switch = self.builder.get_object("navbar_switch")
@@ -315,6 +316,7 @@ class WebAppManagerWindow():
         navbar = self.navbar_switch.get_active()
         privatewindow = self.privatewindow_switch.get_active()
         icon = self.icon_chooser.get_icon()
+        custom_parameters = self.customparameters_entry.get_text()
         if "/tmp" in icon:
             # If the icon path is in /tmp, move it.
             filename = "".join(filter(str.isalpha, name)) + ".png"
@@ -322,15 +324,16 @@ class WebAppManagerWindow():
             shutil.copyfile(icon, new_path)
             icon = new_path
         if self.edit_mode:
-            self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category)
+            self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category, custom_parameters)
             self.load_webapps()
         else:
-            self.manager.create_webapp(name, url, icon, category, browser, isolate_profile, navbar, privatewindow)
+            self.manager.create_webapp(name, url, icon, category, browser, custom_parameters, isolate_profile, navbar, privatewindow)
             self.load_webapps()
 
     def on_add_button(self, widget):
         self.name_entry.set_text("")
         self.url_entry.set_text("")
+        self.customparameters_entry.set_text("")
         self.icon_chooser.set_icon("webapp-manager")
         self.category_combo.set_active(0)
         self.browser_combo.set_active(0)
@@ -351,6 +354,7 @@ class WebAppManagerWindow():
             self.name_entry.set_text(self.selected_webapp.name)
             self.icon_chooser.set_icon(self.selected_webapp.icon)
             self.url_entry.set_text(self.selected_webapp.url)
+            self.customparameters_entry.set_text(self.selected_webapp.custom_parameters)
             model = self.category_combo.get_model()
             iter = model.get_iter_first()
             while iter:
