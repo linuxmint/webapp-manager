@@ -7,106 +7,132 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2021-06-03 17:34+0100\n"
-"PO-Revision-Date: 2020-12-22 16:29+0000\n"
-"Last-Translator: Dusan Kazik <prescott66@gmail.com>\n"
+"POT-Creation-Date: 2022-06-21 10:58+0200\n"
+"PO-Revision-Date: 2022-02-10 09:37+0000\n"
+"Last-Translator: Adrián Bíro <biroadrian@protonmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2021-12-31 12:26+0000\n"
-"X-Generator: Launchpad (build adb364d6a74a28e7b95d51cd30446ec16160de6c)\n"
+"X-Launchpad-Export-Date: 2022-06-26 11:30+0000\n"
+"X-Generator: Launchpad (build 51a2e4fa2e9b8e45f00904ad7f53546f45ac48a5)\n"
 
-#: usr/lib/webapp-manager/common.py:167 usr/lib/webapp-manager/common.py:239
+#: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
-msgstr ""
+msgstr "Webová aplikácia"
 
-#: usr/lib/webapp-manager/webapp-manager.py:69
-#: usr/lib/webapp-manager/webapp-manager.py:219
-#: usr/lib/webapp-manager/webapp-manager.py:226 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:73
+#: usr/lib/webapp-manager/webapp-manager.py:231
+#: usr/lib/webapp-manager/webapp-manager.py:238 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr "Webové Aplikácie"
 
-#: usr/lib/webapp-manager/webapp-manager.py:124
+#: usr/lib/webapp-manager/webapp-manager.py:129
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové skratky"
 
-#: usr/lib/webapp-manager/webapp-manager.py:131
-#: usr/lib/webapp-manager/webapp-manager.py:225
+#: usr/lib/webapp-manager/webapp-manager.py:136
+#: usr/lib/webapp-manager/webapp-manager.py:237
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr "O aplikácii"
 
-#: usr/lib/webapp-manager/webapp-manager.py:136
+#: usr/lib/webapp-manager/webapp-manager.py:141
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr "Ukončiť"
 
-#: usr/lib/webapp-manager/webapp-manager.py:167
+#: usr/lib/webapp-manager/webapp-manager.py:156
+msgid "Icon"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:160
+msgid "Name"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:165
+msgid "Browser"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:179
 msgid "Internet"
 msgstr "Internet"
 
-#: usr/lib/webapp-manager/webapp-manager.py:168 generate_desktop_files:48
+#: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
 msgid "Web"
 msgstr "Web"
 
-#: usr/lib/webapp-manager/webapp-manager.py:169
+#: usr/lib/webapp-manager/webapp-manager.py:181
 msgid "Accessories"
 msgstr "Príslušenstvo"
 
-#: usr/lib/webapp-manager/webapp-manager.py:170
+#: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Games"
 msgstr "Hry"
 
-#: usr/lib/webapp-manager/webapp-manager.py:171
+#: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Graphics"
 msgstr "Grafika"
 
-#: usr/lib/webapp-manager/webapp-manager.py:172
+#: usr/lib/webapp-manager/webapp-manager.py:184
 msgid "Office"
 msgstr "Kancelária"
 
-#: usr/lib/webapp-manager/webapp-manager.py:173
+#: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Sound & Video"
 msgstr "Zvuk a video"
 
-#: usr/lib/webapp-manager/webapp-manager.py:174
+#: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Programming"
 msgstr "Programovanie"
 
-#: usr/lib/webapp-manager/webapp-manager.py:175
+#: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Education"
 msgstr "Vzdelávanie"
 
-#: usr/lib/webapp-manager/webapp-manager.py:197
+#: usr/lib/webapp-manager/webapp-manager.py:209
 msgid "No supported browsers were detected."
-msgstr ""
+msgstr "Neboli nájdené žiadne podporované prehliadače."
 
-#: usr/lib/webapp-manager/webapp-manager.py:227
-#: usr/lib/webapp-manager/webapp-manager.py:503 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:239
+#: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
+msgstr "Spusti webstránky ako by to boli aplikácie"
+
+#: usr/lib/webapp-manager/webapp-manager.py:292
+#, python-format
+msgid "Delete '%s'"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:324
-#: usr/lib/webapp-manager/webapp-manager.py:355
-#: usr/lib/webapp-manager/webapp-manager.py:411
+#: usr/lib/webapp-manager/webapp-manager.py:293
+#, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:294
+msgid "This Web App will be permanently lost."
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:347
+#: usr/lib/webapp-manager/webapp-manager.py:379
+#: usr/lib/webapp-manager/webapp-manager.py:435
 msgid "Add a New Web App"
 msgstr "Pridať novú webovú aplikáciu"
 
-#: usr/lib/webapp-manager/webapp-manager.py:345
+#: usr/lib/webapp-manager/webapp-manager.py:369
 msgid "Edit Web App"
 msgstr "Upraviť webovú aplikáciu"
 
-#: usr/lib/webapp-manager/webapp-manager.py:387
+#: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Choose an icon"
-msgstr ""
+msgstr "Vybrať ikonu"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr ""
+msgstr "Spravujte si svoje webové aplikácie."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
@@ -172,6 +198,8 @@ msgstr "Prehliadač:"
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
+"Ak je táto možnosť povolená, internetová stránka bude v prehliadači spustená "
+"vo svojom vlastnom profile."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
@@ -183,6 +211,14 @@ msgstr "Navigačná lišta:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
+msgstr "Súkromné/inkognito okno."
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:21
+msgid "Custom parameters:"
+msgstr ""
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:22
+msgid "Custom browser parameters"
 msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6

@@ -1,25 +1,26 @@
-# Amharic translation for linuxmint
-# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# Chinese (Traditional) translation for linuxmint
+# Copyright (c) 2022 Rosetta Contributors and Canonical Ltd 2022
 # This file is distributed under the same license as the linuxmint package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2021-06-12 15:37+0000\n"
-"Last-Translator: samson <Unknown>\n"
-"Language-Team: Amharic <am@li.org>\n"
+"PO-Revision-Date: 2022-03-18 11:18+0000\n"
+"Last-Translator: 程政罡 <marktwtn@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2022-06-26 11:30+0000\n"
 "X-Generator: Launchpad (build 51a2e4fa2e9b8e45f00904ad7f53546f45ac48a5)\n"
+"Language: zh_TW\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
-msgstr "የ ዌብ መተግበሪያ"
+msgstr "網路應用程式"
 
 #: usr/lib/webapp-manager/webapp-manager.py:73
 #: usr/lib/webapp-manager/webapp-manager.py:231
@@ -27,22 +28,22 @@ msgstr "የ ዌብ መተግበሪያ"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "የ ዌብ መተግበሪያዎች"
+msgstr "網路應用程式"
 
 #: usr/lib/webapp-manager/webapp-manager.py:129
 msgid "Keyboard Shortcuts"
-msgstr "የ ፊደል ገበታ አቋራጮች"
+msgstr "快捷鍵"
 
 #: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/lib/webapp-manager/webapp-manager.py:237
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "ስለ"
+msgstr "關於"
 
 #: usr/lib/webapp-manager/webapp-manager.py:141
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "ማጥፊያ"
+msgstr "結束"
 
 #: usr/lib/webapp-manager/webapp-manager.py:156
 msgid "Icon"
@@ -58,49 +59,49 @@ msgstr ""
 
 #: usr/lib/webapp-manager/webapp-manager.py:179
 msgid "Internet"
-msgstr "ኢንተርኔት"
+msgstr "網際網路"
 
 #: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
 msgid "Web"
-msgstr "ዌብ"
+msgstr "網路"
 
 #: usr/lib/webapp-manager/webapp-manager.py:181
 msgid "Accessories"
-msgstr "ተጨማሪዎች"
+msgstr "附屬應用程式"
 
 #: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Games"
-msgstr "ጨዋታዎች"
+msgstr "遊戲"
 
 #: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Graphics"
-msgstr "ግራፊክስ"
+msgstr "圖像"
 
 #: usr/lib/webapp-manager/webapp-manager.py:184
 msgid "Office"
-msgstr "ቢሮ"
+msgstr "辦公"
 
 #: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Sound & Video"
-msgstr "ድምጽ እና ቪዲዮ"
+msgstr "影音"
 
 #: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Programming"
-msgstr "የ ፕሮግራም ፈጠራ"
+msgstr "程式"
 
 #: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Education"
-msgstr "ትምህርት"
+msgstr "教育"
 
 #: usr/lib/webapp-manager/webapp-manager.py:209
 msgid "No supported browsers were detected."
-msgstr "ምንም  የሚደገፍ መቃኛ አልተገኘም"
+msgstr "沒有偵測到支援的瀏覽器。"
 
 #: usr/lib/webapp-manager/webapp-manager.py:239
 #: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr ""
+msgstr "以應用程式的方式執行網站"
 
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
@@ -120,55 +121,55 @@ msgstr ""
 #: usr/lib/webapp-manager/webapp-manager.py:379
 #: usr/lib/webapp-manager/webapp-manager.py:435
 msgid "Add a New Web App"
-msgstr "የ ዌብ መተግበሪያ መጨመሪያ"
+msgstr "新增網路應用程式"
 
 #: usr/lib/webapp-manager/webapp-manager.py:369
 msgid "Edit Web App"
-msgstr "የ ዌብ መተግበሪያ ማረሚያአ"
+msgstr "編輯網路應用程式"
 
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Choose an icon"
-msgstr "ምልክት ይምረጡ"
+msgstr "選擇圖示"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "የ እርስዎ የ ዌብ መተግበሪያ አስተዳዳሪ"
+msgstr "管理你的網路應用程式"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "መጨመሪያ"
+msgstr "新增"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "ማስወገጃ"
+msgstr "移除"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "ማረሚያ"
+msgstr "編輯"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "ማስጀመሪያ"
+msgstr "啟動"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr "ስም:"
+msgstr "名稱:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr "አድራሻ:"
+msgstr "網址:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr "ምልክት:"
+msgstr "圖示:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr "የ ድህረ ገጽ ስም"
+msgstr "網站名稱"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
@@ -176,40 +177,40 @@ msgstr "https://www.website.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr "መሰረዣ"
+msgstr "取消"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "እሺ"
+msgstr "完成"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "ምልክቶች በ መስመር ላይ ያግኙ"
+msgstr "線上尋找圖示"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr "ምድብ:"
+msgstr "類別:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "መቃኛ:"
+msgstr "瀏覽器:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr ""
+msgstr "啟用此選項使網站以自己的瀏覽器設定檔執行。"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr ""
+msgstr "獨立設定檔:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr "የ መቃኛ መደርደሪያ:"
+msgstr "導覽列:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr ""
+msgstr "隱私/無痕視窗:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
@@ -221,12 +222,12 @@ msgstr ""
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "ሌሎች አቋራጮች"
+msgstr "其它快捷鍵"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "ወደ ኋላ መሄጃ"
+msgstr "返回"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "አቋራጮች"
+msgstr "快捷鍵列表"

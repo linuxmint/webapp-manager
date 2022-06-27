@@ -1,25 +1,26 @@
-# Amharic translation for linuxmint
-# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# Uzbek translation for linuxmint
+# Copyright (c) 2022 Rosetta Contributors and Canonical Ltd 2022
 # This file is distributed under the same license as the linuxmint package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2021-06-12 15:37+0000\n"
-"Last-Translator: samson <Unknown>\n"
-"Language-Team: Amharic <am@li.org>\n"
+"PO-Revision-Date: 2022-06-21 16:01+0000\n"
+"Last-Translator: Umidjon Almasov <umidjon@almasov.uz>\n"
+"Language-Team: Uzbek <uz@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2022-06-26 11:30+0000\n"
 "X-Generator: Launchpad (build 51a2e4fa2e9b8e45f00904ad7f53546f45ac48a5)\n"
+"Language: uz\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
-msgstr "የ ዌብ መተግበሪያ"
+msgstr "Veb-ilova"
 
 #: usr/lib/webapp-manager/webapp-manager.py:73
 #: usr/lib/webapp-manager/webapp-manager.py:231
@@ -27,148 +28,148 @@ msgstr "የ ዌብ መተግበሪያ"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "የ ዌብ መተግበሪያዎች"
+msgstr "Veb-ilovalar"
 
 #: usr/lib/webapp-manager/webapp-manager.py:129
 msgid "Keyboard Shortcuts"
-msgstr "የ ፊደል ገበታ አቋራጮች"
+msgstr "Klaviatura yorliqlari"
 
 #: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/lib/webapp-manager/webapp-manager.py:237
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "ስለ"
+msgstr "Haqida"
 
 #: usr/lib/webapp-manager/webapp-manager.py:141
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "ማጥፊያ"
+msgstr "Chiqish"
 
 #: usr/lib/webapp-manager/webapp-manager.py:156
 msgid "Icon"
-msgstr ""
+msgstr "Belgi"
 
 #: usr/lib/webapp-manager/webapp-manager.py:160
 msgid "Name"
-msgstr ""
+msgstr "Nomi"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Browser"
-msgstr ""
+msgstr "Brauzer"
 
 #: usr/lib/webapp-manager/webapp-manager.py:179
 msgid "Internet"
-msgstr "ኢንተርኔት"
+msgstr "Internet"
 
 #: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
 msgid "Web"
-msgstr "ዌብ"
+msgstr "Veb"
 
 #: usr/lib/webapp-manager/webapp-manager.py:181
 msgid "Accessories"
-msgstr "ተጨማሪዎች"
+msgstr "Aksessuarlar"
 
 #: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Games"
-msgstr "ጨዋታዎች"
+msgstr "O‘yinlar"
 
 #: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Graphics"
-msgstr "ግራፊክስ"
+msgstr "Grafika"
 
 #: usr/lib/webapp-manager/webapp-manager.py:184
 msgid "Office"
-msgstr "ቢሮ"
+msgstr "Ofis"
 
 #: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Sound & Video"
-msgstr "ድምጽ እና ቪዲዮ"
+msgstr "Ovoz va video"
 
 #: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Programming"
-msgstr "የ ፕሮግራም ፈጠራ"
+msgstr "Dasturlash"
 
 #: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Education"
-msgstr "ትምህርት"
+msgstr "Ta'lim"
 
 #: usr/lib/webapp-manager/webapp-manager.py:209
 msgid "No supported browsers were detected."
-msgstr "ምንም  የሚደገፍ መቃኛ አልተገኘም"
+msgstr "Qo‘llab-quvvatlanadigan brauzerlar aniqlanmadi."
 
 #: usr/lib/webapp-manager/webapp-manager.py:239
 #: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr ""
+msgstr "Veb-saytlarni xuddi ilovalar kabi ishga tushirish"
 
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "“%s”ni oʻchirish"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr ""
+msgstr "“%s”ni o‘chirishga ishonchingiz komilmi?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr ""
+msgstr "Ushbu veb-ilova butunlay yo'qoladi."
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
 #: usr/lib/webapp-manager/webapp-manager.py:435
 msgid "Add a New Web App"
-msgstr "የ ዌብ መተግበሪያ መጨመሪያ"
+msgstr "Yangi veb-ilova qo‘shish"
 
 #: usr/lib/webapp-manager/webapp-manager.py:369
 msgid "Edit Web App"
-msgstr "የ ዌብ መተግበሪያ ማረሚያአ"
+msgstr "Veb-ilovani tahrirlash"
 
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Choose an icon"
-msgstr "ምልክት ይምረጡ"
+msgstr "Belgini tanlang"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "የ እርስዎ የ ዌብ መተግበሪያ አስተዳዳሪ"
+msgstr "Veb-ilovalaringizni boshqaring"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "መጨመሪያ"
+msgstr "Qo‘shish"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "ማስወገጃ"
+msgstr "Olib tashlash"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "ማረሚያ"
+msgstr "Tahrirlash"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "ማስጀመሪያ"
+msgstr "Ishga tushirish"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr "ስም:"
+msgstr "Nomi:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr "አድራሻ:"
+msgstr "Manzil:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr "ምልክት:"
+msgstr "Belgi:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr "የ ድህረ ገጽ ስም"
+msgstr "Veb-sayt nomi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
@@ -176,57 +177,59 @@ msgstr "https://www.website.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr "መሰረዣ"
+msgstr "Bekor qilish"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "እሺ"
+msgstr "OK"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "ምልክቶች በ መስመር ላይ ያግኙ"
+msgstr "Internetda belgi toping"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr "ምድብ:"
+msgstr "Turkum:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "መቃኛ:"
+msgstr "Brauzer:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
+"Agar ushbu parametr yoqilgan bo‘lsa, veb-sayt o‘z brauzer profili bilan "
+"ishlaydi."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr ""
+msgstr "Alohida profil:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr "የ መቃኛ መደርደሪያ:"
+msgstr "Navigatsiya paneli:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr ""
+msgstr "Shaxsiy/inkognito oynasi:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
-msgstr ""
+msgstr "Maxsus parametrlar:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Custom browser parameters"
-msgstr ""
+msgstr "Brauzerning maxsus parametrlari"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "ሌሎች አቋራጮች"
+msgstr "Boshqa yorliqlar"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "ወደ ኋላ መሄጃ"
+msgstr "Ortga qaytish"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "አቋራጮች"
+msgstr "Yorliqlar"
