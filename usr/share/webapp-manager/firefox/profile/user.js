@@ -17,3 +17,12 @@ user_pref("network.cookie.lifetimePolicy", 0);
 user_pref("network.protocol-handler.expose.browser", false);
 user_pref("security.external_protocol_requires_permission", false);
 
+// Enable uBlock and extension for browser: protocol by default
+user_pref(
+  "extensions.webextensions.ExtensionStorageIDB.migrated.screenshots@mozilla.org",
+  true
+);
+user_pref(
+  "extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymondhill.net",
+  true
+);
