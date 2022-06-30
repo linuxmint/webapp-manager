@@ -13,6 +13,11 @@ user_pref("browser.tabs.inTitlebar", 0);
 user_pref("browser.contentblocking.category", "strict");
 user_pref("network.cookie.lifetimePolicy", 0);
 
+// Disable bookmark bar by default
+user_pref("browser.toolbars.bookmarks.visibility", "never");
+// Manjaro specific workaround
+user_pref("distribution.Manjaro.bookmarksProcessed", true);
+
 // Support for custom browser: protocol for opening links in main browser
 user_pref("network.protocol-handler.expose.browser", false);
 user_pref("security.external_protocol_requires_permission", false);
