@@ -13,6 +13,17 @@ user_pref("browser.tabs.inTitlebar", 0);
 user_pref("browser.contentblocking.category", "strict");
 user_pref("network.cookie.lifetimePolicy", 0);
 
+// Disables "Recommend extensions as you browse" and "Recommend features as you browse"
+// https://support.mozilla.org/en-US/kb/recommendations-firefox
+user_pref(
+  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",
+  false
+);
+user_pref(
+  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features",
+  false
+);
+
 // Disable bookmark bar by default
 user_pref("browser.toolbars.bookmarks.visibility", "never");
 // Manjaro specific workaround
