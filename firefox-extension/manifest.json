@@ -1,0 +1,14 @@
+{
+
+  "manifest_version": 2,
+  "name": "WebApp Manager - Open URLs external",
+  "version": "1.0.3",
+  "description": "Uses a custom browser: protocol to open links in the default browser",
+  "permissions": ["<all_urls>"],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["inject.js"],
+    "run_at": "document_start"
+  }],
+  "web_accessible_resources": ["script.js"]
+}
