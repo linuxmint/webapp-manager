@@ -1,3 +1,10 @@
+webapp-manager (1.2.2) vanessa; urgency=medium
+
+  * Default to Web category
+  * FF: Update search.json.mozlz4
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 01 Jul 2022 14:21:07 +0200
+
 webapp-manager (1.2.1) vanessa; urgency=medium
 
   * l10n: Update translations
