@@ -176,8 +176,8 @@ class WebAppManagerWindow():
 
         # Combox box
         category_model = Gtk.ListStore(str,str) # CATEGORY_ID, CATEGORY_NAME
-        category_model.append(["Network",_("Internet")])
         category_model.append(["WebApps",_("Web")])
+        category_model.append(["Network",_("Internet")])
         category_model.append(["Utility",_("Accessories")])
         category_model.append(["Game",_("Games")])
         category_model.append(["Graphics",_("Graphics")])
