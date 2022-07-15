@@ -1,3 +1,10 @@
+webapp-manager (1.2.3) vanessa; urgency=medium
+
+  [ oreillymonitor ]
+  * Update common.py
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 15 Jul 2022 16:45:46 +0200
+
 webapp-manager (1.2.2) vanessa; urgency=medium
 
   * Default to Web category
