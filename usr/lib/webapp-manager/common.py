@@ -214,6 +214,7 @@ class WebAppManager():
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
                 exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
                                     " --class WebApp-" + codename +
+                                    " --name WebApp-" + codename +
                                     " --profile " + firefox_profile_path +
                                     " --no-remote ")
                 if privatewindow:
@@ -231,6 +232,7 @@ class WebAppManager():
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
                 exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
                                     " --class WebApp-" + codename +
+                                    " --name WebApp-" + codename +
                                     " --profile " + firefox_profile_path +
                                     " --no-remote ")
                 if privatewindow:
