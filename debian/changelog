@@ -1,3 +1,10 @@
+webapp-manager (1.2.4) vanessa; urgency=medium
+
+  * l10n: Update translations
+  * l10n: Update files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 24 Jul 2022 12:34:07 +0200
+
 webapp-manager (1.2.3) vanessa; urgency=medium
 
   [ oreillymonitor ]
