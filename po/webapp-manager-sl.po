@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2022-06-24 20:38+0000\n"
-"Last-Translator: Miha Markovič <Unknown>\n"
+"PO-Revision-Date: 2022-07-14 06:22+0000\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2022-06-26 11:30+0000\n"
-"X-Generator: Launchpad (build 51a2e4fa2e9b8e45f00904ad7f53546f45ac48a5)\n"
+"X-Launchpad-Export-Date: 2022-07-24 09:43+0000\n"
+"X-Generator: Launchpad (build 025a39fd866a641b6ae33074cda0d02a2c712d38)\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
@@ -105,16 +105,16 @@ msgstr "Izvajaj spletišča, kot da so programi"
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Delete '%s'"
-msgstr "Izbriši '%s'"
+msgstr "Izbriši »%s«"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Ali ste prepričani da želite izbrisati '%s'?"
+msgstr "Ali ste prepričani da želite izbrisati »%s«?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr "Ta Spletna Aplikacija bo za vedno izgubljena."
+msgstr "Ta spletni program bo za vedno izgubljen."
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
@@ -215,11 +215,11 @@ msgstr "Zasebno/neosebno okno:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
-msgstr "Ročno nastavljeni parametri:"
+msgstr "Parametri po meri:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Custom browser parameters"
-msgstr "Ročno nastavljeni parametri brskalnika:"
+msgstr "Parametri brskalnika po meri"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"

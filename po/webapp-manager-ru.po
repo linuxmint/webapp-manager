@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2022-06-24 05:15+0000\n"
-"Last-Translator: Aleksey Kabanov <Unknown>\n"
+"PO-Revision-Date: 2022-07-02 18:00+0000\n"
+"Last-Translator: Dmitriy Kulikov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2022-06-26 11:30+0000\n"
-"X-Generator: Launchpad (build 51a2e4fa2e9b8e45f00904ad7f53546f45ac48a5)\n"
+"X-Launchpad-Export-Date: 2022-07-24 09:43+0000\n"
+"X-Generator: Launchpad (build 025a39fd866a641b6ae33074cda0d02a2c712d38)\n"
 "Language: ru\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
@@ -115,7 +115,7 @@ msgstr "Действительно удалить «%s»?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr ""
+msgstr "Это веб-приложение будет полностью удалено."
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
@@ -216,11 +216,11 @@ msgstr "Приватное окно / окно в режиме инкогнит�
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
-msgstr ""
+msgstr "Пользовательские настройки:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Custom browser parameters"
-msgstr ""
+msgstr "Пользовательские настройки браузера"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"

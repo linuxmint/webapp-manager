@@ -1,26 +1,25 @@
-# Welsh translation for linuxmint
-# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# English (Canada) translation for linuxmint
+# Copyright (c) 2022 Rosetta Contributors and Canonical Ltd 2022
 # This file is distributed under the same license as the linuxmint package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2022-06-22 09:24+0000\n"
-"Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
-"Language-Team: Welsh <cy@li.org>\n"
+"PO-Revision-Date: 2022-07-12 10:04+0000\n"
+"Last-Translator: Dawid Wiktor <Unknown>\n"
+"Language-Team: English (Canada) <en_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2022-07-24 09:43+0000\n"
 "X-Generator: Launchpad (build 025a39fd866a641b6ae33074cda0d02a2c712d38)\n"
-"Language: cy\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
-msgstr "Ap Gwe"
+msgstr "Web App"
 
 #: usr/lib/webapp-manager/webapp-manager.py:73
 #: usr/lib/webapp-manager/webapp-manager.py:231
@@ -28,148 +27,148 @@ msgstr "Ap Gwe"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Apiau Gwe"
+msgstr "Web Apps"
 
 #: usr/lib/webapp-manager/webapp-manager.py:129
 msgid "Keyboard Shortcuts"
-msgstr "Llwybrau Byr Bysellfwrdd"
+msgstr "Keyboard Shortcuts"
 
 #: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/lib/webapp-manager/webapp-manager.py:237
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Ynghylch"
+msgstr "About"
 
 #: usr/lib/webapp-manager/webapp-manager.py:141
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "Gadael"
+msgstr "Quit"
 
 #: usr/lib/webapp-manager/webapp-manager.py:156
 msgid "Icon"
-msgstr "Eicon"
+msgstr "Icon"
 
 #: usr/lib/webapp-manager/webapp-manager.py:160
 msgid "Name"
-msgstr "Enw"
+msgstr "Name"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Browser"
-msgstr "Porwr"
+msgstr "Browser"
 
 #: usr/lib/webapp-manager/webapp-manager.py:179
 msgid "Internet"
-msgstr "Rhyngrwyd"
+msgstr "Internet"
 
 #: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
 msgid "Web"
-msgstr "Gwe"
+msgstr "Web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:181
 msgid "Accessories"
-msgstr "Ategolion"
+msgstr "Accessories"
 
 #: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Games"
-msgstr "Gemau"
+msgstr "Games"
 
 #: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Graphics"
-msgstr "Graffigau"
+msgstr "Graphics"
 
 #: usr/lib/webapp-manager/webapp-manager.py:184
 msgid "Office"
-msgstr "Swyddfa"
+msgstr "Office"
 
 #: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Sound & Video"
-msgstr "Sain a Fideo"
+msgstr "Sound & Video"
 
 #: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Programming"
-msgstr "Rhaglennu"
+msgstr "Programming"
 
 #: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Education"
-msgstr "Addysg"
+msgstr "Education"
 
 #: usr/lib/webapp-manager/webapp-manager.py:209
 msgid "No supported browsers were detected."
-msgstr "Heb ganfod porwr sy'n cael ei gynnal."
+msgstr "No supported browsers were detected."
 
 #: usr/lib/webapp-manager/webapp-manager.py:239
 #: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Rhedeg gwefannau fel petaent yn apiau"
+msgstr "Run websites as if they were apps"
 
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Delete '%s'"
-msgstr "Dileu '%s'"
+msgstr "Delete '%s'"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Ydych chi'n siŵr eich bod eisiau diddymu '%s'?"
+msgstr "Are you sure you want to delete '%s'?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr "Bydd yr Ap Gwe hwn yn cael ei golli'n barhaol."
+msgstr "This Web App will be permanently lost."
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
 #: usr/lib/webapp-manager/webapp-manager.py:435
 msgid "Add a New Web App"
-msgstr "Ychwanegwch Ap Gwe Newydd"
+msgstr "Add a New Web App"
 
 #: usr/lib/webapp-manager/webapp-manager.py:369
 msgid "Edit Web App"
-msgstr "Golygwch Ap Gwe"
+msgstr "Edit Web App"
 
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Choose an icon"
-msgstr "Dewiswch eicon"
+msgstr "Choose an icon"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "Rheoli eich Apiau Gwe"
+msgstr "Manage your Web Apps"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "Ychwanegu"
+msgstr "Add"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "Tynnu"
+msgstr "Remove"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "Golygu"
+msgstr "Edit"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "Cychwyn"
+msgstr "Launch"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr "Enw:"
+msgstr "Name:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr "Cyfeiriad:"
+msgstr "Address:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr "Eicon:"
+msgstr "Icon:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr "Enw'r wefan"
+msgstr "Website name"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
@@ -177,59 +176,58 @@ msgstr "https://www.website.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr "Diddymu"
+msgstr "Cancel"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "Iawn"
+msgstr "OK"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "Canfod eiconau ar-lein"
+msgstr "Find icons online"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr "Categori:"
+msgstr "Category:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "Porwr:"
+msgstr "Browser:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
-"Os yw'r dewis hwn wedi'i alluogi bydd y wefan yn rhedeg gyda'i phroffil "
-"porwr ei hun."
+"If this option is enabled the website will run with its own browser profile."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr "Proffil ynysig:"
+msgstr "Isolated profile:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr "Bar llywio"
+msgstr "Navigation bar:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr "Ffenestr Breifat/Anhysbys:"
+msgstr "Private/Incognito Window:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
-msgstr "Paramedrau cyfaddas"
+msgstr "Custom parameters:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Custom browser parameters"
-msgstr "Paramedrau porwr cyfaddas"
+msgstr "Custom browser parameters"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "Llwybrau Byr Eraill"
+msgstr "Other Shortcuts"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "Mynd Nôl"
+msgstr "Go Back"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "Llwybrau byr"
+msgstr "Shortcuts"
