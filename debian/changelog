@@ -1,3 +1,10 @@
+webapp-manager (1.2.5) vanessa; urgency=medium
+
+  [ Konstantinos Chatzis ]
+  * Fixed tabs and spaces (#198)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 05 Sep 2022 15:42:22 +0100
+
 webapp-manager (1.2.4) vanessa; urgency=medium
 
   * l10n: Update translations
