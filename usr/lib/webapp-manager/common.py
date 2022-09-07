@@ -122,7 +122,7 @@ class WebAppLauncher():
                     self.custom_parameters = line.replace("X-WebApp-CustomParameters=", "")
                     continue
 
-        if is_webapp and self.name != None and self.icon != None:
+        if is_webapp and self.name is not None and self.icon is not None:
             self.is_valid = True
 
 # This is the backend.
@@ -403,7 +403,7 @@ def download_favicon(url):
             array = json.loads(source)
             for icon in array['icons']:
                 image = download_image(root_url, icon['src'])
-                if image != None:
+                if image is not None:
                     t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
                     images.append(["Favicon Grabber", image, t.name])
                     image.save(t.name)
