@@ -102,10 +102,7 @@ class WebAppManagerWindow():
         self.browser_label = self.builder.get_object("browser_label")
 
         # Widgets which are in the add page but not the edit page
-        self.add_specific_widgets = [self.browser_label, self.browser_combo,
-                                     self.isolated_label, self.isolated_switch,
-                                     self.navbar_label, self.navbar_switch,
-                                     self.privatewindow_label, self.privatewindow_switch]
+        self.add_specific_widgets = [self.browser_label, self.browser_combo]
 
         # Widget signals
         self.add_button.connect("clicked", self.on_add_button)
@@ -324,7 +321,7 @@ class WebAppManagerWindow():
             shutil.copyfile(icon, new_path)
             icon = new_path
         if self.edit_mode:
-            self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category, custom_parameters)
+            self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category, custom_parameters, self.selected_webapp.codename, isolate_profile, navbar, privatewindow)
             self.load_webapps()
         else:
             self.manager.create_webapp(name, url, icon, category, browser, custom_parameters, isolate_profile, navbar, privatewindow)
@@ -363,6 +360,7 @@ class WebAppManagerWindow():
                     self.category_combo.set_active_iter(iter)
                     break
                 iter = model.iter_next(iter)
+            self.show_hide_browser_widgets()
             for widget in self.add_specific_widgets:
                 widget.hide()
             self.stack.set_visible_child_name("add_page")
