@@ -213,7 +213,7 @@ class WebAppManager():
                 # Firefox based
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                                     " --class WebApp-" + codename +
                                     " --profile " + firefox_profile_path +
                                     " --no-remote ")
@@ -230,7 +230,7 @@ class WebAppManager():
                 # LibreWolf flatpak
                 firefox_profiles_dir = LIBREWOLF_FLATPAK_PROFILES_DIR
                 firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                                     " --class WebApp-" + codename +
                                     " --profile " + firefox_profile_path +
                                     " --no-remote ")
