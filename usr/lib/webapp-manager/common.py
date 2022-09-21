@@ -221,7 +221,7 @@ class WebAppManager():
                     exec_string += "--private-window "
                 if custom_parameters:
                     exec_string += " {}".format(custom_parameters)
-                desktop_file.write(exec_string + url + "'\n")
+                desktop_file.write(exec_string + "\"" + url + "\"" + "'\n")
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
@@ -236,7 +236,7 @@ class WebAppManager():
                                     " --no-remote ")
                 if privatewindow:
                     exec_string += "--private-window "
-                desktop_file.write(exec_string + url + "'\n")
+                desktop_file.write(exec_string + "\"" + url + "\"" + "'\n")
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
                 if navbar:
@@ -250,7 +250,7 @@ class WebAppManager():
                 exec_string = "Exec=" + browser.exec_path
                 exec_string += " --application-mode "
                 exec_string += " --profile=\"" + epiphany_orig_prof_dir + "\""
-                exec_string += " " + url + "\n"
+                exec_string += " " + "\"" + url + "\"" + "\n"
                 if custom_parameters:
                     exec_string += " {}".format(custom_parameters)
                 desktop_file.write(exec_string)
@@ -259,12 +259,12 @@ class WebAppManager():
                 if isolate_profile:
                     profile_path = os.path.join(PROFILES_DIR, codename)
                     exec_string = ("Exec=" + browser.exec_path +
-                                        " --app=" + url +
+                                        " --app=" + "\"" + url + "\"" +
                                         " --class=WebApp-" + codename +
                                         " --user-data-dir=" + profile_path)
                 else:
                     exec_string = ("Exec=" + browser.exec_path +
-                                        " --app=" + url +
+                                        " --app=" + "\"" + url + "\"" +
                                         " --class=WebApp-" + codename)
 
                 if privatewindow:
