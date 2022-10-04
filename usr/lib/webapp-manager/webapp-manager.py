@@ -352,6 +352,9 @@ class WebAppManagerWindow():
             self.icon_chooser.set_icon(self.selected_webapp.icon)
             self.url_entry.set_text(self.selected_webapp.url)
             self.customparameters_entry.set_text(self.selected_webapp.custom_parameters)
+
+            self.on_browser_changed(self.selected_webapp)
+
             model = self.category_combo.get_model()
             iter = model.get_iter_first()
             while iter:
@@ -529,3 +532,4 @@ class WebAppManagerWindow():
 if __name__ == "__main__":
     application = MyApplication("org.x.webapp-manager", Gio.ApplicationFlags.FLAGS_NONE)
     application.run()
+
