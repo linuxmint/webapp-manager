@@ -199,6 +199,54 @@ class WebAppManager():
             os.remove(epiphany_orig_prof_dir)
         shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-%s" % webapp.codename), ignore_errors=True)
 
+    def create_webapp(self, name, url, icon, category, browser, custom_parameters, isolate_profile=True, navbar=False, privatewindow=False):
+        # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
+        random_code =  ''.join(choice(string.digits) for _ in range(4))
+        codename = "".join(filter(str.isalpha, name)) + random_code
+        path = os.path.join(APPS_DIR, "webapp-%s.desktop" % codename)
+
+        with open(path, 'w') as desktop_file:
+            desktop_file.write("[Desktop Entry]\n")
+            desktop_file.write("Version=1.0\n")
+            desktop_file.write("Name=%s\n" % name)
+            desktop_file.write("Comment=%s\n" % _("Web App"))
+
+            exec_string = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar,
+                                               privatewindow, url)
+
+            desktop_file.write(exec_string + "\n")
+
+            desktop_file.write("Terminal=false\n")
+            desktop_file.write("X-MultipleArgs=false\n")
+            desktop_file.write("Type=Application\n")
+            desktop_file.write("Icon=%s\n" % icon)
+            desktop_file.write("Categories=GTK;%s;\n" % category)
+            desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
+            desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
+            desktop_file.write("StartupNotify=true\n")
+            desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
+            desktop_file.write("X-WebApp-URL=%s\n" % url)
+            desktop_file.write("X-WebApp-CustomParameters=%s\n" % custom_parameters)
+            if isolate_profile:
+                desktop_file.write("X-WebApp-Isolated=true\n")
+            else:
+                desktop_file.write("X-WebApp-Isolated=false\n")
+
+            if browser.browser_type == BROWSER_TYPE_EPIPHANY:
+                # Move the desktop file and create a symlink
+                epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
+                new_path = os.path.join(epiphany_profile_path, "org.gnome.Epiphany.WebApp-%s.desktop" % codename)
+                os.makedirs(epiphany_profile_path)
+                os.replace(path, new_path)
+                os.symlink(new_path, path)
+                # copy the icon to profile directory
+                new_icon=os.path.join(epiphany_profile_path, "app-icon.png")
+                shutil.copy(icon, new_icon)
+                # required for app mode. create an empty file .app
+                app_mode_file=os.path.join(epiphany_profile_path, ".app")
+                with open(app_mode_file, 'w') as fp:
+                    pass
+
     def get_exec_string(self, browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
         if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK]:
             # Firefox based
@@ -275,54 +323,6 @@ class WebAppManager():
 
             exec_string += "\n"
         return exec_string
-
-    def create_webapp(self, name, url, icon, category, browser, custom_parameters, isolate_profile=True, navbar=False, privatewindow=False):
-        # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
-        random_code =  ''.join(choice(string.digits) for _ in range(4))
-        codename = "".join(filter(str.isalpha, name)) + random_code
-        path = os.path.join(APPS_DIR, "webapp-%s.desktop" % codename)
-
-        with open(path, 'w') as desktop_file:
-            desktop_file.write("[Desktop Entry]\n")
-            desktop_file.write("Version=1.0\n")
-            desktop_file.write("Name=%s\n" % name)
-            desktop_file.write("Comment=%s\n" % _("Web App"))
-
-            exec_string = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar,
-                                               privatewindow, url)
-
-            desktop_file.write(exec_string + "\n")
-
-            desktop_file.write("Terminal=false\n")
-            desktop_file.write("X-MultipleArgs=false\n")
-            desktop_file.write("Type=Application\n")
-            desktop_file.write("Icon=%s\n" % icon)
-            desktop_file.write("Categories=GTK;%s;\n" % category)
-            desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
-            desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
-            desktop_file.write("StartupNotify=true\n")
-            desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
-            desktop_file.write("X-WebApp-URL=%s\n" % url)
-            desktop_file.write("X-WebApp-CustomParameters=%s\n" % custom_parameters)
-            if isolate_profile:
-                desktop_file.write("X-WebApp-Isolated=true\n")
-            else:
-                desktop_file.write("X-WebApp-Isolated=false\n")
-
-            if browser.browser_type == BROWSER_TYPE_EPIPHANY:
-                # Move the desktop file and create a symlink
-                epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
-                new_path = os.path.join(epiphany_profile_path, "org.gnome.Epiphany.WebApp-%s.desktop" % codename)
-                os.makedirs(epiphany_profile_path)
-                os.replace(path, new_path)
-                os.symlink(new_path, path)
-                # copy the icon to profile directory
-                new_icon=os.path.join(epiphany_profile_path, "app-icon.png")
-                shutil.copy(icon, new_icon)
-                # required for app mode. create an empty file .app
-                app_mode_file=os.path.join(epiphany_profile_path, ".app")
-                with open(app_mode_file, 'w') as fp:
-                    pass
 
     def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters):
         config = configparser.RawConfigParser()
