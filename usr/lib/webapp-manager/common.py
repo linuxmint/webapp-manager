@@ -175,6 +175,7 @@ class WebAppManager():
         browsers.append(Browser(BROWSER_TYPE_FIREFOX, "Firefox Extended Support Release", "firefox-esr", "/usr/bin/firefox-esr"))
         browsers.append(Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Firefox (Flatpak)", "/var/lib/flatpak/exports/bin/org.mozilla.firefox", "/var/lib/flatpak/exports/bin/org.mozilla.firefox"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Brave", "brave", "/usr/bin/brave"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Brave Browser", "brave-browser", "/usr/bin/brave-browser"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chrome", "google-chrome-stable", "/usr/bin/google-chrome-stable"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chrome (Beta)", "google-chrome-beta", "/usr/bin/google-chrome-beta"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chrome (Flatpak)", "/var/lib/flatpak/exports/bin/com.google.Chrome", "/var/lib/flatpak/exports/bin/com.google.Chrome"))
@@ -198,6 +199,8 @@ class WebAppManager():
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Ungoogled Chromium (Flatpak)", "/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium", "/var/lib/flatpak/exports/bin/com.github.Eloston.UngoogledChromium"))
         browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Chromium (Flatpak)", "/var/lib/flatpak/exports/bin/org.chromium.Chromium", "/var/lib/flatpak/exports/bin/org.chromium.Chromium"))
         browsers.append(Browser(BROWSER_TYPE_FALKON, "Falkon", "falkon", "/usr/bin/falkon"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Edge (Flatpak)", "/var/lib/flatpak/exports/bin/com.microsoft.Edge", "/var/lib/flatpak/exports/bin/com.microsoft.Edge"))
+        browsers.append(Browser(BROWSER_TYPE_CHROMIUM, "Brave (Flatpak)", "/var/lib/flatpak/exports/bin/com.brave.Browser", "/var/lib/flatpak/exports/bin/com.brave.Browser"))
         return browsers
 
     def delete_webbapp(self, webapp):
@@ -289,7 +292,7 @@ class WebAppManager():
             # Firefox based
             firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-            exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                            " --class WebApp-" + codename +
                            " --profile " + firefox_profile_path +
                            " --no-remote ")
@@ -297,7 +300,7 @@ class WebAppManager():
                 exec_string += "--private-window "
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
-            exec_string += url + "'"
+                desktop_file.write(exec_string + "\"" + url + "\"" + "'\n")
             if not edit:
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
@@ -312,13 +315,13 @@ class WebAppManager():
             # LibreWolf flatpak
             firefox_profiles_dir = LIBREWOLF_FLATPAK_PROFILES_DIR
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-            exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=" + icon + " " + browser.exec_path +
+                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                            " --class WebApp-" + codename +
                            " --profile " + firefox_profile_path +
                            " --no-remote ")
             if privatewindow:
                 exec_string += "--private-window "
-            exec_string += url + "'"
+                desktop_file.write(exec_string + "\"" + url + "\"" + "'\n")
             if not edit:
                 # Create a Firefox profile
                 shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
@@ -339,7 +342,7 @@ class WebAppManager():
             exec_string = browser.exec_path
             exec_string += " --application-mode "
             exec_string += " --profile=\"" + epiphany_orig_prof_dir + "\""
-            exec_string += " " + url
+                exec_string += " " + "\"" + url + "\"" + "\n"
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
         else:
@@ -347,12 +350,20 @@ class WebAppManager():
             if isolate_profile:
                 profile_path = os.path.join(PROFILES_DIR, codename)
                 exec_string = (browser.exec_path +
-                               " --app=" + url +
+                if custom_parameters:
+                    exec_string += " {}".format(custom_parameters)
+                desktop_file.write(exec_string)
+            else:
+                # Chromium based
+                if isolate_profile:
+                    profile_path = os.path.join(PROFILES_DIR, codename)
+                    exec_string = ("Exec=" + browser.exec_path +
+                                        " --app=" + "\"" + url + "\"" +
                                " --class=WebApp-" + codename +
                                " --user-data-dir=" + profile_path)
             else:
                 exec_string = (browser.exec_path +
-                               " --app=" + url +
+                                        " --app=" + "\"" + url + "\"" +
                                " --class=WebApp-" + codename)
 
             if privatewindow:
@@ -369,6 +380,64 @@ class WebAppManager():
                 exec_string += " {}".format(custom_parameters)
 
         return exec_string
+                desktop_file.write(exec_string + "\n")
+
+            desktop_file.write("Terminal=false\n")
+            desktop_file.write("X-MultipleArgs=false\n")
+            desktop_file.write("Type=Application\n")
+            desktop_file.write("Icon=%s\n" % icon)
+            desktop_file.write("Categories=GTK;%s;\n" % category)
+            desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
+            desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
+            desktop_file.write("StartupNotify=true\n")
+            desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
+            desktop_file.write("X-WebApp-URL=%s\n" % url)
+            desktop_file.write("X-WebApp-CustomParameters=%s\n" % custom_parameters)
+            if isolate_profile:
+                desktop_file.write("X-WebApp-Isolated=true\n")
+            else:
+                desktop_file.write("X-WebApp-Isolated=false\n")
+
+            if browser.browser_type == BROWSER_TYPE_EPIPHANY:
+                # Move the desktop file and create a symlink
+                new_path = os.path.join(epiphany_profile_path, "org.gnome.Epiphany.WebApp-%s.desktop" % codename)
+                os.makedirs(epiphany_profile_path)
+                os.replace(path, new_path)
+                os.symlink(new_path, path)
+                # copy the icon to profile directory
+                new_icon=os.path.join(epiphany_profile_path, "app-icon.png")
+                shutil.copy(icon, new_icon)
+                # required for app mode. create an empty file .app
+                app_mode_file=os.path.join(epiphany_profile_path, ".app")
+                with open(app_mode_file, 'w') as fp:
+                    pass
+
+    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters):
+        config = configparser.RawConfigParser()
+        config.optionxform = str
+        config.read(path)
+        config.set("Desktop Entry", "Name", name)
+        config.set("Desktop Entry", "Icon", icon)
+        config.set("Desktop Entry", "Comment", _("Web App"))
+        config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
+
+        try:
+            # This will raise an exception on legacy apps which
+            # have no X-WebApp-URL and X-WebApp-Browser
+            old_url = config.get("Desktop Entry", "X-WebApp-URL")
+            exec_line = config.get("Desktop Entry", "Exec")
+            exec_line = exec_line.replace(old_url, url)
+            old_custom_parameters = config.get("Desktop Entry", "X-WebApp-CustomParameters")
+            exec_line = exec_line.replace(old_custom_parameters, custom_parameters)
+            config.set("Desktop Entry", "Exec", exec_line)
+            config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
+            config.set("Desktop Entry", "X-WebApp-URL", url)
+            config.set("Desktop Entry", "X-WebApp-CustomParameters", custom_parameters)
+        except:
+            print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
+
+        with open(path, 'w') as configfile:
+            config.write(configfile, space_around_delimiters=False)
 
 
 def normalize_url(url):
