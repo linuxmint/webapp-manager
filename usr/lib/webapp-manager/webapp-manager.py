@@ -37,6 +37,7 @@ COL_ICON, COL_NAME, COL_BROWSER, COL_WEBAPP = range(4)
 CATEGORY_ID, CATEGORY_NAME = range(2)
 BROWSER_OBJ, BROWSER_NAME = range(2)
 
+
 class MyApplication(Gtk.Application):
     # Main initialization routine
     def __init__(self, application_id, flags):
@@ -53,6 +54,7 @@ class MyApplication(Gtk.Application):
             window = WebAppManagerWindow(self)
             self.add_window(window.window)
             window.window.show()
+
 
 class WebAppManagerWindow():
 
@@ -118,14 +120,15 @@ class WebAppManagerWindow():
         self.favicon_button.connect("clicked", self.on_favicon_button)
         self.name_entry.connect("changed", self.on_name_entry)
         self.url_entry.connect("changed", self.on_url_entry)
-        self.window.connect("key-press-event",self.on_key_press_event)
+        self.window.connect("key-press-event", self.on_key_press_event)
 
         # Menubar
         accel_group = Gtk.AccelGroup()
         self.window.add_accel_group(accel_group)
         menu = self.builder.get_object("main_menu")
         item = Gtk.ImageMenuItem()
-        item.set_image(Gtk.Image.new_from_icon_name("preferences-desktop-keyboard-shortcuts-symbolic", Gtk.IconSize.MENU))
+        item.set_image(
+            Gtk.Image.new_from_icon_name("preferences-desktop-keyboard-shortcuts-symbolic", Gtk.IconSize.MENU))
         item.set_label(_("Keyboard Shortcuts"))
         item.connect("activate", self.open_keyboard_shortcuts)
         key, mod = Gtk.accelerator_parse("<Control>K")
@@ -168,31 +171,31 @@ class WebAppManagerWindow():
         self.treeview.append_column(column)
 
         self.treeview.show()
-        self.model = Gtk.TreeStore(GdkPixbuf.Pixbuf, str, str, object) # icon, name, browser, webapp
+        self.model = Gtk.TreeStore(GdkPixbuf.Pixbuf, str, str, object)  # icon, name, browser, webapp
         self.model.set_sort_column_id(COL_NAME, Gtk.SortType.ASCENDING)
         self.treeview.set_model(self.model)
         self.treeview.get_selection().connect("changed", self.on_webapp_selected)
         self.treeview.connect("row-activated", self.on_webapp_activated)
 
         # Combox box
-        category_model = Gtk.ListStore(str,str) # CATEGORY_ID, CATEGORY_NAME
-        category_model.append(["WebApps",_("Web")])
-        category_model.append(["Network",_("Internet")])
-        category_model.append(["Utility",_("Accessories")])
-        category_model.append(["Game",_("Games")])
-        category_model.append(["Graphics",_("Graphics")])
-        category_model.append(["Office",_("Office")])
-        category_model.append(["AudioVideo",_("Sound & Video")])
-        category_model.append(["Development",_("Programming")])
-        category_model.append(["Education",_("Education")])
+        category_model = Gtk.ListStore(str, str)  # CATEGORY_ID, CATEGORY_NAME
+        category_model.append(["WebApps", _("Web")])
+        category_model.append(["Network", _("Internet")])
+        category_model.append(["Utility", _("Accessories")])
+        category_model.append(["Game", _("Games")])
+        category_model.append(["Graphics", _("Graphics")])
+        category_model.append(["Office", _("Office")])
+        category_model.append(["AudioVideo", _("Sound & Video")])
+        category_model.append(["Development", _("Programming")])
+        category_model.append(["Education", _("Education")])
         self.category_combo = self.builder.get_object("category_combo")
         renderer = Gtk.CellRendererText()
         self.category_combo.pack_start(renderer, True)
         self.category_combo.add_attribute(renderer, "text", CATEGORY_NAME)
         self.category_combo.set_model(category_model)
-        self.category_combo.set_active(0) # Select 1st category
+        self.category_combo.set_active(0)  # Select 1st category
 
-        browser_model = Gtk.ListStore(object, str) # BROWSER_OBJ, BROWSER_NAME
+        browser_model = Gtk.ListStore(object, str)  # BROWSER_OBJ, BROWSER_NAME
         num_browsers = 0
         for browser in self.manager.get_supported_browsers():
             if os.path.exists(browser.test_path):
@@ -202,9 +205,9 @@ class WebAppManagerWindow():
         self.browser_combo.pack_start(renderer, True)
         self.browser_combo.add_attribute(renderer, "text", BROWSER_NAME)
         self.browser_combo.set_model(browser_model)
-        self.browser_combo.set_active(0) # Select 1st browser
+        self.browser_combo.set_active(0)  # Select 1st browser
         if num_browsers == 0:
-            print ("No supported browsers were detected.")
+            print("No supported browsers were detected.")
             self.add_button.set_sensitive(False)
             self.add_button.set_tooltip_text(_("No supported browsers were detected."))
         if (num_browsers < 2):
@@ -246,15 +249,17 @@ class WebAppManagerWindow():
             h.close()
             dlg.set_license(gpl)
         except Exception as e:
-            print (e)
+            print(e)
 
         dlg.set_version("__DEB_VERSION__")
         dlg.set_icon_name("webapp-manager")
         dlg.set_logo_icon_name("webapp-manager")
         dlg.set_website("https://www.github.com/linuxmint/webapp-manager")
+
         def close(w, res):
             if res == Gtk.ResponseType.CANCEL or res == Gtk.ResponseType.DELETE_EVENT:
                 w.destroy()
+
         dlg.connect("response", close)
         dlg.show()
 
@@ -285,7 +290,7 @@ class WebAppManagerWindow():
             self.load_webapps()
 
     def on_remove_button(self, widget):
-        if self.selected_webapp != None:
+        if self.selected_webapp is not None:
             dialog = Gtk.MessageDialog(message_type=Gtk.MessageType.WARNING)
             dialog.set_transient_for(self.window)
             dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_DELETE, Gtk.ResponseType.YES)
@@ -299,7 +304,7 @@ class WebAppManagerWindow():
             dialog.destroy()
 
     def run_webapp(self, webapp):
-        if webapp != None:
+        if webapp is not None:
             print("Running %s" % webapp.path)
             print("Executing %s" % webapp.exec)
             subprocess.Popen(webapp.exec, shell=True)
@@ -327,7 +332,8 @@ class WebAppManagerWindow():
             self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category, custom_parameters)
             self.load_webapps()
         else:
-            self.manager.create_webapp(name, url, icon, category, browser, custom_parameters, isolate_profile, navbar, privatewindow)
+            self.manager.create_webapp(name, url, icon, category, browser, custom_parameters, isolate_profile, navbar,
+                                       privatewindow)
             self.load_webapps()
 
     def on_add_button(self, widget):
@@ -350,7 +356,7 @@ class WebAppManagerWindow():
         self.name_entry.grab_focus()
 
     def on_edit_button(self, widget):
-        if self.selected_webapp != None:
+        if self.selected_webapp is not None:
             self.name_entry.set_text(self.selected_webapp.name)
             self.icon_chooser.set_icon(self.selected_webapp.icon)
             self.url_entry.set_text(self.selected_webapp.url)
@@ -476,9 +482,9 @@ class WebAppManagerWindow():
         if url != "":
             info = tldextract.extract(url)
             icon = None
-            if info.domain == None or info.domain == "":
+            if info.domain is None or info.domain == "":
                 return
-            if info.domain == "google" and info.subdomain != None and info.subdomain != "":
+            if info.domain == "google" and info.subdomain is not None and info.subdomain != "":
                 if info.subdomain == "mail":
                     icon = "web-%s-gmail" % info.domain
                 else:
@@ -487,7 +493,7 @@ class WebAppManagerWindow():
                 icon = "web-google-gmail"
             elif info.domain == "youtube":
                 icon = "web-google-youtube"
-            if icon != None and self.icon_theme.has_icon(icon):
+            if icon is not None and self.icon_theme.has_icon(icon):
                 self.icon_chooser.set_icon(icon)
             elif self.icon_theme.has_icon("web-%s" % info.domain):
                 self.icon_chooser.set_icon("web-%s" % info.domain)
@@ -506,7 +512,8 @@ class WebAppManagerWindow():
         for webapp in webapps:
             if webapp.is_valid:
                 if "/" in webapp.icon and os.path.exists(webapp.icon):
-                    pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(webapp.icon, -1, 32 * self.window.get_scale_factor())
+                    pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(webapp.icon, -1,
+                                                                    32 * self.window.get_scale_factor())
                 else:
                     if self.icon_theme.has_icon(webapp.icon):
                         pixbuf = self.icon_theme.load_icon(webapp.icon, 32 * self.window.get_scale_factor(), 0)
