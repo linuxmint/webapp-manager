@@ -126,15 +126,15 @@ class WebAppLauncher():
                     continue
 
                 if "X-WebApp-IsolateProfile" in line:
-                    self.custom_parameters = line.replace("X-WebApp-IsolateProfile=", "")
+                    self.isolate_profile = line.replace("X-WebApp-IsolateProfile=", "")
                     continue
 
                 if "X-WebApp-Navbar" in line:
-                    self.custom_parameters = line.replace("X-WebApp-Navbar=", "")
+                    self.navbar = line.replace("X-WebApp-Navbar=", "")
                     continue
 
                 if "X-WebApp-PrivateWindow" in line:
-                    self.custom_parameters = line.replace("X-WebApp-PrivateWindow=", "")
+                    self.privatewindow = line.replace("X-WebApp-PrivateWindow=", "")
                     continue
 
         if is_webapp and self.name != None and self.icon != None:
@@ -272,7 +272,7 @@ class WebAppManager():
             # This will raise an exception on legacy apps which
             # have no X-WebApp-URL and X-WebApp-Browser
 
-            exec_line = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url)
+            exec_line = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url, True)
             config.set("Desktop Entry", "Exec", exec_line)
             config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
             config.set("Desktop Entry", "X-WebApp-URL", url)
@@ -280,8 +280,9 @@ class WebAppManager():
             config.set("Desktop Entry", "X-WebApp-IsolateProfile", str(isolate_profile).lower())
             config.set("Desktop Entry", "X-WebApp-Navbar", str(navbar).lower())
             config.set("Desktop Entry", "X-WebApp-PrivateWindow", str(privatewindow).lower())
-        except:
+        except Exception:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
+            traceback.print_exc()
 
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
@@ -310,7 +311,7 @@ class WebAppManager():
                 shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
                             user_chrome_path)
             elif os.path.exists(user_chrome_path):
-                shutil.rmtree(user_chrome_path)
+                os.remove(user_chrome_path)
         elif browser.browser_type == BROWSER_TYPE_LIBREWOLF_FLATPAK:
             # LibreWolf flatpak
             firefox_profiles_dir = LIBREWOLF_FLATPAK_PROFILES_DIR
