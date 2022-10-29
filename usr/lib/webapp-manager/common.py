@@ -125,7 +125,7 @@ class WebAppLauncher():
                     self.custom_parameters = line.replace("X-WebApp-CustomParameters=", "")
                     continue
 
-                if "X-WebApp-IsolateProfile" in line:
+        if is_webapp and self.name is not None and self.icon is not None:
                     self.isolate_profile = line.replace("X-WebApp-IsolateProfile=", "")
                     continue
 
@@ -226,7 +226,10 @@ class WebAppManager():
             desktop_file.write("Name=%s\n" % name)
             desktop_file.write("Comment=%s\n" % _("Web App"))
 
-            desktop_file.write("Exec=" + self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url) + "\n")
+            exec_string = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar,
+                                               privatewindow, url)
+
+            desktop_file.write(exec_string + "\n")
 
             desktop_file.write("Terminal=false\n")
             desktop_file.write("X-MultipleArgs=false\n")
@@ -245,8 +248,8 @@ class WebAppManager():
                 desktop_file.write("X-WebApp-Isolated=false\n")
 
             if browser.browser_type == BROWSER_TYPE_EPIPHANY:
-                epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
                 # Move the desktop file and create a symlink
+                epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
                 new_path = os.path.join(epiphany_profile_path, "org.gnome.Epiphany.WebApp-%s.desktop" % codename)
                 os.makedirs(epiphany_profile_path)
                 os.replace(path, new_path)
@@ -259,10 +262,7 @@ class WebAppManager():
                 with open(app_mode_file, 'w') as fp:
                     pass
 
-    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters, codename, isolate_profile=True, navbar=False, privatewindow=False):
-        config = configparser.RawConfigParser()
-        config.optionxform = str
-        config.read(path)
+    def get_exec_string(self, browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
         config.set("Desktop Entry", "Name", name)
         config.set("Desktop Entry", "Icon", icon)
         config.set("Desktop Entry", "Comment", _("Web App"))
@@ -293,7 +293,7 @@ class WebAppManager():
             # Firefox based
             firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
+            exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                            " --class WebApp-" + codename +
                            " --profile " + firefox_profile_path +
                            " --no-remote ")
@@ -301,13 +301,13 @@ class WebAppManager():
                 exec_string += "--private-window "
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
-                desktop_file.write(exec_string + "\"" + url + "\"" + "'\n")
+            exec_string += "\"" + url + "\"" + "'\n"
             if not edit:
-                # Create a Firefox profile
-                shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
-
-            user_chrome_path = os.path.join(firefox_profile_path, "chrome", "userChrome.css")
-            if navbar and (not os.path.exists(user_chrome_path)):
+            # Create a Firefox profile
+            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
+                if navbar:
+                shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
+                            os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
                 shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
                             user_chrome_path)
             elif os.path.exists(user_chrome_path):
@@ -316,19 +316,19 @@ class WebAppManager():
             # LibreWolf flatpak
             firefox_profiles_dir = LIBREWOLF_FLATPAK_PROFILES_DIR
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-                exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
+            exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                            " --class WebApp-" + codename +
                            " --profile " + firefox_profile_path +
                            " --no-remote ")
             if privatewindow:
                 exec_string += "--private-window "
-                desktop_file.write(exec_string + "\"" + url + "\"" + "'\n")
+            exec_string += "\"" + url + "\"" + "'\n"
             if not edit:
-                # Create a Firefox profile
-                shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
-
-            user_chrome_path = os.path.join(firefox_profile_path, "chrome", "userChrome.css")
-            if navbar and (not os.path.exists(user_chrome_path)):
+            # Create a Firefox profile
+            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
+            if navbar:
+                shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
+                            os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
                 shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
                             user_chrome_path)
             elif os.path.exists(user_chrome_path):
@@ -340,10 +340,10 @@ class WebAppManager():
             epiphany_orig_prof_dir = os.path.join(os.path.expanduser("~/.local/share"),
                                                   "org.gnome.Epiphany.WebApp-" + codename)
             os.symlink(epiphany_profile_path, epiphany_orig_prof_dir)
-            exec_string = browser.exec_path
+            exec_string = "Exec=" + browser.exec_path
             exec_string += " --application-mode "
             exec_string += " --profile=\"" + epiphany_orig_prof_dir + "\""
-                exec_string += " " + "\"" + url + "\"" + "\n"
+            exec_string += " " + "\"" + url + "\"" + "\n"
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
         else:
@@ -353,18 +353,17 @@ class WebAppManager():
                 exec_string = (browser.exec_path +
                 if custom_parameters:
                     exec_string += " {}".format(custom_parameters)
-                desktop_file.write(exec_string)
-            else:
-                # Chromium based
-                if isolate_profile:
-                    profile_path = os.path.join(PROFILES_DIR, codename)
-                    exec_string = ("Exec=" + browser.exec_path +
-                                        " --app=" + "\"" + url + "\"" +
+        else:
+            # Chromium based
+            if isolate_profile:
+                profile_path = os.path.join(PROFILES_DIR, codename)
+                exec_string = ("Exec=" + browser.exec_path +
+                               " --app=" + "\"" + url + "\"" +
                                " --class=WebApp-" + codename +
                                " --user-data-dir=" + profile_path)
             else:
-                exec_string = (browser.exec_path +
-                                        " --app=" + "\"" + url + "\"" +
+                exec_string = ("Exec=" + browser.exec_path +
+                               " --app=" + "\"" + url + "\"" +
                                " --class=WebApp-" + codename)
 
             if privatewindow:
@@ -380,38 +379,8 @@ class WebAppManager():
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
 
+            exec_string += "\n"
         return exec_string
-                desktop_file.write(exec_string + "\n")
-
-            desktop_file.write("Terminal=false\n")
-            desktop_file.write("X-MultipleArgs=false\n")
-            desktop_file.write("Type=Application\n")
-            desktop_file.write("Icon=%s\n" % icon)
-            desktop_file.write("Categories=GTK;%s;\n" % category)
-            desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
-            desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
-            desktop_file.write("StartupNotify=true\n")
-            desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
-            desktop_file.write("X-WebApp-URL=%s\n" % url)
-            desktop_file.write("X-WebApp-CustomParameters=%s\n" % custom_parameters)
-            if isolate_profile:
-                desktop_file.write("X-WebApp-Isolated=true\n")
-            else:
-                desktop_file.write("X-WebApp-Isolated=false\n")
-
-            if browser.browser_type == BROWSER_TYPE_EPIPHANY:
-                # Move the desktop file and create a symlink
-                new_path = os.path.join(epiphany_profile_path, "org.gnome.Epiphany.WebApp-%s.desktop" % codename)
-                os.makedirs(epiphany_profile_path)
-                os.replace(path, new_path)
-                os.symlink(new_path, path)
-                # copy the icon to profile directory
-                new_icon=os.path.join(epiphany_profile_path, "app-icon.png")
-                shutil.copy(icon, new_icon)
-                # required for app mode. create an empty file .app
-                app_mode_file=os.path.join(epiphany_profile_path, ".app")
-                with open(app_mode_file, 'w') as fp:
-                    pass
 
     def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters):
         config = configparser.RawConfigParser()
@@ -505,7 +474,7 @@ def download_favicon(url):
             array = json.loads(source)
             for icon in array['icons']:
                 image = download_image(root_url, icon['src'])
-                if image != None:
+                if image is not None:
                     t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
                     images.append(["Favicon Grabber", image, t.name])
                     image.save(t.name)
