@@ -242,6 +242,8 @@ class WebAppManager():
             desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
             desktop_file.write("X-WebApp-URL=%s\n" % url)
             desktop_file.write("X-WebApp-CustomParameters=%s\n" % custom_parameters)
+            desktop_file.write("X-WebApp-Navbar=%s\n" % navbar)
+            desktop_file.write("X-WebApp-PrivateWindow=%s\n" % privatewindow)
             if isolate_profile:
                 desktop_file.write("X-WebApp-Isolated=true\n")
             else:
@@ -359,6 +361,10 @@ class WebAppManager():
             config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
             config.set("Desktop Entry", "X-WebApp-URL", url)
             config.set("Desktop Entry", "X-WebApp-CustomParameters", custom_parameters)
+            config.set("Desktop Entry", "X-WebApp-IsolateProfile", isolate_profile)
+            config.set("Desktop Entry", "X-WebApp-Navbar", navbar)
+            config.set("Desktop Entry", "X-WebApp-PrivateWindow", privatewindow)
+
         except:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
 
