@@ -125,7 +125,7 @@ class WebAppLauncher():
                     self.custom_parameters = line.replace("X-WebApp-CustomParameters=", "")
                     continue
 
-        if is_webapp and self.name is not None and self.icon is not None:
+                if "X-WebApp-IsolateProfile" in line:
                     self.isolate_profile = line.replace("X-WebApp-IsolateProfile=", "")
                     continue
 
@@ -137,7 +137,7 @@ class WebAppLauncher():
                     self.privatewindow = line.replace("X-WebApp-PrivateWindow=", "")
                     continue
 
-        if is_webapp and self.name != None and self.icon != None:
+        if is_webapp and self.name is not None and self.icon is not None:
             self.is_valid = True
 
 # This is the backend.
@@ -263,32 +263,6 @@ class WebAppManager():
                     pass
 
     def get_exec_string(self, browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
-        config.set("Desktop Entry", "Name", name)
-        config.set("Desktop Entry", "Icon", icon)
-        config.set("Desktop Entry", "Comment", _("Web App"))
-        config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
-
-        try:
-            # This will raise an exception on legacy apps which
-            # have no X-WebApp-URL and X-WebApp-Browser
-
-            exec_line = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url, True)
-            config.set("Desktop Entry", "Exec", exec_line)
-            config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
-            config.set("Desktop Entry", "X-WebApp-URL", url)
-            config.set("Desktop Entry", "X-WebApp-CustomParameters", custom_parameters)
-            config.set("Desktop Entry", "X-WebApp-IsolateProfile", str(isolate_profile).lower())
-            config.set("Desktop Entry", "X-WebApp-Navbar", str(navbar).lower())
-            config.set("Desktop Entry", "X-WebApp-PrivateWindow", str(privatewindow).lower())
-        except Exception:
-            print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
-            traceback.print_exc()
-
-        with open(path, 'w') as configfile:
-            config.write(configfile, space_around_delimiters=False)
-
-    def get_exec_string(self, browser, codename, custom_parameters, icon,
-                        isolate_profile, navbar, privatewindow, url, edit = False):
         if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK]:
             # Firefox based
             firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
@@ -302,16 +276,11 @@ class WebAppManager():
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
             exec_string += "\"" + url + "\"" + "'\n"
-            if not edit:
             # Create a Firefox profile
-            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
-                if navbar:
+            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
+            if navbar:
                 shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
                             os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
-                shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
-                            user_chrome_path)
-            elif os.path.exists(user_chrome_path):
-                os.remove(user_chrome_path)
         elif browser.browser_type == BROWSER_TYPE_LIBREWOLF_FLATPAK:
             # LibreWolf flatpak
             firefox_profiles_dir = LIBREWOLF_FLATPAK_PROFILES_DIR
@@ -323,16 +292,11 @@ class WebAppManager():
             if privatewindow:
                 exec_string += "--private-window "
             exec_string += "\"" + url + "\"" + "'\n"
-            if not edit:
             # Create a Firefox profile
-            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path)
+            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
             if navbar:
                 shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
                             os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
-                shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
-                            user_chrome_path)
-            elif os.path.exists(user_chrome_path):
-                shutil.rmtree(user_chrome_path)
         elif browser.browser_type == BROWSER_TYPE_EPIPHANY:
             # Epiphany based
             epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
@@ -346,13 +310,6 @@ class WebAppManager():
             exec_string += " " + "\"" + url + "\"" + "\n"
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
-        else:
-            # Chromium based
-            if isolate_profile:
-                profile_path = os.path.join(PROFILES_DIR, codename)
-                exec_string = (browser.exec_path +
-                if custom_parameters:
-                    exec_string += " {}".format(custom_parameters)
         else:
             # Chromium based
             if isolate_profile:
@@ -382,7 +339,8 @@ class WebAppManager():
             exec_string += "\n"
         return exec_string
 
-    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters):
+    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters, codename, isolate_profile, navbar, privatewindow):
+        
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
@@ -394,11 +352,9 @@ class WebAppManager():
         try:
             # This will raise an exception on legacy apps which
             # have no X-WebApp-URL and X-WebApp-Browser
-            old_url = config.get("Desktop Entry", "X-WebApp-URL")
-            exec_line = config.get("Desktop Entry", "Exec")
-            exec_line = exec_line.replace(old_url, url)
-            old_custom_parameters = config.get("Desktop Entry", "X-WebApp-CustomParameters")
-            exec_line = exec_line.replace(old_custom_parameters, custom_parameters)
+
+            exec_line = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url)
+
             config.set("Desktop Entry", "Exec", exec_line)
             config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
             config.set("Desktop Entry", "X-WebApp-URL", url)
