@@ -7,6 +7,7 @@ import os
 import shutil
 import subprocess
 import warnings
+import webbrowser
 
 #   2. Related third party imports.
 import gi
@@ -358,6 +359,11 @@ class WebAppManagerWindow():
             self.icon_chooser.set_icon(self.selected_webapp.icon)
             self.url_entry.set_text(self.selected_webapp.url)
             self.customparameters_entry.set_text(self.selected_webapp.custom_parameters)
+
+            web_browsers = map(lambda i: i[0], self.browser_combo.get_model())
+            selected_browser_index = [idx for idx, x in enumerate(web_browsers) if x.name == self.selected_webapp.web_browser][0]
+
+            self.browser_combo.set_active(selected_browser_index)
 
             self.on_browser_changed(self.selected_webapp)
 
