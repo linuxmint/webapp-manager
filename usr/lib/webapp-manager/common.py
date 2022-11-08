@@ -125,16 +125,16 @@ class WebAppLauncher():
                     self.custom_parameters = line.replace("X-WebApp-CustomParameters=", "")
                     continue
 
-                if "X-WebApp-IsolateProfile" in line:
-                    self.isolate_profile = line.replace("X-WebApp-IsolateProfile=", "")
+                if "X-WebApp-Isolated" in line:
+                    self.isolate_profile = line.replace("X-WebApp-Isolated=", "") == "true"
                     continue
 
                 if "X-WebApp-Navbar" in line:
-                    self.navbar = line.replace("X-WebApp-Navbar=", "")
+                    self.navbar = line.replace("X-WebApp-Navbar=", "") == "true"
                     continue
 
                 if "X-WebApp-PrivateWindow" in line:
-                    self.privatewindow = line.replace("X-WebApp-PrivateWindow=", "")
+                    self.privatewindow = line.replace("X-WebApp-PrivateWindow=", "") == "true"
                     continue
 
         if is_webapp and self.name is not None and self.icon is not None:
@@ -361,9 +361,9 @@ class WebAppManager():
             config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
             config.set("Desktop Entry", "X-WebApp-URL", url)
             config.set("Desktop Entry", "X-WebApp-CustomParameters", custom_parameters)
-            config.set("Desktop Entry", "X-WebApp-IsolateProfile", isolate_profile)
-            config.set("Desktop Entry", "X-WebApp-Navbar", navbar)
-            config.set("Desktop Entry", "X-WebApp-PrivateWindow", privatewindow)
+            config.set("Desktop Entry", "X-WebApp-Isolated", "true" if isolate_profile else "false")
+            config.set("Desktop Entry", "X-WebApp-Navbar", "true" if navbar else "false")
+            config.set("Desktop Entry", "X-WebApp-PrivateWindow", "true" if privatewindow else "false")
 
         except:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
