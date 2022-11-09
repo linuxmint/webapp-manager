@@ -46,7 +46,7 @@ class MyApplication(Gtk.Application):
 
     def activate(self, application):
         windows = self.get_windows()
-        if (len(windows) > 0):
+        if len(windows) > 0:
             window = windows[0]
             window.present()
             window.show()
@@ -56,7 +56,7 @@ class MyApplication(Gtk.Application):
             window.window.show()
 
 
-class WebAppManagerWindow():
+class WebAppManagerWindow:
 
     def __init__(self, application):
 
@@ -210,7 +210,7 @@ class WebAppManagerWindow():
             print("No supported browsers were detected.")
             self.add_button.set_sensitive(False)
             self.add_button.set_tooltip_text(_("No supported browsers were detected."))
-        if (num_browsers < 2):
+        if num_browsers < 2:
             self.browser_label.hide()
             self.browser_combo.hide()
         self.browser_combo.connect("changed", self.on_browser_changed)
@@ -445,7 +445,7 @@ class WebAppManagerWindow():
 
     def show_hide_browser_widgets(self):
         browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_OBJ]
-        if (browser.browser_type == BROWSER_TYPE_FIREFOX):
+        if browser.browser_type == BROWSER_TYPE_FIREFOX:
             self.isolated_label.hide()
             self.isolated_switch.hide()
             self.navbar_label.show()

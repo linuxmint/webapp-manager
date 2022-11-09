@@ -60,7 +60,7 @@ FALKON_PROFILES_DIR = os.path.join(ICE_DIR, "falkon")
 ICONS_DIR = os.path.join(ICE_DIR, "icons")
 BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_LIBREWOLF_FLATPAK, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY, BROWSER_TYPE_FALKON = range(6)
 
-class Browser():
+class Browser:
 
     def __init__(self, browser_type, name, exec_path, test_path):
         self.browser_type = browser_type
@@ -70,7 +70,7 @@ class Browser():
 
 # This is a data structure representing
 # the app menu item (path, name, icon..etc.)
-class WebAppLauncher():
+class WebAppLauncher:
 
     def __init__(self, path, codename):
         self.path = path
@@ -128,7 +128,7 @@ class WebAppLauncher():
 # This is the backend.
 # It contains utility functions to load,
 # save and delete webapps.
-class WebAppManager():
+class WebAppManager:
 
     def __init__(self):
         for directory in [ICE_DIR, APPS_DIR, PROFILES_DIR, FIREFOX_PROFILES_DIR, FIREFOX_FLATPAK_PROFILES_DIR, ICONS_DIR, EPIPHANY_PROFILES_DIR, FALKON_PROFILES_DIR]:
@@ -150,7 +150,7 @@ class WebAppManager():
                         print("Could not create webapp for path", path)
                         traceback.print_exc()
 
-        return (webapps)
+        return webapps
 
     def get_supported_browsers(self):
         browsers = []
@@ -360,7 +360,7 @@ def normalize_url(url):
 
 def download_image(root_url, link):
     image = None
-    if ("://") not in link:
+    if "://" not in link:
         if link.startswith("/"):
             link = root_url + link
         else:
@@ -420,7 +420,7 @@ def download_favicon(url):
                     t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
                     images.append(["Favicon Grabber", image, t.name])
                     image.save(t.name)
-            images = sorted(images, key = lambda x: (x[1].height), reverse=True)
+            images = sorted(images, key = lambda x: x[1].height, reverse=True)
             if images:
                 return images
     except Exception as e:
@@ -457,7 +457,7 @@ def download_favicon(url):
     except Exception as e:
         print(e)
 
-    images = sorted(images, key = lambda x: (x[1].height), reverse=True)
+    images = sorted(images, key = lambda x: x[1].height, reverse=True)
     return images
 
 if __name__ == "__main__":
