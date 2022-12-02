@@ -7,6 +7,7 @@ import os
 import shutil
 import subprocess
 import warnings
+import webbrowser
 
 #   2. Related third party imports.
 import gi
@@ -104,10 +105,7 @@ class WebAppManagerWindow:
         self.browser_label = self.builder.get_object("browser_label")
 
         # Widgets which are in the add page but not the edit page
-        self.add_specific_widgets = [self.browser_label, self.browser_combo,
-                                     self.isolated_label, self.isolated_switch,
-                                     self.navbar_label, self.navbar_switch,
-                                     self.privatewindow_label, self.privatewindow_switch]
+        self.add_specific_widgets = [self.browser_label, self.browser_combo]
 
         # Widget signals
         self.add_button.connect("clicked", self.on_add_button)
@@ -329,7 +327,7 @@ class WebAppManagerWindow:
             shutil.copyfile(icon, new_path)
             icon = new_path
         if self.edit_mode:
-            self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category, custom_parameters)
+            self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category, custom_parameters, self.selected_webapp.codename, isolate_profile, navbar, privatewindow)
             self.load_webapps()
         else:
             self.manager.create_webapp(name, url, icon, category, browser, custom_parameters, isolate_profile, navbar,
@@ -361,6 +359,15 @@ class WebAppManagerWindow:
             self.icon_chooser.set_icon(self.selected_webapp.icon)
             self.url_entry.set_text(self.selected_webapp.url)
             self.customparameters_entry.set_text(self.selected_webapp.custom_parameters)
+            self.navbar_switch.set_active(self.selected_webapp.navbar)
+            self.isolated_switch.set_active(self.selected_webapp.isolate_profile)
+            self.privatewindow_switch.set_active(self.selected_webapp.privatewindow)
+
+            web_browsers = map(lambda i: i[0], self.browser_combo.get_model())
+            selected_browser_index = [idx for idx, x in enumerate(web_browsers) if x.name == self.selected_webapp.web_browser][0]
+            self.browser_combo.set_active(selected_browser_index)
+            self.on_browser_changed(self.selected_webapp)
+
             model = self.category_combo.get_model()
             iter = model.get_iter_first()
             while iter:
@@ -369,6 +376,7 @@ class WebAppManagerWindow:
                     self.category_combo.set_active_iter(iter)
                     break
                 iter = model.iter_next(iter)
+            self.show_hide_browser_widgets()
             for widget in self.add_specific_widgets:
                 widget.hide()
             self.stack.set_visible_child_name("add_page")
@@ -538,3 +546,4 @@ class WebAppManagerWindow:
 if __name__ == "__main__":
     application = MyApplication("org.x.webapp-manager", Gio.ApplicationFlags.FLAGS_NONE)
     application.run()
+
