@@ -1,3 +1,10 @@
+webapp-manager (1.2.7) vera; urgency=medium
+
+  * l10n: Update translations
+  * l10n: Update files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 02 Dec 2022 17:38:54 +0000
+
 webapp-manager (1.2.6) vera; urgency=medium
 
   [ Michael Webster ]
