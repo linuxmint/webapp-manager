@@ -1,3 +1,36 @@
+webapp-manager (1.2.6) vera; urgency=medium
+
+  [ Michael Webster ]
+  * Add github workflow.
+
+  [ WhosyVox ]
+  * Added Flatpak Edge as browser (#206)
+  * Fix spaces in icon path from breaking webapps (#205)
+
+  [ Aaron P. Murniadi ]
+  * Detect Brave Browser for RPM builds (Fedora) (#209)
+
+  [ WhosyVox ]
+  * Add Flatpak Brave browser as supported (#204)
+  * Add quotes around url in EXEC (#207)
+
+  [ hduelme ]
+  * replace equality None check with identity None check (#201)
+
+  [ Jonathan Henrique Minella Oldenburg ]
+  * Refactor get exec string in separate method (#212)
+
+  [ hdulme ]
+  * remove redundant parentheses
+
+  [ Jonathan Henrique Minella Oldenburg ]
+  * Edit webapp browser settings (#202)
+
+  [ jacekpoz ]
+  * added support for firefox nightly (#220)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 02 Dec 2022 13:01:17 +0000
+
 webapp-manager (1.2.5) vanessa; urgency=medium
 
   [ Konstantinos Chatzis ]
