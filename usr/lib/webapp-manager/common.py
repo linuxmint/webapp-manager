@@ -126,15 +126,15 @@ class WebAppLauncher:
                     continue
 
                 if "X-WebApp-Isolated" in line:
-                    self.isolate_profile = line.replace("X-WebApp-Isolated=", "") == "true"
+                    self.isolate_profile = line.replace("X-WebApp-Isolated=", "").lower() == "true"
                     continue
 
                 if "X-WebApp-Navbar" in line:
-                    self.navbar = line.replace("X-WebApp-Navbar=", "") == "true"
+                    self.navbar = line.replace("X-WebApp-Navbar=", "").lower() == "true"
                     continue
 
                 if "X-WebApp-PrivateWindow" in line:
-                    self.privatewindow = line.replace("X-WebApp-PrivateWindow=", "") == "true"
+                    self.privatewindow = line.replace("X-WebApp-PrivateWindow=", "").lower() == "true"
                     continue
 
         if is_webapp and self.name is not None and self.icon is not None:
@@ -242,12 +242,9 @@ class WebAppManager:
             desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
             desktop_file.write("X-WebApp-URL=%s\n" % url)
             desktop_file.write("X-WebApp-CustomParameters=%s\n" % custom_parameters)
-            desktop_file.write("X-WebApp-Navbar=%s\n" % navbar)
-            desktop_file.write("X-WebApp-PrivateWindow=%s\n" % privatewindow)
-            if isolate_profile:
-                desktop_file.write("X-WebApp-Isolated=true\n")
-            else:
-                desktop_file.write("X-WebApp-Isolated=false\n")
+            desktop_file.write("X-WebApp-Navbar=%s\n" % bool_to_string(navbar))
+            desktop_file.write("X-WebApp-PrivateWindow=%s\n" % bool_to_string(privatewindow))
+            desktop_file.write("X-WebApp-Isolated=%s\n" % bool_to_string(isolate_profile))
 
             if browser.browser_type == BROWSER_TYPE_EPIPHANY:
                 # Move the desktop file and create a symlink
@@ -359,9 +356,9 @@ class WebAppManager:
             config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
             config.set("Desktop Entry", "X-WebApp-URL", url)
             config.set("Desktop Entry", "X-WebApp-CustomParameters", custom_parameters)
-            config.set("Desktop Entry", "X-WebApp-Isolated", "true" if isolate_profile else "false")
-            config.set("Desktop Entry", "X-WebApp-Navbar", "true" if navbar else "false")
-            config.set("Desktop Entry", "X-WebApp-PrivateWindow", "true" if privatewindow else "false")
+            config.set("Desktop Entry", "X-WebApp-Isolated", bool_to_string(isolate_profile))
+            config.set("Desktop Entry", "X-WebApp-Navbar", bool_to_string(navbar))
+            config.set("Desktop Entry", "X-WebApp-PrivateWindow", bool_to_string(privatewindow))
 
         except:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
@@ -369,6 +366,11 @@ class WebAppManager:
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
 
+def bool_to_string(boolean):
+    if boolean:
+        return "true"
+    else:
+        return "false"
 
 def normalize_url(url):
     (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url, "http")
