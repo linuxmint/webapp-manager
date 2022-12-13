@@ -230,8 +230,7 @@ class WebAppManager:
             exec_string = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar,
                                                privatewindow, url)
 
-            desktop_file.write(exec_string + "\n")
-
+            desktop_file.write("Exec=%s\n" % exec_string)
             desktop_file.write("Terminal=false\n")
             desktop_file.write("X-MultipleArgs=false\n")
             desktop_file.write("Type=Application\n")
@@ -270,7 +269,7 @@ class WebAppManager:
             # Firefox based
             firefox_profiles_dir = FIREFOX_PROFILES_DIR if browser.browser_type == BROWSER_TYPE_FIREFOX else FIREFOX_FLATPAK_PROFILES_DIR
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-            exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
+            exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                            " --class WebApp-" + codename +
                            " --profile " + firefox_profile_path +
                            " --no-remote ")
@@ -278,7 +277,7 @@ class WebAppManager:
                 exec_string += "--private-window "
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
-            exec_string += "\"" + url + "\"" + "'\n"
+            exec_string += "\"" + url + "\"" + "'"
             # Create a Firefox profile
             shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
             if navbar:
@@ -288,13 +287,13 @@ class WebAppManager:
             # LibreWolf flatpak
             firefox_profiles_dir = LIBREWOLF_FLATPAK_PROFILES_DIR
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-            exec_string = ("Exec=sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
+            exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                            " --class WebApp-" + codename +
                            " --profile " + firefox_profile_path +
                            " --no-remote ")
             if privatewindow:
                 exec_string += "--private-window "
-            exec_string += "\"" + url + "\"" + "'\n"
+            exec_string += "\"" + url + "\"" + "'"
             # Create a Firefox profile
             shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
             if navbar:
@@ -307,22 +306,22 @@ class WebAppManager:
             epiphany_orig_prof_dir = os.path.join(os.path.expanduser("~/.local/share"),
                                                   "org.gnome.Epiphany.WebApp-" + codename)
             os.symlink(epiphany_profile_path, epiphany_orig_prof_dir)
-            exec_string = "Exec=" + browser.exec_path
+            exec_string = browser.exec_path
             exec_string += " --application-mode "
             exec_string += " --profile=\"" + epiphany_orig_prof_dir + "\""
-            exec_string += " " + "\"" + url + "\"" + "\n"
+            exec_string += " " + "\"" + url + "\""
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
         else:
             # Chromium based
             if isolate_profile:
                 profile_path = os.path.join(PROFILES_DIR, codename)
-                exec_string = ("Exec=" + browser.exec_path +
+                exec_string = (browser.exec_path +
                                " --app=" + "\"" + url + "\"" +
                                " --class=WebApp-" + codename +
                                " --user-data-dir=" + profile_path)
             else:
-                exec_string = ("Exec=" + browser.exec_path +
+                exec_string = (browser.exec_path +
                                " --app=" + "\"" + url + "\"" +
                                " --class=WebApp-" + codename)
 
@@ -339,11 +338,9 @@ class WebAppManager:
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
 
-            exec_string += "\n"
         return exec_string
 
     def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters, codename, isolate_profile, navbar, privatewindow):
-        
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
