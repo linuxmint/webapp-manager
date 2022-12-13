@@ -1,3 +1,10 @@
+webapp-manager (1.2.8) vera; urgency=medium
+
+  * Fix editing WebApps
+  * Fix boolean values lost on edit
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 13 Dec 2022 12:32:04 +0000
+
 webapp-manager (1.2.7) vera; urgency=medium
 
   * l10n: Update translations
