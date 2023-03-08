@@ -30,6 +30,19 @@ Press <kbd>Ctrl</kbd>+<kbd>W</kbd> to close the current tab.
 
 Press <kbd>Ctrl</kbd> when clicking a link to open it in a new tab.
 
+How to allow new windows to open in Firefox instead of new tabs?
+----------------------------------------------------------------
+
+Press and release the <kbd>Alt</kbd> key to show the main menubar.
+
+You can then reach the `Settings` from the `Edit` menu.
+
+In the `General` settings tab, go to the `Tabs` section, uncheck `Open links in tabs instead of new windows`.
+
+In the `Privacy & Security` section, go to `Permissions` and create an exception for your webapp's URL, by pressing the `Exceptions...` button next to it and then adding the respective URL to the list in the following pop-up window.
+
+With this setting, new windows of the webapp will open instead of new tabs, e.g., if you follow links.
+
 How to add extensions in Firefox (AdBlock etc.)?
 ------------------------------------------------
 
