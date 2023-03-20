@@ -211,7 +211,10 @@ class WebAppManager:
                 Browser(BROWSER_TYPE_CHROMIUM, "Edge (Flatpak)", ".local/share/flatpak/exports/bin/com.microsoft.Edge", ".local/share/flatpak/exports/bin/com.microsoft.Edge"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave (Flatpak)", "/var/lib/flatpak/exports/bin/com.brave.Browser", "/var/lib/flatpak/exports/bin/com.brave.Browser"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave (Flatpak)", ".local/share/flatpak/exports/bin/com.brave.Browser", ".local/share/flatpak/exports/bin/com.brave.Browser"),
-                Browser(BROWSER_TYPE_CHROMIUM, "Yandex", "yandex-browser", "/usr/bin/yandex-browser")
+                Browser(BROWSER_TYPE_CHROMIUM, "Yandex", "yandex-browser", "/usr/bin/yandex-browser"),
+                Browser(BROWSER_TYPE_FALKON, "Falkon (Flatpak)", "/var/lib/flatpak/exports/bin/org.kde.falkon", "/var/lib/flatpak/exports/bin/org.kde.falkon"),
+                Browser(BROWSER_TYPE_FALKON, "Falkon (Flatpak)", ".local/share/flatpak/exports/bin/org.kde.falkon", ".local/share/flatpak/exports/bin/org.kde.falkon"),
+                Browser(BROWSER_TYPE_CHROMIUM, "Naver Whale", "naver-whale-stable", "/usr/bin/naver-whale-stable")
                 ]
 
     def delete_webbapp(self, webapp):
