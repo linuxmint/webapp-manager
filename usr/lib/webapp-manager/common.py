@@ -17,6 +17,7 @@ import urllib.parse
 import urllib.request
 import threading
 import traceback
+from typing import Optional
 
 #   2. Related third party imports.
 from gi.repository import GObject
@@ -391,8 +392,7 @@ def normalize_url(url):
         return urllib.parse.urlunparse((scheme, path, "", "", "", ""))
     return urllib.parse.urlunparse((scheme, netloc, path, "", "", ""))
 
-def download_image(root_url, link):
-    image = None
+def download_image(root_url: str, link: str) -> Optional[Image]:
     if "://" not in link:
         if link.startswith("/"):
             link = root_url + link
@@ -402,12 +402,12 @@ def download_image(root_url, link):
         response = requests.get(link, timeout=3)
         image = Image.open(BytesIO(response.content))
         if image.height > 256:
-            image = image.resize((256, 256), Image.BICUBIC)
+            return image.resize((256, 256), Image.BICUBIC)
+        return image
     except Exception as e:
         print(e)
         print(link)
-        image = None
-    return image
+        return None
 
 def _find_link_favicon(soup, iconformat):
     items = soup.find_all("link", {"rel": iconformat})
