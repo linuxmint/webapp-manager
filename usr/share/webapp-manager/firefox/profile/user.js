@@ -11,4 +11,6 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.tabs.drawInTitlebar", false);
 user_pref("browser.tabs.inTitlebar", 0);
 user_pref("browser.contentblocking.category", "strict");
-user_pref("privacy.clearOnShutdown.cookies", false);
+user_pref("privacy.clearOnShutdown.offlineApps", false);
+user_pref("privacy.sanitize.sanitizeOnShutdown", false);
+user_pref("privacy.sanitize.timeSpan", 1);
