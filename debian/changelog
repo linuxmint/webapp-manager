@@ -1,3 +1,37 @@
+webapp-manager (1.2.9) victoria; urgency=medium
+
+  [ Brendan Threewitt ]
+  * added support for chromium(bin) and brave(bin) in gentoo (#216)
+
+  [ ludvigng ]
+  * Add user-installed flatpak browsers (#217)
+
+  [ hduelme ]
+  * simplify get_supported_browsers (#218)
+
+  [ haggen88 ]
+  * Add Yandex browser (#239)
+
+  [ PizzaDude ]
+  * Add missing comma in common.py (#242)
+
+  [ haggen88 ]
+  * Add Falkon (Flatpak) and Naver Whale browser
+
+  [ hduelme ]
+  * remove unused imports
+
+  [ eutektoid ]
+  * Update README.md
+
+  [ hduelme ]
+  * refactor download_image (#240)
+
+  [ haggen88 ]
+  * Add Yandex as Flatpak
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 05 Jun 2023 14:02:23 +0100
+
 webapp-manager (1.2.8) vera; urgency=medium
 
   * Fix editing WebApps
