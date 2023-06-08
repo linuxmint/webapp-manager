@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2022-07-03 12:51+0000\n"
-"Last-Translator: Kosmas Raptis <Unknown>\n"
+"PO-Revision-Date: 2023-05-09 06:17+0000\n"
+"Last-Translator: Aster Bandis <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2022-12-02 14:24+0000\n"
-"X-Generator: Launchpad (build 51cef3d08dff1e227b5ada709bd67280c567d4be)\n"
+"X-Launchpad-Export-Date: 2023-06-08 10:22+0000\n"
+"X-Generator: Launchpad (build 620cd5280e3a973662e263ebf9346837ed657a46)\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
@@ -27,7 +27,7 @@ msgstr "Εφαρμογή ιστού"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Διαδικτυακές εφαρμογές"
+msgstr "Εφαρμογές ιστού"
 
 #: usr/lib/webapp-manager/webapp-manager.py:129
 msgid "Keyboard Shortcuts"
@@ -37,7 +37,7 @@ msgstr "Συντομεύσεις Πληκτρολογίου"
 #: usr/lib/webapp-manager/webapp-manager.py:237
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Σχετικά"
+msgstr "Περί"
 
 #: usr/lib/webapp-manager/webapp-manager.py:141
 #: usr/share/webapp-manager/shortcuts.ui.h:10
@@ -66,7 +66,7 @@ msgstr "Ιστός"
 
 #: usr/lib/webapp-manager/webapp-manager.py:181
 msgid "Accessories"
-msgstr "Αξεσουάρ"
+msgstr "Βοηθήματα"
 
 #: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Games"
@@ -82,7 +82,7 @@ msgstr "Γραφείο"
 
 #: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Sound & Video"
-msgstr "Ήχος & βίντεο"
+msgstr "Ήχος και βίντεο"
 
 #: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Programming"
@@ -94,7 +94,7 @@ msgstr "Εκπαίδευση"
 
 #: usr/lib/webapp-manager/webapp-manager.py:209
 msgid "No supported browsers were detected."
-msgstr "Δεν εντοπίστηκαν υποστηριζόμενοι διαφυλλιστές."
+msgstr "Δεν εντοπίστηκαν υποστηριζόμενοι φυλλομετρητές."
 
 #: usr/lib/webapp-manager/webapp-manager.py:239
 #: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
@@ -114,17 +114,17 @@ msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετ�
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr "Αυτή η διαδικτυακή εφαρμογή θα χαθεί μόνιμα"
+msgstr "Αυτή η εφαρμογή ιστού θα χαθεί μόνιμα"
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
 #: usr/lib/webapp-manager/webapp-manager.py:435
 msgid "Add a New Web App"
-msgstr "Προσθέστε μια νέα διαδικτυακή εφαρμογή"
+msgstr "Προσθήκη νέας εφαρμογής ιστού"
 
 #: usr/lib/webapp-manager/webapp-manager.py:369
 msgid "Edit Web App"
-msgstr "Επεξεργαστείτε τη διαδικτυακή εφαρμογή"
+msgstr "Επεξεργασία εφαρμογής ιστού"
 
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Choose an icon"
@@ -132,7 +132,7 @@ msgstr "Επιλογή εικονιδίου"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "Διαχειριστείτε τις εφαρμογές ιστού (web apps)"
+msgstr "Διαχειριστείτε τις εφαρμογές ιστού"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
@@ -142,7 +142,7 @@ msgstr "Προσθήκη"
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "Αφαίρεση"
+msgstr "Κατάργηση"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
@@ -180,7 +180,7 @@ msgstr "Ακύρωση"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr "Εντάξει"
+msgstr "ΟΚ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
@@ -192,14 +192,14 @@ msgstr "Κατηγορία:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "Περιηγητής"
+msgstr "Φυλλομετρητής:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
 "Αν ενεργοποιηθεί αυτή η ρύθμιση τότε η ιστοσελίδα θα τρέχει με το δικό της "
-"προφίλ περιηγητή."
+"προφίλ φυλλομετρητή."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
@@ -227,7 +227,7 @@ msgstr "Άλλες συντομεύσεις"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "Μετάβαση πίσω"
+msgstr "Επιστροφή"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
