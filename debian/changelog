@@ -1,3 +1,10 @@
+webapp-manager (1.3.0) victoria; urgency=medium
+
+  * l10n: Update translations
+  * l10n: Update files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 08 Jun 2023 12:04:46 +0100
+
 webapp-manager (1.2.9) victoria; urgency=medium
 
   [ Brendan Threewitt ]
