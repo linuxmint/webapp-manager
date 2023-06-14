@@ -21,7 +21,7 @@ from typing import Optional
 
 #   2. Related third party imports.
 from gi.repository import GObject
-from PIL import Image
+from PIL.Image import Image
 import requests
 # Note: BeautifulSoup is an optional import supporting another way of getting a website's favicons.
 
