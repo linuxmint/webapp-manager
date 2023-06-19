@@ -1,3 +1,10 @@
+webapp-manager (1.3.1) victoria; urgency=medium
+
+  [ Himadri Sekhar Basu ]
+  * Fix TypeError in commit b878bb1; closes #251
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 19 Jun 2023 10:54:39 +0200
+
 webapp-manager (1.3.0) victoria; urgency=medium
 
   * l10n: Update translations
