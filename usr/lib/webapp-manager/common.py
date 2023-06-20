@@ -21,7 +21,7 @@ from typing import Optional
 
 #   2. Related third party imports.
 from gi.repository import GObject
-from PIL.Image import Image
+import PIL.Image
 import requests
 # Note: BeautifulSoup is an optional import supporting another way of getting a website's favicons.
 
@@ -394,7 +394,7 @@ def normalize_url(url):
         return urllib.parse.urlunparse((scheme, path, "", "", "", ""))
     return urllib.parse.urlunparse((scheme, netloc, path, "", "", ""))
 
-def download_image(root_url: str, link: str) -> Optional[Image]:
+def download_image(root_url: str, link: str) -> Optional[PIL.Image.Image]:
     if "://" not in link:
         if link.startswith("/"):
             link = root_url + link
@@ -402,9 +402,9 @@ def download_image(root_url: str, link: str) -> Optional[Image]:
             link = root_url + "/" + link
     try:
         response = requests.get(link, timeout=3)
-        image = Image.open(BytesIO(response.content))
+        image = PIL.Image.open(BytesIO(response.content))
         if image.height > 256:
-            return image.resize((256, 256), Image.BICUBIC)
+            return image.resize((256, 256), PIL.Image.BICUBIC)
         return image
     except Exception as e:
         print(e)
