@@ -169,7 +169,7 @@ class WebAppManager:
         return webapps
 
     @staticmethod
-    def get_supported_browsers() -> list[Browser]:
+    def get_supported_browsers():
         # type, name, exec, test
         return [Browser(BROWSER_TYPE_FIREFOX, "Firefox", "firefox", "/usr/bin/firefox"),
                 Browser(BROWSER_TYPE_FIREFOX, "Firefox Developer Edition", "firefox-developer-edition", "/usr/bin/firefox-developer-edition"),
