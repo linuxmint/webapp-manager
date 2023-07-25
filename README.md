@@ -1,60 +1,61 @@
 # Webapp Manager
 ![build](https://github.com/linuxmint/webapp-manager/actions/workflows/build.yml/badge.svg)
 
-Run websites as if they were apps.
+Web sitelerini uygulamalar gibi çalıştırın.
 
-FAQ
+SSS - FAQ
 ===
 
-How to go back without the navigation buttons?
+Navigasyon düğmeleri olmadan nasıl geri gitmeliyim?
 ----------------------------------------------
 
-Right-click an empty area of the Web page to show the context menu. In most browsers this menu contains navigation buttons.
+Web sayfasının boş bir alanına sağ tıklayarak bağlam menüsünü gösterin. Çoğu tarayıcıda bu menü, navigasyon düğmelerini içerir.
 
-How to open links in my main browser?
+Bağlantıları ana tarayıcımızda nasıl açabilirim?
 -------------------------------------
 
-For Firefox, all links are always opened within the WebApp, either directly or using a new tab.
-To open a link in your main browser, right-click anywhere, select `Copy link location` and paste the link in your main browser. 
+Firefox için, tüm bağlantılar WebApp içinde doğrudan veya yeni bir sekme kullanılarak açılır.
+Bir bağlantıyı ana tarayıcınızda açmak için herhangi bir yere sağ tıklayın, Bağlantı adresini kopyala seçeneğini seçin ve bağlantıyı ana tarayıcınıza yapıştırın.
 
-Chromium and Chrome WebApps open external links in the main browser.
+Chromium ve Chrome WebApp'ler, harici bağlantıları ana tarayıcıda açar.
 
-How to use tabs in Firefox?
+Firefox'da sekmeleri nasıl kullanabilirim?
 ---------------------------
 
-Press <kbd>Ctrl</kbd>+<kbd>Tab</kbd> to cycle between opened tabs.
+Açık sekmeler arasında dolaşmak için <kbd>Ctrl</kbd>+<kbd>Tab</kbd> tuşlarına basın.
 
-Press <kbd>Ctrl</kbd>+<kbd>T</kbd> to create a new tab.
+Yeni bir sekme oluşturmak için <kbd>Ctrl</kbd>+<kbd>T</kbd> tuşlarına basın.
 
-Press <kbd>Ctrl</kbd>+<kbd>W</kbd> to close the current tab.
+Geçerli sekmele kapatmak için <kbd>Ctrl</kbd>+<kbd>W</kbd> tuşlarına basın.
 
-Press <kbd>Ctrl</kbd> when clicking a link to open it in a new tab.
+Bir bağlantıya sağ tıklayıp <kbd>Ctrl</kbd> tuşuna basarak yeni bir sekmede açmak için bağlantıya tıklayın.
 
-How to allow new windows to open in Firefox instead of new tabs?
+Firefox'ta yeni pencerelerin, yeni sekmeler yerine nasıl açılmasına izin veririm?
 ----------------------------------------------------------------
 
-Press and release the <kbd>Alt</kbd> key to show the main menubar.
+Ana menü çubuğunu göstermek için <kbd>Alt</kbd> tuşuna basın ve bırakın.
 
-You can then reach the `Settings` from the `Edit` menu.
+Daha sonra Ayarlar kısmına "Düzen" menüsünden ulaşabilirsiniz.
 
-In the `General` settings tab, go to the `Tabs` section, uncheck `Open links in tabs instead of new windows`.
+Genel ayarlar sekmesine gidin, Sekmeler bölümüne gidin ve Yeni pencereleri yeni sekmelerde aç seçeneğini işaretlemeyin.
 
-In the `Privacy & Security` section, go to `Permissions` and create an exception for your webapp's URL, by pressing the `Exceptions...` button next to it and then adding the respective URL to the list in the following pop-up window.
+Gizlilik ve Güvenlik bölümüne gidin, İzinlere gidin ve web uygulamanızın URL'si için bir istisna oluşturun. Bunun için ilgili URL'yi pop-up penceresindeki listede ekleyin.
 
-With this setting, new windows of the webapp will open instead of new tabs, e.g., if you follow links.
+Bu ayarla, web uygulamasının yeni pencereleri, örneğin bağlantıları takip ederken, yeni sekmeler yerine açılacaktır.
 
-How to add extensions in Firefox (AdBlock etc.)?
+Firefox'a nasıl uzantı eklerim (AdBlock vb.)?
 ------------------------------------------------
 
-Press and release the <kbd>Alt</kbd> key to show the main menubar.
+Ana menü çubuğunu göstermek için <kbd>Alt</kbd> tuşuna basın ve bırakın.
 
-You can then reach the `Add-Ons` from the `Tool` menu.
+Daha sonra Eklentiler kısmına "Araç" menüsünden ulaşabilirsiniz.
 
-How to add extensions in Chromium based browsers (AdBlock etc.)?
+Chromium tabanlı tarayıcılarda uzantıları nasıl eklerim (AdBlock vb.)?
 ----------------------------------------------------------------
 
-Press <kbd>Ctrl</kbd>+<kbd>N</kbd> to open a new window.
+Yeni bir pencere açmak için <kbd>Ctrl</kbd>+<kbd>N</kbd> tuşlarına basın.
 
-Navigate to https://chrome.google.com/webstore/category/extensions
+https://chrome.google.com/webstore/category/extensions adresine gidin.
 
-Now add the extension.
+Şimdi uzantıyı ekleyin.
+
