@@ -1,7 +1,7 @@
 # Webapp Manager
 ![build](https://github.com/linuxmint/webapp-manager/actions/workflows/build.yml/badge.svg)
 
-[Turkish](localized/README_tr)
+[Turkish](localized/README_tr.md)
 
 Run websites as if they were apps.
 
