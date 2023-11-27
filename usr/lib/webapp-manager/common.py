@@ -289,12 +289,12 @@ class WebAppManager:
                            " --class WebApp-" + codename +
                            " --name WebApp-" + codename +
                            " --profile " + firefox_profile_path +
-                           " --no-remote ")
+                           " --no-remote")
             if privatewindow:
-                exec_string += "--private-window "
+                exec_string += " --private-window"
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
-            exec_string += "\"" + url + "\"" + "'"
+            exec_string += " \"" + url + "\"" + "'"
             # Create a Firefox profile
             shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
             if navbar:
@@ -307,10 +307,10 @@ class WebAppManager:
             exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                            " --class WebApp-" + codename +
                            " --profile " + firefox_profile_path +
-                           " --no-remote ")
+                           " --no-remote")
             if privatewindow:
-                exec_string += "--private-window "
-            exec_string += "\"" + url + "\"" + "'"
+                exec_string += " --private-window"
+            exec_string += " \"" + url + "\"" + "'"
             # Create a Firefox profile
             shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
             if navbar:
@@ -326,7 +326,7 @@ class WebAppManager:
             exec_string = browser.exec_path
             exec_string += " --application-mode "
             exec_string += " --profile=\"" + epiphany_orig_prof_dir + "\""
-            exec_string += " " + "\"" + url + "\""
+            exec_string += " \"" + url + "\""
             if custom_parameters:
                 exec_string += " {}".format(custom_parameters)
         else:
