@@ -1,3 +1,37 @@
+webapp-manager (1.3.3) virginia; urgency=medium
+
+  [ GolDNenex ]
+  * Update common.py (#255)
+
+  [ Adam Kieliński ]
+  * I added a new rule in userChrome.css to display all navbar children (#258)
+
+  [ Oğuzhan Palacıoğlu ]
+  * TR_README (#259)
+
+  [ Edip ]
+  * Fix link (#267)
+
+  [ A.d. I B ]
+  * add firefox flatpak to show_hide_browser_widgets() (#262)
+
+  [ Melih Darcan ]
+  * feat: Waterfox (Flatpak) support (#263)
+
+  [ Ben Ritter ]
+  * Consistently include a space *before* parameters when building exec_string (#270)
+
+  [ haggen88 ]
+  * add vivaldi as flatpak (#274)
+
+  [ Sascha Eggenberger ]
+  * Fix Gnome wayland handling window names (#272)
+
+  [ Clement Lefebvre ]
+  * Revert "TR_README (#259)"
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 28 Nov 2023 12:01:32 +0000
+
 webapp-manager (1.3.2) victoria; urgency=medium
 
   [ Rokosun ]
