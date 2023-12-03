@@ -1,3 +1,9 @@
+webapp-manager (1.3.4) virginia; urgency=medium
+
+  * l10n: Update translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 03 Dec 2023 15:17:20 +0000
+
 webapp-manager (1.3.3) virginia; urgency=medium
 
   [ GolDNenex ]
