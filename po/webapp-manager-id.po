@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2021-10-16 10:53+0000\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"PO-Revision-Date: 2023-10-25 10:56+0000\n"
+"Last-Translator: Dirga Afissabilla <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-06-08 10:22+0000\n"
-"X-Generator: Launchpad (build 620cd5280e3a973662e263ebf9346837ed657a46)\n"
+"X-Launchpad-Export-Date: 2023-12-03 13:35+0000\n"
+"X-Generator: Launchpad (build 886068b1e1d10de444fbd53b0c7d3f6d4fb3e658)\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
@@ -46,15 +46,15 @@ msgstr "Keluar"
 
 #: usr/lib/webapp-manager/webapp-manager.py:156
 msgid "Icon"
-msgstr ""
+msgstr "Ikon"
 
 #: usr/lib/webapp-manager/webapp-manager.py:160
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Browser"
-msgstr ""
+msgstr "Peramban"
 
 #: usr/lib/webapp-manager/webapp-manager.py:179
 msgid "Internet"
@@ -105,16 +105,16 @@ msgstr "Jalankan situs web selayaknya aplikasi"
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Hapus '%s'"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin menghapus '%s'?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr ""
+msgstr "Aplikasi Web ini akan hilang secara permanen."
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
@@ -215,11 +215,11 @@ msgstr "Jendela Privat/Penyamaran"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
-msgstr ""
+msgstr "Parameter khusus:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Custom browser parameters"
-msgstr ""
+msgstr "Parameter peramban khusus"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"

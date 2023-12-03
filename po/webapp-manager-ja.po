@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2022-06-22 19:57+0000\n"
-"Last-Translator: vega m57 <Unknown>\n"
+"PO-Revision-Date: 2023-12-02 11:03+0000\n"
+"Last-Translator: kmyyfz8q <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-06-08 10:22+0000\n"
-"X-Generator: Launchpad (build 620cd5280e3a973662e263ebf9346837ed657a46)\n"
+"X-Launchpad-Export-Date: 2023-12-03 13:35+0000\n"
+"X-Generator: Launchpad (build 886068b1e1d10de444fbd53b0c7d3f6d4fb3e658)\n"
 "Language: ja\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
@@ -55,7 +55,7 @@ msgstr "名前"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Browser"
-msgstr "ブラウザ"
+msgstr "ブラウザー"
 
 #: usr/lib/webapp-manager/webapp-manager.py:179
 msgid "Internet"
@@ -91,11 +91,11 @@ msgstr "プログラミング"
 
 #: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Education"
-msgstr "教育･教養"
+msgstr "教育・教養"
 
 #: usr/lib/webapp-manager/webapp-manager.py:209
 msgid "No supported browsers were detected."
-msgstr "サポートされているブラウザが検出されませんでした。"
+msgstr "サポートされているブラウザーが検出されませんでした。"
 
 #: usr/lib/webapp-manager/webapp-manager.py:239
 #: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
@@ -106,16 +106,16 @@ msgstr "ウェブサイトをアプリのように実行します"
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Delete '%s'"
-msgstr "'%s'を削除"
+msgstr "'%s' を削除"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "'%s'を本当に削除しますか?"
+msgstr "'%s' を削除しますか？"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr "このウェブアプリは消滅します｡"
+msgstr "このウェブアプリは完全に削除されます。"
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
@@ -185,7 +185,7 @@ msgstr "OK"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr "アイコンをオンラインで探す"
+msgstr "オンラインでアイコンを探す"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
@@ -193,12 +193,12 @@ msgstr "カテゴリ:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "ブラウザ:"
+msgstr "ブラウザー:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr "このオプションを有効にすると、ウェブサイトはブラウザの独立したプロファイルで実行されます。"
+msgstr "このオプションを有効にすると、ウェブサイトはブラウザーの独立したプロファイルで実行されます。"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
@@ -214,11 +214,11 @@ msgstr "プライベート/シークレットウィンドウ:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
-msgstr "カスタマイズ:"
+msgstr "任意のパラメーター:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Custom browser parameters"
-msgstr "ブラウザのカスタマイズ"
+msgstr "ブラウザーに渡す任意のパラメーター"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
