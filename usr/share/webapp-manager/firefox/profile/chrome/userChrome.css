@@ -5,3 +5,7 @@
 #nav-bar * {
     visibility: visible !important;
 }
+
+#navigator-toolbox {
+    border-bottom: none !important;
+}
