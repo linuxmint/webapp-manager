@@ -287,12 +287,11 @@ class WebAppManager:
                     pass
 
             if browser.browser_type == BROWSER_TYPE_FALKON:
-                if isolate_profile:
-                    falkon_profile_path = os.path.join(FALKON_PROFILES_DIR, codename)
-                    os.makedirs(falkon_profile_path)
-                    # Create symlink of profile dir at ~/.config/falkon/profiles
-                    falkon_orig_prof_dir = os.path.join(os.path.expanduser("~/.config/falkon/profiles"), codename)
-                    os.symlink(falkon_profile_path, falkon_orig_prof_dir)
+                falkon_profile_path = os.path.join(FALKON_PROFILES_DIR, codename)
+                os.makedirs(falkon_profile_path)
+                # Create symlink of profile dir at ~/.config/falkon/profiles
+                falkon_orig_prof_dir = os.path.join(os.path.expanduser("~/.config/falkon/profiles"), codename)
+                os.symlink(falkon_profile_path, falkon_orig_prof_dir)
 
 
     def get_exec_string(self, browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
@@ -349,7 +348,8 @@ class WebAppManager:
             # KDE Falkon
             exec_string = browser.exec_path
             exec_string += " --wmclass=WebApp-" + codename
-            exec_string += " --profile=" + codename
+            if isolate_profile:
+                exec_string += " --profile=" + codename
             if privatewindow:
                 exec_string += " --private-browsing"
             if custom_parameters:
