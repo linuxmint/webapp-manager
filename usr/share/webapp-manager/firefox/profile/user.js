@@ -14,3 +14,4 @@ user_pref("browser.contentblocking.category", "strict");
 user_pref("privacy.clearOnShutdown.offlineApps", false);
 user_pref("privacy.sanitize.sanitizeOnShutdown", false);
 user_pref("privacy.sanitize.timeSpan", 1);
+user_pref("browser.translations.automaticallyPopup", false);
