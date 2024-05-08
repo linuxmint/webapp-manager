@@ -1,5 +1,8 @@
-#nav-bar, #identity-box, #tabbrowser-tabs, #TabsToolbar {
-	visibility: collapse;
+#navigator-toolbox:not(:hover, :focus, :active) {
+  #toolbar-menubar[inactive="true"] ~ #TabsToolbar,
+  #titlebar:has(#toolbar-menubar[inactive="true"]) ~ #nav-bar {
+	  visibility: collapse;
+  }
 }
 
 #nav-bar * {
