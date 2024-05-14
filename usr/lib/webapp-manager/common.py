@@ -254,7 +254,7 @@ class WebAppManager:
             desktop_file.write("[Desktop Entry]\n")
             desktop_file.write("Version=1.0\n")
             desktop_file.write("Name=%s\n" % name)
-            desktop_file.write("Comment=%s\n" % gettext.gettext("Web App"))
+            desktop_file.write("Comment=%s\n" % _("Web App"))
 
             exec_string = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar,
                                                privatewindow, url)
