@@ -156,9 +156,9 @@ class WebAppManager:
     def get_webapps(self):
         webapps = []
         for filename in os.listdir(APPS_DIR):
-            if filename.startswith("webapp-") and filename.endswith(".desktop"):
+            if filename.lower().startswith("webapp-") and filename.endswith(".desktop"):
                 path = os.path.join(APPS_DIR, filename)
-                codename = filename.replace("webapp-", "").replace(".desktop", "")
+                codename = filename.replace("webapp-", "").replace("WebApp-", "").replace(".desktop", "")
                 if not os.path.isdir(path):
                     try:
                         webapp = WebAppLauncher(path, codename)
@@ -248,7 +248,7 @@ class WebAppManager:
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
         random_code =  ''.join(choice(string.digits) for _ in range(4))
         codename = "".join(filter(str.isalpha, name)) + random_code
-        path = os.path.join(APPS_DIR, "webapp-%s.desktop" % codename)
+        path = os.path.join(APPS_DIR, "WebApp-%s.desktop" % codename)
 
         with open(path, 'w') as desktop_file:
             desktop_file.write("[Desktop Entry]\n")
