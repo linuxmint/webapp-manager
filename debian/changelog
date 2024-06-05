@@ -1,3 +1,35 @@
+webapp-manager (1.3.5) wilma; urgency=medium
+
+  [ Victor B ]
+  * Fix top border in Firefox (#280)
+
+  [ Clement Lefebvre ]
+  * Don't show translations popups
+  * Open links in new window
+
+  [ Ximin Luo ]
+  * Firefox: hide navigation toolbars only when top menu is inactive (#288)
+
+  [ Himadri Sekhar Basu ]
+  * Add support for firefox snap package (#291)
+
+  [ Cristiano Guadagnino ]
+  * Proposed fix for issue #294 (updated) (#296)
+
+  [ Michael Webster ]
+  * Use _ for gettext.
+
+  [ Matthew Laird ]
+  * Update Ungoogled Chromium package name (#297)
+
+  [ Kyle Gospodnetich ]
+  * Fix capitalization of WebApp (#300)
+
+  [ Alonso Diaz Ruben Lautaro ]
+  * add support from Thorium Browser (#302)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 05 Jun 2024 14:55:41 +0100
+
 webapp-manager (1.3.4) virginia; urgency=medium
 
   * l10n: Update translations
