@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2022-03-18 11:18+0000\n"
-"Last-Translator: 程政罡 <marktwtn@gmail.com>\n"
+"PO-Revision-Date: 2024-02-13 16:11+0000\n"
+"Last-Translator: 爽自由 <coby2023t@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2023-12-03 13:35+0000\n"
-"X-Generator: Launchpad (build 886068b1e1d10de444fbd53b0c7d3f6d4fb3e658)\n"
+"X-Launchpad-Export-Date: 2024-06-18 17:57+0000\n"
+"X-Generator: Launchpad (build bbfa2351d9d6a9ddfe262109428f7bf5516e65d1)\n"
 "Language: zh_TW\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
@@ -47,15 +47,15 @@ msgstr "結束"
 
 #: usr/lib/webapp-manager/webapp-manager.py:156
 msgid "Icon"
-msgstr ""
+msgstr "圖示"
 
 #: usr/lib/webapp-manager/webapp-manager.py:160
 msgid "Name"
-msgstr ""
+msgstr "名稱"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Browser"
-msgstr ""
+msgstr "瀏覽器"
 
 #: usr/lib/webapp-manager/webapp-manager.py:179
 msgid "Internet"
@@ -106,16 +106,16 @@ msgstr "以應用程式的方式執行網站"
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "刪除 %s"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr ""
+msgstr "確定要刪除  %s ?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr ""
+msgstr "本網頁App 將永久遺失。"
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
@@ -214,11 +214,11 @@ msgstr "隱私/無痕視窗:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
-msgstr ""
+msgstr "客製化參數："
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Custom browser parameters"
-msgstr ""
+msgstr "客製化瀏覽器參數"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
