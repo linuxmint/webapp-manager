@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2024-06-17 12:02+0000\n"
-"Last-Translator: Kimmo Kujansuu <Unknown>\n"
+"PO-Revision-Date: 2024-07-10 11:18+0000\n"
+"Last-Translator: Hiiri522 <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-06-18 17:57+0000\n"
+"X-Launchpad-Export-Date: 2024-07-21 09:03+0000\n"
 "X-Generator: Launchpad (build bbfa2351d9d6a9ddfe262109428f7bf5516e65d1)\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
-msgstr "Web App"
+msgstr "Web App -sovellus"
 
 #: usr/lib/webapp-manager/webapp-manager.py:73
 #: usr/lib/webapp-manager/webapp-manager.py:231
@@ -27,7 +27,7 @@ msgstr "Web App"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "WebApp verkkosivu ohjelmaksi"
+msgstr "Verkkosivu ohjelmaksi"
 
 #: usr/lib/webapp-manager/webapp-manager.py:129
 msgid "Keyboard Shortcuts"
@@ -100,7 +100,7 @@ msgstr "Tuettuja selaimia ei havaittu."
 #: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Suorita verkkosivuja kuin ne olisivat ohjelmia"
+msgstr "Käytä verkkosivuja kuin ne olisivat erillisiä ohjelmia"
 
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
@@ -110,21 +110,22 @@ msgstr "Poista \"%s\""
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Oletko varma, että haluat poistaa \"%s\"?"
+msgstr "Olethan varma, että haluat poistaa \"%s\" -verkkosovelluksen?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr "Tämä verkkosovellus katoaa pysyvästi."
+msgstr ""
+"Tämä verkkosovellus poistetaan pysyvästi eikä sitä voida enää palauttaa."
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
 #: usr/lib/webapp-manager/webapp-manager.py:435
 msgid "Add a New Web App"
-msgstr "Lisää uusi sivusto verkosta"
+msgstr "Muuta uusi verkkosivu ohjelmaksi"
 
 #: usr/lib/webapp-manager/webapp-manager.py:369
 msgid "Edit Web App"
-msgstr "Muokkaa sovellusta"
+msgstr "Muokkaa"
 
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Choose an icon"
@@ -132,7 +133,7 @@ msgstr "Valitse kuvake"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr "Hallitse sovellusia"
+msgstr "Hallitse verkkosovelluksiasi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
@@ -152,7 +153,7 @@ msgstr "Muokkaa"
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "Käynnistä"
+msgstr "Käynnistä verkkosovellus"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
@@ -160,7 +161,7 @@ msgstr "Nimi:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr "Osoite:"
+msgstr "Verkkosivun osoite:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
@@ -172,7 +173,7 @@ msgstr "Verkkosivun nimi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
-msgstr "https://www.website.com"
+msgstr "https://www.verkkosivu.fi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
@@ -188,7 +189,7 @@ msgstr "Etsi kuvakkeita verkosta"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr "Ryhmä:"
+msgstr "Luokka:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
@@ -210,7 +211,7 @@ msgstr "Selaimen osoiterivi:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr "Anonyymi ikkuna:"
+msgstr "Yksityinen ikkuna:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
