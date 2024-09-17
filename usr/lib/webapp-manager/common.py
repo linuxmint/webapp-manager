@@ -194,6 +194,8 @@ class WebAppManager:
                 Browser(BROWSER_TYPE_EPIPHANY, "Epiphany", "epiphany", "/usr/bin/epiphany"),
                 Browser(BROWSER_TYPE_FIREFOX,  "LibreWolf", "librewolf", "/usr/bin/librewolf"),
                 Browser(BROWSER_TYPE_FIREFOX,  "Floorp", "Floorp", "/usr/bin/floorp"),
+                Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Floorp (Flatpak)", "/var/lib/flatpak/exports/bin/one.ablaze.floorp", "/var/lib/flatpak/exports/bin/one.ablaze.floorp"),
+                Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Floorp (Flatpak)", ".local/share/flatpak/exports/bin/one.ablaze.floorp", ".local/share/flatpak/exports/bin/one.ablaze.floorp"),
                 Browser(BROWSER_TYPE_LIBREWOLF_FLATPAK,  "LibreWolf (Flatpak)", "/var/lib/flatpak/exports/bin/io.gitlab.librewolf-community", "/var/lib/flatpak/exports/bin/io.gitlab.librewolf-community"),
                 Browser(BROWSER_TYPE_LIBREWOLF_FLATPAK,  "LibreWolf (Flatpak)", ".local/share/flatpak/exports/bin/io.gitlab.librewolf-community", ".local/share/flatpak/exports/bin/io.gitlab.librewolf-community"),
                 Browser(BROWSER_TYPE_FIREFOX,  "Waterfox", "waterfox", "/usr/bin/waterfox"),
