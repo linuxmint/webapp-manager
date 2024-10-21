@@ -1,5 +1,9 @@
 #!/bin/bash
-sudo rm -rf /usr/lib/webapp-manager
-sudo rm -rf /usr/share/webapp-manager
-sudo cp -R usr /
+rm -rf builddir
+meson setup -Dprefix=$HOME/.local builddir
+meson compile -C builddir --verbose
+meson install -C builddir # --dry-run # with dry-run files are not acutally installed
 webapp-manager
+
+# To remove installed files uncomment below line
+# ninja uninstall -C builddir
