@@ -58,10 +58,11 @@ FIREFOX_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/org.mozilla.firefo
 FIREFOX_SNAP_PROFILES_DIR = os.path.expanduser("~/snap/firefox/common/.mozilla/firefox")
 LIBREWOLF_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/io.gitlab.librewolf-community/data/ice/librewolf")
 WATERFOX_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/net.waterfox.waterfox/data")
+FLOORP_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/one.ablaze.floorp/data")
 EPIPHANY_PROFILES_DIR = os.path.join(ICE_DIR, "epiphany")
 FALKON_PROFILES_DIR = os.path.join(ICE_DIR, "falkon")
 ICONS_DIR = os.path.join(ICE_DIR, "icons")
-BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_LIBREWOLF_FLATPAK, BROWSER_TYPE_WATERFOX_FLATPAK, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY, BROWSER_TYPE_FALKON = range(8)
+BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_LIBREWOLF_FLATPAK, BROWSER_TYPE_WATERFOX_FLATPAK, BROWSER_TYPE_FLOORP_FLATPAK, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY, BROWSER_TYPE_FALKON = range(9)
 
 class Browser:
 
@@ -227,7 +228,10 @@ class WebAppManager:
                 Browser(BROWSER_TYPE_CHROMIUM, "Naver Whale", "naver-whale-stable", "/usr/bin/naver-whale-stable"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Yandex (Flatpak)", "/var/lib/flatpak/exports/bin/ru.yandex.Browser", "/var/lib/flatpak/exports/bin/ru.yandex.Browser"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Yandex (Flatpak)", ".local/share/flatpak/exports/bin/ru.yandex.Browser", ".local/share/flatpak/exports/bin/ru.yandex.Browser"),
-                Browser(BROWSER_TYPE_CHROMIUM, "Thorium", "thorium-browser", "/usr/bin/thorium-browser")
+                Browser(BROWSER_TYPE_CHROMIUM, "Thorium", "thorium-browser", "/usr/bin/thorium-browser"),
+                Browser(BROWSER_TYPE_FIREFOX, "Floorp", "floorp", "/usr/bin/floorp"),
+                Browser(BROWSER_TYPE_FLOORP_FLATPAK, "Floorp (Flatpak)", "/var/lib/flatpak/exports/bin/one.ablaze.floorp", "/var/lib/flatpak/exports/bin/one.ablaze.floorp"),
+                Browser(BROWSER_TYPE_FLOORP_FLATPAK, "Floorp (Flatpak)", ".local/share/flatpak/exports/bin/one.ablaze.floorp", ".local/share/flatpak/exports/bin/one.ablaze.floorp")
                 ]
 
     def delete_webbapp(self, webapp):
@@ -337,6 +341,27 @@ class WebAppManager:
                            " --no-remote")
             if privatewindow:
                 exec_string += " --private-window"
+            if custom_parameters:
+                exec_string += " {}".format(custom_parameters)
+            exec_string += " \"" + url + "\"" + "'"
+            # Create a Firefox profile
+            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
+            if navbar:
+                shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
+                            os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
+        elif browser.browser_type == BROWSER_TYPE_FLOORP_FLATPAK:
+            # Floorp flatpak
+            firefox_profiles_dir = FLOORP_FLATPAK_PROFILES_DIR
+            firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
+            exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
+                           " --class WebApp-" + codename +
+                           " --name WebApp-" + codename +
+                           " --profile " + firefox_profile_path +
+                           " --no-remote")
+            if privatewindow:
+                exec_string += " --private-window"
+            if custom_parameters:
+                exec_string += " {}".format(custom_parameters)
             exec_string += " \"" + url + "\"" + "'"
             # Create a Firefox profile
             shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
