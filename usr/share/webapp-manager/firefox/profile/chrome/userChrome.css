@@ -1,12 +1,8 @@
 #navigator-toolbox:not(:hover, :focus, :active) {
-  #toolbar-menubar[inactive="true"] ~ #TabsToolbar,
-  #titlebar:has(#toolbar-menubar[inactive="true"]) ~ #nav-bar {
-	  visibility: collapse;
-  }
-}
-
-#nav-bar * {
-    visibility: visible !important;
+    #toolbar-menubar[inactive="true"] ~ #TabsToolbar,
+    #titlebar:has(#toolbar-menubar[inactive="true"]) ~ #nav-bar {
+        visibility: collapse;
+    }
 }
 
 #navigator-toolbox {
