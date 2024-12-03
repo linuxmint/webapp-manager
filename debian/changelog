@@ -1,3 +1,16 @@
+webapp-manager (1.3.8) xia; urgency=medium
+
+  [ Hazel Bunny ]
+  * Add support for ungoogled-chromium (#310)
+
+  [ NBA2K1 ]
+  * Update common.py (#314)
+
+  [ Melroy van den Berg ]
+  * Add Floorp support (#316)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 03 Dec 2024 10:21:19 +0000
+
 webapp-manager (1.3.7) wilma; urgency=medium
 
   * l10n: Update translations
