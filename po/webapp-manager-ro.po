@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2024-07-15 10:56+0000\n"
-"Last-Translator: Nicolae Fericitu <Unknown>\n"
+"PO-Revision-Date: 2024-12-03 15:48+0000\n"
+"Last-Translator: Vladm <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-07-21 09:03+0000\n"
-"X-Generator: Launchpad (build bbfa2351d9d6a9ddfe262109428f7bf5516e65d1)\n"
+"X-Launchpad-Export-Date: 2024-12-05 10:19+0000\n"
+"X-Generator: Launchpad (build 1519c6efe8e9bd78e6c5ebf2eb5bcb040b95ad32)\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
@@ -110,7 +110,7 @@ msgstr "Șterge „%s”"
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Sigur vrei să ștergi „%s”?"
+msgstr "Sigur dorești să ștergi „%s”?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
@@ -128,7 +128,7 @@ msgstr "Editează aplicația web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Choose an icon"
-msgstr "Alege o pictogramă"
+msgstr "Alege o iconiță"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"

@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2022-01-01 15:32+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2024-09-11 15:59+0000\n"
+"Last-Translator: Kjetil Sørlund <Unknown>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-07-21 09:03+0000\n"
-"X-Generator: Launchpad (build bbfa2351d9d6a9ddfe262109428f7bf5516e65d1)\n"
+"X-Launchpad-Export-Date: 2024-12-05 10:19+0000\n"
+"X-Generator: Launchpad (build 1519c6efe8e9bd78e6c5ebf2eb5bcb040b95ad32)\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
-msgstr ""
+msgstr "Nettapp"
 
 #: usr/lib/webapp-manager/webapp-manager.py:73
 #: usr/lib/webapp-manager/webapp-manager.py:231
@@ -27,206 +27,208 @@ msgstr ""
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr ""
+msgstr "Nettapper"
 
 #: usr/lib/webapp-manager/webapp-manager.py:129
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Tastatursnarveier"
 
 #: usr/lib/webapp-manager/webapp-manager.py:136
 #: usr/lib/webapp-manager/webapp-manager.py:237
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: usr/lib/webapp-manager/webapp-manager.py:141
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr ""
+msgstr "Avslutt"
 
 #: usr/lib/webapp-manager/webapp-manager.py:156
 msgid "Icon"
-msgstr ""
+msgstr "Ikon"
 
 #: usr/lib/webapp-manager/webapp-manager.py:160
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: usr/lib/webapp-manager/webapp-manager.py:165
 msgid "Browser"
-msgstr ""
+msgstr "Nettleser"
 
 #: usr/lib/webapp-manager/webapp-manager.py:179
 msgid "Internet"
-msgstr ""
+msgstr "Internett"
 
 #: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
 msgid "Web"
-msgstr ""
+msgstr "Web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:181
 msgid "Accessories"
-msgstr ""
+msgstr "Tilbehør"
 
 #: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Games"
-msgstr ""
+msgstr "Spill"
 
 #: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Graphics"
-msgstr ""
+msgstr "Grafikk"
 
 #: usr/lib/webapp-manager/webapp-manager.py:184
 msgid "Office"
-msgstr ""
+msgstr "Kontorprogrammer"
 
 #: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Sound & Video"
-msgstr ""
+msgstr "Lyd og bilde"
 
 #: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Programming"
-msgstr ""
+msgstr "Programmering"
 
 #: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Education"
-msgstr ""
+msgstr "Utdanning"
 
 #: usr/lib/webapp-manager/webapp-manager.py:209
 msgid "No supported browsers were detected."
-msgstr ""
+msgstr "Ingen støttede nettlesere ble funnet."
 
 #: usr/lib/webapp-manager/webapp-manager.py:239
 #: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr ""
+msgstr "Kjør nettsider som om de var apper."
 
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Slett '%s'"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr ""
+msgstr "Er du sikker på at du vil slette '%s'?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:294
 msgid "This Web App will be permanently lost."
-msgstr ""
+msgstr "Denne nettappen vil gå tapt for godt."
 
 #: usr/lib/webapp-manager/webapp-manager.py:347
 #: usr/lib/webapp-manager/webapp-manager.py:379
 #: usr/lib/webapp-manager/webapp-manager.py:435
 msgid "Add a New Web App"
-msgstr ""
+msgstr "Legg til en ny nettapp"
 
 #: usr/lib/webapp-manager/webapp-manager.py:369
 msgid "Edit Web App"
-msgstr ""
+msgstr "Rediger webapp"
 
 #: usr/lib/webapp-manager/webapp-manager.py:411
 msgid "Choose an icon"
-msgstr ""
+msgstr "Velg et ikon"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 msgid "Manage your Web Apps"
-msgstr ""
+msgstr "Behandle din webapper"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr ""
+msgstr "Start"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Name:"
-msgstr ""
+msgstr "Navn:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Address:"
-msgstr ""
+msgstr "Adresse:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "Icon:"
-msgstr ""
+msgstr "Ikon:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Website name"
-msgstr ""
+msgstr "Navn på nettsted"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "https://www.website.com"
-msgstr ""
+msgstr "https://www.nettside.no"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Find icons online"
-msgstr ""
+msgstr "Finn ikoner på nettet"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid "Category:"
-msgstr ""
+msgstr "Kategori:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr ""
+msgstr "Nettleser:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
+"Dersom dette valget er aktivert vil nettsiden kjøre i sin egen "
+"nettleserprofil."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
-msgstr ""
+msgstr "Isolert profil:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Navigation bar:"
-msgstr ""
+msgstr "Navigasjonslinje:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Private/Incognito Window:"
-msgstr ""
+msgstr "Privat/inkognitovindu"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Custom parameters:"
-msgstr ""
+msgstr "Tilpassede parametere:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Custom browser parameters"
-msgstr ""
+msgstr "Tilpassede nettleserparametere"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr ""
+msgstr "Andre snarveier"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr ""
+msgstr "Gå tilbake"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr ""
+msgstr "Snarveier"
