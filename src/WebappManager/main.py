@@ -6,6 +6,7 @@ import locale
 import os
 import shutil
 import subprocess
+import sys
 import warnings
 
 #   2. Related third party imports.
@@ -21,7 +22,7 @@ gi.require_version('XApp', '1.0')
 from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf
 
 #   3. Local application/library specific imports.
-from common import _async, idle, WebAppManager, download_favicon, ICONS_DIR, BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP
+from WebappManager.common import _async, idle, WebAppManager, download_favicon, ICONS_DIR, BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP
 
 setproctitle.setproctitle("webapp-manager")
 
@@ -32,6 +33,10 @@ locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
+
+# get version
+version_file = os.path.dirname(os.path.abspath(__file__))+'/VERSION'
+__version__ = open(version_file, 'r').readlines()[0]
 
 COL_ICON, COL_NAME, COL_BROWSER, COL_WEBAPP = range(4)
 CATEGORY_ID, CATEGORY_NAME = range(2)
@@ -248,7 +253,7 @@ class WebAppManagerWindow:
         except Exception as e:
             print(e)
 
-        dlg.set_version("__DEB_VERSION__")
+        dlg.set_version(__version__)
         dlg.set_icon_name("webapp-manager")
         dlg.set_logo_icon_name("webapp-manager")
         dlg.set_website("https://www.github.com/linuxmint/webapp-manager")
@@ -542,7 +547,7 @@ class WebAppManagerWindow:
         self.headerbar.set_subtitle(_("Run websites as if they were apps"))
 
 
-if __name__ == "__main__":
+def main():
+    """The application's entry point."""
     application = MyApplication("org.x.webapp-manager", Gio.ApplicationFlags.FLAGS_NONE)
-    application.run()
-
+    return application.run(sys.argv)
