@@ -4,7 +4,6 @@
 import configparser
 import gettext
 from io import BytesIO
-import json
 import locale
 import os
 from random import choice
@@ -512,25 +511,7 @@ def download_favicon(url):
     (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url)
     root_url = "%s://%s" % (scheme, netloc)
 
-    # try favicon grabber first
-    try:
-        response = requests.get("https://favicongrabber.com/api/grab/%s?pretty=true" % netloc, timeout=3)
-        if response.status_code == 200:
-            source = response.content.decode("UTF-8")
-            array = json.loads(source)
-            for icon in array['icons']:
-                image = download_image(root_url, icon['src'])
-                if image is not None:
-                    t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
-                    images.append(["Favicon Grabber", image, t.name])
-                    image.save(t.name)
-            images = sorted(images, key = lambda x: x[1].height, reverse=True)
-            if images:
-                return images
-    except Exception as e:
-        print(e)
-
-    # Fallback: Check HTML and /favicon.ico
+    # Check HTML and /favicon.ico
     try:
         response = requests.get(url, timeout=3)
         if response.ok:
