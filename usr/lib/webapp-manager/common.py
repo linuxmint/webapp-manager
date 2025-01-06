@@ -536,8 +536,8 @@ def download_favicon(url):
                     image = download_image(root_url, link)
                     if image is not None:
                         t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
-                        images.append([iconformat, image, t.name])
                         image.save(t.name)
+                        images.append([iconformat, image, t.name])
 
     except Exception as e:
         print(e)
