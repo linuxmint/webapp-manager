@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2024-12-03 15:48+0000\n"
-"Last-Translator: Vladm <Unknown>\n"
+"PO-Revision-Date: 2024-12-12 13:26+0000\n"
+"Last-Translator: Nicolae Fericitu <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2024-12-05 10:19+0000\n"
-"X-Generator: Launchpad (build 1519c6efe8e9bd78e6c5ebf2eb5bcb040b95ad32)\n"
+"X-Launchpad-Export-Date: 2025-01-06 12:01+0000\n"
+"X-Generator: Launchpad (build 6394e03793719e8d73f5a60b5439440e693c92f1)\n"
 
 #: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
 msgid "Web App"
@@ -192,14 +192,14 @@ msgstr "Categorie:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Browser:"
-msgstr "Browser:"
+msgstr "Navigator:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
 "Dacă această opțiune este activată, site-ul web va rula cu propriul profil "
-"de browser."
+"de navigator."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Isolated profile:"
