@@ -14,10 +14,6 @@ See the above repository for updates as well as full license text. */
   --uc-toolbox-rotation: 88.5deg;
 }
 
-@media  (-moz-platform: windows){
-  :root:not([lwtheme]) #navigator-toolbox{ background-color: -moz-dialog !important; }
-}
-
 :root[sizemode="fullscreen"],
 :root[sizemode="fullscreen"] #navigator-toolbox{ margin-top: 0 !important; }
 
@@ -78,10 +74,6 @@ See the above repository for updates as well as full license text. */
   -moz-appearance: none !important;
 }
 
-/* These two exist for oneliner compatibility */
-#nav-bar{ width: var(--uc-navigationbar-width,100vw) }
-#TabsToolbar{ width: calc(100vw - var(--uc-navigationbar-width,0px)) }
-
 /* Don't apply transform before window has been fully created */
 :root:not([sessionrestored]) #navigator-toolbox{ transform:none !important }
 
@@ -93,12 +85,3 @@ See the above repository for updates as well as full license text. */
 
 #navigator-toolbox[inFullscreen] > #PersonalToolbar,
 #PersonalToolbar[collapsed="true"]{ display: none }
-
-/* Uncomment this if tabs toolbar is hidden with hide_tabs_toolbar.css */
- /*#titlebar{ margin-bottom: -9px }*/
-
-/* Uncomment the following for compatibility with tabs_on_bottom.css - this isn't well tested though */
-/*
-#navigator-toolbox{ flex-direction: column; display: flex; }
-#titlebar{ order: 2 }
-*/
