@@ -24,7 +24,6 @@ See the above repository for updates as well as full license text. */
 #navigator-toolbox{
   --browser-area-z-index-toolbox: 3;
   position: fixed !important;
-  background-color: var(--lwt-accent-color,black) !important;
   transition: transform 82ms linear, opacity 82ms linear !important;
   transition-delay: var(--uc-autohide-toolbox-delay) !important;
   transform-origin: top;
