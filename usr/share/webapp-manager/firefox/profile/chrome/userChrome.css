@@ -6,7 +6,7 @@ See the above repository for updates as well as full license text. */
  */
 
 :root{
-  --uc-autohide-toolbox-delay: 200ms; /* Wait 0.1s before hiding toolbars */
+  --uc-autohide-toolbox-delay: 0ms; /* Wait 0.1s before hiding toolbars */
   --uc-toolbox-rotation: 82deg;  /* This may need to be lower on mac - like 75 or so */
 }
 
