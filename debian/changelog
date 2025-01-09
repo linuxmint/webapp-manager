@@ -1,3 +1,21 @@
+webapp-manager (1.4.0) xia; urgency=medium
+
+  [ Michael Webster ]
+  * userChrome.css: Adapt to firefox 133 layout changes. (#325)
+
+  [ hduelme ]
+  * Remove call to favicongrabber.com (#328)
+  * Prevent preview of unsaved image (#329)
+
+  [ Clement Lefebvre ]
+  * l10n: Update translations
+  * userChrome.css: Switch to upstream solution
+  * userChrome.css: Remove the hide transition delay
+  * userChrome.css: Remove the black background
+  * userChrome.css: Remove unnecessary code
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 09 Jan 2025 12:22:02 +0000
+
 webapp-manager (1.3.9) xia; urgency=medium
 
   * l10n: Update translations
