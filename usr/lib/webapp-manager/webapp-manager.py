@@ -89,6 +89,7 @@ class WebAppManagerWindow:
         self.run_button = self.builder.get_object("run_button")
         self.ok_button = self.builder.get_object("ok_button")
         self.name_entry = self.builder.get_object("name_entry")
+        self.desc_entry = self.builder.get_object("desc_entry")
         self.url_entry = self.builder.get_object("url_entry")
         self.url_label = self.builder.get_object("url_label")
         self.customparameters_entry = self.builder.get_object("customparameters_entry")
@@ -313,6 +314,7 @@ class WebAppManagerWindow:
         category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]
         browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_OBJ]
         name = self.name_entry.get_text()
+        desc = self.desc_entry.get_text()
         url = self.get_url()
         isolate_profile = self.isolated_switch.get_active()
         navbar = self.navbar_switch.get_active()
@@ -326,10 +328,10 @@ class WebAppManagerWindow:
             shutil.copyfile(icon, new_path)
             icon = new_path
         if self.edit_mode:
-            self.manager.edit_webapp(self.selected_webapp.path, name, browser, url, icon, category, custom_parameters, self.selected_webapp.codename, isolate_profile, navbar, privatewindow)
+            self.manager.edit_webapp(self.selected_webapp.path, name, desc, browser, url, icon, category, custom_parameters, self.selected_webapp.codename, isolate_profile, navbar, privatewindow)
             self.load_webapps()
         else:
-            self.manager.create_webapp(name, url, icon, category, browser, custom_parameters, isolate_profile, navbar,
+            self.manager.create_webapp(name, desc, url, icon, category, browser, custom_parameters, isolate_profile, navbar,
                                        privatewindow)
             self.load_webapps()
 
@@ -355,6 +357,7 @@ class WebAppManagerWindow:
     def on_edit_button(self, widget):
         if self.selected_webapp is not None:
             self.name_entry.set_text(self.selected_webapp.name)
+            self.desc_entry.set_text(self.selected_webapp.desc)
             self.icon_chooser.set_icon(self.selected_webapp.icon)
             self.url_entry.set_text(self.selected_webapp.url)
             self.customparameters_entry.set_text(self.selected_webapp.custom_parameters)
