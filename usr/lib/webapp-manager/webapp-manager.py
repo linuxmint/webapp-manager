@@ -314,7 +314,7 @@ class WebAppManagerWindow:
         category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]
         browser = self.browser_combo.get_model()[self.browser_combo.get_active()][BROWSER_OBJ]
         name = self.name_entry.get_text()
-        desc = self.desc_entry.get_text()
+        desc = self.desc_entry.get_text().strip()
         url = self.get_url()
         isolate_profile = self.isolated_switch.get_active()
         navbar = self.navbar_switch.get_active()
