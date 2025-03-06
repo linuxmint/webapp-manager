@@ -7,6 +7,7 @@ from io import BytesIO
 import locale
 import os
 from random import choice
+import re
 import shutil
 import string
 import sys
@@ -79,6 +80,7 @@ class WebAppLauncher:
         self.path = path
         self.codename = codename
         self.web_browser = None
+        self.startup_wm_class = None
         self.name = None
         self.icon = None
         self.is_valid = False
@@ -90,15 +92,12 @@ class WebAppLauncher:
         self.navbar = False
         self.privatewindow = False
 
-        is_webapp = False
         with open(path) as desktop_file:
             for line in desktop_file:
                 line = line.strip()
 
-                # Identify if the app is a webapp
-                if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
-                    is_webapp = True
-                    continue
+                if "StartupWMClass=" in line:
+                    self.startup_wm_class = line.replace("StartupWMClass=", "")
 
                 if "Name=" in line:
                     self.name = line.replace("Name=", "")
@@ -140,7 +139,7 @@ class WebAppLauncher:
                     self.privatewindow = line.replace("X-WebApp-PrivateWindow=", "").lower() == "true"
                     continue
 
-        if is_webapp and self.name is not None and self.icon is not None:
+        if is_valid_startup_wm_class(self.startup_wm_class) and self.name is not None and self.icon is not None:
             self.is_valid = True
 
 # This is the backend.
@@ -249,7 +248,7 @@ class WebAppManager:
         if os.path.exists(falkon_orig_prof_dir):
             os.remove(falkon_orig_prof_dir)
         shutil.rmtree(os.path.join(FALKON_PROFILES_DIR, webapp.codename), ignore_errors=True)
-
+    
     def create_webapp(self, name, url, icon, category, browser, custom_parameters, isolate_profile=True, navbar=False, privatewindow=False):
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
         random_code =  ''.join(choice(string.digits) for _ in range(4))
@@ -272,7 +271,7 @@ class WebAppManager:
             desktop_file.write("Icon=%s\n" % icon)
             desktop_file.write("Categories=GTK;%s;\n" % category)
             desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
-            desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
+            desktop_file.write("StartupWMClass=%s\n" % get_startup_wm_class(url))
             desktop_file.write("StartupNotify=true\n")
             desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
             desktop_file.write("X-WebApp-URL=%s\n" % url)
@@ -421,7 +420,7 @@ class WebAppManager:
 
         return exec_string
 
-    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters, codename, isolate_profile, navbar, privatewindow):
+    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters, codename, isolate_profile, navbar, privatewindow):  
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
@@ -437,6 +436,7 @@ class WebAppManager:
             exec_line = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url)
 
             config.set("Desktop Entry", "Exec", exec_line)
+            config.set("Desktop Entry", "StartupWMClass", get_startup_wm_class(url))
             config.set("Desktop Entry", "X-WebApp-Browser", browser.name)
             config.set("Desktop Entry", "X-WebApp-URL", url)
             config.set("Desktop Entry", "X-WebApp-CustomParameters", custom_parameters)
@@ -449,6 +449,16 @@ class WebAppManager:
 
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
+
+def get_startup_wm_class(url):
+    parsed_url = urllib.parse.urlparse(url)
+    netloc = parsed_url.netloc
+    path = parsed_url.path.lstrip('/').replace('/', '_') 
+    return f"{netloc}__{path}" if path else netloc
+
+def is_valid_startup_wm_class(startup_wm_class):
+    pattern = r"^[a-zA-Z0-9.-]+(?:__[a-zA-Z0-9_]+)?$"
+    return bool(re.match(pattern, startup_wm_class))
 
 def bool_to_string(boolean):
     if boolean:
