@@ -1,13 +1,23 @@
 #!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+# export DH_VERBOSE = 1
 
-DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+export PYBUILD_NAME=webapp-manager
+export PYBUILD_SYSTEM=pyproject
+
+# DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 
 %:
-	dh ${@}
+	dh ${@} --with=python3 --buildsystem=meson
 
-# Inject version number in the code
-override_dh_installdeb:
-	dh_installdeb
-	for pkg in $$(dh_listpackages -i); do \
-		find debian/$$pkg -type f -exec sed -i -e s/__DEB_VERSION__/$(DEB_VERSION)/g {} +; \
-	done
+# # Inject version number in the code
+# override_dh_installdeb:
+# 	dh_installdeb
+# 	for pkg in $$(dh_listpackages -i); do \
+# 		find debian/$$pkg -type f -exec sed -i -e s/__DEB_VERSION__/$(DEB_VERSION)/g {} +; \
+# 	done
+
+override_dh_auto_build:
+	dh_auto_build -O--buildsystem=meson
+	make -j8
