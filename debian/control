@@ -2,8 +2,15 @@ Source: webapp-manager
 Section: admin
 Priority: optional
 Maintainer: Linux Mint <root@linuxmint.com>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.5
+Build-Depends: debhelper-compat (= 13),
+               desktop-file-utils,
+               dh-python,
+               libglib2.0-bin,
+               libgtk-4-bin,
+               meson (>= 1.3.0),
+               pkgconf,
+               python3-all,
+Standards-Version: 4.6.1
 
 Package: webapp-manager
 Architecture: all
@@ -15,7 +22,8 @@ Depends: gir1.2-xapp-1.0 (>= 1.4),
          python3-pil,
          python3-setproctitle,
          python3-tldextract,
-         xapps-common,
-         ${misc:Depends},
+         xapps-common,,
+         ${python3:Depends},
+         ${misc:Depends}
 Description: Web Application Manager
  Launch websites as if they were apps.

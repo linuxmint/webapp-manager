@@ -1,2 +1,0 @@
-#!/bin/sh
-/usr/lib/webapp-manager/webapp-manager.py &

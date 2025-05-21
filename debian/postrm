@@ -1,5 +1,5 @@
 #!/bin/sh
-# postinst script for webapp-manager
+# postrm script for webapp-manager
 #
 # see: dh_installdeb(1)
 
@@ -7,7 +7,7 @@ set -e
 
 
 case "$1" in
-    configure)
+    purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
         if which glib-compile-schemas >/dev/null 2>&1
         then
             glib-compile-schemas /usr/share/glib-2.0/schemas
@@ -18,11 +18,8 @@ case "$1" in
         fi
     ;;
 
-    abort-upgrade|abort-remove|abort-deconfigure)
-    ;;
-
     *)
-        echo "postinst called with unknown argument \`$1'" >&2
+        echo "postrm called with unknown argument \`$1'" >&2
         exit 1
     ;;
 esac

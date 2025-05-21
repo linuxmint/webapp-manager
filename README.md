@@ -1,5 +1,9 @@
 # Webapp Manager
 ![build](https://github.com/linuxmint/webapp-manager/actions/workflows/build.yml/badge.svg)
+![License](https://img.shields.io/github/license/linuxmint/webapp-manager?label=License)
+![GitHub repo size](https://img.shields.io/github/repo-size/linuxmint/webapp-manager?label=Repo%20size)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/linuxmint/webapp-manager?label=Latest%20Stable%20Release)
+![Downloads](https://img.shields.io/github/downloads/linuxmint/webapp-manager/total?label=Downloads&style=plastic)
 
 Run websites as if they were apps.
 
