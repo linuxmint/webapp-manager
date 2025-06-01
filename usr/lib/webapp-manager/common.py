@@ -17,9 +17,10 @@ import urllib.request
 import threading
 import traceback
 from typing import Optional
+import tarfile
 
 #   2. Related third party imports.
-from gi.repository import GObject
+from gi.repository import GObject, GLib
 import PIL.Image
 import requests
 # Note: BeautifulSoup is an optional import supporting another way of getting a website's favicons.
@@ -63,6 +64,19 @@ FALKON_PROFILES_DIR = os.path.join(ICE_DIR, "falkon")
 ZEN_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/app.zen_browser.zen/data/ice/zen/")
 ICONS_DIR = os.path.join(ICE_DIR, "icons")
 BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_LIBREWOLF_FLATPAK, BROWSER_TYPE_WATERFOX_FLATPAK, BROWSER_TYPE_FLOORP_FLATPAK, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY, BROWSER_TYPE_FALKON, BROWSER_TYPE_ZEN_FLATPAK = range(10)
+
+class ei_task:
+    def __init__(self, result_callback, update_callback, builder, webAppLauncherSelf, window, stop_event, task):
+        self.result_callback = result_callback
+        self.update_callback = update_callback
+        self.builder = builder
+        self.webAppLauncherSelf = webAppLauncherSelf
+        self.path = ""
+        self.window = window
+        self.stop_event = stop_event
+        self.task = task
+        self.include_browserdata = False
+        self.result = "error"
 
 class Browser:
 
@@ -550,6 +564,177 @@ def download_favicon(url):
 
     images = sorted(images, key = lambda x: x[1].height, reverse=True)
     return images
+
+def export_config(ei_task_info: ei_task):
+    # The export process in the background.
+    try:
+        # Collect all files
+        webapps = get_all_desktop_files()
+        if ei_task_info.include_browserdata:
+            ice_files = get_all_files(ICE_DIR)
+        else:
+            ice_files = get_all_files(ICONS_DIR)
+        files = webapps + ice_files
+        total = len(files)
+        update_interval = 1 if int(total / 100) < 1 else int(total / 100)
+
+        # Write the .tar.gz file
+        with tarfile.open(ei_task_info.path, "w:gz") as tar:
+            counter = 0
+            for file in files:
+                tar.add(file["full_path"], arcname=file["arcname"])
+                if counter % update_interval == 0:
+                    progress = round(counter / total, 2)
+                    GLib.idle_add(ei_task_info.update_callback, ei_task_info, progress)
+
+                if ei_task_info.stop_event.is_set():
+                    # The user aborts the process.
+                    tar.close()
+                    clean_up_export(ei_task_info)
+                    return "cancelled"
+                counter += 1
+
+        ei_task_info.result = "ok"
+    except Exception as e:
+        print(e)
+        ei_task_info.result = "error"
+    
+    GLib.idle_add(ei_task_info.result_callback, ei_task_info)
+
+def clean_up_export(ei_task_info: ei_task):
+    # Remove the rest of the exported file when the user aborts the process.
+    if os.path.exists(ei_task_info.path):
+        os.remove(ei_task_info.path)
+    GLib.idle_add(ei_task_info.update_callback, ei_task_info, 1)
+
+def import_config(ei_task_info: ei_task):
+    # The import process in the background.
+    try:
+        # Make a list of the files beforehand so that the file structure can be restored 
+        # if the user aborts the import process.
+        files_before = get_files_dirs(ICE_DIR) + get_files_dirs(APPS_DIR)
+
+        with tarfile.open(ei_task_info.path, "r:gz") as tar:
+            files = tar.getnames()
+            total = len(files)
+            base_dir = os.path.dirname(ICE_DIR)
+            update_interval = 1 if int(total / 100) < 1 else int(total / 100)
+            counter = 0
+            for file in files:
+                # Exclude the file if it belongs to the browser data.
+                no_browserdata = ei_task_info.include_browserdata == False
+                is_ice_dir = file.startswith("ice/")
+                is_no_icon = not file.startswith("ice/icons")
+                if not(no_browserdata and is_ice_dir and is_no_icon):
+                    tar.extract(file, base_dir)
+                
+                if file.startswith("applications/"):
+                    # Redefine the "Exec" section. This is necessary if the username or browser path differs.
+                    path = os.path.join(base_dir, file)
+                    update_exec_path(path)
+                
+                if counter % update_interval == 0:
+                    progress = round(counter / total, 2)
+                    GLib.idle_add(ei_task_info.update_callback, ei_task_info, progress)
+                
+                if ei_task_info.stop_event.is_set():
+                    tar.close()
+                    clean_up_import(ei_task_info, files_before)
+                    return "cancelled"
+                counter += 1
+        ei_task_info.result = "ok"
+    except Exception as e:
+        print(e)
+        ei_task_info.result = "error"
+
+    GLib.idle_add(ei_task_info.result_callback, ei_task_info)
+
+def clean_up_import(ei_task_info: ei_task, files_before):
+    # Delete all imported files if the import process is aborted.
+    try:
+        # Search all new files
+        files_now = get_files_dirs(ICE_DIR) + get_files_dirs(APPS_DIR)
+        new_files = list(set(files_now) - set(files_before))
+        for file in new_files:
+            if os.path.exists(file):
+                if os.path.isdir(file):
+                    shutil.rmtree(file)
+                else:
+                    os.remove(file)
+        
+        GLib.idle_add(ei_task_info.update_callback, ei_task_info, 1)
+    except Exception as e:
+        print(e)
+
+def check_browser_directories_tar(path):
+    # Check if the archive contains browser data.
+    try:
+        with tarfile.open(path, "r:gz") as tar:
+            for member in tar:
+                parts = member.name.strip("/").split("/")
+                if parts[0] == "ice" and parts[1] != "icons":
+                    tar.close()
+                    return True
+            tar.close()
+            return False
+    except:
+        return False
+
+def get_all_desktop_files():
+    # Search all web apps and desktop files.
+    files = []
+    for filename in os.listdir(APPS_DIR):
+        if filename.lower().startswith("webapp-") and filename.endswith(".desktop"):
+            full_path = os.path.join(APPS_DIR, filename)
+            arcname = os.path.relpath(full_path, os.path.dirname(APPS_DIR))
+            files.append({"full_path":full_path, "arcname":arcname})
+    return files
+
+def get_all_files(base_dir):
+    # List all the files in a directory.
+    files = []
+    for root, dirs, filenames in os.walk(base_dir):
+        for filename in filenames:
+            full_path = os.path.join(root, filename)
+            arcname = ""
+            if base_dir == ICONS_DIR:
+                arcname += "ice/"
+            arcname += os.path.relpath(full_path, os.path.dirname(base_dir))
+            files.append({"full_path":full_path, "arcname":arcname})
+    return files
+
+def get_files_dirs(base_dir):
+    # List all the files and subdirectories within a directory.
+    paths = []
+    for dirpath, dirnames, filenames in os.walk(base_dir):
+        paths.append(dirpath)
+        for name in filenames:
+            paths.append(os.path.join(dirpath, name))
+    return paths
+
+def update_exec_path(path):
+    # This updates the 'exec' section of an imported web application or creates the browser directory for it.
+    config = configparser.RawConfigParser()
+    config.optionxform = str
+    config.read(path)
+    codename = os.path.basename(path)
+    codename = codename.replace(".desktop", "")
+    codename = codename.replace("WebApp-", "")
+    codename = codename.replace("webapp-", "")
+    webapp = WebAppLauncher(path, codename)
+    browsers = WebAppManager.get_supported_browsers()
+    if "/" in webapp.icon:
+        # Update Icon Path
+        iconpath = ICONS_DIR + "/" + os.path.basename(webapp.icon)
+        config.set("Desktop Entry", "Icon", iconpath)
+    else:
+        iconpath = webapp.icon
+
+    browser = next((browser for browser in browsers if browser.name == webapp.web_browser), None)
+    new_exec_line = WebAppManager.get_exec_string(None, browser, webapp.codename, webapp.custom_parameters, iconpath, webapp.isolate_profile, webapp.navbar, webapp.privatewindow, webapp.url)
+    config.set("Desktop Entry", "Exec", new_exec_line)
+    with open(path, 'w') as configfile:
+        config.write(configfile, space_around_delimiters=False)
 
 if __name__ == "__main__":
     download_favicon(sys.argv[1])

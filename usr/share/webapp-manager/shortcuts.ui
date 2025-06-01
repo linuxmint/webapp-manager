@@ -56,6 +56,20 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
+                <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;E</property>
+                <property name="title" translatable="yes">Export</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;I</property>
+                <property name="title" translatable="yes">Import</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
                 <property name="accelerator">F1</property>
                 <property name="title" translatable="yes">About</property>
               </object>
