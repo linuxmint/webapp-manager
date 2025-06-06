@@ -22,7 +22,7 @@ gi.require_version('XApp', '1.0')
 from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf
 
 #   3. Local application/library specific imports.
-from common import _async, idle, WebAppManager, download_favicon, BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, export_config, import_config, ei_task, check_browser_directories_tar
+from common import _async, idle, WebAppManager, download_favicon, BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, export_config, import_config, ei_task, ICONS_DIR
 
 setproctitle.setproctitle("webapp-manager")
 
@@ -38,6 +38,10 @@ COL_ICON, COL_NAME, COL_BROWSER, COL_WEBAPP = range(4)
 CATEGORY_ID, CATEGORY_NAME = range(2)
 BROWSER_OBJ, BROWSER_NAME = range(2)
 
+# Gladefiles
+MAIN_WINDOW_GLADEFILE = "/usr/share/webapp-manager/webapp-manager.ui"
+SHORTCUTS_GLADEFILE = "/usr/share/webapp-manager/shortcuts.ui"
+EI_TOOL_GLADEFILE = "/usr/share/webapp-manager/ei_tool.ui"
 
 class MyApplication(Gtk.Application):
     # Main initialization routine
@@ -68,10 +72,9 @@ class WebAppManagerWindow:
         self.icon_theme = Gtk.IconTheme.get_default()
 
         # Set the Glade file
-        gladefile = "/usr/share/webapp-manager/webapp-manager.ui"
         self.builder = Gtk.Builder()
         self.builder.set_translation_domain(APP)
-        self.builder.add_from_file(gladefile)
+        self.builder.add_from_file(MAIN_WINDOW_GLADEFILE)
         self.window = self.builder.get_object("main_window")
         self.window.set_title(_("Web Apps"))
         self.window.set_icon_name("webapp-manager")
@@ -238,10 +241,9 @@ class WebAppManagerWindow:
         cell.set_property("surface", surface)
 
     def open_keyboard_shortcuts(self, widget):
-        gladefile = "/usr/share/webapp-manager/shortcuts.ui"
         builder = Gtk.Builder()
         builder.set_translation_domain(APP)
-        builder.add_from_file(gladefile)
+        builder.add_from_file(SHORTCUTS_GLADEFILE)
         window = builder.get_object("shortcuts-webappmanager")
         window.set_title(_("Web Apps"))
         window.show()
@@ -555,28 +557,23 @@ class WebAppManagerWindow:
     # Export and Import feature "ei"
     def open_ei_tool(self, action):
         # Open the import / export window
-        gladefile = "/usr/share/webapp-manager/ei_tool.ui"
         builder = Gtk.Builder()
         builder.set_translation_domain(APP)
-        builder.add_from_file(gladefile)
+        builder.add_from_file(EI_TOOL_GLADEFILE)
         window = builder.get_object("window")
+
         # Translate text and prepare widgets
         if action == "export":
             window.set_title(_("Export Tool"))
         else:
             window.set_title(_("Import Tool"))
         builder.get_object("choose_location_text").set_text(_("Choose a location"))
-        builder.get_object("include_browserdata").set_label(_("BETA: Include Browser data (Config, Cache, Extensions...)\nIt requires the same browser version on the destination computer\nIt might take some time."))
-        builder.get_object("no_browser_data").set_text(_("Browser data import not available because \nit is not included in the importet file."))
-        builder.get_object("no_browser_data").set_visible(False)
         builder.get_object("start_button").set_label(_("Start"))
         builder.get_object("start_button").connect("clicked", lambda button: self.ei_start_process(button, ei_task_info))
-        builder.get_object("cancel_button").set_visible(False)
-        builder.get_object("select_location_button").connect("clicked", lambda widget: self.select_location(ei_task_info))
+        builder.get_object("select_location_button").connect("clicked", lambda widget: self.ei_select_location(ei_task_info))
 
         # Prepare ei_task_info which stores all the values for the import / export
-        stop_event = threading.Event()
-        ei_task_info = ei_task(self.show_ei_result, self.update_ei_progress, builder, self, window, stop_event, action)
+        ei_task_info = ei_task(self.show_ei_result, self.update_ei_progress, builder, self, window, action)
         window.show()
 
     def ei_start_process(self, button, ei_task_info: ei_task):
@@ -585,25 +582,24 @@ class WebAppManagerWindow:
         path = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), True)
         if path != "":
             ei_task_info.path = path
-            ei_task_info.include_browserdata = ei_task_info.builder.get_object("include_browserdata").get_active()
             button.set_sensitive(False)
             if ei_task_info.task == "export":
-                thread = threading.Thread(target=export_config, args=(ei_task_info,))
+                export_config(ei_task_info)
+                #thread = threading.Thread(target=export_config, args=(ei_task_info,))
             else:
-                thread = threading.Thread(target=import_config, args=(ei_task_info,))
-            thread.start()
-            ei_task_info.builder.get_object("cancel_button").set_visible(True)
-            ei_task_info.builder.get_object("cancel_button").connect("clicked", lambda button: self.abort_ei(button, ei_task_info, thread))
+                import_config(ei_task_info)
+                #thread = threading.Thread(target=import_config, args=(ei_task_info,))
+            #thread.start()
 
 
-    def select_location(self, ei_task_info: ei_task):
+    def ei_select_location(self, ei_task_info: ei_task):
         # Open the file chooser window
         if ei_task_info.task == "export":
             buttons = (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_SAVE, Gtk.ResponseType.OK)
             dialog = Gtk.FileChooserDialog(_("Export Configuration - Please choose a file location"), self.window, Gtk.FileChooserAction.SAVE, buttons)
         else:
             buttons = (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
-            dialog = Gtk.FileChooserDialog(_("Import Configuration - Please select the file"), self.window, Gtk.FileChooserAction.OPEN, buttons)
+            dialog = Gtk.FileChooserDialog(_("Import Configuration - Please select the archive"), self.window, Gtk.FileChooserAction.OPEN, buttons)
         
         filter = Gtk.FileFilter()
         filter.set_name(".tar.gz")
@@ -615,33 +611,12 @@ class WebAppManagerWindow:
             if ei_task_info.task == "export":
                 path += ".tar.gz"
             ei_task_info.builder.get_object("file_path").get_buffer().set_text(path)
-
-            # Check if include browser data is available 
-            include_browser_available = True
-            if ei_task_info.task == "import":
-                if not check_browser_directories_tar(path):
-                    include_browser_available = False
-            
-            ei_task_info.builder.get_object("include_browserdata").set_sensitive(include_browser_available)
-            ei_task_info.builder.get_object("no_browser_data").set_visible(not include_browser_available)
-            ei_task_info.builder.get_object("include_browserdata").set_active(include_browser_available)
         dialog.destroy()
 
-        
-    def abort_ei(self, button, ei_task_info:ei_task, thread):
-        # Abort the export / import process
-        button.set_sensitive(False)
-        self.update_ei_progress(ei_task_info, 0)
-        # The backend function will automatically clean up after the stop flag is triggered.
-        ei_task_info.stop_event.set()
-        thread.join()
-
     def update_ei_progress(self, ei_task_info:ei_task, progress):
-        # Update the progress bar or close the tool window by 100%.
+        # Update the progress bar
         try:
-            ei_task_info.builder.get_object("progress").set_fraction(progress)
-            if progress == 1:
-                ei_task_info.window.destroy()
+            ei_task_info.builder.get_object("progress").set_fraction(progress)                
         except:
             # The user closed the progress window
             pass
@@ -649,7 +624,7 @@ class WebAppManagerWindow:
 
     def show_ei_result(self, ei_task_info:ei_task):
         # Displays a success or failure message when the process is complete.
-        ei_task_info.window.destroy()
+        ei_task_info.webAppLauncherSelf.load_webapps()
         if ei_task_info.result == "ok":
             message = _(ei_task_info.task.capitalize() + " completed!")
         else:
@@ -663,16 +638,19 @@ class WebAppManagerWindow:
             result = dialog.run()
             if result == 10:
                 # Open Containing Folder
-                print("open folder")
                 os.system("xdg-open " + os.path.dirname(ei_task_info.path))
         else:
             dialog = Gtk.MessageDialog(text=message, message_type=Gtk.MessageType.INFO, buttons=Gtk.ButtonsType.OK)
             dialog.run()
 
         dialog.destroy()
-        ei_task_info.webAppLauncherSelf.load_webapps()
+        try:
+            ei_task_info.window.destroy()
+        except:
+            # User closed the window manually
+            pass
+        
 
 if __name__ == "__main__":
     application = MyApplication("org.x.webapp-manager", Gio.ApplicationFlags.FLAGS_NONE)
     application.run()
-
