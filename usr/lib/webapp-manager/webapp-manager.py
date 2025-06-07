@@ -7,7 +7,6 @@ import os
 import shutil
 import subprocess
 import warnings
-import threading
 
 #   2. Related third party imports.
 import gi

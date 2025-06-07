@@ -50,8 +50,8 @@ gettext.textdomain(APP)
 _ = gettext.gettext
 
 # Constants
-ICE_DIR = os.path.expanduser("/home/jannik/Programmieren/Python/LinuxMint/Local_Files/ice")
-APPS_DIR = os.path.expanduser("/home/jannik/Programmieren/Python/LinuxMint/Local_Files/applications")
+ICE_DIR = os.path.expanduser("~/.local/share/ice")
+APPS_DIR = os.path.expanduser("~/.local/share/applications")
 PROFILES_DIR = os.path.join(ICE_DIR, "profiles")
 FIREFOX_PROFILES_DIR = os.path.join(ICE_DIR, "firefox")
 FIREFOX_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/org.mozilla.firefox/data/ice/firefox")
