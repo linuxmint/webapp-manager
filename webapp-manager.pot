@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-07 17:19+0200\n"
+"POT-Creation-Date: 2025-06-07 19:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,154 +21,154 @@ msgstr ""
 msgid "Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:79
-#: usr/lib/webapp-manager/webapp-manager.py:248
-#: usr/lib/webapp-manager/webapp-manager.py:255 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:78
+#: usr/lib/webapp-manager/webapp-manager.py:247
+#: usr/lib/webapp-manager/webapp-manager.py:254 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:132
+#: usr/lib/webapp-manager/webapp-manager.py:131
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "Export"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:139
+#: usr/lib/webapp-manager/webapp-manager.py:138
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Import"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:147
+#: usr/lib/webapp-manager/webapp-manager.py:146
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:154
-#: usr/lib/webapp-manager/webapp-manager.py:254
+#: usr/lib/webapp-manager/webapp-manager.py:153
+#: usr/lib/webapp-manager/webapp-manager.py:253
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "About"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:159
+#: usr/lib/webapp-manager/webapp-manager.py:158
 #: usr/share/webapp-manager/shortcuts.ui.h:12
 msgid "Quit"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:174
+#: usr/lib/webapp-manager/webapp-manager.py:173
 msgid "Icon"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:178
+#: usr/lib/webapp-manager/webapp-manager.py:177
 msgid "Name"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:183
+#: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Browser"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:197 generate_desktop_files:48
+#: usr/lib/webapp-manager/webapp-manager.py:196 generate_desktop_files:48
 msgid "Web"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:198
+#: usr/lib/webapp-manager/webapp-manager.py:197
 msgid "Internet"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:199
+#: usr/lib/webapp-manager/webapp-manager.py:198
 msgid "Accessories"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:200
+#: usr/lib/webapp-manager/webapp-manager.py:199
 msgid "Games"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:201
+#: usr/lib/webapp-manager/webapp-manager.py:200
 msgid "Graphics"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:202
+#: usr/lib/webapp-manager/webapp-manager.py:201
 msgid "Office"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:203
+#: usr/lib/webapp-manager/webapp-manager.py:202
 msgid "Sound & Video"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:204
+#: usr/lib/webapp-manager/webapp-manager.py:203
 msgid "Programming"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:205
+#: usr/lib/webapp-manager/webapp-manager.py:204
 msgid "Education"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:227
+#: usr/lib/webapp-manager/webapp-manager.py:226
 msgid "No supported browsers were detected."
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:256
-#: usr/lib/webapp-manager/webapp-manager.py:555 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:255
+#: usr/lib/webapp-manager/webapp-manager.py:554 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:307
+#: usr/lib/webapp-manager/webapp-manager.py:306
 #, python-format
 msgid "Delete '%s'"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:308
+#: usr/lib/webapp-manager/webapp-manager.py:307
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:309
+#: usr/lib/webapp-manager/webapp-manager.py:308
 msgid "This Web App will be permanently lost."
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:363
-#: usr/lib/webapp-manager/webapp-manager.py:405
-#: usr/lib/webapp-manager/webapp-manager.py:461
+#: usr/lib/webapp-manager/webapp-manager.py:362
+#: usr/lib/webapp-manager/webapp-manager.py:404
+#: usr/lib/webapp-manager/webapp-manager.py:460
 msgid "Add a New Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:395
+#: usr/lib/webapp-manager/webapp-manager.py:394
 msgid "Edit Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:437
+#: usr/lib/webapp-manager/webapp-manager.py:436
 msgid "Choose an icon"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:562
+#: usr/lib/webapp-manager/webapp-manager.py:561
 msgid "Export WebApps - Select file location"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:566
+#: usr/lib/webapp-manager/webapp-manager.py:565
 msgid "Import WebApps - Select the archive"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:589
+#: usr/lib/webapp-manager/webapp-manager.py:588
 msgid "Export completed!"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:590
+#: usr/lib/webapp-manager/webapp-manager.py:589
 msgid "Open Containing Folder"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:592
+#: usr/lib/webapp-manager/webapp-manager.py:591
 msgid "WebApps have been exported successfully."
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:600
+#: usr/lib/webapp-manager/webapp-manager.py:599
 msgid "Import completed!"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:602
+#: usr/lib/webapp-manager/webapp-manager.py:601
 msgid "Import failed!"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:604
+#: usr/lib/webapp-manager/webapp-manager.py:603
 msgid "Export failed!"
 msgstr ""
 
