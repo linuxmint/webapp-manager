@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-21 10:58+0200\n"
+"POT-Creation-Date: 2025-06-07 17:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,117 +17,159 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
+#: usr/lib/webapp-manager/common.py:264 usr/lib/webapp-manager/common.py:431
 msgid "Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:73
-#: usr/lib/webapp-manager/webapp-manager.py:231
-#: usr/lib/webapp-manager/webapp-manager.py:238 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:79
+#: usr/lib/webapp-manager/webapp-manager.py:248
+#: usr/lib/webapp-manager/webapp-manager.py:255 generate_desktop_files:25
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:129
+#: usr/lib/webapp-manager/webapp-manager.py:132
+#: usr/share/webapp-manager/shortcuts.ui.h:8
+msgid "Export"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:139
+#: usr/share/webapp-manager/shortcuts.ui.h:9
+msgid "Import"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:147
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:136
-#: usr/lib/webapp-manager/webapp-manager.py:237
-#: usr/share/webapp-manager/shortcuts.ui.h:8
+#: usr/lib/webapp-manager/webapp-manager.py:154
+#: usr/lib/webapp-manager/webapp-manager.py:254
+#: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "About"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:141
-#: usr/share/webapp-manager/shortcuts.ui.h:10
+#: usr/lib/webapp-manager/webapp-manager.py:159
+#: usr/share/webapp-manager/shortcuts.ui.h:12
 msgid "Quit"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:156
+#: usr/lib/webapp-manager/webapp-manager.py:174
 msgid "Icon"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:160
+#: usr/lib/webapp-manager/webapp-manager.py:178
 msgid "Name"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:165
+#: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Browser"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:179
-msgid "Internet"
-msgstr ""
-
-#: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
+#: usr/lib/webapp-manager/webapp-manager.py:197 generate_desktop_files:48
 msgid "Web"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:181
+#: usr/lib/webapp-manager/webapp-manager.py:198
+msgid "Internet"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:199
 msgid "Accessories"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:182
+#: usr/lib/webapp-manager/webapp-manager.py:200
 msgid "Games"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:183
+#: usr/lib/webapp-manager/webapp-manager.py:201
 msgid "Graphics"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:184
+#: usr/lib/webapp-manager/webapp-manager.py:202
 msgid "Office"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:185
+#: usr/lib/webapp-manager/webapp-manager.py:203
 msgid "Sound & Video"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:186
+#: usr/lib/webapp-manager/webapp-manager.py:204
 msgid "Programming"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:187
+#: usr/lib/webapp-manager/webapp-manager.py:205
 msgid "Education"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:209
+#: usr/lib/webapp-manager/webapp-manager.py:227
 msgid "No supported browsers were detected."
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:239
-#: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:256
+#: usr/lib/webapp-manager/webapp-manager.py:555 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:292
+#: usr/lib/webapp-manager/webapp-manager.py:307
 #, python-format
 msgid "Delete '%s'"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:293
+#: usr/lib/webapp-manager/webapp-manager.py:308
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:294
+#: usr/lib/webapp-manager/webapp-manager.py:309
 msgid "This Web App will be permanently lost."
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:347
-#: usr/lib/webapp-manager/webapp-manager.py:379
-#: usr/lib/webapp-manager/webapp-manager.py:435
+#: usr/lib/webapp-manager/webapp-manager.py:363
+#: usr/lib/webapp-manager/webapp-manager.py:405
+#: usr/lib/webapp-manager/webapp-manager.py:461
 msgid "Add a New Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:369
+#: usr/lib/webapp-manager/webapp-manager.py:395
 msgid "Edit Web App"
 msgstr ""
 
-#: usr/lib/webapp-manager/webapp-manager.py:411
+#: usr/lib/webapp-manager/webapp-manager.py:437
 msgid "Choose an icon"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:562
+msgid "Export WebApps - Select file location"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:566
+msgid "Import WebApps - Select the archive"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:589
+msgid "Export completed!"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:590
+msgid "Open Containing Folder"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:592
+msgid "WebApps have been exported successfully."
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:600
+msgid "Import completed!"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:602
+msgid "Import failed!"
+msgstr ""
+
+#: usr/lib/webapp-manager/webapp-manager.py:604
+msgid "Export failed!"
 msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
@@ -227,6 +269,6 @@ msgstr ""
 msgid "Go Back"
 msgstr ""
 
-#: usr/share/webapp-manager/shortcuts.ui.h:9
+#: usr/share/webapp-manager/shortcuts.ui.h:11
 msgid "Shortcuts"
 msgstr ""

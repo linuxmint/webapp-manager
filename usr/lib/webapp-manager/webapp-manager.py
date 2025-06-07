@@ -22,7 +22,8 @@ gi.require_version('XApp', '1.0')
 from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf
 
 #   3. Local application/library specific imports.
-from common import _async, idle, WebAppManager, download_favicon, BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, export_config, import_config, ei_task, ICONS_DIR
+from common import BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, ICONS_DIR
+from common import _async, idle, WebAppManager, download_favicon, export_webapps, import_webapps
 
 setproctitle.setproctitle("webapp-manager")
 
@@ -41,7 +42,6 @@ BROWSER_OBJ, BROWSER_NAME = range(2)
 # Gladefiles
 MAIN_WINDOW_GLADEFILE = "/usr/share/webapp-manager/webapp-manager.ui"
 SHORTCUTS_GLADEFILE = "/usr/share/webapp-manager/shortcuts.ui"
-EI_TOOL_GLADEFILE = "/usr/share/webapp-manager/ei_tool.ui"
 
 class MyApplication(Gtk.Application):
     # Main initialization routine
@@ -130,14 +130,14 @@ class WebAppManagerWindow:
         item = Gtk.ImageMenuItem()
         item.set_image(Gtk.Image.new_from_icon_name("document-send-symbolic", Gtk.IconSize.MENU))
         item.set_label(_("Export"))
-        item.connect("activate", lambda widget: self.open_ei_tool("export"))
+        item.connect("activate", lambda widget: self.ei_select_location("export"))
         key, mod = Gtk.accelerator_parse("<Control><Shift>E")
         item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
         menu.append(item)
         item = Gtk.ImageMenuItem()
         item.set_image(Gtk.Image.new_from_icon_name("document-open-symbolic", Gtk.IconSize.MENU))
         item.set_label(_("Import"))
-        item.connect("activate", lambda widget: self.open_ei_tool("import"))
+        item.connect("activate", lambda widget: self.ei_select_location("import"))
         key, mod = Gtk.accelerator_parse("<Control><Shift>I")
         item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
         menu.append(item)
@@ -554,53 +554,18 @@ class WebAppManagerWindow:
         self.stack.set_visible_child_name("main_page")
         self.headerbar.set_subtitle(_("Run websites as if they were apps"))
 
-    # Export and Import feature "ei"
-    def open_ei_tool(self, action):
-        # Open the import / export window
-        builder = Gtk.Builder()
-        builder.set_translation_domain(APP)
-        builder.add_from_file(EI_TOOL_GLADEFILE)
-        window = builder.get_object("window")
-
-        # Translate text and prepare widgets
-        if action == "export":
-            window.set_title(_("Export Tool"))
-        else:
-            window.set_title(_("Import Tool"))
-        builder.get_object("choose_location_text").set_text(_("Choose a location"))
-        builder.get_object("start_button").set_label(_("Start"))
-        builder.get_object("start_button").connect("clicked", lambda button: self.ei_start_process(button, ei_task_info))
-        builder.get_object("select_location_button").connect("clicked", lambda widget: self.ei_select_location(ei_task_info))
-
-        # Prepare ei_task_info which stores all the values for the import / export
-        ei_task_info = ei_task(self.show_ei_result, self.update_ei_progress, builder, self, window, action)
-        window.show()
-
-    def ei_start_process(self, button, ei_task_info: ei_task):
-        # Start the import / export process
-        buffer = ei_task_info.builder.get_object("file_path").get_buffer()
-        path = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), True)
-        if path != "":
-            ei_task_info.path = path
-            button.set_sensitive(False)
-            if ei_task_info.task == "export":
-                export_config(ei_task_info)
-                #thread = threading.Thread(target=export_config, args=(ei_task_info,))
-            else:
-                import_config(ei_task_info)
-                #thread = threading.Thread(target=import_config, args=(ei_task_info,))
-            #thread.start()
-
-
-    def ei_select_location(self, ei_task_info: ei_task):
-        # Open the file chooser window
-        if ei_task_info.task == "export":
+    # "ei" means export and import feature
+    def ei_select_location(self, task):
+        # Open the file chooser dialog
+        if task == "export":
             buttons = (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_SAVE, Gtk.ResponseType.OK)
-            dialog = Gtk.FileChooserDialog(_("Export Configuration - Please choose a file location"), self.window, Gtk.FileChooserAction.SAVE, buttons)
+            title = _("Export WebApps - Select file location")
+            dialog = Gtk.FileChooserDialog(title, self.window, Gtk.FileChooserAction.SAVE, buttons)
         else:
             buttons = (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
-            dialog = Gtk.FileChooserDialog(_("Import Configuration - Please select the archive"), self.window, Gtk.FileChooserAction.OPEN, buttons)
-        
+            title = _("Import WebApps - Select the archive")
+            dialog = Gtk.FileChooserDialog(title, self.window, Gtk.FileChooserAction.OPEN, buttons)
+
         filter = Gtk.FileFilter()
         filter.set_name(".tar.gz")
         filter.add_pattern("*.tar.gz")
@@ -608,48 +573,39 @@ class WebAppManagerWindow:
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
             path = dialog.get_filename()
-            if ei_task_info.task == "export":
-                path += ".tar.gz"
-            ei_task_info.builder.get_object("file_path").get_buffer().set_text(path)
+            if path != "":
+                if task == "export":
+                    path += ".tar.gz"
+                    export_webapps(self.show_ei_result, path)
+                else:
+                    import_webapps(self.show_ei_result, path)
         dialog.destroy()
 
-    def update_ei_progress(self, ei_task_info:ei_task, progress):
-        # Update the progress bar
-        try:
-            ei_task_info.builder.get_object("progress").set_fraction(progress)                
-        except:
-            # The user closed the progress window
-            pass
-
-
-    def show_ei_result(self, ei_task_info:ei_task):
+    def show_ei_result(self, result, task, path):
         # Displays a success or failure message when the process is complete.
-        ei_task_info.webAppLauncherSelf.load_webapps()
-        if ei_task_info.result == "ok":
-            message = _(ei_task_info.task.capitalize() + " completed!")
-        else:
-            message = _(ei_task_info.task.capitalize() + " failed!")
-        
-        if ei_task_info.result == "ok" and ei_task_info.task == "export":
+        self.load_webapps()
+        if result == "ok" and task == "export":
             # This dialog box gives users the option to open the containing directory.
-            dialog = Gtk.Dialog(message, ei_task_info.webAppLauncherSelf.window, None, (_("Open Containing Folder"), 10, Gtk.STOCK_OK, Gtk.ButtonsType.OK))
-            dialog.get_content_area().add(Gtk.Label(label=_("Configuration has been exported successfully. This is the file location:")+"\n"+ei_task_info.path))
+            title = _("Export completed!")
+            button_text = _("Open Containing Folder")
+            dialog = Gtk.Dialog(title, self.window, None, (button_text, 10, Gtk.STOCK_OK, Gtk.ButtonsType.OK))
+            dialog.get_content_area().add(Gtk.Label(label=_("WebApps have been exported successfully.")))
             dialog.show_all()
             result = dialog.run()
             if result == 10:
                 # Open Containing Folder
-                os.system("xdg-open " + os.path.dirname(ei_task_info.path))
+                os.system("xdg-open " + os.path.dirname(path))
         else:
+            if result == "ok" and task == "import":
+                message = _("Import completed!")
+            elif result != "ok" and task == "import":
+                message = _("Import failed!")
+            elif result != "ok" and task == "export":
+                message = _("Export failed!")
+
             dialog = Gtk.MessageDialog(text=message, message_type=Gtk.MessageType.INFO, buttons=Gtk.ButtonsType.OK)
             dialog.run()
-
         dialog.destroy()
-        try:
-            ei_task_info.window.destroy()
-        except:
-            # User closed the window manually
-            pass
-        
 
 if __name__ == "__main__":
     application = MyApplication("org.x.webapp-manager", Gio.ApplicationFlags.FLAGS_NONE)
