@@ -50,8 +50,8 @@ gettext.textdomain(APP)
 _ = gettext.gettext
 
 # Constants
-ICE_DIR = os.path.expanduser("~/.local/share/ice")
-APPS_DIR = os.path.expanduser("~/.local/share/applications")
+ICE_DIR = os.path.expanduser("/home/jannik/Programmieren/Python/LinuxMint/Local_Files/ice")
+APPS_DIR = os.path.expanduser("/home/jannik/Programmieren/Python/LinuxMint/Local_Files/applications")
 PROFILES_DIR = os.path.join(ICE_DIR, "profiles")
 FIREFOX_PROFILES_DIR = os.path.join(ICE_DIR, "firefox")
 FIREFOX_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/org.mozilla.firefox/data/ice/firefox")
@@ -567,7 +567,7 @@ def export_webapps(callback, path):
         print(e)
         result = "error"
 
-    callback(result, "export", path)
+    GLib.idle_add(callback, result, "export", path)
 
 @_async
 def import_webapps(callback, path):
@@ -582,12 +582,15 @@ def import_webapps(callback, path):
                 if file.startswith("applications/"):
                     # Rewrite the "Exec" section. It will apply the new paths and will search for browsers
                     path = os.path.join(base_dir, file)
-                    update_imported_desktop(path)
+                    result = update_imported_desktop(path)
+                    if result == "error":
+                        tar.close()
+                        break
     except Exception as e:
         print(e)
         result = "error"
 
-    callback(result, "import", path)
+    GLib.idle_add(callback, result, "import", path)
 
 
 def get_all_desktop_files():
@@ -607,35 +610,39 @@ def get_codename(path):
     return codename
 
 def update_imported_desktop(path):
-    webapp = WebAppLauncher(path, get_codename(path))
-    if "/" in webapp.icon:
-        # Update Icon Path
-        iconpath = os.path.join(ICONS_DIR, os.path.basename(webapp.icon))
-    else:
-        iconpath = webapp.icon
+    try:
+        webapp = WebAppLauncher(path, get_codename(path))
+        if "/" in webapp.icon:
+            # Update Icon Path
+            iconpath = os.path.join(ICONS_DIR, os.path.basename(webapp.icon))
+        else:
+            iconpath = webapp.icon
 
-    # Check if the browser is installed
-    browsers = WebAppManager.get_supported_browsers()
-    configured_browser = next((browser for browser in browsers if browser.name == webapp.web_browser), None)
-    if os.path.exists(configured_browser.test_path) == False:
-        # If the browser is not installed, search another browser.
-        # 1. Sort browsers by same browser type
-        # 2. Sort the browsers by similarity of the name of the missing browser
-        similar_browsers = browsers
-        similar_browsers.sort(key=lambda browser: (
-            browser.browser_type == configured_browser.browser_type,
-            configured_browser.name.split(" ")[0].lower() not in browser.name.lower()
-        ))
-        configured_browser = None
-        for browser in similar_browsers:
-            if os.path.exists(browser.test_path):
-                configured_browser = browser
-                break
+        # Check if the browser is installed
+        browsers = WebAppManager.get_supported_browsers()
+        configured_browser = next((browser for browser in browsers if browser.name == webapp.web_browser), None)
+        if os.path.exists(configured_browser.test_path) == False:
+            # If the browser is not installed, search another browser.
+            # 1. Sort browsers by same browser type
+            # 2. Sort the browsers by similarity of the name of the missing browser
+            similar_browsers = browsers
+            similar_browsers.sort(key=lambda browser: (
+                browser.browser_type == configured_browser.browser_type,
+                configured_browser.name.split(" ")[0].lower() not in browser.name.lower()
+            ))
+            configured_browser = None
+            for browser in similar_browsers:
+                if os.path.exists(browser.test_path):
+                    configured_browser = browser
+                    break
 
-        print(webapp.web_browser, "-Browser not installed")
+            print(webapp.web_browser, "-Browser not installed")
 
-    WebAppManager.edit_webapp(WebAppManager, path, webapp.name, configured_browser, webapp.url, iconpath, webapp.category, 
-                webapp.custom_parameters, webapp.codename, webapp.isolate_profile, webapp.navbar, webapp.privatewindow)
+        WebAppManager.edit_webapp(WebAppManager, path, webapp.name, configured_browser, webapp.url, iconpath, webapp.category,
+                    webapp.custom_parameters, webapp.codename, webapp.isolate_profile, webapp.navbar, webapp.privatewindow)
+        return "ok"
+    except:
+        return "error"
 
 if __name__ == "__main__":
     download_favicon(sys.argv[1])
