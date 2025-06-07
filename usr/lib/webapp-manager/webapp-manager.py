@@ -588,7 +588,7 @@ class WebAppManagerWindow:
             # This dialog box gives users the option to open the containing directory.
             title = _("Export completed!")
             button_text = _("Open Containing Folder")
-            dialog = Gtk.Dialog(title, self.window, None, (button_text, 10, Gtk.STOCK_OK, Gtk.ButtonsType.OK))
+            dialog = Gtk.Dialog(title, self.window, None, (button_text, 10, Gtk.STOCK_OK, Gtk.ResponseType.OK))
             dialog.get_content_area().add(Gtk.Label(label=_("WebApps have been exported successfully.")))
             dialog.show_all()
             result = dialog.run()
