@@ -485,14 +485,14 @@ def download_image(root_url: str, link: str) -> Optional[PIL.Image.Image]:
         print(link)
         return None
 
-def _find_link_favicon(soup, iconformat):
+def _find_link_favicon(soup, iconformat, url):
     items = soup.find_all("link", {"rel": iconformat})
     for item in items:
         link = item.get("href")
         if link:
             yield link
 
-def _find_meta_content(soup, iconformat):
+def _find_meta_content(soup, iconformat, url):
     item = soup.find("meta", {"name": iconformat})
     if not item:
         return
@@ -500,14 +500,14 @@ def _find_meta_content(soup, iconformat):
     if link:
         yield link
 
-def _find_property(soup, iconformat):
+def _find_property(soup, iconformat, url):
     items = soup.find_all("meta", {"property": iconformat})
     for item in items:
         link = item.get("content")
         if link:
             yield link
 
-def _find_url(_soup, iconformat):
+def _find_url(_soup, iconformat, url):
     yield iconformat
 
 
@@ -516,6 +516,7 @@ def download_favicon(url):
     url = normalize_url(url)
     (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url)
     root_url = "%s://%s" % (scheme, netloc)
+    api_url = "%s%s" % (netloc, path)
 
     # Check HTML and /favicon.ico
     try:
@@ -538,7 +539,7 @@ def download_favicon(url):
 
             # icons defined in the HTML
             for (iconformat, getter) in iconformats:
-                for link in getter(soup, iconformat):
+                for link in getter(soup, iconformat, api_url):
                     image = download_image(root_url, link)
                     if image is not None:
                         t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
