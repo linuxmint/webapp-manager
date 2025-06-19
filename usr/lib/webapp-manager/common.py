@@ -510,6 +510,13 @@ def _find_property(soup, iconformat, url):
 def _find_url(_soup, iconformat, url):
     yield iconformat
 
+def _find_google_api_favicon(_soup, iconformat, url):
+    url = urllib.parse.quote(url, safe='')
+    #response = requests.get("https://www.google.com/s2/favicons?sz=32&domain=%s" % url, timeout=3)
+    #link = response.url
+    link = "https://www.google.com/s2/favicons?sz=32&domain=%s" % url
+    yield link
+
 
 def download_favicon(url):
     images = []
@@ -535,6 +542,7 @@ def download_favicon(url):
                 ("msapplication-square70x70logo", _find_meta_content),
                 ("og:image", _find_property),
                 ("favicon.ico", _find_url),
+                ("google-api", _find_google_api_favicon),
             ]
 
             # icons defined in the HTML
