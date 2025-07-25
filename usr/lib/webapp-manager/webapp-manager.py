@@ -333,6 +333,7 @@ class WebAppManagerWindow:
 
     def on_add_button(self, widget):
         self.name_entry.set_text("")
+        self.desc_entry.set_text("")
         self.url_entry.set_text("")
         self.customparameters_entry.set_text("")
         self.icon_chooser.set_icon("webapp-manager")
