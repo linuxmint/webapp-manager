@@ -1,3 +1,23 @@
+webapp-manager (1.4.1) zara; urgency=medium
+
+  [ hduelme ]
+  * Use auto resource management for license file (#330)
+
+  [ DanWolfstone ]
+  * Add Support for Zen Browser (#335) (#336)
+
+  [ diam0ndkiller ]
+  * Add support for Google's Favicon API as a fallback option (#350)
+
+  [ Timothy Feierabend ]
+  * Add Description field to Web App editor (#339)
+
+  [ Clement Lefebvre ]
+  * add_webapp: Reset description
+  * l10n: Update POT
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 25 Jul 2025 15:09:43 +0200
+
 webapp-manager (1.4.0) xia; urgency=medium
 
   [ Michael Webster ]
