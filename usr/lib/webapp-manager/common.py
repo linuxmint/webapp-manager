@@ -81,6 +81,7 @@ class WebAppLauncher:
         self.codename = codename
         self.web_browser = None
         self.name = None
+        self.desc = None
         self.icon = None
         self.is_valid = False
         self.exec = None
@@ -103,6 +104,12 @@ class WebAppLauncher:
 
                 if "Name=" in line:
                     self.name = line.replace("Name=", "")
+                    continue
+
+                if "Comment=" in line:
+                    self.desc = line.replace("Comment=", "")
+                    if self.desc == _("Web App"):
+                        self.desc = ""
                     continue
 
                 if "Icon=" in line:
@@ -254,17 +261,20 @@ class WebAppManager:
             os.remove(falkon_orig_prof_dir)
         shutil.rmtree(os.path.join(FALKON_PROFILES_DIR, webapp.codename), ignore_errors=True)
 
-    def create_webapp(self, name, url, icon, category, browser, custom_parameters, isolate_profile=True, navbar=False, privatewindow=False):
+    def create_webapp(self, name, desc, url, icon, category, browser, custom_parameters, isolate_profile=True, navbar=False, privatewindow=False):
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
         random_code =  ''.join(choice(string.digits) for _ in range(4))
         codename = "".join(filter(str.isalpha, name)) + random_code
         path = os.path.join(APPS_DIR, "WebApp-%s.desktop" % codename)
 
+        if not desc:
+            desc = _("Web App")
+
         with open(path, 'w') as desktop_file:
             desktop_file.write("[Desktop Entry]\n")
             desktop_file.write("Version=1.0\n")
             desktop_file.write("Name=%s\n" % name)
-            desktop_file.write("Comment=%s\n" % _("Web App"))
+            desktop_file.write("Comment=%s\n" % desc)
 
             exec_string = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar,
                                                privatewindow, url)
@@ -427,13 +437,16 @@ class WebAppManager:
 
         return exec_string
 
-    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters, codename, isolate_profile, navbar, privatewindow):
+    def edit_webapp(self, path, name, desc, browser, url, icon, category, custom_parameters, codename, isolate_profile, navbar, privatewindow):
+        if not desc:
+            desc = _("Web App")
+
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
         config.set("Desktop Entry", "Name", name)
         config.set("Desktop Entry", "Icon", icon)
-        config.set("Desktop Entry", "Comment", _("Web App"))
+        config.set("Desktop Entry", "Comment", desc)
         config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
 
         try:
