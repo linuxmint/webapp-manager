@@ -18,6 +18,8 @@ import threading
 import traceback
 from typing import Optional
 import tarfile
+import time
+from pathlib import Path
 
 #   2. Related third party imports.
 from gi.repository import GObject, GLib
@@ -553,21 +555,26 @@ def download_favicon(url):
     return images
 
 @_async
-def export_webapps(callback, path):
+def export_webapps(callback):
     # The background export process
     try:
-        desktop_files = get_all_desktop_files()
+        result = "ok"
+        filename = "web-apps-" + time.strftime(f"%Y-%m-%d", time.localtime())
+        suffix = len(list(Path.home().glob(f"*{filename}*")))
+        suffix = f"({suffix})".replace("(0)", "")
+        export_path = str(Path(f"~/{filename}{suffix}.tar.gz").expanduser())
+
+        desktop_files = prepare_export()
         # Write the .tar.gz file
-        with tarfile.open(path, "w:gz") as tar:
+        with tarfile.open(export_path, "w:gz") as tar:
             for desktop_file in desktop_files:
                 tar.add(desktop_file["full_path"], arcname=desktop_file["arcname"])
             tar.add(ICONS_DIR, "ice/icons/")
-        result = "ok"
     except Exception as e:
         print(e)
         result = "error"
 
-    GLib.idle_add(callback, result, "export", path)
+    GLib.idle_add(callback, result, "export", export_path)
 
 @_async
 def import_webapps(callback, path):
@@ -578,29 +585,48 @@ def import_webapps(callback, path):
             files = tar.getnames()
             base_dir = os.path.dirname(ICE_DIR)
             for file in files:
-                tar.extract(file, base_dir)
-                if file.startswith("applications/"):
-                    # Rewrite the "Exec" section. It will apply the new paths and will search for browsers
-                    path = os.path.join(base_dir, file)
-                    result = update_imported_desktop(path)
-                    if result == "error":
-                        tar.close()
-                        break
+                try:
+                    if not os.path.exists(os.path.join(base_dir, file)): # Skip existing files.
+                        tar.extract(file, base_dir)
+                        if file.startswith("applications/"):
+                            # Update the .desktop file. Check if the browser is installed and rewrite the paths 
+                            path = os.path.join(base_dir, file)
+                            if update_imported_desktop(path) == "error":
+                                result = "error"
+                except Exception as e: # Keep the import process going even if there are problems extracting a file
+                    print(e)
+                    result = "error"
     except Exception as e:
         print(e)
         result = "error"
 
-    GLib.idle_add(callback, result, "import", path)
+    GLib.idle_add(callback, result, "import")
 
 
-def get_all_desktop_files():
+def prepare_export():
     # Search all web apps and desktop files.
     files = []
+    supported_browsers = WebAppManager.get_supported_browsers()
     for filename in os.listdir(APPS_DIR):
         if filename.lower().startswith("webapp-") and filename.endswith(".desktop"):
             full_path = os.path.join(APPS_DIR, filename)
             arcname = os.path.relpath(full_path, os.path.dirname(APPS_DIR))
             files.append({"full_path":full_path, "arcname":arcname})
+            try:
+                # In older versions, some custom icons will not be automatically stored in the icons directory
+                webapp = WebAppLauncher(full_path, get_codename(full_path))
+                icon = webapp.icon
+                if "/" in icon and not ICONS_DIR in icon:
+                    filename = "".join(filter(str.isalpha, webapp.name)) + os.path.splitext(icon)[1]
+                    new_path = os.path.join(ICONS_DIR, filename)
+                    shutil.copyfile(icon, new_path)
+                    icon = new_path
+                    browser = next((browser for browser in supported_browsers if browser.name == webapp.web_browser), None)
+                    WebAppManager.edit_webapp(WebAppManager,full_path, webapp.name, browser, webapp.url, icon, webapp.category, 
+                        webapp.custom_parameters, webapp.codename, webapp.isolate_profile, webapp.navbar, webapp.privatewindow)
+            except:
+                # Skip custom icon 
+                pass
     return files
 
 
@@ -613,7 +639,7 @@ def update_imported_desktop(path):
     try:
         webapp = WebAppLauncher(path, get_codename(path))
         if "/" in webapp.icon:
-            # Update Icon Path
+            # update icon path, important when the username differs.
             iconpath = os.path.join(ICONS_DIR, os.path.basename(webapp.icon))
         else:
             iconpath = webapp.icon
@@ -626,20 +652,23 @@ def update_imported_desktop(path):
             # 1. Sort browsers by same browser type
             # 2. Sort the browsers by similarity of the name of the missing browser
             similar_browsers = browsers
-            similar_browsers.sort(key=lambda browser: (
-                browser.browser_type == configured_browser.browser_type,
-                configured_browser.name.split(" ")[0].lower() not in browser.name.lower()
-            ))
+            if configured_browser != None:
+                browser_type = configured_browser.browser_type
+                browser_name = configured_browser.name.split(" ")[0].lower() 
+            else:
+                # Could not found the browser in the supported browser list. Search for an alternative.
+                browser_type = ""
+                browser_name = webapp.web_browser
+            similar_browsers.sort(key=lambda browser: (browser.browser_type == browser_type, browser_name not in browser.name.lower()))
             configured_browser = None
             for browser in similar_browsers:
                 if os.path.exists(browser.test_path):
                     configured_browser = browser
                     break
-
             print(webapp.web_browser, "-Browser not installed")
-
-        WebAppManager.edit_webapp(WebAppManager, path, webapp.name, configured_browser, webapp.url, iconpath, webapp.category,
-                    webapp.custom_parameters, webapp.codename, webapp.isolate_profile, webapp.navbar, webapp.privatewindow)
+        # Apply the browser changes, the new icon path and create a profile if there is no existing one
+        WebAppManager.edit_webapp(WebAppManager, path, webapp.name, configured_browser, webapp.url, iconpath, webapp.category, 
+                webapp.custom_parameters, webapp.codename, webapp.isolate_profile, webapp.navbar, webapp.privatewindow)
         return "ok"
     except:
         return "error"
