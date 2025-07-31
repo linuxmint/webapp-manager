@@ -7,219 +7,225 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2022-06-28 13:22+0000\n"
+"POT-Creation-Date: 2025-07-25 15:09+0200\n"
+"PO-Revision-Date: 2025-07-30 22:40+0000\n"
 "Last-Translator: menom <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2025-01-06 12:01+0000\n"
-"X-Generator: Launchpad (build 6394e03793719e8d73f5a60b5439440e693c92f1)\n"
+"X-Launchpad-Export-Date: 2025-07-31 09:25+0000\n"
+"X-Generator: Launchpad (build 647c49fc7f614412c17a151d8ba4fadd90c06a00)\n"
 
-#: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
+#: usr/lib/webapp-manager/common.py:111 usr/lib/webapp-manager/common.py:271
+#: usr/lib/webapp-manager/common.py:442
+#: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Web App"
 msgstr "Webová aplikácia"
 
-#: usr/lib/webapp-manager/webapp-manager.py:73
-#: usr/lib/webapp-manager/webapp-manager.py:231
-#: usr/lib/webapp-manager/webapp-manager.py:238 generate_desktop_files:25
-#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
+#: usr/lib/webapp-manager/webapp-manager.py:75
+#: usr/lib/webapp-manager/webapp-manager.py:232
+#: usr/lib/webapp-manager/webapp-manager.py:239 generate_desktop_files:25
+#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:23
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr "Webové Aplikácie"
 
-#: usr/lib/webapp-manager/webapp-manager.py:129
+#: usr/lib/webapp-manager/webapp-manager.py:130
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové skratky"
 
-#: usr/lib/webapp-manager/webapp-manager.py:136
-#: usr/lib/webapp-manager/webapp-manager.py:237
+#: usr/lib/webapp-manager/webapp-manager.py:137
+#: usr/lib/webapp-manager/webapp-manager.py:238
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr "O aplikácii"
 
-#: usr/lib/webapp-manager/webapp-manager.py:141
+#: usr/lib/webapp-manager/webapp-manager.py:142
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr "Ukončiť"
 
-#: usr/lib/webapp-manager/webapp-manager.py:156
+#: usr/lib/webapp-manager/webapp-manager.py:157
 msgid "Icon"
 msgstr "Ikona"
 
-#: usr/lib/webapp-manager/webapp-manager.py:160
+#: usr/lib/webapp-manager/webapp-manager.py:161
 msgid "Name"
 msgstr "Názov"
 
-#: usr/lib/webapp-manager/webapp-manager.py:165
+#: usr/lib/webapp-manager/webapp-manager.py:166
 msgid "Browser"
 msgstr "Prehliadač"
-
-#: usr/lib/webapp-manager/webapp-manager.py:179
-msgid "Internet"
-msgstr "Internet"
 
 #: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
 msgid "Web"
 msgstr "Web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:181
+msgid "Internet"
+msgstr "Internet"
+
+#: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Accessories"
 msgstr "Príslušenstvo"
 
-#: usr/lib/webapp-manager/webapp-manager.py:182
+#: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Games"
 msgstr "Hry"
 
-#: usr/lib/webapp-manager/webapp-manager.py:183
+#: usr/lib/webapp-manager/webapp-manager.py:184
 msgid "Graphics"
 msgstr "Grafika"
 
-#: usr/lib/webapp-manager/webapp-manager.py:184
+#: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Office"
 msgstr "Kancelária"
 
-#: usr/lib/webapp-manager/webapp-manager.py:185
+#: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Sound & Video"
 msgstr "Zvuk a video"
 
-#: usr/lib/webapp-manager/webapp-manager.py:186
+#: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Programming"
 msgstr "Programovanie"
 
-#: usr/lib/webapp-manager/webapp-manager.py:187
+#: usr/lib/webapp-manager/webapp-manager.py:188
 msgid "Education"
 msgstr "Vzdelávanie"
 
-#: usr/lib/webapp-manager/webapp-manager.py:209
+#: usr/lib/webapp-manager/webapp-manager.py:210
 msgid "No supported browsers were detected."
 msgstr "Neboli nájdené žiadne podporované prehliadače."
 
-#: usr/lib/webapp-manager/webapp-manager.py:239
-#: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:240
+#: usr/lib/webapp-manager/webapp-manager.py:542 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr "Spusti webstránky ako by to boli aplikácie"
 
-#: usr/lib/webapp-manager/webapp-manager.py:292
+#: usr/lib/webapp-manager/webapp-manager.py:291
 #, python-format
 msgid "Delete '%s'"
 msgstr "Vymazať '%s'"
 
-#: usr/lib/webapp-manager/webapp-manager.py:293
+#: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "Ste si istý, že chcete vymazať '%s'?"
 
-#: usr/lib/webapp-manager/webapp-manager.py:294
+#: usr/lib/webapp-manager/webapp-manager.py:293
 msgid "This Web App will be permanently lost."
 msgstr "Táto web aplikácia bude trvale stratená."
 
-#: usr/lib/webapp-manager/webapp-manager.py:347
-#: usr/lib/webapp-manager/webapp-manager.py:379
-#: usr/lib/webapp-manager/webapp-manager.py:435
+#: usr/lib/webapp-manager/webapp-manager.py:349
+#: usr/lib/webapp-manager/webapp-manager.py:392
+#: usr/lib/webapp-manager/webapp-manager.py:448
 msgid "Add a New Web App"
 msgstr "Pridať novú webovú aplikáciu"
 
-#: usr/lib/webapp-manager/webapp-manager.py:369
+#: usr/lib/webapp-manager/webapp-manager.py:382
 msgid "Edit Web App"
 msgstr "Upraviť webovú aplikáciu"
 
-#: usr/lib/webapp-manager/webapp-manager.py:411
+#: usr/lib/webapp-manager/webapp-manager.py:424
 msgid "Choose an icon"
 msgstr "Vybrať ikonu"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:2
-msgid "Manage your Web Apps"
-msgstr "Spravujte si svoje webové aplikácie."
-
-#: usr/share/webapp-manager/webapp-manager.ui.h:3
+#: usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
 msgstr "Pridať"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:4
+#: usr/share/webapp-manager/webapp-manager.ui.h:2
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
 msgstr "Odstrániť"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:5
+#: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
 msgstr "Upraviť"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:6
+#: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
 msgstr "Spustiť"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:7
+#: usr/share/webapp-manager/webapp-manager.ui.h:5
 msgid "Name:"
 msgstr "Názov:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:8
+#: usr/share/webapp-manager/webapp-manager.ui.h:6
 msgid "Address:"
 msgstr "Adresa:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:9
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Icon:"
 msgstr "Ikona:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:10
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Website name"
 msgstr "Meno webstránky"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:11
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "https://www.website.com"
 msgstr "https://www.website.com"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:12
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:13
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "OK"
 msgstr "OK"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:14
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Find icons online"
 msgstr "Hľadanie ikon online"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:15
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "Category:"
 msgstr "Kategória:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:16
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Browser:"
 msgstr "Prehliadač:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:17
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
 "Ak je táto možnosť povolená, internetová stránka bude v prehliadači spustená "
 "vo svojom vlastnom profile."
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:18
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Isolated profile:"
 msgstr "Izolovaný profil:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:19
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid "Navigation bar:"
 msgstr "Navigačná lišta:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:20
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Private/Incognito Window:"
 msgstr "Súkromné/inkognito okno."
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:21
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Custom parameters:"
 msgstr "Voliteľné parametre:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:22
+#: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Custom browser parameters"
 msgstr "Voliteľné parametre prehliadača"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:21
+msgid "Description:"
+msgstr "Popis:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:24
+msgid "Manage your Web Apps"
+msgstr "Spravujte si svoje webové aplikácie."
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"

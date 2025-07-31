@@ -7,217 +7,223 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2022-06-21 10:58+0200\n"
-"PO-Revision-Date: 2024-07-19 02:12+0000\n"
-"Last-Translator: JiaShean Leong <Unknown>\n"
+"POT-Creation-Date: 2025-07-25 15:09+0200\n"
+"PO-Revision-Date: 2025-07-26 14:02+0000\n"
+"Last-Translator: Zehua Huang <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2025-01-06 12:01+0000\n"
-"X-Generator: Launchpad (build 6394e03793719e8d73f5a60b5439440e693c92f1)\n"
+"X-Launchpad-Export-Date: 2025-07-31 09:25+0000\n"
+"X-Generator: Launchpad (build 647c49fc7f614412c17a151d8ba4fadd90c06a00)\n"
 
-#: usr/lib/webapp-manager/common.py:208 usr/lib/webapp-manager/common.py:319
+#: usr/lib/webapp-manager/common.py:111 usr/lib/webapp-manager/common.py:271
+#: usr/lib/webapp-manager/common.py:442
+#: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Web App"
 msgstr "Web 应用"
 
-#: usr/lib/webapp-manager/webapp-manager.py:73
-#: usr/lib/webapp-manager/webapp-manager.py:231
-#: usr/lib/webapp-manager/webapp-manager.py:238 generate_desktop_files:25
-#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:1
+#: usr/lib/webapp-manager/webapp-manager.py:75
+#: usr/lib/webapp-manager/webapp-manager.py:232
+#: usr/lib/webapp-manager/webapp-manager.py:239 generate_desktop_files:25
+#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:23
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
 msgstr "Web 应用"
 
-#: usr/lib/webapp-manager/webapp-manager.py:129
+#: usr/lib/webapp-manager/webapp-manager.py:130
 msgid "Keyboard Shortcuts"
 msgstr "快捷键"
 
-#: usr/lib/webapp-manager/webapp-manager.py:136
-#: usr/lib/webapp-manager/webapp-manager.py:237
+#: usr/lib/webapp-manager/webapp-manager.py:137
+#: usr/lib/webapp-manager/webapp-manager.py:238
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
 msgstr "关于"
 
-#: usr/lib/webapp-manager/webapp-manager.py:141
+#: usr/lib/webapp-manager/webapp-manager.py:142
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
 msgstr "退出"
 
-#: usr/lib/webapp-manager/webapp-manager.py:156
+#: usr/lib/webapp-manager/webapp-manager.py:157
 msgid "Icon"
 msgstr "图标"
 
-#: usr/lib/webapp-manager/webapp-manager.py:160
+#: usr/lib/webapp-manager/webapp-manager.py:161
 msgid "Name"
 msgstr "名称"
 
-#: usr/lib/webapp-manager/webapp-manager.py:165
+#: usr/lib/webapp-manager/webapp-manager.py:166
 msgid "Browser"
 msgstr "浏览器"
-
-#: usr/lib/webapp-manager/webapp-manager.py:179
-msgid "Internet"
-msgstr "互联网"
 
 #: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
 msgid "Web"
 msgstr "网页"
 
 #: usr/lib/webapp-manager/webapp-manager.py:181
+msgid "Internet"
+msgstr "互联网"
+
+#: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Accessories"
 msgstr "辅助程序"
 
-#: usr/lib/webapp-manager/webapp-manager.py:182
+#: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Games"
 msgstr "游戏程序"
 
-#: usr/lib/webapp-manager/webapp-manager.py:183
+#: usr/lib/webapp-manager/webapp-manager.py:184
 msgid "Graphics"
 msgstr "图像处理"
 
-#: usr/lib/webapp-manager/webapp-manager.py:184
+#: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Office"
 msgstr "办公软件"
 
-#: usr/lib/webapp-manager/webapp-manager.py:185
+#: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Sound & Video"
 msgstr "音频视频"
 
-#: usr/lib/webapp-manager/webapp-manager.py:186
+#: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Programming"
 msgstr "程序设计"
 
-#: usr/lib/webapp-manager/webapp-manager.py:187
+#: usr/lib/webapp-manager/webapp-manager.py:188
 msgid "Education"
 msgstr "教育培训"
 
-#: usr/lib/webapp-manager/webapp-manager.py:209
+#: usr/lib/webapp-manager/webapp-manager.py:210
 msgid "No supported browsers were detected."
 msgstr "未检测到支持的浏览器。"
 
-#: usr/lib/webapp-manager/webapp-manager.py:239
-#: usr/lib/webapp-manager/webapp-manager.py:528 generate_desktop_files:25
+#: usr/lib/webapp-manager/webapp-manager.py:240
+#: usr/lib/webapp-manager/webapp-manager.py:542 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
 msgstr "像本地程序一样打开网站"
 
-#: usr/lib/webapp-manager/webapp-manager.py:292
+#: usr/lib/webapp-manager/webapp-manager.py:291
 #, python-format
 msgid "Delete '%s'"
 msgstr "删除 “%s”"
 
-#: usr/lib/webapp-manager/webapp-manager.py:293
+#: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
 msgstr "确认要删除 “%s” 吗？"
 
-#: usr/lib/webapp-manager/webapp-manager.py:294
+#: usr/lib/webapp-manager/webapp-manager.py:293
 msgid "This Web App will be permanently lost."
 msgstr "此网页应用程序将永久消失。"
 
-#: usr/lib/webapp-manager/webapp-manager.py:347
-#: usr/lib/webapp-manager/webapp-manager.py:379
-#: usr/lib/webapp-manager/webapp-manager.py:435
+#: usr/lib/webapp-manager/webapp-manager.py:349
+#: usr/lib/webapp-manager/webapp-manager.py:392
+#: usr/lib/webapp-manager/webapp-manager.py:448
 msgid "Add a New Web App"
 msgstr "添加网页应用"
 
-#: usr/lib/webapp-manager/webapp-manager.py:369
+#: usr/lib/webapp-manager/webapp-manager.py:382
 msgid "Edit Web App"
 msgstr "编辑网页应用"
 
-#: usr/lib/webapp-manager/webapp-manager.py:411
+#: usr/lib/webapp-manager/webapp-manager.py:424
 msgid "Choose an icon"
 msgstr "选择一个图标"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:2
-msgid "Manage your Web Apps"
-msgstr "管理网页应用"
-
-#: usr/share/webapp-manager/webapp-manager.ui.h:3
+#: usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
 msgstr "添加"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:4
+#: usr/share/webapp-manager/webapp-manager.ui.h:2
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
 msgstr "移除"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:5
+#: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
 msgstr "编辑"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:6
+#: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
 msgstr "运行"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:7
+#: usr/share/webapp-manager/webapp-manager.ui.h:5
 msgid "Name:"
 msgstr "名称："
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:8
+#: usr/share/webapp-manager/webapp-manager.ui.h:6
 msgid "Address:"
 msgstr "地址："
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:9
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Icon:"
 msgstr "图标："
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:10
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Website name"
 msgstr "网站名称"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:11
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "https://www.website.com"
 msgstr "https://www.website.com"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:12
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Cancel"
 msgstr "取消"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:13
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "OK"
 msgstr "确认"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:14
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Find icons online"
 msgstr "在线搜索图标"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:15
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "Category:"
 msgstr "分类:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:16
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Browser:"
 msgstr "浏览器:"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:17
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr "如果启用此选项，则网站将使用其自己的浏览器配置文件运行。"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:18
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Isolated profile:"
 msgstr "隔离配置文件："
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:19
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid "Navigation bar:"
 msgstr "导航栏"
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:20
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Private/Incognito Window:"
 msgstr "隐私窗口："
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:21
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Custom parameters:"
 msgstr "自定义参数："
 
-#: usr/share/webapp-manager/webapp-manager.ui.h:22
+#: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Custom browser parameters"
 msgstr "自定义浏览器参数"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:21
+msgid "Description:"
+msgstr "描述："
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:24
+msgid "Manage your Web Apps"
+msgstr "管理网页应用"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
