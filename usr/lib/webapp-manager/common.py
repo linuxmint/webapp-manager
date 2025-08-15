@@ -390,8 +390,8 @@ class WebAppManager:
             epiphany_orig_prof_dir = os.path.join(os.path.expanduser("~/.local/share"),
                                                   "org.gnome.Epiphany.WebApp-" + codename)
             os.symlink(epiphany_profile_path, epiphany_orig_prof_dir)
-            exec_string = browser.exec_path + "\""
-            exec_string += " --application-mode "
+            exec_string = browser.exec_path + " \""
+            exec_string += "--application-mode "
             exec_string += " --profile=" + epiphany_orig_prof_dir
             exec_string += " " + url
 
@@ -399,8 +399,8 @@ class WebAppManager:
                 exec_string += " {}".format(custom_parameters)
         elif browser.browser_type == BROWSER_TYPE_FALKON:
             # KDE Falkon
-            exec_string = browser.exec_path + "\""
-            exec_string += " --wmclass=WebApp-" + codename
+            exec_string = browser.exec_path + " \""
+            exec_string += "--wmclass=WebApp-" + codename
             if isolate_profile:
                 exec_string += " --profile=" + codename
             if privatewindow:
@@ -412,14 +412,14 @@ class WebAppManager:
             # Chromium based
             if isolate_profile:
                 profile_path = os.path.join(PROFILES_DIR, codename)
-                exec_string = (browser.exec_path + "\"" +
-                               " --app=" + url +
+                exec_string = (browser.exec_path + " \"" +
+                               "--app=" + url +
                                " --class=WebApp-" + codename +
                                " --name=WebApp-" + codename +
                                " --user-data-dir=" + profile_path)
             else:
-                exec_string = (browser.exec_path + "\"" +
-                               " --app=" + url +
+                exec_string = (browser.exec_path + " \"" +
+                               "--app=" + url +
                                " --class=WebApp-" + codename +
                                " --name=WebApp-" + codename)
 
