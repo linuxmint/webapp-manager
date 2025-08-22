@@ -331,19 +331,25 @@ class WebAppManager:
         name = "Webapp-" + codename
         
         if profile_dir := firefox_type_map.get(browser.browser_type):
+            # Firefox-based browsers
             profile_path = os.path.join(profile_dir, codename)
             exec_args += [
                 "env",
                 "XAPP_FORCE_GTKWINDOW_ICON=" + icon,
                 browser.exec_path,
+            ]
+
+            # This needs to appear before the url
+            if privatewindow:
+                exec_args += ["--private-window"]
+
+            exec_args += [
                 url,
                 "--class", name,
                 "--name", name,
                 "--profile", profile_path,
                 "--no-remote",
             ]
-            if privatewindow:
-                exec_args += ["--private-window"]
              
             # Create a Firefox profile
             shutil.copytree('/usr/share/webapp-manager/firefox/profile', profile_path, dirs_exist_ok = True)
