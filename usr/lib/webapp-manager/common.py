@@ -319,121 +319,95 @@ class WebAppManager:
 
 
     def get_exec_string(self, browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
-        if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_ZEN_FLATPAK]:
-            # Firefox based
-            if browser.browser_type == BROWSER_TYPE_FIREFOX:
-                firefox_profiles_dir = FIREFOX_PROFILES_DIR
-            elif browser.browser_type == BROWSER_TYPE_FIREFOX_FLATPAK:
-                firefox_profiles_dir = FIREFOX_FLATPAK_PROFILES_DIR
-            elif browser.browser_type == BROWSER_TYPE_ZEN_FLATPAK:
-                firefox_profiles_dir = ZEN_FLATPAK_PROFILES_DIR
-            else:
-                firefox_profiles_dir = FIREFOX_SNAP_PROFILES_DIR
-            firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-            exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
-                           " --class WebApp-" + codename +
-                           " --name WebApp-" + codename +
-                           " --profile " + firefox_profile_path +
-                           " --no-remote")
+        exec_args = []
+        firefox_type_map = {
+            BROWSER_TYPE_FIREFOX: FIREFOX_PROFILES_DIR,
+            BROWSER_TYPE_FIREFOX_FLATPAK: FIREFOX_FLATPAK_PROFILES_DIR,
+            BROWSER_TYPE_FIREFOX_SNAP: FIREFOX_SNAP_PROFILES_DIR,
+            BROWSER_TYPE_ZEN_FLATPAK: ZEN_FLATPAK_PROFILES_DIR,
+            BROWSER_TYPE_LIBREWOLF_FLATPAK: LIBREWOLF_FLATPAK_PROFILES_DIR,
+            BROWSER_TYPE_FLOORP_FLATPAK: FLOORP_FLATPAK_PROFILES_DIR
+        }
+        name = "Webapp-" + codename
+        
+        if profile_dir := firefox_type_map.get(browser.browser_type):
+            profile_path = os.path.join(profile_dir, codename)
+            exec_args += [
+                "env",
+                "XAPP_FORCE_GTKWINDOW_ICON=" + icon,
+                browser.exec_path,
+                url,
+                "--class", name,
+                "--name", name,
+                "--profile", profile_path,
+                "--no-remote",
+            ]
             if privatewindow:
-                exec_string += " --private-window"
-            if custom_parameters:
-                exec_string += " {}".format(custom_parameters)
-            exec_string += " \"" + url + "\"" + "'"
+                exec_args += ["--private-window"]
+             
             # Create a Firefox profile
-            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
+            shutil.copytree('/usr/share/webapp-manager/firefox/profile', profile_path, dirs_exist_ok = True)
             if navbar:
                 shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
-                            os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
-        elif browser.browser_type == BROWSER_TYPE_LIBREWOLF_FLATPAK:
-            # LibreWolf flatpak
-            firefox_profiles_dir = LIBREWOLF_FLATPAK_PROFILES_DIR
-            firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-            exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
-                           " --class WebApp-" + codename +
-                           " --name WebApp-" + codename +
-                           " --profile " + firefox_profile_path +
-                           " --no-remote")
-            if privatewindow:
-                exec_string += " --private-window"
-            if custom_parameters:
-                exec_string += " {}".format(custom_parameters)
-            exec_string += " \"" + url + "\"" + "'"
-            # Create a Firefox profile
-            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
-            if navbar:
-                shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
-                            os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
-        elif browser.browser_type == BROWSER_TYPE_FLOORP_FLATPAK:
-            # Floorp flatpak
-            firefox_profiles_dir = FLOORP_FLATPAK_PROFILES_DIR
-            firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
-            exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
-                           " --class WebApp-" + codename +
-                           " --name WebApp-" + codename +
-                           " --profile " + firefox_profile_path +
-                           " --no-remote")
-            if privatewindow:
-                exec_string += " --private-window"
-            if custom_parameters:
-                exec_string += " {}".format(custom_parameters)
-            exec_string += " \"" + url + "\"" + "'"
-            # Create a Firefox profile
-            shutil.copytree('/usr/share/webapp-manager/firefox/profile', firefox_profile_path, dirs_exist_ok = True)
-            if navbar:
-                shutil.copy('/usr/share/webapp-manager/firefox/userChrome-with-navbar.css',
-                            os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
+                            os.path.join(profile_path, "chrome", "userChrome.css"))
         elif browser.browser_type == BROWSER_TYPE_EPIPHANY:
             # Epiphany based
-            epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
+            epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany." + name)
             # Create symlink of profile dir at ~/.local/share
             epiphany_orig_prof_dir = os.path.join(os.path.expanduser("~/.local/share"),
-                                                  "org.gnome.Epiphany.WebApp-" + codename)
+                                                  "org.gnome.Epiphany." + name)
             os.symlink(epiphany_profile_path, epiphany_orig_prof_dir)
-            exec_string = browser.exec_path
-            exec_string += " --application-mode "
-            exec_string += " --profile=\"" + epiphany_orig_prof_dir + "\""
-            exec_string += " \"" + url + "\""
-            if custom_parameters:
-                exec_string += " {}".format(custom_parameters)
+
+            exec_args += [
+                browser.exec_path,
+                url,
+                "--application-mode",
+                "--profile", epiphany_orig_prof_dir,
+            ]
         elif browser.browser_type == BROWSER_TYPE_FALKON:
             # KDE Falkon
-            exec_string = browser.exec_path
-            exec_string += " --wmclass=WebApp-" + codename
+            exec_args += [
+                browser.exec_path,
+                "--no-remote", url,
+                "--wmclass=" + name,
+            ]
             if isolate_profile:
-                exec_string += " --profile=" + codename
+                exec_args += ["--profile=" + codename]
             if privatewindow:
-                exec_string += " --private-browsing"
-            if custom_parameters:
-                exec_string += " {}".format(custom_parameters)
-            exec_string += " --no-remote " + url
+                exec_args += ["--private-browsing"]
         else:
             # Chromium based
+            exec_args += [
+                browser.exec_path,
+                "--app=" + url,
+                "--class=" + name,
+                "--name=" + name,
+            ]
             if isolate_profile:
                 profile_path = os.path.join(PROFILES_DIR, codename)
-                exec_string = (browser.exec_path +
-                               " --app=" + "\"" + url + "\"" +
-                               " --class=WebApp-" + codename +
-                               " --name=WebApp-" + codename +
-                               " --user-data-dir=" + profile_path)
-            else:
-                exec_string = (browser.exec_path +
-                               " --app=" + "\"" + url + "\"" +
-                               " --class=WebApp-" + codename +
-                               " --name=WebApp-" + codename)
+                exec_args += ["--user-data-dir=" + profile_path]
 
             if privatewindow:
-                if browser.name == "Microsoft Edge":
-                    exec_string += " --inprivate"
-                elif browser.name == "Microsoft Edge Beta":
-                    exec_string += " --inprivate"
-                elif browser.name == "Microsoft Edge Dev":
-                    exec_string += " --inprivate"
+                if browser.name in ["Microsoft Edge", "Microsoft Edge Beta", "Microsoft Edge Dev"]:
+                    exec_args += ["--inprivate"]
                 else:
-                    exec_string += " --incognito"
+                    exec_args += ["--incognito"]
 
-            if custom_parameters:
-                exec_string += " {}".format(custom_parameters)
+        def escape_arg(arg: str):
+            """Apply quoting rules according to desktop-entry-spec 1.1"""
+            escapes = {
+                "\\": "\\\\\\\\", # 4 backslashes
+                "$": "\\\\$", # \\$
+                "`": "\\\\`", # \\`
+            }
+            if any(c in " \t\n\"'\\><~|&;$*?#()`" for c in arg):
+                return '"{}"'.format("".join(escapes.get(c, c) for c in arg))
+            return arg
+
+        exec_string = " ".join(map(escape_arg, exec_args))
+
+        if custom_parameters:
+            exec_string += " " + custom_parameters # No automatic escaping for these done
 
         return exec_string
 
