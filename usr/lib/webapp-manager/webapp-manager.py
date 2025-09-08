@@ -84,6 +84,7 @@ class WebAppManagerWindow:
         self.headerbar = self.builder.get_object("headerbar")
         self.favicon_button = self.builder.get_object("favicon_button")
         self.add_button = self.builder.get_object("add_button")
+        self.add_button.get_style_context().add_class("suggested-action")
         self.remove_button = self.builder.get_object("remove_button")
         self.edit_button = self.builder.get_object("edit_button")
         self.run_button = self.builder.get_object("run_button")
