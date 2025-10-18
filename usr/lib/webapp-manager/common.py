@@ -558,7 +558,7 @@ def download_favicon(url):
 def export_webapps(callback):
     # The background export process
     try:
-        result = "ok"
+        successful = True
         filename = "web-apps-" + time.strftime(f"%Y-%m-%d", time.localtime())
         suffix = len(list(Path.home().glob(f"*{filename}*")))
         suffix = f"({suffix})".replace("(0)", "")
@@ -572,15 +572,15 @@ def export_webapps(callback):
             tar.add(ICONS_DIR, "ice/icons/")
     except Exception as e:
         print(e)
-        result = "error"
+        successful = False
 
-    GLib.idle_add(callback, result, "export", export_path)
+    GLib.idle_add(callback, successful, "export", export_path)
 
 @_async
 def import_webapps(callback, path):
     # The background import process
     try:
-        result = "ok"
+        successful = True
         with tarfile.open(path, "r:gz") as tar:
             files = tar.getnames()
             base_dir = os.path.dirname(ICE_DIR)
@@ -589,18 +589,18 @@ def import_webapps(callback, path):
                     if not os.path.exists(os.path.join(base_dir, file)): # Skip existing files.
                         tar.extract(file, base_dir)
                         if file.startswith("applications/"):
-                            # Update the .desktop file. Check if the browser is installed and rewrite the paths 
                             path = os.path.join(base_dir, file)
-                            if update_imported_desktop(path) == "error":
-                                result = "error"
-                except Exception as e: # Keep the import process going even if there are problems extracting a file
+                            sucessfully_updated = update_imported_desktop(path)
+                            if sucessfully_updated == False: # Does not change the successful variable if the desktop file has been updated successfully.
+                                successful = False
+                except Exception as e:
                     print(e)
-                    result = "error"
+                    successful = False
     except Exception as e:
         print(e)
-        result = "error"
+        successful = False
 
-    GLib.idle_add(callback, result, "import")
+    GLib.idle_add(callback, successful, "import")
 
 
 def prepare_export():
@@ -613,7 +613,7 @@ def prepare_export():
             arcname = os.path.relpath(full_path, os.path.dirname(APPS_DIR))
             files.append({"full_path":full_path, "arcname":arcname})
             try:
-                # In older versions, some custom icons will not be automatically stored in the icons directory
+                # Moves custom icons into the ICONS_DIR directory if they are stored somewhere else.
                 webapp = WebAppLauncher(full_path, get_codename(full_path))
                 icon = webapp.icon
                 if "/" in icon and not ICONS_DIR in icon:
@@ -669,9 +669,10 @@ def update_imported_desktop(path):
         # Apply the browser changes, the new icon path and create a profile if there is no existing one
         WebAppManager.edit_webapp(WebAppManager, path, webapp.name, configured_browser, webapp.url, iconpath, webapp.category, 
                 webapp.custom_parameters, webapp.codename, webapp.isolate_profile, webapp.navbar, webapp.privatewindow)
-        return "ok"
-    except:
-        return "error"
+        return True
+    except Exception as e:
+        print(e)
+        return False
 
 if __name__ == "__main__":
     download_favicon(sys.argv[1])

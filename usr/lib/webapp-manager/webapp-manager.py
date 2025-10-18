@@ -564,10 +564,10 @@ class WebAppManagerWindow:
                 import_webapps(self.show_result, path)
         dialog.destroy()
 
-    def show_result(self, result, task, path=""):
+    def show_result(self, successful, task, path=""):
         # Displays a success or failure message when the import / export process is complete.
         self.load_webapps()
-        if result == "ok" and task == "export":
+        if successful and task == "export":
             # This dialog box gives users the option to open the containing directory.
             title = _("Export completed!")
             button_text = _("Open Containing Folder")
@@ -579,11 +579,11 @@ class WebAppManagerWindow:
                 # Open Containing Folder
                 os.system("xdg-open " + os.path.dirname(path))
         else:
-            if result == "ok" and task == "import":
+            if successful and task == "import":
                 message = _("Import completed")
-            elif result != "ok" and task == "import":
+            elif not successful and task == "import":
                 message = _("Import not completed due to an error")
-            elif result != "ok" and task == "export":
+            elif not successful and task == "export":
                 message = _("Export failed")
             
             dialog = Gtk.MessageDialog(text=message, message_type=Gtk.MessageType.INFO, buttons=Gtk.ButtonsType.OK)
