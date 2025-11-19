@@ -2,3 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+debian/webapp-manager
+debian/*substvar*
+debian/*debhelper*
+debian/files
+usr/share/locale/
