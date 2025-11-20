@@ -207,8 +207,8 @@ msgid "Navigation bar:"
 msgstr "Navigation bar:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
-msgid "Private/Incognito Window:"
-msgstr "Private/Incognito Window:"
+msgid "Private window:"
+msgstr "Private window:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Custom parameters:"
