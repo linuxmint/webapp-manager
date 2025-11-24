@@ -193,6 +193,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Name:</property>
                   </object>
                   <packing>
@@ -205,6 +206,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Address:</property>
                   </object>
                   <packing>
@@ -217,6 +219,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Icon:</property>
                   </object>
                   <packing>
@@ -348,6 +351,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Category:</property>
                   </object>
                   <packing>
@@ -380,6 +384,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Browser:</property>
                   </object>
                   <packing>
@@ -405,6 +410,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Isolated profile:</property>
                   </object>
                   <packing>
@@ -428,9 +434,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Navigation bar:</property>
-                    <property name="wrap">True</property>
-                    <property name="max-width-chars">20</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -453,9 +458,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Private/Incognito Window:</property>
-                    <property name="wrap">True</property>
-                    <property name="max-width-chars">30</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -467,6 +471,7 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
+                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Custom parameters:</property>
                   </object>
                   <packing>
