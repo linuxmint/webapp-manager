@@ -1,3 +1,15 @@
+webapp-manager (1.4.4) zena; urgency=medium
+
+  [ Clement Lefebvre ]
+  * Switch to XApp symbolic icons
+  * Switch to xapp-symbolic-icons (XSI)
+  * Update .gitignore
+
+  [ Michael Webster ]
+  * webapp-manager.ui: Prevent word wrap for field labels in the edit screen.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 11 Dec 2025 15:25:59 +0000
+
 webapp-manager (1.4.3) zara; urgency=medium
 
   * l10n: Update translations
