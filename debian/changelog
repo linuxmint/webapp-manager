@@ -1,3 +1,10 @@
+webapp-manager (1.4.5) zena; urgency=medium
+
+  * l10n: Update translations
+  * l10n: Update files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 12 Dec 2025 17:05:13 +0000
+
 webapp-manager (1.4.4) zena; urgency=medium
 
   [ Clement Lefebvre ]
