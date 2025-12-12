@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2025-07-25 15:09+0200\n"
-"PO-Revision-Date: 2025-08-10 08:25+0000\n"
+"PO-Revision-Date: 2025-11-11 08:42+0000\n"
 "Last-Translator: Avi Markovitz <avi.markovitz@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2025-08-26 15:25+0000\n"
-"X-Generator: Launchpad (build 919009172d854f2b8e4e8262db447f12f11d25eb)\n"
+"X-Launchpad-Export-Date: 2025-12-12 13:32+0000\n"
+"X-Generator: Launchpad (build 379e22b8475e3402088a4cdb4a6e7936a4d28414)\n"
 
 #: usr/lib/webapp-manager/common.py:111 usr/lib/webapp-manager/common.py:271
 #: usr/lib/webapp-manager/common.py:442
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Web App"
-msgstr "יישומון רשת"
+msgstr "יישום מרשתת"
 
 #: usr/lib/webapp-manager/webapp-manager.py:75
 #: usr/lib/webapp-manager/webapp-manager.py:232
@@ -29,11 +29,11 @@ msgstr "יישומון רשת"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:23
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "יישומוני רשת"
+msgstr "יישומי מרשתת"
 
 #: usr/lib/webapp-manager/webapp-manager.py:130
 msgid "Keyboard Shortcuts"
-msgstr "קיצורי מקשים"
+msgstr "קיצורי מקלדת"
 
 #: usr/lib/webapp-manager/webapp-manager.py:137
 #: usr/lib/webapp-manager/webapp-manager.py:238
@@ -80,7 +80,7 @@ msgstr "גרפיקה"
 
 #: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Office"
-msgstr "משרד"
+msgstr "כלי משרד"
 
 #: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Sound & Video"
@@ -92,17 +92,17 @@ msgstr "תכנות"
 
 #: usr/lib/webapp-manager/webapp-manager.py:188
 msgid "Education"
-msgstr "חינוך"
+msgstr "למידה"
 
 #: usr/lib/webapp-manager/webapp-manager.py:210
 msgid "No supported browsers were detected."
-msgstr "לא אותרו דפדפנים נתמכים."
+msgstr "לא זוהו דפדפנים נתמכים."
 
 #: usr/lib/webapp-manager/webapp-manager.py:240
 #: usr/lib/webapp-manager/webapp-manager.py:542 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "הפעלת אתרי מרשתת כאילו היו יישומונים"
+msgstr "הפעלת אתרי מרשתת כאילו היו יישומים"
 
 #: usr/lib/webapp-manager/webapp-manager.py:291
 #, python-format
@@ -116,17 +116,17 @@ msgstr "האם למחוק את '%s'?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 msgid "This Web App will be permanently lost."
-msgstr "יישומון המרשתת יאבד לצמיתות"
+msgstr "יישום מרשתת זה יאבד לצמיתות"
 
 #: usr/lib/webapp-manager/webapp-manager.py:349
 #: usr/lib/webapp-manager/webapp-manager.py:392
 #: usr/lib/webapp-manager/webapp-manager.py:448
 msgid "Add a New Web App"
-msgstr "הוספת יישומון רשת חדש"
+msgstr "הוספת ייושם מרשתת חדש"
 
 #: usr/lib/webapp-manager/webapp-manager.py:382
 msgid "Edit Web App"
-msgstr "עריכת יישומון רשת"
+msgstr "עריכת יישום מרשתת"
 
 #: usr/lib/webapp-manager/webapp-manager.py:424
 msgid "Choose an icon"
@@ -166,7 +166,7 @@ msgstr "סמל:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Website name"
-msgstr "שם האתר"
+msgstr "שם אתר מרשתת"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "https://www.website.com"
@@ -178,11 +178,11 @@ msgstr "ביטול"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "OK"
-msgstr "אישור"
+msgstr "בסדר"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Find icons online"
-msgstr "חיפוש סמלים ברשת"
+msgstr "חיפוש סמלים באופן מקוון"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "Category:"
@@ -195,7 +195,7 @@ msgstr "דפדפן:"
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr "אם אפשרות זו מופעלת האתר יפעל עם פרופיל דפדפן משלו."
+msgstr "אם אפשרות זו מופעלת, האתר יפעל עם פרופיל דפדפן משלו."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Isolated profile:"
@@ -207,7 +207,7 @@ msgstr "סרגל ניווט:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Private/Incognito Window:"
-msgstr "חלון פרטי/לגלישה בעילום שם:"
+msgstr "חלון פרטי/סמוי:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Custom parameters:"
@@ -215,7 +215,7 @@ msgstr "פרמטרים מותאמים אישית:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Custom browser parameters"
-msgstr "פרמטרי דפדפן מותאמים אישית:"
+msgstr "פרמטרי דפדפן מותאמים אישית"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Description:"
@@ -223,7 +223,7 @@ msgstr "תיאור:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:24
 msgid "Manage your Web Apps"
-msgstr "ניהול יישומוני רשת"
+msgstr "ניהול ישומי מרשתת"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
@@ -231,7 +231,7 @@ msgstr "קיצורי דרך אחרים"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "חזרה"
+msgstr "אחורה"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
