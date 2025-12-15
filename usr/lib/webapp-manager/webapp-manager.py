@@ -21,7 +21,8 @@ gi.require_version('XApp', '1.0')
 from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf
 
 #   3. Local application/library specific imports.
-from common import _async, idle, WebAppManager, download_favicon, ICONS_DIR, BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP
+from common import BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, ICONS_DIR
+from common import _async, idle, WebAppManager, download_favicon, export_webapps, import_webapps
 
 setproctitle.setproctitle("webapp-manager")
 
@@ -124,6 +125,16 @@ class WebAppManagerWindow:
         accel_group = Gtk.AccelGroup()
         self.window.add_accel_group(accel_group)
         menu = self.builder.get_object("main_menu")
+        item = Gtk.ImageMenuItem()
+        item.set_image(Gtk.Image.new_from_icon_name("document-send-symbolic", Gtk.IconSize.MENU))
+        item.set_label(_("Export"))
+        item.connect("activate", lambda widget: export_webapps(self.show_result))
+        menu.append(item)
+        item = Gtk.ImageMenuItem()
+        item.set_image(Gtk.Image.new_from_icon_name("document-open-symbolic", Gtk.IconSize.MENU))
+        item.set_label(_("Import..."))
+        item.connect("activate", self.import_select_location)
+        menu.append(item)
         item = Gtk.ImageMenuItem()
         item.set_image(
             Gtk.Image.new_from_icon_name("xsi-keyboard-shortcuts-symbolic", Gtk.IconSize.MENU))
@@ -317,9 +328,9 @@ class WebAppManagerWindow:
         privatewindow = self.privatewindow_switch.get_active()
         icon = self.icon_chooser.get_icon()
         custom_parameters = self.customparameters_entry.get_text()
-        if "/tmp" in icon:
-            # If the icon path is in /tmp, move it.
-            filename = "".join(filter(str.isalpha, name)) + ".png"
+        # Always copy custom icons in the icon directory (important when exporting web-apps)
+        if "/" in icon and not ICONS_DIR in icon:
+            filename = "".join(filter(str.isalpha, name)) + os.path.splitext(icon)[1]
             new_path = os.path.join(ICONS_DIR, filename)
             shutil.copyfile(icon, new_path)
             icon = new_path
@@ -541,6 +552,47 @@ class WebAppManagerWindow:
         self.stack.set_visible_child_name("main_page")
         self.headerbar.set_subtitle(_("Run websites as if they were apps"))
 
+    def import_select_location(self, widget):
+        # Open the file chooser dialog
+        buttons = (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK)
+        title = _("Import WebApps - Select the archive")
+        dialog = Gtk.FileChooserDialog(title, self.window, Gtk.FileChooserAction.OPEN, buttons)
+        filter = Gtk.FileFilter()
+        filter.set_name(".tar.gz")
+        filter.add_pattern("*.tar.gz")
+        dialog.add_filter(filter)
+        response = dialog.run()
+        if response == Gtk.ResponseType.OK:
+            path = dialog.get_filename()
+            if path != "":
+                import_webapps(self.show_result, path)
+        dialog.destroy()
+
+    def show_result(self, successful, task, path=""):
+        # Displays a success or failure message when the import / export process is complete.
+        self.load_webapps()
+        if successful and task == "export":
+            # This dialog box gives users the option to open the containing directory.
+            title = _("Export completed!")
+            button_text = _("Open Containing Folder")
+            dialog = Gtk.Dialog(title, self.window, None, (button_text, 10, Gtk.STOCK_OK, Gtk.ResponseType.OK))
+            dialog.get_content_area().add(Gtk.Label(label=_("WebApps have been exported successfully.")+f"\n\n{path}\n"))
+            dialog.show_all()
+            result = dialog.run()
+            if result == 10:
+                # Open Containing Folder
+                os.system("xdg-open " + os.path.dirname(path))
+        else:
+            if successful and task == "import":
+                message = _("Import completed")
+            elif not successful and task == "import":
+                message = _("Import not completed due to an error")
+            elif not successful and task == "export":
+                message = _("Export failed")
+            
+            dialog = Gtk.MessageDialog(text=message, message_type=Gtk.MessageType.INFO, buttons=Gtk.ButtonsType.OK)
+            dialog.run()
+        dialog.destroy()
 
 if __name__ == "__main__":
     application = MyApplication("org.x.webapp-manager", Gio.ApplicationFlags.FLAGS_NONE)

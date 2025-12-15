@@ -17,9 +17,12 @@ import urllib.request
 import threading
 import traceback
 from typing import Optional
+import tarfile
+import time
+from pathlib import Path
 
 #   2. Related third party imports.
-from gi.repository import GObject
+from gi.repository import GObject, GLib
 import PIL.Image
 import requests
 # Note: BeautifulSoup is an optional import supporting another way of getting a website's favicons.
@@ -166,7 +169,7 @@ class WebAppManager:
         for filename in os.listdir(APPS_DIR):
             if filename.lower().startswith("webapp-") and filename.endswith(".desktop"):
                 path = os.path.join(APPS_DIR, filename)
-                codename = filename.replace("webapp-", "").replace("WebApp-", "").replace(".desktop", "")
+                codename = get_codename(path)
                 if not os.path.isdir(path):
                     try:
                         webapp = WebAppLauncher(path, codename)
@@ -317,8 +320,8 @@ class WebAppManager:
                 falkon_orig_prof_dir = os.path.join(os.path.expanduser("~/.config/falkon/profiles"), codename)
                 os.symlink(falkon_profile_path, falkon_orig_prof_dir)
 
-
-    def get_exec_string(self, browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
+    @staticmethod
+    def get_exec_string( browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
         if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_ZEN_FLATPAK]:
             # Firefox based
             if browser.browser_type == BROWSER_TYPE_FIREFOX:
@@ -572,6 +575,126 @@ def download_favicon(url):
 
     images = sorted(images, key = lambda x: x[1].height, reverse=True)
     return images
+
+@_async
+def export_webapps(callback):
+    # The background export process
+    try:
+        successful = True
+        filename = "web-apps-" + time.strftime(f"%Y-%m-%d", time.localtime())
+        suffix = len(list(Path.home().glob(f"*{filename}*")))
+        suffix = f"({suffix})".replace("(0)", "")
+        export_path = str(Path(f"~/{filename}{suffix}.tar.gz").expanduser())
+
+        desktop_files = prepare_export()
+        # Write the .tar.gz file
+        with tarfile.open(export_path, "w:gz") as tar:
+            for desktop_file in desktop_files:
+                tar.add(desktop_file["full_path"], arcname=desktop_file["arcname"])
+            tar.add(ICONS_DIR, "ice/icons/")
+    except Exception as e:
+        print(e)
+        successful = False
+
+    GLib.idle_add(callback, successful, "export", export_path)
+
+@_async
+def import_webapps(callback, path):
+    # The background import process
+    try:
+        successful = True
+        with tarfile.open(path, "r:gz") as tar:
+            files = tar.getnames()
+            base_dir = os.path.dirname(ICE_DIR)
+            for file in files:
+                try:
+                    if not os.path.exists(os.path.join(base_dir, file)): # Skip existing files.
+                        tar.extract(file, base_dir)
+                        if file.startswith("applications/"):
+                            path = os.path.join(base_dir, file)
+                            sucessfully_updated = update_imported_desktop(path)
+                            if sucessfully_updated == False: # Does not change the successful variable if the desktop file has been updated successfully.
+                                successful = False
+                except Exception as e:
+                    print(e)
+                    successful = False
+    except Exception as e:
+        print(e)
+        successful = False
+
+    GLib.idle_add(callback, successful, "import")
+
+
+def prepare_export():
+    # Search all web apps and desktop files.
+    files = []
+    supported_browsers = WebAppManager.get_supported_browsers()
+    for filename in os.listdir(APPS_DIR):
+        if filename.lower().startswith("webapp-") and filename.endswith(".desktop"):
+            full_path = os.path.join(APPS_DIR, filename)
+            arcname = os.path.relpath(full_path, os.path.dirname(APPS_DIR))
+            files.append({"full_path":full_path, "arcname":arcname})
+            try:
+                # Moves custom icons into the ICONS_DIR directory if they are stored somewhere else.
+                webapp = WebAppLauncher(full_path, get_codename(full_path))
+                icon = webapp.icon
+                if "/" in icon and not ICONS_DIR in icon:
+                    filename = "".join(filter(str.isalpha, webapp.name)) + os.path.splitext(icon)[1]
+                    new_path = os.path.join(ICONS_DIR, filename)
+                    shutil.copyfile(icon, new_path)
+                    icon = new_path
+                    browser = next((browser for browser in supported_browsers if browser.name == webapp.web_browser), None)
+                    WebAppManager.edit_webapp(WebAppManager,full_path, webapp.name, browser, webapp.url, icon, webapp.category, 
+                        webapp.custom_parameters, webapp.codename, webapp.isolate_profile, webapp.navbar, webapp.privatewindow)
+            except:
+                # Skip custom icon 
+                pass
+    return files
+
+
+def get_codename(path):
+    filename = os.path.basename(path)
+    codename = filename.replace(".desktop", "").replace("WebApp-", "").replace("webapp-", "")
+    return codename
+
+def update_imported_desktop(path):
+    try:
+        webapp = WebAppLauncher(path, get_codename(path))
+        if "/" in webapp.icon:
+            # update icon path, important when the username differs.
+            iconpath = os.path.join(ICONS_DIR, os.path.basename(webapp.icon))
+        else:
+            iconpath = webapp.icon
+
+        # Check if the browser is installed
+        browsers = WebAppManager.get_supported_browsers()
+        configured_browser = next((browser for browser in browsers if browser.name == webapp.web_browser), None)
+        if os.path.exists(configured_browser.test_path) == False:
+            # If the browser is not installed, search another browser.
+            # 1. Sort browsers by same browser type
+            # 2. Sort the browsers by similarity of the name of the missing browser
+            similar_browsers = browsers
+            if configured_browser != None:
+                browser_type = configured_browser.browser_type
+                browser_name = configured_browser.name.split(" ")[0].lower() 
+            else:
+                # Could not found the browser in the supported browser list. Search for an alternative.
+                browser_type = ""
+                browser_name = webapp.web_browser
+            similar_browsers.sort(key=lambda browser: (browser.browser_type == browser_type, browser_name not in browser.name.lower()))
+            configured_browser = None
+            for browser in similar_browsers:
+                if os.path.exists(browser.test_path):
+                    configured_browser = browser
+                    break
+            print(webapp.web_browser, "-Browser not installed")
+        # Apply the browser changes, the new icon path and create a profile if there is no existing one
+        WebAppManager.edit_webapp(WebAppManager, path, webapp.name, configured_browser, webapp.url, iconpath, webapp.category, 
+                webapp.custom_parameters, webapp.codename, webapp.isolate_profile, webapp.navbar, webapp.privatewindow)
+        return True
+    except Exception as e:
+        print(e)
+        return False
 
 if __name__ == "__main__":
     download_favicon(sys.argv[1])
