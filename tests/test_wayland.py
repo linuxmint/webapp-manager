@@ -85,22 +85,22 @@ class TestGetChromiumWaylandClass:
         assert result == "chrome-calendar.google.com__-Default"
 
     def test_url_with_path(self):
-        """Path should be ignored - only domain matters."""
+        """Path should be included with slashes converted to underscores."""
         result = common.get_chromium_wayland_class(
             url="https://example.com/some/path/here",
             custom_parameters="",
             isolate_profile=True
         )
-        assert result == "chrome-example.com__-Default"
+        assert result == "chrome-example.com__some_path_here-Default"
 
     def test_url_with_port(self):
-        """Port should be stripped from domain."""
+        """Port should be stripped from domain, path included."""
         result = common.get_chromium_wayland_class(
             url="https://localhost:8080/app",
             custom_parameters="",
             isolate_profile=True
         )
-        assert result == "chrome-localhost__-Default"
+        assert result == "chrome-localhost__app-Default"
 
     def test_custom_profile_with_equals(self):
         """Should extract profile from --profile-directory=ProfileName."""
