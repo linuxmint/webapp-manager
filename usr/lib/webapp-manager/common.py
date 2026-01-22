@@ -76,16 +76,24 @@ def get_chromium_wayland_class(url, custom_parameters, isolate_profile):
     """
     Generate the correct StartupWMClass for Chromium on Wayland.
 
-    Format: chrome-{domain}__-{profile}
-    Example: chrome-calendar.google.com__-Profile_1
+    Format: chrome-{domain}__{path}-{profile}
+    Examples:
+        https://calendar.google.com -> chrome-calendar.google.com__-Default
+        https://mail.google.com/mail/u/0/ -> chrome-mail.google.com__mail_u_0_-Default
     """
     import re
 
-    # Extract domain from URL
+    # Extract domain and path from URL
     parsed = urllib.parse.urlparse(url)
     domain = parsed.netloc
     if ':' in domain:
         domain = domain.split(':')[0]
+
+    # Convert path: remove leading slash, replace remaining slashes with underscores
+    path = parsed.path
+    if path.startswith('/'):
+        path = path[1:]
+    path = path.replace('/', '_')
 
     # Determine profile name
     profile_name = "Default"
@@ -97,7 +105,7 @@ def get_chromium_wayland_class(url, custom_parameters, isolate_profile):
     # Chrome replaces spaces with underscores in app_id
     profile_name = profile_name.replace(" ", "_")
 
-    return f"chrome-{domain}__-{profile_name}"
+    return f"chrome-{domain}__{path}-{profile_name}"
 
 
 class Browser:
