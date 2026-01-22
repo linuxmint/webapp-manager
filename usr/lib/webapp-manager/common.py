@@ -64,6 +64,42 @@ ZEN_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/app.zen_browser.zen/da
 ICONS_DIR = os.path.join(ICE_DIR, "icons")
 BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_LIBREWOLF_FLATPAK, BROWSER_TYPE_WATERFOX_FLATPAK, BROWSER_TYPE_FLOORP_FLATPAK, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY, BROWSER_TYPE_FALKON, BROWSER_TYPE_ZEN_FLATPAK = range(10)
 
+
+def is_wayland_session():
+    """Detect if the current session is running on Wayland."""
+    session_type = os.environ.get("XDG_SESSION_TYPE", "").lower()
+    wayland_display = os.environ.get("WAYLAND_DISPLAY", "")
+    return session_type == "wayland" or bool(wayland_display)
+
+
+def get_chromium_wayland_class(url, custom_parameters, isolate_profile):
+    """
+    Generate the correct StartupWMClass for Chromium on Wayland.
+
+    Format: chrome-{domain}__-{profile}
+    Example: chrome-calendar.google.com__-Profile_1
+    """
+    import re
+
+    # Extract domain from URL
+    parsed = urllib.parse.urlparse(url)
+    domain = parsed.netloc
+    if ':' in domain:
+        domain = domain.split(':')[0]
+
+    # Determine profile name
+    profile_name = "Default"
+    if not isolate_profile and custom_parameters:
+        match = re.search(r'--profile-directory[=\s]+["\']?([^"\']+)["\']?', custom_parameters)
+        if match:
+            profile_name = match.group(1).strip()
+
+    # Chrome replaces spaces with underscores in app_id
+    profile_name = profile_name.replace(" ", "_")
+
+    return f"chrome-{domain}__-{profile_name}"
+
+
 class Browser:
 
     def __init__(self, browser_type, name, exec_path, test_path):
@@ -98,7 +134,10 @@ class WebAppLauncher:
                 line = line.strip()
 
                 # Identify if the app is a webapp
-                if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
+                if ("StartupWMClass=WebApp" in line or
+                    "StartupWMClass=Chromium" in line or
+                    "StartupWMClass=ICE-SSB" in line or
+                    "StartupWMClass=chrome-" in line):
                     is_webapp = True
                     continue
 
@@ -286,7 +325,11 @@ class WebAppManager:
             desktop_file.write("Icon=%s\n" % icon)
             desktop_file.write("Categories=GTK;%s;\n" % category)
             desktop_file.write("MimeType=text/html;text/xml;application/xhtml_xml;\n")
-            desktop_file.write("StartupWMClass=WebApp-%s\n" % codename)
+            if is_wayland_session() and browser.browser_type == BROWSER_TYPE_CHROMIUM:
+                wm_class = get_chromium_wayland_class(url, custom_parameters, isolate_profile)
+            else:
+                wm_class = "WebApp-%s" % codename
+            desktop_file.write("StartupWMClass=%s\n" % wm_class)
             desktop_file.write("StartupNotify=true\n")
             desktop_file.write("X-WebApp-Browser=%s\n" % browser.name)
             desktop_file.write("X-WebApp-URL=%s\n" % url)
@@ -462,6 +505,13 @@ class WebAppManager:
             config.set("Desktop Entry", "X-WebApp-Isolated", bool_to_string(isolate_profile))
             config.set("Desktop Entry", "X-WebApp-Navbar", bool_to_string(navbar))
             config.set("Desktop Entry", "X-WebApp-PrivateWindow", bool_to_string(privatewindow))
+
+            # Update StartupWMClass for Wayland compatibility
+            if is_wayland_session() and browser.browser_type == BROWSER_TYPE_CHROMIUM:
+                wm_class = get_chromium_wayland_class(url, custom_parameters, isolate_profile)
+            else:
+                wm_class = "WebApp-%s" % codename
+            config.set("Desktop Entry", "StartupWMClass", wm_class)
 
         except:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
