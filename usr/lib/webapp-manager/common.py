@@ -460,18 +460,23 @@ class WebAppManager:
             exec_string += " --no-remote " + url
         else:
             # Chromium based
+            if is_wayland_session():
+                wm_class = get_chromium_wayland_class(url, custom_parameters, isolate_profile)
+            else:
+                wm_class = "WebApp-" + codename
+
             if isolate_profile:
                 profile_path = os.path.join(PROFILES_DIR, codename)
                 exec_string = (browser.exec_path +
                                " --app=" + "\"" + url + "\"" +
-                               " --class=WebApp-" + codename +
-                               " --name=WebApp-" + codename +
+                               " --class=" + wm_class +
+                               " --name=" + wm_class +
                                " --user-data-dir=" + profile_path)
             else:
                 exec_string = (browser.exec_path +
                                " --app=" + "\"" + url + "\"" +
-                               " --class=WebApp-" + codename +
-                               " --name=WebApp-" + codename)
+                               " --class=" + wm_class +
+                               " --name=" + wm_class)
 
             if privatewindow:
                 if browser.name == "Microsoft Edge":
