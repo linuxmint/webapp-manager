@@ -4,6 +4,7 @@
 import gettext
 import locale
 import os
+import shlex
 import shutil
 import subprocess
 import warnings
@@ -22,6 +23,107 @@ from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf
 
 #   3. Local application/library specific imports.
 from common import _async, idle, WebAppManager, download_favicon, ICONS_DIR, BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP
+
+
+def _strip_leading_env(tokens):
+    """Remove leading env invocations and KEY=VALUE assignments."""
+
+    def _consume_env_opts(index):
+        while index < len(tokens) and tokens[index].startswith("-"):
+            option = tokens[index]
+            index += 1
+            if option == "--":
+                return index
+            if option.startswith("-u") and option not in ("-u", "--unset"):
+                continue
+            if option.startswith("-C") and option not in ("-C", "--chdir"):
+                continue
+            if option.startswith("-S") and option not in ("-S", "--split-string"):
+                try:
+                    extra = shlex.split(option[2:])
+                except ValueError:
+                    extra = []
+                if extra:
+                    tokens[index:index] = extra
+                continue
+            if option in ("-u", "--unset", "-C", "--chdir", "-S", "--split-string") and index < len(tokens):
+                if option in ("-S", "--split-string"):
+                    try:
+                        extra = shlex.split(tokens[index])
+                    except ValueError:
+                        extra = []
+                    index += 1
+                    if extra:
+                        tokens[index:index] = extra
+                else:
+                    index += 1
+            elif option.startswith("--unset="):
+                continue
+            elif option.startswith("--chdir="):
+                continue
+            elif option.startswith("--split-string="):
+                try:
+                    extra = shlex.split(option.split("=", 1)[1])
+                except ValueError:
+                    extra = []
+                if extra:
+                    tokens[index:index] = extra
+                continue
+        while index < len(tokens) and "=" in tokens[index] and not tokens[index].startswith("-"):
+            index += 1
+        return index
+
+    idx = 0
+    while idx < len(tokens):
+        token = tokens[idx]
+        if token == "env" or os.path.basename(token) == "env":
+            idx = _consume_env_opts(idx + 1)
+            continue
+        if token == "--":
+            idx += 1
+            continue
+        if "=" in token and not token.startswith("--") and not token.startswith("-"):
+            idx += 1
+            continue
+        break
+    return tokens[idx:]
+
+
+def _extract_exec_binary(exec_line):
+    """Return the executable invoked by a desktop Exec line."""
+    if not exec_line:
+        return None
+    try:
+        tokens = shlex.split(exec_line)
+    except ValueError:
+        return None
+    if not tokens:
+        return None
+    tokens = _strip_leading_env(tokens)
+    if not tokens:
+        return None
+    if len(tokens) >= 3 and tokens[1] == "-c" and os.path.basename(tokens[0]) == "sh":
+        try:
+            inner_tokens = shlex.split(tokens[2])
+        except ValueError:
+            return None
+        inner_tokens = _strip_leading_env(inner_tokens)
+        if not inner_tokens:
+            return None
+        return inner_tokens[0]
+    return tokens[0]
+
+
+def _exec_matches(browser_exec_path, exec_binary):
+    if not exec_binary:
+        return False
+    if browser_exec_path == exec_binary:
+        return True
+    if os.path.isabs(browser_exec_path) and os.path.basename(browser_exec_path) == exec_binary:
+        return True
+    if os.path.isabs(exec_binary) and os.path.basename(exec_binary) == browser_exec_path:
+        return True
+    return False
 
 setproctitle.setproctitle("webapp-manager")
 
@@ -362,9 +464,18 @@ class WebAppManagerWindow:
             self.isolated_switch.set_active(self.selected_webapp.isolate_profile)
             self.privatewindow_switch.set_active(self.selected_webapp.privatewindow)
 
-            web_browsers = map(lambda i: i[0], self.browser_combo.get_model())
-            selected_browser_index = [idx for idx, x in enumerate(web_browsers) if x.name == self.selected_webapp.web_browser][0]
-            self.browser_combo.set_active(selected_browser_index)
+            web_browsers = list(map(lambda i: i[0], self.browser_combo.get_model()))
+            matching_indexes = [idx for idx, x in enumerate(web_browsers)
+                                if x.name == self.selected_webapp.web_browser]
+            if not matching_indexes and self.selected_webapp.exec:
+                exec_binary = _extract_exec_binary(self.selected_webapp.exec)
+                if exec_binary:
+                    matching_indexes = [idx for idx, x in enumerate(web_browsers)
+                                        if _exec_matches(x.exec_path, exec_binary)]
+            if matching_indexes:
+                self.browser_combo.set_active(matching_indexes[0])
+            elif web_browsers:
+                self.browser_combo.set_active(0)
             self.on_browser_changed(self.selected_webapp)
 
             model = self.category_combo.get_model()
