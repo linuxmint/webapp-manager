@@ -183,6 +183,8 @@ class WebAppManager:
         # type, name, exec, test
         return [Browser(BROWSER_TYPE_FIREFOX, "Firefox", "firefox", "/usr/bin/firefox"),
                 Browser(BROWSER_TYPE_FIREFOX, "Firefox Developer Edition", "firefox-developer-edition", "/usr/bin/firefox-developer-edition"),
+                Browser(BROWSER_TYPE_FIREFOX, "Firefox Developer Edition", "firefox-developer", "/usr/bin/firefox-developer"),
+                Browser(BROWSER_TYPE_FIREFOX, "Firefox Developer Edition", "firefox-devedition", "/usr/bin/firefox-devedition"),
                 Browser(BROWSER_TYPE_FIREFOX, "Firefox Nightly", "firefox-nightly", "/usr/bin/firefox-nightly"),
                 Browser(BROWSER_TYPE_FIREFOX, "Firefox Extended Support Release", "firefox-esr", "/usr/bin/firefox-esr"),
                 Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Firefox (Flatpak)", "/var/lib/flatpak/exports/bin/org.mozilla.firefox", "/var/lib/flatpak/exports/bin/org.mozilla.firefox"),
