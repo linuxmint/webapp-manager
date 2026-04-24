@@ -104,9 +104,6 @@ class WebAppManagerWindow:
         self.browser_combo = self.builder.get_object("browser_combo")
         self.browser_label = self.builder.get_object("browser_label")
 
-        # Widgets which are in the add page but not the edit page
-        self.add_specific_widgets = [self.browser_label, self.browser_combo]
-
         # Widget signals
         self.add_button.connect("clicked", self.on_add_button)
         self.builder.get_object("cancel_button").connect("clicked", self.on_cancel_button)
@@ -342,8 +339,8 @@ class WebAppManagerWindow:
         self.isolated_switch.set_active(True)
         self.navbar_switch.set_active(False)
         self.privatewindow_switch.set_active(False)
-        for widget in self.add_specific_widgets:
-            widget.show()
+        self.browser_label.show()
+        self.browser_combo.show()
         self.show_hide_browser_widgets()
         self.stack.set_visible_child_name("add_page")
         self.headerbar.set_subtitle(_("Add a New Web App"))
@@ -376,8 +373,8 @@ class WebAppManagerWindow:
                     break
                 iter = model.iter_next(iter)
             self.show_hide_browser_widgets()
-            for widget in self.add_specific_widgets:
-                widget.hide()
+            self.browser_label.show()
+            self.browser_combo.show()
             self.stack.set_visible_child_name("add_page")
             self.headerbar.set_subtitle(_("Edit Web App"))
             self.edit_mode = True
