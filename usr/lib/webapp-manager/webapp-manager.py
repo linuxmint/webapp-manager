@@ -4,6 +4,7 @@
 import gettext
 import locale
 import os
+import re
 import shutil
 import subprocess
 import warnings
@@ -64,6 +65,7 @@ class WebAppManagerWindow:
         self.settings = Gio.Settings(schema_id="org.x.webapp-manager")
         self.manager = WebAppManager()
         self.selected_webapp = None
+        self.detecting_dialog = None
         self.icon_theme = Gtk.IconTheme.get_default()
 
         # Set the Glade file
@@ -87,6 +89,7 @@ class WebAppManagerWindow:
         self.remove_button = self.builder.get_object("remove_button")
         self.edit_button = self.builder.get_object("edit_button")
         self.run_button = self.builder.get_object("run_button")
+        self.run_detect_button = self.builder.get_object("run_detect_button")
         self.ok_button = self.builder.get_object("ok_button")
         self.name_entry = self.builder.get_object("name_entry")
         self.desc_entry = self.builder.get_object("desc_entry")
@@ -114,6 +117,7 @@ class WebAppManagerWindow:
         self.remove_button.connect("clicked", self.on_remove_button)
         self.edit_button.connect("clicked", self.on_edit_button)
         self.run_button.connect("clicked", self.on_run_button)
+        self.run_detect_button.connect("clicked", self.on_run_detect_button)
         self.ok_button.connect("clicked", self.on_ok_button)
         self.favicon_button.connect("clicked", self.on_favicon_button)
         self.name_entry.connect("changed", self.on_name_entry)
@@ -267,6 +271,7 @@ class WebAppManagerWindow:
             self.remove_button.set_sensitive(True)
             self.edit_button.set_sensitive(True)
             self.run_button.set_sensitive(True)
+            self.run_detect_button.set_sensitive(True)
 
     def on_webapp_activated(self, treeview, path, column):
         self.run_webapp(self.selected_webapp)
@@ -305,6 +310,111 @@ class WebAppManagerWindow:
 
     def on_run_button(self, widget):
         self.run_webapp(self.selected_webapp)
+
+    def on_run_detect_button(self, widget):
+        if self.selected_webapp is None:
+            return
+
+        self.run_webapp(self.selected_webapp)
+        self.detect_startup_wmclass(self.selected_webapp)
+
+    @_async
+    def detect_startup_wmclass(self, webapp):
+        if webapp is None:
+            return
+
+        self.show_detecting_popup()
+
+        if shutil.which("xprop") is None:
+            self.close_detecting_popup()
+            self.show_info_message(
+                _("xprop Not Found"),
+                _("The 'xprop' command is not installed."),
+                _("Install xprop (x11-utils) to use WM_CLASS detection."))
+            return
+
+        try:
+            result = subprocess.run(["xprop", "WM_CLASS"], capture_output=True, text=True)
+        except Exception as e:
+            self.close_detecting_popup()
+            self.show_info_message(
+                _("WM_CLASS Detection Failed"),
+                str(e),
+                None)
+            return
+
+        if result.returncode != 0:
+            message = result.stderr.strip() if result.stderr else _("xprop returned an error.")
+            self.close_detecting_popup()
+            self.show_info_message(
+                _("WM_CLASS Detection Failed"),
+                message,
+                None)
+            return
+
+        wmclass_match = re.search(r'WM_CLASS\(STRING\)\s*=\s*"([^"]+)"', result.stdout)
+        if wmclass_match is None:
+            self.close_detecting_popup()
+            self.show_info_message(
+                _("WM_CLASS Detection Failed"),
+                _("Could not parse WM_CLASS output."),
+                result.stdout.strip())
+            return
+
+        startup_wmclass = wmclass_match.group(1)
+        self.manager.update_startup_wmclass(webapp.path, startup_wmclass)
+        self.on_startup_wmclass_updated(startup_wmclass)
+
+    @idle
+    def show_detecting_popup(self):
+        if self.detecting_dialog is not None:
+            return
+
+        dialog = Gtk.MessageDialog(
+            transient_for=self.window,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.NONE,
+            text=_("Detecting StartupWMClass"))
+        dialog.format_secondary_text(
+            _("Click the launched web app window to capture WM_CLASS.\n\nIf you click another window, the wrong class may be saved."))
+        dialog.set_modal(False)
+        dialog.show_all()
+        self.detecting_dialog = dialog
+
+    @idle
+    def close_detecting_popup(self):
+        if self.detecting_dialog is not None:
+            self.detecting_dialog.destroy()
+            self.detecting_dialog = None
+
+    @idle
+    def show_info_message(self, title, text, secondary_text=None):
+        dialog = Gtk.MessageDialog(
+            transient_for=self.window,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text=title)
+        dialog.format_secondary_text(text)
+        if secondary_text:
+            dialog.format_secondary_text("%s\n\n%s" % (text, secondary_text))
+        dialog.run()
+        dialog.destroy()
+
+    @idle
+    def on_startup_wmclass_updated(self, startup_wmclass):
+        self.load_webapps()
+        dialog = Gtk.MessageDialog(
+            transient_for=self.window,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text=_("StartupWMClass Updated"))
+        dialog.format_secondary_text(_("StartupWMClass was set to '%s'.") % startup_wmclass)
+        dialog.run()
+        dialog.destroy()
+        self.close_detecting_popup()
 
     def on_ok_button(self, widget):
         category = self.category_combo.get_model()[self.category_combo.get_active()][CATEGORY_ID]
@@ -514,6 +624,7 @@ class WebAppManagerWindow:
         self.remove_button.set_sensitive(False)
         self.edit_button.set_sensitive(False)
         self.run_button.set_sensitive(False)
+        self.run_detect_button.set_sensitive(False)
 
         webapps = self.manager.get_webapps()
         for webapp in webapps:
