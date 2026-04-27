@@ -150,6 +150,27 @@
                             <property name="position">3</property>
                           </packing>
                         </child>
+                        <child>
+                          <object class="GtkButton" id="run_detect_button">
+                            <property name="visible">True</property>
+                            <property name="sensitive">False</property>
+                            <property name="can-focus">False</property>
+                            <property name="receives-default">False</property>
+                            <property name="tooltip-text" translatable="yes">Run and detect StartupWMClass (click the launched app window)</property>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="icon-name">applications-engineering-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">4</property>
+                          </packing>
+                        </child>
                       </object>
                     </child>
                   </object>

@@ -92,14 +92,18 @@ class WebAppLauncher:
         self.navbar = False
         self.privatewindow = False
 
-        is_webapp = False
+        has_startup_wmclass = False
+        has_webapp_metadata = False
+        has_legacy_webapp_wmclass = False
         with open(path) as desktop_file:
             for line in desktop_file:
                 line = line.strip()
 
                 # Identify if the app is a webapp
-                if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
-                    is_webapp = True
+                if line.startswith("StartupWMClass="):
+                    has_startup_wmclass = True
+                    if "StartupWMClass=WebApp" in line or "StartupWMClass=Chromium" in line or "StartupWMClass=ICE-SSB" in line:
+                        has_legacy_webapp_wmclass = True
                     continue
 
                 if "Name=" in line:
@@ -125,29 +129,36 @@ class WebAppLauncher:
                     continue
 
                 if "X-WebApp-Browser=" in line:
+                    has_webapp_metadata = True
                     self.web_browser = line.replace("X-WebApp-Browser=", "")
                     continue
 
                 if "X-WebApp-URL=" in line:
+                    has_webapp_metadata = True
                     self.url = line.replace("X-WebApp-URL=", "")
                     continue
 
                 if "X-WebApp-CustomParameters" in line:
+                    has_webapp_metadata = True
                     self.custom_parameters = line.replace("X-WebApp-CustomParameters=", "")
                     continue
 
                 if "X-WebApp-Isolated" in line:
+                    has_webapp_metadata = True
                     self.isolate_profile = line.replace("X-WebApp-Isolated=", "").lower() == "true"
                     continue
 
                 if "X-WebApp-Navbar" in line:
+                    has_webapp_metadata = True
                     self.navbar = line.replace("X-WebApp-Navbar=", "").lower() == "true"
                     continue
 
                 if "X-WebApp-PrivateWindow" in line:
+                    has_webapp_metadata = True
                     self.privatewindow = line.replace("X-WebApp-PrivateWindow=", "").lower() == "true"
                     continue
 
+        is_webapp = has_legacy_webapp_wmclass or (has_startup_wmclass and has_webapp_metadata)
         if is_webapp and self.name is not None and self.icon is not None:
             self.is_valid = True
 
@@ -465,6 +476,19 @@ class WebAppManager:
 
         except:
             print("This WebApp was created with an old version of WebApp Manager. Its URL cannot be edited.")
+
+        with open(path, 'w') as configfile:
+            config.write(configfile, space_around_delimiters=False)
+
+    def update_startup_wmclass(self, path, startup_wmclass):
+        config = configparser.RawConfigParser()
+        config.optionxform = str
+        config.read(path)
+
+        if not config.has_section("Desktop Entry"):
+            return
+
+        config.set("Desktop Entry", "StartupWMClass", startup_wmclass)
 
         with open(path, 'w') as configfile:
             config.write(configfile, space_around_delimiters=False)
