@@ -363,7 +363,12 @@ class WebAppManagerWindow:
             self.privatewindow_switch.set_active(self.selected_webapp.privatewindow)
 
             web_browsers = map(lambda i: i[0], self.browser_combo.get_model())
-            selected_browser_index = [idx for idx, x in enumerate(web_browsers) if x.name == self.selected_webapp.web_browser][0]
+            selected_browser_index = next((idx for idx, x in enumerate(web_browsers) if x.name == self.selected_webapp.web_browser), None)
+            if(selected_browser_index == None):
+                # webapp browser not found
+                self.show_browser_not_found_dialog()
+                return # Exit on_edit_button
+
             self.browser_combo.set_active(selected_browser_index)
             self.on_browser_changed(self.selected_webapp)
 
@@ -398,6 +403,22 @@ class WebAppManagerWindow:
         self.favicon_stack.set_visible_child_name("page_spinner")
         self.favicon_button.set_sensitive(False)
         self.download_icons(url)
+
+    # Shows an error message if a webapp's browser is no longer found on the system
+    def show_browser_not_found_dialog(self):
+        dialog = Gtk.MessageDialog (
+                transient_for=self.window,
+                modal=True,
+                message_type=Gtk.MessageType.ERROR,
+                buttons=Gtk.ButtonsType.OK,
+                text="Browser Not Found"
+                )
+        dialog.format_secondary_text (
+                "The browser associated with this webapp no longer exists on your system. Please reinstall to edit or use this app."
+                )
+        dialog.run()
+        dialog.destroy()
+
 
     # Reads what's in the URL entry and returns a validated version
     def get_url(self):
