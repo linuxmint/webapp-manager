@@ -22,6 +22,7 @@ from gi.repository import Gtk, Gdk, Gio, XApp, GdkPixbuf
 
 #   3. Local application/library specific imports.
 from common import _async, idle, WebAppManager, download_favicon, ICONS_DIR, BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP
+from quickstart import QuickstartDialog
 
 setproctitle.setproctitle("webapp-manager")
 
@@ -214,6 +215,12 @@ class WebAppManagerWindow:
         self.browser_combo.connect("changed", self.on_browser_changed)
 
         self.load_webapps()
+
+        # Show quickstart when the user has no apps yet (first run or clean slate)
+        if len([w for w in self.manager.get_webapps() if w.is_valid]) <= 1:
+            dialog = QuickstartDialog(self.window, self.manager)
+            dialog.run()
+            self.load_webapps()  # refresh list if apps were just created
 
         # Used by the OK button, indicates whether we're editing a web-app or adding a new one.
         self.edit_mode = False
