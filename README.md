@@ -3,6 +3,8 @@
 
 Run websites as if they were apps.
 
+(also [works on Fedora](https://copr.fedorainfracloud.org/coprs/kylegospo/webapp-manager/#:~:text=Installation%20Instructions) thanks to copr contributers!)
+
 FAQ
 ===
 
