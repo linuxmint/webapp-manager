@@ -193,6 +193,7 @@ class WebAppManager:
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave", "brave", "/usr/bin/brave"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave Browser", "brave-browser", "/usr/bin/brave-browser"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave (Bin)", "brave-bin", "/usr/bin/brave-bin"),
+                Browser(BROWSER_TYPE_CHROMIUM, "Brave Origin", "brave-origin", "/usr/bin/brave-origin"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Chrome", "google-chrome-stable", "/usr/bin/google-chrome-stable"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Chrome (Beta)", "google-chrome-beta", "/usr/bin/google-chrome-beta"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Chrome (Flatpak)", "/var/lib/flatpak/exports/bin/com.google.Chrome", "/var/lib/flatpak/exports/bin/com.google.Chrome"),
