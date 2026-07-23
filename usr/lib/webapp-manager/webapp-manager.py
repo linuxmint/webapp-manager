@@ -86,6 +86,7 @@ class WebAppManagerWindow:
         self.add_button = self.builder.get_object("add_button")
         self.remove_button = self.builder.get_object("remove_button")
         self.edit_button = self.builder.get_object("edit_button")
+        self.copy_button = self.builder.get_object("copy_button")
         self.run_button = self.builder.get_object("run_button")
         self.ok_button = self.builder.get_object("ok_button")
         self.name_entry = self.builder.get_object("name_entry")
@@ -113,6 +114,7 @@ class WebAppManagerWindow:
         self.builder.get_object("cancel_favicon_button").connect("clicked", self.on_cancel_favicon_button)
         self.remove_button.connect("clicked", self.on_remove_button)
         self.edit_button.connect("clicked", self.on_edit_button)
+        self.copy_button.connect("clicked", self.on_copy_button)
         self.run_button.connect("clicked", self.on_run_button)
         self.ok_button.connect("clicked", self.on_ok_button)
         self.favicon_button.connect("clicked", self.on_favicon_button)
@@ -280,6 +282,8 @@ class WebAppManagerWindow:
                 self.on_edit_button(self.edit_button)
             elif event.keyval == Gdk.KEY_d:
                 self.on_remove_button(self.remove_button)
+            elif event.keyval == Gdk.KEY_c:
+                self.on_copy_button(self.copy_button)                
         elif event.keyval == Gdk.KEY_Escape:
             self.load_webapps()
 
@@ -350,6 +354,16 @@ class WebAppManagerWindow:
         self.edit_mode = False
         self.toggle_ok_sensitivity()
         self.name_entry.grab_focus()
+
+    def on_copy_button(self, widget):
+        if (web_app := self.selected_webapp) is not None:
+            name = f'{self.selected_webapp.name} (copy)'
+            browser = next((b for b in self.manager.get_supported_browsers() if b.name == web_app.web_browser), None)
+            if browser:
+                self.manager.create_webapp(name, web_app.desc, web_app.url, web_app.icon, web_app.category, browser, web_app.custom_parameters, web_app.isolate_profile, web_app.navbar,
+                                        web_app.privatewindow)
+                self.load_webapps()
+            
 
     def on_edit_button(self, widget):
         if self.selected_webapp is not None:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.40.0 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkMenu" id="main_menu">
@@ -130,6 +130,26 @@
                           </packing>
                         </child>
                         <child>
+                          <object class="GtkButton" id="copy_button">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="receives-default">False</property>
+                            <property name="tooltip-text" translatable="yes">Add</property>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="icon-name">xsi-edit-copy-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
+                          </packing>
+                        </child>
+                        <child>
                           <object class="GtkButton" id="run_button">
                             <property name="visible">True</property>
                             <property name="sensitive">False</property>
@@ -147,7 +167,7 @@
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">3</property>
+                            <property name="position">4</property>
                           </packing>
                         </child>
                       </object>
@@ -193,8 +213,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Name:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -206,8 +226,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Address:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -219,8 +239,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Icon:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -351,8 +371,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Category:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -384,8 +404,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Browser:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -410,8 +430,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Isolated profile:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -434,8 +454,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Navigation bar:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -458,8 +478,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Private/Incognito Window:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -471,8 +491,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">end</property>
-                    <property name="single-line-mode">True</property>
                     <property name="label" translatable="yes">Custom parameters:</property>
+                    <property name="single-line-mode">True</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
