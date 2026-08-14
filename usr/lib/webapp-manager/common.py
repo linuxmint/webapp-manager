@@ -189,6 +189,7 @@ class WebAppManager:
                 Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Firefox (Flatpak)", ".local/share/flatpak/exports/bin/org.mozilla.firefox", ".local/share/flatpak/exports/bin/org.mozilla.firefox"),
                 Browser(BROWSER_TYPE_ZEN_FLATPAK, "Zen (Flatpak)", "/var/lib/flatpak/exports/bin/app.zen_browser.zen", "/var/lib/flatpak/exports/bin/app.zen_browser.zen"),
                 Browser(BROWSER_TYPE_ZEN_FLATPAK, "Zen (Flatpak)", ".local/share/flatpak/exports/bin/app.zen_browser.zen", ".local/share/flatpak/exports/bin/app.zen_browser.zen"),
+                Browser(BROWSER_TYPE_FIREFOX, "Zen Browser", "zen-browser", "/usr/bin/zen-browser"),
                 Browser(BROWSER_TYPE_FIREFOX_SNAP, "Firefox (Snap)", "/snap/bin/firefox", "/snap/bin/firefox"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave", "brave", "/usr/bin/brave"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave Browser", "brave-browser", "/usr/bin/brave-browser"),
