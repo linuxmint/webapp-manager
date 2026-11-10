@@ -59,6 +59,7 @@ LIBREWOLF_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/io.gitlab.librew
 WATERFOX_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/net.waterfox.waterfox/data")
 FLOORP_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/one.ablaze.floorp/data")
 EPIPHANY_PROFILES_DIR = os.path.join(ICE_DIR, "epiphany")
+EPIPHANY_DESKTOP_DIR = os.path.expanduser("~/.local/share/xdg-desktop-portal/applications/")
 FALKON_PROFILES_DIR = os.path.join(ICE_DIR, "falkon")
 ZEN_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/app.zen_browser.zen/data/ice/zen/")
 ICONS_DIR = os.path.join(ICE_DIR, "icons")
@@ -157,7 +158,7 @@ class WebAppLauncher:
 class WebAppManager:
 
     def __init__(self):
-        for directory in [ICE_DIR, APPS_DIR, PROFILES_DIR, FIREFOX_PROFILES_DIR, FIREFOX_FLATPAK_PROFILES_DIR, ICONS_DIR, EPIPHANY_PROFILES_DIR, FALKON_PROFILES_DIR]:
+        for directory in [ICE_DIR, APPS_DIR, PROFILES_DIR, FIREFOX_PROFILES_DIR, FIREFOX_FLATPAK_PROFILES_DIR, ICONS_DIR, EPIPHANY_PROFILES_DIR, EPIPHANY_DESKTOP_DIR, FALKON_PROFILES_DIR]:
             if not os.path.exists(directory):
                 os.makedirs(directory)
 
@@ -252,10 +253,13 @@ class WebAppManager:
         # first remove symlinks then others
         if os.path.exists(webapp.path):
             os.remove(webapp.path)
-        epiphany_orig_prof_dir=os.path.join(os.path.expanduser("~/.local/share"), "org.gnome.Epiphany.WebApp-" + webapp.codename)
+        epiphany_orig_prof_dir=os.path.join(os.path.expanduser("~/.local/share"), "org.gnome.Epiphany.WebApp_" + webapp.codename)
         if os.path.exists(epiphany_orig_prof_dir):
             os.remove(epiphany_orig_prof_dir)
-        shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-%s" % webapp.codename), ignore_errors=True)
+        shutil.rmtree(os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp_%s" % webapp.codename), ignore_errors=True)
+        epiphany_desktop_path = os.path.join(EPIPHANY_DESKTOP_DIR, "org.gnome.Epiphany.WebApp_%s.desktop" % webapp.codename)
+        if os.path.exists(epiphany_desktop_path):
+            os.remove(epiphany_desktop_path)
         falkon_orig_prof_dir = os.path.join(os.path.expanduser("~/.config/falkon/profiles"), webapp.codename)
         if os.path.exists(falkon_orig_prof_dir):
             os.remove(falkon_orig_prof_dir)
@@ -297,14 +301,11 @@ class WebAppManager:
 
             if browser.browser_type == BROWSER_TYPE_EPIPHANY:
                 # Move the desktop file and create a symlink
-                epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
-                new_path = os.path.join(epiphany_profile_path, "org.gnome.Epiphany.WebApp-%s.desktop" % codename)
+                epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp_" + codename)
+                new_path = os.path.join(EPIPHANY_DESKTOP_DIR, "org.gnome.Epiphany.WebApp_%s.desktop" % codename)
                 os.makedirs(epiphany_profile_path)
                 os.replace(path, new_path)
                 os.symlink(new_path, path)
-                # copy the icon to profile directory
-                new_icon=os.path.join(epiphany_profile_path, "app-icon.png")
-                shutil.copy(icon, new_icon)
                 # required for app mode. create an empty file .app
                 app_mode_file=os.path.join(epiphany_profile_path, ".app")
                 with open(app_mode_file, 'w') as fp:
@@ -385,10 +386,10 @@ class WebAppManager:
                             os.path.join(firefox_profile_path, "chrome", "userChrome.css"))
         elif browser.browser_type == BROWSER_TYPE_EPIPHANY:
             # Epiphany based
-            epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp-" + codename)
+            epiphany_profile_path = os.path.join(EPIPHANY_PROFILES_DIR, "org.gnome.Epiphany.WebApp_" + codename)
             # Create symlink of profile dir at ~/.local/share
             epiphany_orig_prof_dir = os.path.join(os.path.expanduser("~/.local/share"),
-                                                  "org.gnome.Epiphany.WebApp-" + codename)
+                                                  "org.gnome.Epiphany.WebApp_" + codename)
             os.symlink(epiphany_profile_path, epiphany_orig_prof_dir)
             exec_string = browser.exec_path
             exec_string += " --application-mode "
