@@ -1,3 +1,36 @@
+webapp-manager (1.4.7) adrien; urgency=medium
+
+  [ Michael Webster ]
+  * .github/workflows: Add generate-test-packages trigger.
+
+  [ Owen Zimmerman ]
+  * fix (Makefile): grammar (#372)
+
+  [ Martin Zarate ]
+  * add missing dependencies (#383)
+
+  [ Balló György ]
+  * Set license type on about dialog (#391)
+  * Set prgname to application ID (#392)
+  * Fix for Epiphany>=43 (#390)
+
+  [ Rokosun ]
+  * Document some prefs in user.js (#380)
+
+  [ Nicolás Manuel Girardi ]
+  * Added brave origin as available browser (#404)
+
+  [ Peter Noël Muller ]
+  * Add support for Helium browser (#405)
+
+  [ Enguerran P. ]
+  * Add support for Firefox Developer Edition deb + umake (#385)
+
+  [ Andrew Gatlabayan ]
+  * Add native Zen Browser support (#408)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 10 Nov 2026 15:26:40 +0000
+
 webapp-manager (1.4.6) zena; urgency=medium
 
   * l10n: Update translations
