@@ -15,7 +15,9 @@ Depends: gir1.2-xapp-1.0 (>= 1.4),
          python3-pil,
          python3-setproctitle,
          python3-tldextract,
+         python3-gi-cairo,
          xapps-common,
+         xapp-symbolic-icons,
          ${misc:Depends},
 Description: Web Application Manager
  Launch websites as if they were apps.
