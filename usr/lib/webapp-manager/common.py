@@ -48,9 +48,90 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
+
+def set_ice_dir(env_variable: str) -> str | None:
+    """
+    Pass an environment variable name, can either be
+    that of an XDG spec, or a custom environment variable.
+    If neither exist, fallback to ~/.local/share/ice
+
+    # Parameters:
+
+    * env_variable: str - Name of the environment variable to check.
+
+
+    # Returns:
+
+    * icd: str - This is a global variable representing the ICE directory.
+    """
+    global icd
+    # check
+    # 1. - XDG_DATA_HOME
+    # 2. XDG_DATA_HOME/share
+    # 3. XDG_DATA_HOME/share/ice
+    user_xdg_data_home = os.getenv(env_variable)
+    if not user_xdg_data_home:
+        user_xdg_data_home = os.path.expanduser("~/.local/share")
+
+    maybe_share = os.path.join(user_xdg_data_home, "share")
+    maybe_ice = os.path.join(maybe_share, "ice")
+
+    # is set, and exists
+    if user_xdg_data_home and os.path.exists(user_xdg_data_home):
+        # check if the child dirs exist
+        if not os.path.exists(maybe_share):
+            os.makedirs(maybe_share)
+        if not os.path.exists(maybe_ice):
+            os.makedirs(maybe_ice)
+
+        if os.path.exists(maybe_ice):
+            icd = maybe_ice
+            return icd
+    else:
+        home_local = os.path.expanduser("~/.local")
+        home_local_share = os.path.join(home_local, "share")
+        if not os.path.exists(home_local):
+            os.makedirs(home_local)
+        if not os.path.exists(home_local_share):
+            os.makedirs(home_local_share)
+
+        if os.path.exists(home_local_share):
+            maybe_local_ice = os.path.join(home_local_share, "ice")
+            if not os.path.exists(maybe_local_ice):
+                os.makedirs(maybe_local_ice)
+            icd = maybe_local_ice
+            return icd
+
+    # if user_xdg_data_home and os.path.exists(user_xdg_data_home):
+    #     if os.path.exists(maybe_ice):
+    #         ICE_DIR = maybe_ice
+    #     elif os.path.exists(maybe_share) and not os.path.exists(maybe_ice):
+
+
+# ICE_DIR = set_ice_dir("XDG_DATA_HOME")
+
+default_env_ice_dir = "XDG_DATA_HOME"
+user_defined_env_ice_dir = "WEBAPP_MANAGER_ICE_DIR"
+
+# User defined an environment variable for ICE dir
+if os.getenv(user_defined_env_ice_dir):
+    icd = set_ice_dir(user_defined_env_ice_dir)
+else:
+    # Default defined env variable
+    icd = set_ice_dir(default_env_ice_dir)
+
+
+default_env_applications_dir = "XDG_DATA_HOME"
+user_defined_env_applications_dir = "WEBAPP_MANAGER_APPLICATIONS_DIR"
+if os.getenv(user_defined_env_applications_dir):
+    apd = set_ice_dir(user_defined_env_applications_dir)
+else:
+    apd = set_ice_dir(default_env_applications_dir)
+
+
 # Constants
-ICE_DIR = os.path.expanduser("~/.local/share/ice")
-APPS_DIR = os.path.expanduser("~/.local/share/applications")
+ICE_DIR = icd
+APPS_DIR = apd
 PROFILES_DIR = os.path.join(ICE_DIR, "profiles")
 FIREFOX_PROFILES_DIR = os.path.join(ICE_DIR, "firefox")
 FIREFOX_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/org.mozilla.firefox/data/ice/firefox")
