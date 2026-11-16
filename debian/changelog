@@ -1,3 +1,9 @@
+webapp-manager (1.4.8) adrien; urgency=medium
+
+  * l10n: Update translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 16 Nov 2026 14:12:16 +0000
+
 webapp-manager (1.4.7) adrien; urgency=medium
 
   [ Michael Webster ]
