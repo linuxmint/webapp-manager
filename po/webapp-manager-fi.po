@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2025-07-25 15:09+0200\n"
-"PO-Revision-Date: 2025-08-18 20:55+0000\n"
-"Last-Translator: Kimmo Kujansuu <Unknown>\n"
+"PO-Revision-Date: 2026-09-15 14:21+0000\n"
+"Last-Translator: Hiiri522 <hhiiri522@gmail.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2026-01-08 15:44+0000\n"
-"X-Generator: Launchpad (build 99c00f518760bdd50fc6e353e7736d2fff8fba4a)\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:00+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
 
 #: usr/lib/webapp-manager/common.py:111 usr/lib/webapp-manager/common.py:271
 #: usr/lib/webapp-manager/common.py:442
@@ -39,12 +39,12 @@ msgstr "Pikanäppäimet"
 #: usr/lib/webapp-manager/webapp-manager.py:238
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Lisätietoja"
+msgstr "Tietoa"
 
 #: usr/lib/webapp-manager/webapp-manager.py:142
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "Sulje"
+msgstr "Lopeta"
 
 #: usr/lib/webapp-manager/webapp-manager.py:157
 msgid "Icon"
@@ -84,7 +84,7 @@ msgstr "Toimisto"
 
 #: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Sound & Video"
-msgstr "Multimedia"
+msgstr "Ääni ja video"
 
 #: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Programming"
@@ -96,13 +96,13 @@ msgstr "Koulutus"
 
 #: usr/lib/webapp-manager/webapp-manager.py:210
 msgid "No supported browsers were detected."
-msgstr "Tuettuja selaimia ei havaittu."
+msgstr "Selaimia ei löytynyt."
 
 #: usr/lib/webapp-manager/webapp-manager.py:240
 #: usr/lib/webapp-manager/webapp-manager.py:542 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Käytä verkkosivuja kuin ne olisivat ohjelmia"
+msgstr "Käytä verkkosivuja kuin erillisiä ohjelmia"
 
 #: usr/lib/webapp-manager/webapp-manager.py:291
 #, python-format
@@ -112,12 +112,11 @@ msgstr "Poista \"%s\""
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Oletko varma, että haluat poistaa verkkosovelluksen \"%s\"?"
+msgstr "Haluatko varmasti poistaa verkkosovelluksen \"%s\"?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 msgid "This Web App will be permanently lost."
-msgstr ""
-"Tämä verkkosovellus poistetaan pysyvästi eikä sitä voida enää palauttaa."
+msgstr "Tämä verkkosovellus poistetaan pysyvästi."
 
 #: usr/lib/webapp-manager/webapp-manager.py:349
 #: usr/lib/webapp-manager/webapp-manager.py:392
@@ -127,7 +126,7 @@ msgstr "Luo uusi verkkosovellus"
 
 #: usr/lib/webapp-manager/webapp-manager.py:382
 msgid "Edit Web App"
-msgstr "Muokkaa"
+msgstr "Muokkaa verkkosovellusta"
 
 #: usr/lib/webapp-manager/webapp-manager.py:424
 msgid "Choose an icon"
@@ -136,7 +135,7 @@ msgstr "Valitse kuvake"
 #: usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "Luo"
+msgstr "Lisää"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 #: usr/share/webapp-manager/shortcuts.ui.h:4
@@ -159,7 +158,7 @@ msgstr "Nimi:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 msgid "Address:"
-msgstr "Verkkosivun osoite:"
+msgstr "Verkko-osoite:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Icon:"
@@ -167,11 +166,11 @@ msgstr "Kuvake:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Website name"
-msgstr "Verkkosovelluksen nimi"
+msgstr "Verkkosivun nimi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "https://www.website.com"
-msgstr "https://www.verkkosivu.com"
+msgstr "https://www.verkkosivu.fi"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Cancel"
@@ -187,7 +186,7 @@ msgstr "Etsi kuvakkeita verkosta"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "Category:"
-msgstr "Luokka:"
+msgstr "Ryhmä:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Browser:"
@@ -197,7 +196,7 @@ msgstr "Selain:"
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
 msgstr ""
-"Jos tämä asetus on käytössä, sivusto toimii selaimen omalla profiililla."
+"Jos tämä asetus on päällä, sivusto toimii erillisellä selainprofiilillaan."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Isolated profile:"
@@ -209,15 +208,15 @@ msgstr "Osoiterivi:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Private/Incognito Window:"
-msgstr "Yksityinen ikkuna:"
+msgstr "Yksityinen selausikkuna:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Custom parameters:"
-msgstr "Parametrit:"
+msgstr "Valinnaiset parametrit:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Custom browser parameters"
-msgstr "Mukautetut selaimen parametrit"
+msgstr "Valinnaiset selaimen parametrit"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Description:"
@@ -233,7 +232,7 @@ msgstr "Muut pikanäppäimet"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "Siirry taaksepäin"
+msgstr "Takaisin"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"

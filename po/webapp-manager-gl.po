@@ -1,0 +1,241 @@
+# Galician translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2025-07-25 15:09+0200\n"
+"PO-Revision-Date: 2026-11-01 18:34+0000\n"
+"Last-Translator: Calq Calquera <Unknown>\n"
+"Language-Team: Galician <gl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:00+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+"Language: gl\n"
+
+#: usr/lib/webapp-manager/common.py:111 usr/lib/webapp-manager/common.py:271
+#: usr/lib/webapp-manager/common.py:442
+#: usr/share/webapp-manager/webapp-manager.ui.h:22
+msgid "Web App"
+msgstr "Aplicación web"
+
+#: usr/lib/webapp-manager/webapp-manager.py:75
+#: usr/lib/webapp-manager/webapp-manager.py:232
+#: usr/lib/webapp-manager/webapp-manager.py:239 generate_desktop_files:25
+#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:23
+#: usr/share/webapp-manager/shortcuts.ui.h:1
+msgid "Web Apps"
+msgstr "Aplicacións web"
+
+#: usr/lib/webapp-manager/webapp-manager.py:130
+msgid "Keyboard Shortcuts"
+msgstr "Atallos de teclado"
+
+#: usr/lib/webapp-manager/webapp-manager.py:137
+#: usr/lib/webapp-manager/webapp-manager.py:238
+#: usr/share/webapp-manager/shortcuts.ui.h:8
+msgid "About"
+msgstr "Sobre"
+
+#: usr/lib/webapp-manager/webapp-manager.py:142
+#: usr/share/webapp-manager/shortcuts.ui.h:10
+msgid "Quit"
+msgstr "Saír"
+
+#: usr/lib/webapp-manager/webapp-manager.py:157
+msgid "Icon"
+msgstr "Icona"
+
+#: usr/lib/webapp-manager/webapp-manager.py:161
+msgid "Name"
+msgstr "Nome"
+
+#: usr/lib/webapp-manager/webapp-manager.py:166
+msgid "Browser"
+msgstr "Navegador"
+
+#: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
+msgid "Web"
+msgstr "Web"
+
+#: usr/lib/webapp-manager/webapp-manager.py:181
+msgid "Internet"
+msgstr "Internet"
+
+#: usr/lib/webapp-manager/webapp-manager.py:182
+msgid "Accessories"
+msgstr "Accesorios"
+
+#: usr/lib/webapp-manager/webapp-manager.py:183
+msgid "Games"
+msgstr "Xogos"
+
+#: usr/lib/webapp-manager/webapp-manager.py:184
+msgid "Graphics"
+msgstr "Gráficos"
+
+#: usr/lib/webapp-manager/webapp-manager.py:185
+msgid "Office"
+msgstr "Ofimática"
+
+#: usr/lib/webapp-manager/webapp-manager.py:186
+msgid "Sound & Video"
+msgstr "Son e vídeo"
+
+#: usr/lib/webapp-manager/webapp-manager.py:187
+msgid "Programming"
+msgstr "Programación"
+
+#: usr/lib/webapp-manager/webapp-manager.py:188
+msgid "Education"
+msgstr "Educación"
+
+#: usr/lib/webapp-manager/webapp-manager.py:210
+msgid "No supported browsers were detected."
+msgstr "Non se detectou ningún navegador compatíbel."
+
+#: usr/lib/webapp-manager/webapp-manager.py:240
+#: usr/lib/webapp-manager/webapp-manager.py:542 generate_desktop_files:25
+#: generate_desktop_files:39
+msgid "Run websites as if they were apps"
+msgstr "Executar sitios web coma se fosen aplicacións"
+
+#: usr/lib/webapp-manager/webapp-manager.py:291
+#, python-format
+msgid "Delete '%s'"
+msgstr "Eliminar «%s»"
+
+#: usr/lib/webapp-manager/webapp-manager.py:292
+#, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "Está seguro de que quere eliminar «%s»?"
+
+#: usr/lib/webapp-manager/webapp-manager.py:293
+msgid "This Web App will be permanently lost."
+msgstr "Esta aplicación web eliminarase definitivamente."
+
+#: usr/lib/webapp-manager/webapp-manager.py:349
+#: usr/lib/webapp-manager/webapp-manager.py:392
+#: usr/lib/webapp-manager/webapp-manager.py:448
+msgid "Add a New Web App"
+msgstr "Engadir unha nova aplicación web"
+
+#: usr/lib/webapp-manager/webapp-manager.py:382
+msgid "Edit Web App"
+msgstr "Editar a aplicación web"
+
+#: usr/lib/webapp-manager/webapp-manager.py:424
+msgid "Choose an icon"
+msgstr "Escoller unha icona"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:1
+#: usr/share/webapp-manager/shortcuts.ui.h:2
+msgid "Add"
+msgstr "Engadir"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:2
+#: usr/share/webapp-manager/shortcuts.ui.h:4
+msgid "Remove"
+msgstr "Eliminar"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:3
+#: usr/share/webapp-manager/shortcuts.ui.h:3
+msgid "Edit"
+msgstr "Editar"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:4
+#: usr/share/webapp-manager/shortcuts.ui.h:5
+msgid "Launch"
+msgstr "Iniciar"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:5
+msgid "Name:"
+msgstr "Nome:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:6
+msgid "Address:"
+msgstr "Enderezo:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
+msgid "Icon:"
+msgstr "Icona:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
+msgid "Website name"
+msgstr "Nome do sitio web"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
+msgid "https://www.website.com"
+msgstr "https://www.website.com"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
+msgid "OK"
+msgstr "Aceptar"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
+msgid "Find icons online"
+msgstr "Buscar iconas na rede"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
+msgid "Category:"
+msgstr "Categoría:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
+msgid "Browser:"
+msgstr "Navegador:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
+msgid ""
+"If this option is enabled the website will run with its own browser profile."
+msgstr ""
+"Se activa esta opción, o sitio web executarase co seu propio perfil de "
+"navegador."
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
+msgid "Isolated profile:"
+msgstr "Perfil illado:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
+msgid "Navigation bar:"
+msgstr "Barra de navegación:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
+msgid "Private/Incognito Window:"
+msgstr "Xanela privada/de incógnito:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
+msgid "Custom parameters:"
+msgstr "Parámetros personalizados:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:20
+msgid "Custom browser parameters"
+msgstr "Parámetros personalizados do navegador"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:21
+msgid "Description:"
+msgstr "Descrición:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:24
+msgid "Manage your Web Apps"
+msgstr "Xestionar as súas aplicacións web"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:6
+msgid "Other Shortcuts"
+msgstr "Outros atallos"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:7
+msgid "Go Back"
+msgstr "Volver atrás"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:9
+msgid "Shortcuts"
+msgstr "Atallos"

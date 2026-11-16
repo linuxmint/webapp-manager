@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2025-07-25 15:09+0200\n"
-"PO-Revision-Date: 2025-11-15 17:21+0000\n"
+"PO-Revision-Date: 2026-11-15 00:42+0000\n"
 "Last-Translator: AO <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2026-01-08 15:44+0000\n"
-"X-Generator: Launchpad (build 99c00f518760bdd50fc6e353e7736d2fff8fba4a)\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:00+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
 "Language: fr\n"
 
 #: usr/lib/webapp-manager/common.py:111 usr/lib/webapp-manager/common.py:271
 #: usr/lib/webapp-manager/common.py:442
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Web App"
-msgstr "Application web"
+msgstr "Appli Web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:75
 #: usr/lib/webapp-manager/webapp-manager.py:232
@@ -30,7 +30,7 @@ msgstr "Application web"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:23
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Applications web"
+msgstr "Applis Web"
 
 #: usr/lib/webapp-manager/webapp-manager.py:130
 msgid "Keyboard Shortcuts"
@@ -103,7 +103,7 @@ msgstr "Aucun navigateur pris en charge n’a été détecté."
 #: usr/lib/webapp-manager/webapp-manager.py:542 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Lancer les sites Web comme des applications"
+msgstr "Lancer les sites Web comme des applis"
 
 #: usr/lib/webapp-manager/webapp-manager.py:291
 #, python-format
@@ -117,7 +117,7 @@ msgstr "Voulez-vous supprimer « %s » ?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 msgid "This Web App will be permanently lost."
-msgstr "Cette appli Web sera irrémédiablement perdue."
+msgstr "Cette appli Web sera irrémédiablement supprimée."
 
 #: usr/lib/webapp-manager/webapp-manager.py:349
 #: usr/lib/webapp-manager/webapp-manager.py:392
@@ -171,7 +171,7 @@ msgstr "Nom du site Web"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "https://www.website.com"
-msgstr "https://www.siteweb.com"
+msgstr "https://www.website.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Cancel"

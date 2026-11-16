@@ -1,0 +1,241 @@
+# Kazakh translation for linuxmint
+# Copyright (c) 2026 Rosetta Contributors and Canonical Ltd 2026
+# This file is distributed under the same license as the linuxmint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmint\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2025-07-25 15:09+0200\n"
+"PO-Revision-Date: 2026-02-06 17:38+0000\n"
+"Last-Translator: Baurzhan Muftakhidinov <Unknown>\n"
+"Language-Team: Kazakh <kk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2026-11-16 12:00+0000\n"
+"X-Generator: Launchpad (build 72ba15af7e009b17d4aa1467977127ac8392a4de)\n"
+"Language: kk\n"
+
+#: usr/lib/webapp-manager/common.py:111 usr/lib/webapp-manager/common.py:271
+#: usr/lib/webapp-manager/common.py:442
+#: usr/share/webapp-manager/webapp-manager.ui.h:22
+msgid "Web App"
+msgstr "Веб қолданба"
+
+#: usr/lib/webapp-manager/webapp-manager.py:75
+#: usr/lib/webapp-manager/webapp-manager.py:232
+#: usr/lib/webapp-manager/webapp-manager.py:239 generate_desktop_files:25
+#: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:23
+#: usr/share/webapp-manager/shortcuts.ui.h:1
+msgid "Web Apps"
+msgstr "Веб қолданбалар"
+
+#: usr/lib/webapp-manager/webapp-manager.py:130
+msgid "Keyboard Shortcuts"
+msgstr "Пернетақта жарлықтары"
+
+#: usr/lib/webapp-manager/webapp-manager.py:137
+#: usr/lib/webapp-manager/webapp-manager.py:238
+#: usr/share/webapp-manager/shortcuts.ui.h:8
+msgid "About"
+msgstr "Туралы"
+
+#: usr/lib/webapp-manager/webapp-manager.py:142
+#: usr/share/webapp-manager/shortcuts.ui.h:10
+msgid "Quit"
+msgstr "Шығу"
+
+#: usr/lib/webapp-manager/webapp-manager.py:157
+msgid "Icon"
+msgstr "Таңбаша"
+
+#: usr/lib/webapp-manager/webapp-manager.py:161
+msgid "Name"
+msgstr "Атауы"
+
+#: usr/lib/webapp-manager/webapp-manager.py:166
+msgid "Browser"
+msgstr "Браузер"
+
+#: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
+msgid "Web"
+msgstr "Веб"
+
+#: usr/lib/webapp-manager/webapp-manager.py:181
+msgid "Internet"
+msgstr "Интернет"
+
+#: usr/lib/webapp-manager/webapp-manager.py:182
+msgid "Accessories"
+msgstr "Қосымшалар"
+
+#: usr/lib/webapp-manager/webapp-manager.py:183
+msgid "Games"
+msgstr "Ойындар"
+
+#: usr/lib/webapp-manager/webapp-manager.py:184
+msgid "Graphics"
+msgstr "Графика"
+
+#: usr/lib/webapp-manager/webapp-manager.py:185
+msgid "Office"
+msgstr "Кеңсе"
+
+#: usr/lib/webapp-manager/webapp-manager.py:186
+msgid "Sound & Video"
+msgstr "Аудио және видео"
+
+#: usr/lib/webapp-manager/webapp-manager.py:187
+msgid "Programming"
+msgstr "Бағдарламалау"
+
+#: usr/lib/webapp-manager/webapp-manager.py:188
+msgid "Education"
+msgstr "Білім"
+
+#: usr/lib/webapp-manager/webapp-manager.py:210
+msgid "No supported browsers were detected."
+msgstr "Қолдау көрсетілетін браузерлер анықталмады."
+
+#: usr/lib/webapp-manager/webapp-manager.py:240
+#: usr/lib/webapp-manager/webapp-manager.py:542 generate_desktop_files:25
+#: generate_desktop_files:39
+msgid "Run websites as if they were apps"
+msgstr "Веб-сайттарды қолданбалар сияқты іске қосу"
+
+#: usr/lib/webapp-manager/webapp-manager.py:291
+#, python-format
+msgid "Delete '%s'"
+msgstr "'%s' өшіру"
+
+#: usr/lib/webapp-manager/webapp-manager.py:292
+#, python-format
+msgid "Are you sure you want to delete '%s'?"
+msgstr "'%s' өшіргіңіз келетініне сенімдісіз бе?"
+
+#: usr/lib/webapp-manager/webapp-manager.py:293
+msgid "This Web App will be permanently lost."
+msgstr "Бұл веб қолданба мәңгілікке жоғалады."
+
+#: usr/lib/webapp-manager/webapp-manager.py:349
+#: usr/lib/webapp-manager/webapp-manager.py:392
+#: usr/lib/webapp-manager/webapp-manager.py:448
+msgid "Add a New Web App"
+msgstr "Жаңа веб қолданбаны қосу"
+
+#: usr/lib/webapp-manager/webapp-manager.py:382
+msgid "Edit Web App"
+msgstr "Веб қолданбаны түзету"
+
+#: usr/lib/webapp-manager/webapp-manager.py:424
+msgid "Choose an icon"
+msgstr "Таңбашаны таңдау"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:1
+#: usr/share/webapp-manager/shortcuts.ui.h:2
+msgid "Add"
+msgstr "Қосу"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:2
+#: usr/share/webapp-manager/shortcuts.ui.h:4
+msgid "Remove"
+msgstr "Өшіру"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:3
+#: usr/share/webapp-manager/shortcuts.ui.h:3
+msgid "Edit"
+msgstr "Түзету"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:4
+#: usr/share/webapp-manager/shortcuts.ui.h:5
+msgid "Launch"
+msgstr "Іске қосу"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:5
+msgid "Name:"
+msgstr "Атауы:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:6
+msgid "Address:"
+msgstr "Адрес:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:7
+msgid "Icon:"
+msgstr "Таңбаша:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:8
+msgid "Website name"
+msgstr "Веб-сайт атауы"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:9
+msgid "https://www.website.com"
+msgstr "https://www.website.com"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:10
+msgid "Cancel"
+msgstr "Бас тарту"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:11
+msgid "OK"
+msgstr "Жарайды"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:12
+msgid "Find icons online"
+msgstr "Желіден таңбашаларды табу"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:13
+msgid "Category:"
+msgstr "Санат:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:14
+msgid "Browser:"
+msgstr "Браузер:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:15
+msgid ""
+"If this option is enabled the website will run with its own browser profile."
+msgstr ""
+"Бұл опция іске қосулы болса, веб-сайт өзінің браузер профилімен іске "
+"қосылады."
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:16
+msgid "Isolated profile:"
+msgstr "Оқшауланған профиль:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:17
+msgid "Navigation bar:"
+msgstr "Навигация жолағы:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:18
+msgid "Private/Incognito Window:"
+msgstr "Жеке/инкогнито терезесі:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:19
+msgid "Custom parameters:"
+msgstr "Реттелген параметрлер:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:20
+msgid "Custom browser parameters"
+msgstr "Реттелген браузер параметрлері"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:21
+msgid "Description:"
+msgstr "Сипаттама:"
+
+#: usr/share/webapp-manager/webapp-manager.ui.h:24
+msgid "Manage your Web Apps"
+msgstr "Веб қолданбаларыңызды басқару"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:6
+msgid "Other Shortcuts"
+msgstr "Басқа жарлықтар"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:7
+msgid "Go Back"
+msgstr "Артқа"
+
+#: usr/share/webapp-manager/shortcuts.ui.h:9
+msgid "Shortcuts"
+msgstr "Жарлықтар"
