@@ -1,3 +1,13 @@
+webapp-manager (1.4.9) adrien; urgency=medium
+
+  [ Michael Webster ]
+  * Run generate_desktop_files
+
+  [ Clement Lefebvre ]
+  * l10n: Update translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 24 Nov 2026 16:53:20 +0000
+
 webapp-manager (1.4.8) adrien; urgency=medium
 
   * l10n: Update translations
