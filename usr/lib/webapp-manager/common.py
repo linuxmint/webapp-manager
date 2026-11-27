@@ -254,6 +254,7 @@ class WebAppManager:
         shutil.rmtree(os.path.join(FIREFOX_FLATPAK_PROFILES_DIR, webapp.codename), ignore_errors=True)
         shutil.rmtree(os.path.join(ZEN_FLATPAK_PROFILES_DIR, webapp.codename), ignore_errors=True)
         shutil.rmtree(os.path.join(FIREFOX_SNAP_PROFILES_DIR, webapp.codename), ignore_errors=True)
+        shutil.rmtree(os.path.join(WATERFOX_FLATPAK_PROFILES_DIR, webapp.codename), ignore_errors=True)
         shutil.rmtree(os.path.join(PROFILES_DIR, webapp.codename), ignore_errors=True)
         # first remove symlinks then others
         if os.path.exists(webapp.path):
@@ -325,7 +326,7 @@ class WebAppManager:
 
 
     def get_exec_string(self, browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
-        if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_ZEN_FLATPAK]:
+        if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_ZEN_FLATPAK, BROWSER_TYPE_WATERFOX_FLATPAK]:
             # Firefox based
             if browser.browser_type == BROWSER_TYPE_FIREFOX:
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR
@@ -333,6 +334,8 @@ class WebAppManager:
                 firefox_profiles_dir = FIREFOX_FLATPAK_PROFILES_DIR
             elif browser.browser_type == BROWSER_TYPE_ZEN_FLATPAK:
                 firefox_profiles_dir = ZEN_FLATPAK_PROFILES_DIR
+            elif browser.browser_type == BROWSER_TYPE_WATERFOX_FLATPAK:
+                firefox_profiles_dir = WATERFOX_FLATPAK_PROFILES_DIR
             else:
                 firefox_profiles_dir = FIREFOX_SNAP_PROFILES_DIR
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
